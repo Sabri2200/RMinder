@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.example.rminder;
+package com.example.rminder.model;
 
 import java.io.IOException;
 import javafx.application.Application;

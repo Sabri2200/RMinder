@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.example.rminder;
+package com.example.rminder.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
