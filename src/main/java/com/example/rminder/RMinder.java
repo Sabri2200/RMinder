@@ -1,9 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-package com.example.rminder.model;
+package com.example.rminder;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -17,9 +12,9 @@ public class RMinder extends Application {
     }
 
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RMinder.class.getResource("home.fxml"));
-        Scene scene = new Scene((Parent)fxmlLoader.load(), 320.0, 240.0);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(RMinder.class.getResource("view/main-window.fxml"));
+        Scene scene = new Scene((Parent)fxmlLoader.load());
+
         stage.setScene(scene);
         stage.show();
     }

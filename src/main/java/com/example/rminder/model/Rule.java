@@ -1,5 +1,7 @@
 package com.example.rminder.model;
 
+import java.io.*;
+
 public class Rule {
     private String name;
     private Trigger trigger;
@@ -12,6 +14,14 @@ public class Rule {
         this.trigger = trigger;
         this.action = action;
         this.status = status;
+    }
+
+    public String setName(String n) {
+        return this.name = n;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Action getAction() {
@@ -34,24 +44,32 @@ public class Rule {
         this.action = newAction;
         this.status = newStatus;
     }
-
     // Metodo per eliminare la regola
     public void deleteRule() {
-        // Implementazione della logica per eliminare la regola
-        // Questo potrebbe includere la rimozione dalla struttura dati o il segnare la regola come eliminata, a seconda delle esigenze del tuo sistema.
+        // Implementazione di base: segna la regola come eliminata (cambia lo stato o rimuovila dalla struttura dati)
+        this.status = false;
     }
 
     // Metodo per salvare la regola
     public void saveRule() {
-        // Implementazione della logica per salvare la regola
-        // Questo potrebbe includere la scrittura della regola su un file o il salvataggio in un database, a seconda delle esigenze del tuo sistema.
+        // Implementazione di base: salva la regola su un file di testo
+        try (PrintWriter writer = new PrintWriter(new FileWriter("regola_" + name + ".txt"))) {
+            // Scrivi i dettagli della regola nel file
+            writer.println(name);
+            writer.println(trigger.toString());
+            writer.println(action.toString());
+            writer.println(status);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     // Metodo per caricare la regola
     public void loadRule() {
-        // Implementazione della logica per caricare la regola
-        // Questo potrebbe includere la lettura della regola da un file o il caricamento da un database, a seconda delle esigenze del tuo sistema.
+
     }
+
 
 }
 

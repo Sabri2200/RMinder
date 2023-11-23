@@ -12,6 +12,7 @@ public class RuleManager {
     }
 
     // Metodo per aggiungere una regola alla lista
+    // Metodo per aggiungere una regola alla lista
     public void addRule(Rule rule) {
         ruleList.add(rule);
     }
