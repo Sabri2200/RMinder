@@ -31,7 +31,7 @@ public class RMinderController implements Initializable {
     private ObservableList<Rule> ruleList;
 
     @FXML
-    private TableView<Rule> ruleTableView;
+    private TableView<Rule> ruleTable;
     @FXML
     private TableColumn<Rule, String> ruleName;
     @FXML
@@ -61,7 +61,7 @@ public class RMinderController implements Initializable {
         ruleActivation.setCellValueFactory(new PropertyValueFactory("activation"));
         ruleState.setCellValueFactory(new PropertyValueFactory("state"));
 
-        ruleTableView.setItems(list);
+        ruleTable.setItems(list);
     }
 
     /*
