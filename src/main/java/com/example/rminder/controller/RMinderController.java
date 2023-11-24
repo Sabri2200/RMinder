@@ -4,19 +4,42 @@ import com.example.rminder.model.Action;
 import com.example.rminder.model.Rule;
 import com.example.rminder.model.RuleManager;
 import com.example.rminder.model.Trigger;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RMinderController {
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+
+public class RMinderController implements Initializable {
     private RuleManager ruleManager;
     @FXML
     private Label welcomeText;
     @FXML
     private Button createRuleButton;
+    @FXML
+    private ObservableList<Rule> ruleList;
 
+    @FXML
+    private TableView<Rule> ruleTable;
+    @FXML
+    private TableColumn<Rule, String> ruleName;
+    @FXML
+    private TableColumn<Rule, String> ruleActivation;
+    @FXML
+    private TableColumn<Rule, String> ruleState;
+
+    private ObservableList<Rule> list;
 
     public RMinderController() {
 
@@ -26,7 +49,19 @@ public class RMinderController {
     protected void onClickCreateRuleButton() {
         // Esempio: Creazione di una nuova regola
         Rule newRule = new Rule("NewRule", null, null, true); // Per ora imposto su null Action e Trigger
-        ruleManager.addRule(newRule);
+        // ruleManager.addRule(newRule);
+        list.add(newRule);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        list = FXCollections.observableArrayList();
+
+        ruleName.setCellValueFactory(new PropertyValueFactory("name"));
+        ruleActivation.setCellValueFactory(new PropertyValueFactory("activation"));
+        ruleState.setCellValueFactory(new PropertyValueFactory("state"));
+
+        ruleTable.setItems(list);
     }
 
     /*
