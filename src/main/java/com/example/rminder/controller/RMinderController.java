@@ -4,7 +4,12 @@ import com.example.rminder.model.Action;
 import com.example.rminder.model.Rule;
 import com.example.rminder.model.RuleManager;
 import com.example.rminder.model.Trigger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Duration;
 
 public class RMinderController implements Initializable {
     private RuleManager ruleManager;
@@ -31,7 +37,7 @@ public class RMinderController implements Initializable {
     private ObservableList<Rule> ruleList;
 
     @FXML
-    private TableView<Rule> ruleTableView;
+    private TableView<Rule> ruleTable;
     @FXML
     private TableColumn<Rule, String> ruleName;
     @FXML
@@ -53,15 +59,51 @@ public class RMinderController implements Initializable {
         list.add(newRule);
     }
 
+    private Service<Void> backgroundService;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         list = FXCollections.observableArrayList();
 
         ruleName.setCellValueFactory(new PropertyValueFactory("name"));
-        ruleActivation.setCellValueFactory(new PropertyValueFactory("activation"));
-        ruleState.setCellValueFactory(new PropertyValueFactory("state"));
+        ruleActivation.setCellValueFactory(cellData -> {
+            Rule rule = cellData.getValue();
+            Trigger trigger = rule.getTrigger();
+            if (trigger != null) {
+                return new ReadOnlyObjectWrapper<>(trigger.toString() + rule.getAction().toString());
+            } else {
+                return new ReadOnlyObjectWrapper<>(null);
+            }
+        });
+        ruleState.setCellValueFactory(cellData -> {
+            Rule rule = cellData.getValue();
+                return new ReadOnlyObjectWrapper<>(rule.isActive() ? "active" : "not active");
+        });
 
-        ruleTableView.setItems(list);
+        ruleTable.setItems(list);
+
+        backgroundService = new Service<>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        // Your repeated action goes here
+                        System.out.println("Action performed every 2 seconds");
+                        return null;
+                    }
+                };
+            }
+        };
+
+        // Set up the timeline to execute the service every 2 seconds
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+            if (!backgroundService.isRunning()) {
+                backgroundService.restart();
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     /*

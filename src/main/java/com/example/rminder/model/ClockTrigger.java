@@ -28,7 +28,7 @@ public class ClockTrigger implements Trigger {
 
     @Override
     public String toString() {
-        return "ClockTrigger" + time + ";";
+        return "At" + time + " ";
     }
 
 }
