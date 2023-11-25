@@ -1,9 +1,6 @@
 package com.example.rminder.controller;
 
-import com.example.rminder.model.Action;
-import com.example.rminder.model.Rule;
-import com.example.rminder.model.RuleManager;
-import com.example.rminder.model.Trigger;
+import com.example.rminder.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -54,9 +51,11 @@ public class RMinderController implements Initializable {
     @FXML
     protected void onClickCreateRuleButton() {
         // Esempio: Creazione di una nuova regola
-        Rule newRule = new Rule("NewRule", null, null, true); // Per ora imposto su null Action e Trigger
+        // Rule newRule = new Rule("NewRule", null, null, true); // Per ora imposto su null Action e Trigger
         // ruleManager.addRule(newRule);
-        list.add(newRule);
+        // list.add(newRule);
+        Action a = new MessageAction("dd", "fff");
+        a.executeAction();
     }
 
     private Service<Void> backgroundService;
@@ -90,6 +89,13 @@ public class RMinderController implements Initializable {
                     protected Void call() throws Exception {
                         // Your repeated action goes here
                         System.out.println("Action performed every 2 seconds");
+                        for (Rule rule: list) {
+                            if (rule.isActive()) {
+                                if (rule.getTrigger().verifyTrigger()) {
+                                    rule.getAction().executeAction();
+                                }
+                            }
+                        }
                         return null;
                     }
                 };
