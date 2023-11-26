@@ -1,29 +1,30 @@
 package com.example.rminder.model;
+
+import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.nio.file.Paths;
 
-public class AudioAction implements Action {
-    private String filePath;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public AudioAction(String filePath) {
-        this.filePath = filePath;
+class AudioActionTest {
+
+    @BeforeAll
+    public static void setUpClass() throws Exception {
+        // Inizializza JavaFX
+        Platform.startup(() -> {});
     }
 
-    @Override
-    public void executeAction() {
+    @Test
+    void executeAction() {
         File file = new File("/Users/michelecoscarelli/Downloads/gg.mp3");
         String mediaUrl = file.toURI().toString();
         Media media = new Media(mediaUrl);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
+        System.out.println("dd");
     }
-
-    @Override
-    public String toString() {
-        return "Audio Action";//+"play " + filePath;
-    }
-
 }
