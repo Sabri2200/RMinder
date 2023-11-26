@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +32,12 @@ public class CreateRuleDialogController implements Initializable {
     private ComboBox<Action> selectActionComboBox = new ComboBox<>();
     private Stage stage;
 
+    @FXML
+    private TextField hourField = new TextField();
+
+    @FXML
+    private TextField minuteField = new TextField();
+
     public CreateRuleDialogController() {
     }
 
@@ -42,6 +49,7 @@ public class CreateRuleDialogController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         List<Trigger> triggerList = List.of(new ClockTrigger(null));
         ObservableList<Trigger> triggerObservableList = FXCollections.observableArrayList(triggerList);
         selectTriggerComboBox.setItems(triggerObservableList);
@@ -56,7 +64,16 @@ public class CreateRuleDialogController implements Initializable {
 
     @FXML
     protected void onClickSaveAndConfirmRuleButton() {
-        Rule rule= new Rule(insertRuleTitleTextField.getText(), selectTriggerComboBox.getValue(), selectActionComboBox.getValue(), true);
+
+        LocalTime lt = LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText()));
+
+        Trigger ct = new ClockTrigger(lt);
+        Action a = new MessageAction("dd", "dds");
+        // Rule rule = new Rule(insertRuleTitleTextField.getText(), selectTriggerComboBox.getValue(), selectActionComboBox.getValue(), true);
+        Rule rule = new Rule(insertRuleTitleTextField.getText(), ct, a, true);
+
+        a.executeAction();
+
         ruleManager.subscribeRule(rule);
         Stage primaryStage = (Stage) stage.getOwner();
 

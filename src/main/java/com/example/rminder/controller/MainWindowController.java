@@ -74,6 +74,7 @@ public class MainWindowController implements Initializable {
                             for (Rule rule : list) {
                                 if (rule.getState()) {
                                     if (rule.getTrigger().verifyTrigger()) {
+                                        System.out.println("executed");
                                         rule.getAction().executeAction();
                                     }
                                 }

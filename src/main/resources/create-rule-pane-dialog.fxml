@@ -3,18 +3,29 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="390.0" prefWidth="500.0" style="-fx-border-width: 2; -fx-border-color: #000000; -fx-border-radius: 5; -fx-background-color: FFFF91;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.CreateRuleDialogController">
+<Pane prefHeight="390.0" prefWidth="500.0" style="-fx-border-width: 2; -fx-border-color: #000000; -fx-border-radius: 5; -fx-background-color: FFFF91;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.CreateRuleDialogController">
    <children>
       <Button fx:id="SaveAndConfirmRuleButton" layoutX="324.0" layoutY="345.0" mnemonicParsing="false" onAction="#onClickSaveAndConfirmRuleButton" prefHeight="31.0" prefWidth="145.0" text="Save and Confirm" />
       <TextField fx:id="insertRuleTitleTextField" layoutX="33.0" layoutY="23.0" prefHeight="31.0" prefWidth="409.0" promptText="Insert Rule Title" />
       <AnchorPane layoutY="54.0" prefHeight="212.0" prefWidth="483.0">
          <children>
             <ComboBox fx:id="selectTriggerComboBox" layoutX="37.0" layoutY="14.0" prefHeight="31.0" prefWidth="409.0" promptText="Select Trigger" />
-            <AnchorPane layoutX="35.0" layoutY="55.0" prefHeight="157.0" prefWidth="416.0" />
+            <AnchorPane layoutX="35.0" layoutY="55.0" prefHeight="157.0" prefWidth="416.0">
+               <children>
+                  <HBox alignment="CENTER" layoutY="14.0" prefHeight="100.0" prefWidth="417.0" spacing="20.0">
+                     <children>
+                        <TextField fx:id="hourField" text="Hour" />
+                        <Label text=":" />
+                        <TextField fx:id="minuteField" text="Minute" />
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
       <ComboBox fx:id="selectActionComboBox" layoutX="33.0" layoutY="296.0" prefHeight="31.0" prefWidth="409.0" promptText="Select an Action" />

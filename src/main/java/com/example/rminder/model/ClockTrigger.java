@@ -50,10 +50,10 @@ public class ClockTrigger implements Trigger {
 
         // Verifica se formattedTime è maggiore di time
         if (formattedLocalTime.isAfter(targetLocalTime)) {
-           // System.out.println("formattedTime è maggiore di time");
+           System.out.println("formattedTime è maggiore di time");
             return true;
         } else {
-            //System.out.println("formattedTime non è maggiore di time");
+            System.out.println("formattedTime non è maggiore di time");
             return false;
         }
     }
