@@ -35,6 +35,10 @@ public class Rule {
         return trigger;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
     // Metodo per verificare se la regola è attiva
     public boolean isActive() {
         return status;
@@ -72,6 +76,11 @@ public class Rule {
     // Metodo per caricare la regola
     public void loadRule() {
 
+    }
+
+    public void run() {
+        this.action.executeAction();
+        this.status = false;
     }
 
 

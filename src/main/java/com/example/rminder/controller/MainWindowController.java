@@ -1,10 +1,12 @@
 package com.example.rminder.controller;
 
-import com.example.rminder.RMinder;
-import com.example.rminder.model.Rule;
-import com.example.rminder.model.RuleManager;
+import com.example.rminder.model.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,15 +18,15 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Duration;
 
 public class MainWindowController implements Initializable {
     private RuleManager ruleManager;
@@ -46,17 +48,65 @@ public class MainWindowController implements Initializable {
 
     public MainWindowController() {
 
+    @FXML
+    protected void onClickCreateRuleButton() {
+        // Esempio: Creazione di una nuova regola
+        Action a = new MessageAction("dd", "fff");
+        a.executeAction();
     }
+
+    private Service<Void> backgroundService;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         list = FXCollections.observableArrayList();
 
         ruleName.setCellValueFactory(new PropertyValueFactory("name"));
-        ruleActivation.setCellValueFactory(new PropertyValueFactory("activation"));
-        ruleState.setCellValueFactory(new PropertyValueFactory("state"));
+        ruleActivation.setCellValueFactory(cellData -> {
+            Rule rule = cellData.getValue();
+            Trigger trigger = rule.getTrigger();
+            if (trigger != null) {
+                return new ReadOnlyObjectWrapper<>(trigger.toString() + rule.getAction().toString());
+            } else {
+                return new ReadOnlyObjectWrapper<>(null);
+            }
+        });
+        ruleState.setCellValueFactory(cellData -> {
+            Rule rule = cellData.getValue();
+                return new ReadOnlyObjectWrapper<>(rule.isActive() ? "active" : "not active");
+        });
 
         ruleTable.setItems(list);
 
+        backgroundService = new Service<>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        // Your repeated action goes here
+                        System.out.println("Action performed every 2 seconds");
+                        for (Rule rule: list) {
+                            if (rule.isActive()) {
+                                if (rule.getTrigger().verifyTrigger()) {
+                                    rule.getAction().executeAction();
+                                }
+                            }
+                        }
+                        return null;
+                    }
+                };
+            }
+        };
+
+        // Set up the timeline to execute the service every 2 seconds
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+            if (!backgroundService.isRunning()) {
+                backgroundService.restart();
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @FXML
@@ -119,10 +169,13 @@ public class MainWindowController implements Initializable {
             // Gestisci eventuali eccezioni di IO in modo appropriato per il tuo caso d'uso
         }
     }
-
+    // Implementazione del salvataggio della regola su file
+    @FXML
+    protected void onClickSaveRuleButton() {
+        rule.saveRule();
+    }
 
  */
+
+
 }
-
-
-
