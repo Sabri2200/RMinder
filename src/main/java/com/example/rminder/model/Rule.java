@@ -16,8 +16,11 @@ public class Rule {
         this.status = status;
     }
 
-    public String setName(String n) {
-        return this.name = n;
+    public void setName(String n) {
+        this.name = n;
+    }
+    private void setTrigger(Trigger trigger){
+        this.trigger = trigger;
     }
 
     public String getName() {
@@ -63,6 +66,7 @@ public class Rule {
             e.printStackTrace();
         }
     }
+
 
 
     // Metodo per caricare la regola

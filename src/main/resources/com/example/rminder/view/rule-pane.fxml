@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-color: #000000; -fx-border-radius: 5; -fx-background-color: FFFF91;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.RMinderController">
+<Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-color: #000000; -fx-border-radius: 5; -fx-background-color: FFFF91;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.MainWindowController">
    <children>
       <Button fx:id="modifyRuleButton1" layoutX="7.0" layoutY="44.0" mnemonicParsing="false" onAction="#onClickModifyRuleButton" prefHeight="31.0" prefWidth="29.0" />
       <ToggleButton fx:id="SwitchActiveRuleButton1" layoutX="67.0" layoutY="-11.0" mnemonicParsing="false" onAction="#onClickSwitchActiveRuleButton" prefHeight="17.0" prefWidth="36.0" translateX="90.0" translateY="180.0">

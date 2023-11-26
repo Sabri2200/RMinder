@@ -1,30 +1,33 @@
 package com.example.rminder.controller;
 
-import com.example.rminder.model.Action;
+import com.example.rminder.RMinder;
 import com.example.rminder.model.Rule;
 import com.example.rminder.model.RuleManager;
-import com.example.rminder.model.Trigger;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class RMinderController implements Initializable {
+public class MainWindowController implements Initializable {
     private RuleManager ruleManager;
-    @FXML
-    private Label welcomeText;
     @FXML
     private Button createRuleButton;
     @FXML
@@ -41,18 +44,9 @@ public class RMinderController implements Initializable {
 
     private ObservableList<Rule> list;
 
-    public RMinderController() {
+    public MainWindowController() {
 
     }
-
-    @FXML
-    protected void onClickCreateRuleButton() {
-        // Esempio: Creazione di una nuova regola
-        Rule newRule = new Rule("NewRule", null, null, true); // Per ora imposto su null Action e Trigger
-        // ruleManager.addRule(newRule);
-        list.add(newRule);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         list = FXCollections.observableArrayList();
@@ -62,7 +56,28 @@ public class RMinderController implements Initializable {
         ruleState.setCellValueFactory(new PropertyValueFactory("state"));
 
         ruleTable.setItems(list);
+
     }
+
+    @FXML
+    private void OpenCreateRulePaneDialog(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/create-rule-pane-dialog.fxml" ));
+            Parent root = loader.load();
+            Stage createRuleDialog = new Stage();
+            createRuleDialog.setScene(new Scene(root, 500, 390));
+            ((Node)(event.getSource())).getScene().getWindow();
+            createRuleDialog.initModality(Modality.APPLICATION_MODAL);
+            createRuleDialog.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            createRuleDialog.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     /*
     @FXML
@@ -104,13 +119,10 @@ public class RMinderController implements Initializable {
             // Gestisci eventuali eccezioni di IO in modo appropriato per il tuo caso d'uso
         }
     }
-    // Implementazione del salvataggio della regola su file
-    @FXML
-    protected void onClickSaveRuleButton() {
-        rule.saveRule();
-    }
+
 
  */
-
-
 }
+
+
+

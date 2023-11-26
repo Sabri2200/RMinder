@@ -17,7 +17,9 @@ public class RMinder extends Application {
 
         stage.setScene(scene);
         stage.show();
+
     }
+
 
     public static void main(String[] args) {
         launch(new String[0]);

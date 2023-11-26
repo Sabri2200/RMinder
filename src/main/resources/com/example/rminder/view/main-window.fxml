@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1262.0" style="-fx-background-color: FDFDDD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.RMinderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1262.0" style="-fx-background-color: FDFDDD;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.MainWindowController">
    <children>
       <VBox layoutX="414.0" layoutY="63.0" prefHeight="241.0" prefWidth="407.0">
          <children>
-            <Button fx:id="createRuleButton" mnemonicParsing="false" onAction="#onClickCreateRuleButton" text="+" translateX="190.0" translateY="200.0">
+            <Button fx:id="createRuleButton" mnemonicParsing="false" onAction="#OpenCreateRulePaneDialog" text="+" translateX="190.0" translateY="200.0">
                <font>
                   <Font size="17.0" />
                </font>
