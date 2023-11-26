@@ -20,9 +20,9 @@
                <children>
                   <HBox alignment="CENTER" layoutY="14.0" prefHeight="100.0" prefWidth="417.0" spacing="20.0">
                      <children>
-                        <TextField fx:id="hourField" text="Hour" />
+                        <TextField fx:id="hourField" promptText="Hour" />
                         <Label text=":" />
-                        <TextField fx:id="minuteField" text="Minute" />
+                        <TextField fx:id="minuteField" promptText="Minute" />
                      </children>
                   </HBox>
                </children></AnchorPane>
