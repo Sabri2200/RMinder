@@ -10,7 +10,7 @@
 <Pane prefHeight="390.0" prefWidth="500.0" style="-fx-border-width: 2; -fx-border-color: #000000; -fx-border-radius: 5; -fx-background-color: FFFF91;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rminder.controller.CreateRuleDialogController">
    <children>
       <Button fx:id="SaveAndConfirmRuleButton" layoutX="324.0" layoutY="345.0" mnemonicParsing="false" onAction="#onClickSaveAndConfirmRuleButton" prefHeight="31.0" prefWidth="145.0" text="Save and Confirm" />
-      <TextField fx:id="insertRuleTitleTextField" layoutX="33.0" layoutY="23.0" onAction="#onInsertRuleTitleTextField" prefHeight="31.0" prefWidth="409.0" promptText="Insert Rule Title" />
+      <TextField fx:id="insertRuleTitleTextField" layoutX="33.0" layoutY="23.0" prefHeight="31.0" prefWidth="409.0" promptText="Insert Rule Title" />
       <AnchorPane layoutY="54.0" prefHeight="212.0" prefWidth="483.0">
          <children>
             <ComboBox fx:id="selectTriggerComboBox" layoutX="37.0" layoutY="14.0" prefHeight="31.0" prefWidth="409.0" promptText="Select Trigger" />

@@ -6,22 +6,19 @@ public class Rule {
     private String name;
     private Trigger trigger;
     private Action action;
-    private boolean status;
+    private boolean state;
 
-    // Costruttore
-    public Rule(String name, Trigger trigger, Action action, boolean status) {
+    public Rule(String name, Trigger trigger, Action action, boolean state) {
         this.name = name;
         this.trigger = trigger;
         this.action = action;
-        this.status = status;
+        this.state = state;
     }
 
     public void setName(String n) {
         this.name = n;
     }
-    private void setTrigger(Trigger trigger){
-        this.trigger = trigger;
-    }
+
 
     public String getName() {
         return name;
@@ -35,37 +32,31 @@ public class Rule {
         return trigger;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean getState() {
+        return state;
     }
 
-    // Metodo per verificare se la regola è attiva
-    public boolean isActive() {
-        return status;
-    }
-
-    // Metodo per modificare la regola
-    public void modifyRule(String newName, Trigger newTrigger, Action newAction, boolean newStatus) {
+    public void modifyRule(String newName, Trigger newTrigger, Action newAction, boolean newState) {
         this.name = newName;
         this.trigger = newTrigger;
         this.action = newAction;
-        this.status = newStatus;
+        this.state = newState;
     }
     // Metodo per eliminare la regola
     public void deleteRule() {
         // Implementazione di base: segna la regola come eliminata (cambia lo stato o rimuovila dalla struttura dati)
-        this.status = false;
+        this.state = false;
     }
 
     // Metodo per salvare la regola
     public void saveRule() {
         // Implementazione di base: salva la regola su un file di testo
-        try (PrintWriter writer = new PrintWriter(new FileWriter("regola_" + name + ".txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("regola_" + name + ".cvc"))) {
             // Scrivi i dettagli della regola nel file
             writer.println(name);
             writer.println(trigger.toString());
             writer.println(action.toString());
-            writer.println(status);
+            writer.println(state);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,10 +69,7 @@ public class Rule {
 
     }
 
-    public void run() {
-        this.action.executeAction();
-        this.status = false;
-    }
+
 
 
 }

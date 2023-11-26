@@ -22,4 +22,8 @@ public class MessageAction implements Action{
             }
         });
     }
+    @Override
+    public String toString() {
+        return "Message Action";
+    }
 }

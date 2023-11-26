@@ -65,7 +65,7 @@ public class ClockTrigger implements Trigger {
      */
     @Override
     public String toString() {
-        return "At " + time + " ";
+        return "ClockTrigger";
     }
 
 

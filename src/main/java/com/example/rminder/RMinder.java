@@ -1,6 +1,8 @@
 package com.example.rminder;
 
 import java.io.IOException;
+
+import com.example.rminder.controller.MainWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +17,12 @@ public class RMinder extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(RMinder.class.getResource("view/main-window.fxml"));
         Scene scene = new Scene((Parent)fxmlLoader.load());
 
+        scene.setUserData(fxmlLoader);
         stage.setScene(scene);
-        stage.show();
 
+        MainWindowController mainController = fxmlLoader.getController();
+        mainController.setPrimaryStage(stage);
+        stage.show();
     }
 
 

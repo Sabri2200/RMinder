@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="gitignore file modified.">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Beginning phase for all updates.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/RMinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/RMinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/CreateRuleDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/CreateRuleDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/RuleController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/ClockTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/MessageAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/RuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/model/Trigger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/rminder/view/main-window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/rminder/view/main-window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/create-rule-pane-dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/create-rule-pane-dialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +135,7 @@
       <workItem from="1700825829137" duration="2330000" />
       <workItem from="1700828184906" duration="24666000" />
       <workItem from="1700930891946" duration="8172000" />
-      <workItem from="1701001519422" duration="2535000" />
+      <workItem from="1701001519422" duration="14071000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -257,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701001457967</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Beginning phase for all updates.">
+      <option name="closed" value="true" />
+      <created>1701004158261</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1701004158261</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +312,8 @@
     <MESSAGE value="Creation and implementation of create-rule-pane-dialog.fxml interface adding the controller CreateRuleDialogController. creation of methods for creating rules." />
     <MESSAGE value="Creation and implementation of create-rule-pane-dialog.fxml interface adding the controller CreateRuleDialogController. creation of methods for creating rules. Handling ComboBoxTrigger." />
     <MESSAGE value="gitignore file modified." />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore file modified." />
+    <MESSAGE value="Beginning phase for all updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginning phase for all updates." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

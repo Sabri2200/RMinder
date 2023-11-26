@@ -3,7 +3,6 @@ package com.example.rminder.controller;
 import com.example.rminder.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -11,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,33 +37,29 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableView<Rule> ruleTable;
     @FXML
-    private TableColumn<Rule, String> ruleName;
+    private TableColumn<Rule, String> name;
     @FXML
-    private TableColumn<Rule, String> ruleActivation;
+    private TableColumn<Rule, String> trigger;
     @FXML
-    private TableColumn<Rule, String> ruleState;
+    private TableColumn<Rule, String> action;
+    @FXML
+    private TableColumn<Rule, Boolean> state;
 
-    private ObservableList<Rule> list;
+    private ObservableList<Rule> list = FXCollections.observableArrayList();;
     private Service<Void> backgroundService;
     public MainWindowController (){}
+    private Stage primaryStage;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
         @Override
         public void initialize (URL url, ResourceBundle resourceBundle){
-            list = FXCollections.observableArrayList();
 
-            ruleName.setCellValueFactory(new PropertyValueFactory("name"));
-            ruleActivation.setCellValueFactory(cellData -> {
-                Rule rule = cellData.getValue();
-                Trigger trigger = rule.getTrigger();
-                if (trigger != null) {
-                    return new ReadOnlyObjectWrapper<>(trigger.toString() + rule.getAction().toString());
-                } else {
-                    return new ReadOnlyObjectWrapper<>(null);
-                }
-            });
-            ruleState.setCellValueFactory(cellData -> {
-                Rule rule = cellData.getValue();
-                return new ReadOnlyObjectWrapper<>(rule.isActive() ? "active" : "not active");
-            });
+            name.setCellValueFactory(new PropertyValueFactory("name"));
+            trigger.setCellValueFactory(new PropertyValueFactory("trigger"));
+            action.setCellValueFactory(new PropertyValueFactory("action"));
+            state.setCellValueFactory(new PropertyValueFactory("state"));
 
             ruleTable.setItems(list);
 
@@ -78,7 +72,7 @@ public class MainWindowController implements Initializable {
                             // Your repeated action goes here
                             System.out.println("Action performed every 2 seconds");
                             for (Rule rule : list) {
-                                if (rule.isActive()) {
+                                if (rule.getState()) {
                                     if (rule.getTrigger().verifyTrigger()) {
                                         rule.getAction().executeAction();
                                     }
@@ -100,21 +94,31 @@ public class MainWindowController implements Initializable {
             timeline.play();
         }
 
+
         @FXML
         private void openCreateRulePaneDialog(ActionEvent event){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/create-rule-pane-dialog.fxml"));
                 Parent root = loader.load();
+
                 Stage createRuleDialog = new Stage();
                 createRuleDialog.setScene(new Scene(root, 500, 390));
-                ((Node) (event.getSource())).getScene().getWindow();
                 createRuleDialog.initModality(Modality.APPLICATION_MODAL);
-                createRuleDialog.initOwner(((Node) event.getSource()).getScene().getWindow());
+                //createRuleDialog.initOwner(((Node) event.getSource()).getScene().getWindow());
+                createRuleDialog.initOwner(primaryStage);
+                CreateRuleDialogController createRuleDialogController = loader.getController();
+                createRuleDialogController.setStage(createRuleDialog);
 
                 createRuleDialog.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        public void addRuleToTable(Rule rule){
+            System.out.println("regola aggiunta!!!");
+            list.add(rule);
+            ruleTable.refresh();
         }
 }
 
