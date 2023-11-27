@@ -37,7 +37,7 @@ App Title: <b>RMinder<b>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EctsRn3oPwlGmCi_c-X5G7MBhpq_w4pNeCvBPXZntx8pVw?e=8vO8xd"> Sprint retrospective report </a> </li>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EeB17MVXMYpKnEkUwYwYgrEBJCXb772sGPnakTTVofQtnw?e=9zRfUV"> Sprint review </a> </li>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EfpFk4vl1PFFrG7lyoUU_d4B97Am0243ZwYg4XBVoGGguA?e=xSi8by"> burndown chart </a> </li>
-<li> <a href="https://onedrive.live.com/edit.aspx?resid=9CB50B2703B2E22E!1887&app=Word&wdnd=1&wdPreviousSession=57166612%2D9206%2D444b%2D96f3%2Da90bdc517d88&wdNewAndOpenCt=1701025539246&wdo=4&wdOrigin=wacFileNew&wdPreviousCorrelation=37d6d27e%2D71fa%2D40b4%2D97ef%2D790f54963550&wdTpl=blank "> summary document </a> </li>
+<li> <a href="https://github.com/Sabri2200/RMinder"> summary document </a> </li>
 
 
 
