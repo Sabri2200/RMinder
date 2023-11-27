@@ -116,6 +116,12 @@ public class MainWindowController implements Initializable {
             }
         }
 
+        @FXML
+        public void btnaction() {
+            Action a = new AudioAction("/Users/michelecoscarelli/Downloads/gg.mp3");
+            a.executeAction();
+        }
+
         public void addRuleToTable(Rule rule){
             System.out.println("regola aggiunta!!!");
             list.add(rule);

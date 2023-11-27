@@ -68,7 +68,7 @@ public class CreateRuleDialogController implements Initializable {
         LocalTime lt = LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText()));
 
         Trigger ct = new ClockTrigger(lt);
-        Action a = new MessageAction("dd", "dds");
+        Action a = new MessageAction("Regola", "Regola creata con successo");
         // Rule rule = new Rule(insertRuleTitleTextField.getText(), selectTriggerComboBox.getValue(), selectActionComboBox.getValue(), true);
         Rule rule = new Rule(insertRuleTitleTextField.getText(), ct, a, true);
 
