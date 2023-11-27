@@ -3,6 +3,7 @@ package com.example.rminder.controller;
 import com.example.rminder.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -43,9 +44,9 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<Rule, String> action;
     @FXML
-    private TableColumn<Rule, Boolean> state;
+    private TableColumn<Rule, String> state;
 
-    private ObservableList<Rule> list = FXCollections.observableArrayList();;
+    private ObservableList<Rule> list = FXCollections.observableArrayList();
     private Service<Void> backgroundService;
     public MainWindowController (){}
     private Stage primaryStage;
@@ -59,7 +60,11 @@ public class MainWindowController implements Initializable {
             name.setCellValueFactory(new PropertyValueFactory("name"));
             trigger.setCellValueFactory(new PropertyValueFactory("trigger"));
             action.setCellValueFactory(new PropertyValueFactory("action"));
-            state.setCellValueFactory(new PropertyValueFactory("state"));
+
+            state.setCellValueFactory(cellData -> {
+                Rule rule = cellData.getValue();
+                return new ReadOnlyObjectWrapper<>(rule.getState() ? "active" : "not active");
+            });
 
             ruleTable.setItems(list);
 
@@ -74,8 +79,10 @@ public class MainWindowController implements Initializable {
                             for (Rule rule : list) {
                                 if (rule.getState()) {
                                     if (rule.getTrigger().verifyTrigger()) {
-                                        System.out.println("executed");
+                                        System.out.println("executed" + rule.getAction().toString());
                                         rule.getAction().executeAction();
+                                        rule.setState(false);
+                                        ruleTable.refresh();
                                     }
                                 }
                             }

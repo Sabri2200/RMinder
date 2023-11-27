@@ -28,7 +28,10 @@
                </children></AnchorPane>
          </children>
       </AnchorPane>
-      <ComboBox fx:id="selectActionComboBox" layoutX="33.0" layoutY="296.0" prefHeight="31.0" prefWidth="409.0" promptText="Select an Action" />
+      <ComboBox fx:id="selectActionComboBox" layoutX="33.0" layoutY="273.0" prefHeight="31.0" prefWidth="409.0" promptText="Select an Action" />
+      <TextField fx:id="titleField" layoutX="52.0" layoutY="312.0" promptText="title" visible="false" />
+      <TextField fx:id="messageField" layoutX="52.0" layoutY="348.0" promptText="message" visible="false" />
+      <Button fx:id="fileBtn" layoutX="156.0" layoutY="326.0" mnemonicParsing="false" onAction="#fileSelector" text="Select a file" visible="false" />
    </children>
    <opaqueInsets>
       <Insets />

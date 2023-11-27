@@ -13,6 +13,7 @@ public class MessageAction implements Action{
 
     @Override
     public void executeAction() {
+        System.out.println("Eseguit" + this.message);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(this.title);
         alert.setContentText(this.message);

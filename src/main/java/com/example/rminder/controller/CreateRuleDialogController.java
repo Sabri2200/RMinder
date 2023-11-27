@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.JFileChooser;
+import java.io.File;
 
 public class CreateRuleDialogController implements Initializable {
 
@@ -33,10 +36,21 @@ public class CreateRuleDialogController implements Initializable {
     private Stage stage;
 
     @FXML
+    private Button fileBtn = new Button();
+
+    @FXML
     private TextField hourField = new TextField();
 
     @FXML
     private TextField minuteField = new TextField();
+
+    @FXML
+    private TextField titleField = new TextField();
+
+    @FXML
+    private TextField messageField = new TextField();
+
+    private String pathToFile = "";
 
     public CreateRuleDialogController() {
     }
@@ -46,6 +60,19 @@ public class CreateRuleDialogController implements Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    @FXML
+    public void fileSelector() {
+        File selectedFile;
+        JFileChooser fs = new JFileChooser(new File(".\\"));
+        fs.setDialogTitle("Apri File");
+        if (fs.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { //L'utente ha cliccato su apri
+            selectedFile = fs.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        }
+    }
+
+    public String action = "";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,7 +86,30 @@ public class CreateRuleDialogController implements Initializable {
         List<Action> actionList = List.of(new AudioAction(""),new MessageAction("",""));
         ObservableList<Action> actionObservableList = FXCollections.observableArrayList(actionList);
         selectActionComboBox.setItems(actionObservableList);
+
+        ChangeListener<Action> selectActionComboBoxChangeListener = (observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // Qui puoi gestire l'elemento selezionato
+                System.out.println("Elemento selezionato: " + newValue);
+                if (newValue.toString() == "Message Action") {
+                    action = "Message Action";
+                    titleField.setVisible(true);
+                    messageField.setVisible(true);
+                    fileBtn.setVisible(false);
+                } else if (newValue.toString() == "Audio Action") {
+                    action = "Audio Action";
+                    fileBtn.setVisible(true);
+                    titleField.setVisible(false);
+                    messageField.setVisible(false);
+                } else {
+                    fileBtn.setVisible(false);
+                    titleField.setVisible(false);
+                    messageField.setVisible(false);
+                }
+            }
+        };
         selectActionComboBox.valueProperty().addListener(selectActionComboBoxChangeListener);
+
     }
 
     @FXML
@@ -68,11 +118,20 @@ public class CreateRuleDialogController implements Initializable {
         LocalTime lt = LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText()));
 
         Trigger ct = new ClockTrigger(lt);
-        Action a = new MessageAction("Regola", "Regola creata con successo");
+        Action a = null;
+
+        if (action == "Message Action") {
+            a = new MessageAction(titleField.getText(), messageField.getText());
+        } else if (action == "Audio Action") {
+            a = new AudioAction(pathToFile);
+        } else {
+            System.out.println("null");
+        }
+
         // Rule rule = new Rule(insertRuleTitleTextField.getText(), selectTriggerComboBox.getValue(), selectActionComboBox.getValue(), true);
         Rule rule = new Rule(insertRuleTitleTextField.getText(), ct, a, true);
 
-        a.executeAction();
+        new MessageAction("Regola creata", "Regola creata con successo").executeAction();
 
         ruleManager.subscribeRule(rule);
         Stage primaryStage = (Stage) stage.getOwner();

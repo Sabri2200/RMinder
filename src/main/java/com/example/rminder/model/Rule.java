@@ -19,6 +19,9 @@ public class Rule {
         this.name = n;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
 
     public String getName() {
         return name;

@@ -1,8 +1,11 @@
 module com.example.rminder {
     requires javafx.controls;
     requires javafx.fxml;
-            
-                            
+    requires javafx.media;
+    requires java.desktop;
+    //requires javafx.media;
+
+
     opens com.example.rminder to javafx.fxml;
     exports com.example.rminder.controller;
     opens com.example.rminder.controller to javafx.fxml;

@@ -14,6 +14,7 @@ public class AudioAction implements Action {
 
     @Override
     public void executeAction() {
+        System.out.println("Eseguit");
         File file = new File(filePath);
         String mediaUrl = file.toURI().toString();
         Media media = new Media(mediaUrl);
