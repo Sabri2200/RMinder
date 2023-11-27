@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.swing.JFileChooser;
 import java.io.File;
 
 public class CreateRuleDialogController implements Initializable {
@@ -63,13 +62,6 @@ public class CreateRuleDialogController implements Initializable {
 
     @FXML
     public void fileSelector() {
-        File selectedFile;
-        JFileChooser fs = new JFileChooser(new File(".\\"));
-        fs.setDialogTitle("Apri File");
-        if (fs.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { //L'utente ha cliccato su apri
-            selectedFile = fs.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-        }
     }
 
     public String action = "";
