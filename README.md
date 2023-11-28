@@ -43,6 +43,22 @@ App Title: <b>RMinder<b>
 
 </ul>
 
+<hr>
+<hr>
+
+<h2> SECOND SPRINT: </h2>
+<ul>
+  
+<li> <a href=""> Sprint backlog </a> </li>
+<!-- <li> <a href=""> Sprint retrospective report </a> </li>
+<li> <a href=""> Sprint review </a> </li>
+<li> <a href=""> burndown chart </a> </li>
+<li> <a href=""> summary document </a> </li>
+-->
+
+
+</ul>
+
 
 
 
