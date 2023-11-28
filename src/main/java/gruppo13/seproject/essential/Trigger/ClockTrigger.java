@@ -3,11 +3,12 @@ package gruppo13.seproject.essential.Trigger;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class ClockTrigger extends Trigger {
+public class ClockTrigger implements Trigger {
+    TriggerType type;
     LocalTime time;
 
-    public ClockTrigger(TriggerType type, LocalTime time) {
-        super(TriggerType.ClockTrigger);
+    public ClockTrigger(LocalTime time) {
+        this.type = TriggerType.ClockTrigger;
         this.time = time;
     }
 
@@ -38,5 +39,10 @@ public class ClockTrigger extends Trigger {
 
     public LocalTime getTime() {
         return time;
+    }
+
+    @Override
+    public TriggerType getType() {
+        return type;
     }
 }

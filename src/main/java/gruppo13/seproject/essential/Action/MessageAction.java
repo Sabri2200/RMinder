@@ -3,11 +3,12 @@ package gruppo13.seproject.essential.Action;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-public class MessageAction extends Action {
+public class MessageAction implements Action {
+    ActionType type;
     String title, message;
 
     public MessageAction(String title, String message) {
-        super(ActionType.DIALOGBOX);
+        this.type = ActionType.DIALOGBOX;
         this.title = title;
         this.message = message;
     }
@@ -22,6 +23,11 @@ public class MessageAction extends Action {
                 System.out.println("Pressed OK.");
             }
         });
+    }
+
+    @Override
+    public ActionType getType() {
+        return this.type;
     }
 
     public String getTitle() {

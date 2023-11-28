@@ -1,15 +1,13 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.essential.Action.Action;
-import gruppo13.seproject.essential.Action.ActionType;
-import gruppo13.seproject.essential.Action.AudioAction;
-import gruppo13.seproject.essential.Action.MessageAction;
+import gruppo13.seproject.essential.Action.*;
 import gruppo13.seproject.essential.Rule;
+import gruppo13.seproject.essential.RuleCommand;
+import gruppo13.seproject.essential.RuleManager;
 import gruppo13.seproject.essential.Trigger.ClockTrigger;
 import gruppo13.seproject.essential.Trigger.Trigger;
+import gruppo13.seproject.essential.Trigger.TriggerFactory;
 import gruppo13.seproject.essential.Trigger.TriggerType;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -27,7 +25,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -67,17 +64,42 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<Rule, String> stateClm;
 
-    private ObservableList<Rule> list;
-
     private TriggerType selectedTriggerType;
     private ActionType selectedActionType;
 
-    private Service<Void> backgroundService;
+    private TriggerFactory triggerFactory;
+    private ActionFactory actionFactory;
+    private RuleCommand ruleCommand;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        list = FXCollections.observableArrayList();
+        triggerFactory = new TriggerFactory();
+        actionFactory = new ActionFactory();
+
+        ruleCommand = new RuleManager(
+                new Service<>() {
+                    @Override
+                    protected Task<Void> createTask() {
+                        return new Task<>() {
+                            @Override
+                            protected Void call() throws Exception {
+                                System.out.println("Action performed every 2 seconds");
+                                for (Rule rule : ruleCommand.getList()) {
+                                    if (rule.getState()) {
+                                        if (rule.getTrigger().verify()) {
+                                            Platform.runLater(() -> rule.execute());
+                                            Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
+                                            tableView.refresh();
+                                        }
+                                    }
+                                }
+                                return null;
+                            }
+                        };
+                    }
+                }
+        );
 
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
@@ -107,7 +129,7 @@ public class MainController implements Initializable {
             return new ReadOnlyObjectWrapper<>(rule.getState() ? "active" : "not active");
         });
 
-        tableView.setItems(list);
+        tableView.setItems(ruleCommand.getList());
 
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -117,7 +139,7 @@ public class MainController implements Initializable {
         });
 
 
-        List<TriggerType> triggerList = List.of(TriggerType.ClockTrigger);
+        List<TriggerType> triggerList = List.of(TriggerType.values());
         ObservableList<TriggerType> triggerObservableList = FXCollections.observableArrayList(triggerList);
         triggerSelector.setItems(triggerObservableList);
 
@@ -133,13 +155,12 @@ public class MainController implements Initializable {
         };
         triggerSelector.valueProperty().addListener(selectTriggerChangeListener);
 
-        List<ActionType> actionList = List.of(ActionType.DIALOGBOX, ActionType.MP3PLAYER);
+        List<ActionType> actionList = List.of(ActionType.values());
         ObservableList<ActionType> actionObservableList = FXCollections.observableArrayList(actionList);
         actionSelector.setItems(actionObservableList);
 
         ChangeListener<ActionType> selectActionChangeListener = (observable, oldValue, newValue) -> {
             if (newValue != null) {
-                System.out.println("Elemento selezionato: " + newValue);
                 if (newValue.equals(ActionType.DIALOGBOX)) {
                     messageActionVBox.setVisible(true);
                     fileSelectorVBox.setVisible(false);
@@ -158,38 +179,7 @@ public class MainController implements Initializable {
 
         //saveRuleBtn.disableProperty().bind(ruleNameField.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(fileChosen.textProperty().isEmpty()));
 
-
-        backgroundService = new Service<>() {
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        // Your repeated action goes here
-                        System.out.println("Action performed every 2 seconds");
-                        for (Rule rule : list) {
-                            if (rule.getState()) {
-                                if (rule.getTrigger().verify()) {
-                                    Platform.runLater(() -> rule.execute());
-                                    Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
-                                    tableView.refresh();
-                                }
-                            }
-                        }
-                        return null;
-                    }
-                };
-            }
-        };
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4), event -> {
-            if (!backgroundService.isRunning()) {
-                backgroundService.restart();
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-
+        ruleCommand.execute();
     }
 
     public void fileSelector(ActionEvent actionEvent) {
@@ -205,30 +195,35 @@ public class MainController implements Initializable {
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
-        if (!list.contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false)))) {
+        if (!ruleCommand.getList().contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false)))) {
             Trigger t = null;
 
             if (selectedTriggerType == TriggerType.ClockTrigger) {
-                t = new ClockTrigger(TriggerType.ClockTrigger, LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText())));
+                t = triggerFactory.createClockTrigger(LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText())));
+            } else {
+                throw new IllegalArgumentException("This trigger type is not supported");
             }
 
             Action a = null;
 
             if (selectedActionType == ActionType.DIALOGBOX) {
-                a = new MessageAction(titleAlertField.getText(), messageAlertField.getText());
+                a = actionFactory.createMessageAction(titleAlertField.getText(), messageAlertField.getText());
             } else if (selectedActionType == ActionType.MP3PLAYER) {
-                a = new AudioAction(fileChosen.getText());
+                a = actionFactory.createAudioAction(fileChosen.getText());
+            } else {
+                throw new IllegalArgumentException("This action type is not supported");
             }
 
-            Action as[] = new Action[5];
+            Action[] as = new Action[5];
             as[0] = a;
 
             Rule rule = new Rule(ruleName, as, t, new SimpleBooleanProperty(true));
 
-            list.add(rule);
+            ruleCommand.addRule(rule);
+            //list.add(rule);
             tableView.refresh();
         } else {
-            Platform.runLater(() -> new MessageAction("Internal Error", "This rule name is already used").execute());
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This rule name is already used").execute());
         }
     }
 
@@ -260,6 +255,11 @@ public class MainController implements Initializable {
     public void removeRulesAction() {
         List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
         tableView.getItems().removeAll(selectedItems);
+
+        for (Rule rule : selectedItems) {
+            ruleCommand.removeRule(rule);
+        }
+
         tableView.refresh();
     }
 }

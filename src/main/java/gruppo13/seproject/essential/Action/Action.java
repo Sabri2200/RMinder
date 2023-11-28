@@ -1,16 +1,10 @@
 package gruppo13.seproject.essential.Action;
 
-public abstract class Action {
-    ActionType type;
+public interface Action {
 
-    public Action(ActionType type) {
-        this.type = type;
-    }
+    public void execute();
 
-    public abstract void execute();
+    public ActionType getType();
 
-    public ActionType getType() {
-        return type;
-    }
 }
 

@@ -5,10 +5,12 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class AudioAction extends Action {
+public class AudioAction implements Action {
+    private ActionType type;
     private String path;
+
     public AudioAction(String path) {
-        super(ActionType.MP3PLAYER);
+        this.type = ActionType.MP3PLAYER;
         this.path = path;
     }
 
@@ -26,6 +28,11 @@ public class AudioAction extends Action {
     }
 
     @Override
+    public ActionType getType() {
+        return this.type;
+    }
+
+    @Override
     public String toString() {
         return type.name() + " " + path;
     }
@@ -33,4 +40,5 @@ public class AudioAction extends Action {
     public String getPath() {
         return path;
     }
+
 }

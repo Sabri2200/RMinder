@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing some issues">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/DialogBoxHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/ActionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/Trigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/TriggerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/rminder/view/seproject/main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/CreateRuleDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/rminder/controller/CreateRuleDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/Trigger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -150,7 +140,7 @@
       <workItem from="1700930891946" duration="8172000" />
       <workItem from="1701001519422" duration="14071000" />
       <workItem from="1701076619540" duration="498000" />
-      <workItem from="1701079474700" duration="5968000" />
+      <workItem from="1701079474700" duration="14666000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -328,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701105211687</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Fixing some issues">
+      <option name="closed" value="true" />
+      <created>1701106368124</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1701106368124</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
