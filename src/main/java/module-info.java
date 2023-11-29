@@ -17,6 +17,7 @@ module gruppo13.seproject {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires com.google.gson;
 
 
     opens gruppo13.seproject to javafx.fxml;

@@ -4,6 +4,7 @@ import gruppo13.seproject.essential.Action.Action;
 import gruppo13.seproject.essential.Trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Rule implements Comparable<Rule> {
@@ -68,5 +69,13 @@ public class Rule implements Comparable<Rule> {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + Arrays.toString(actions) +
+                ", trigger=" + trigger +
+                ", state=" + state +
+                '}';
     }
 }

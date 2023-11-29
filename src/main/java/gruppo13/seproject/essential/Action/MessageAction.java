@@ -37,4 +37,9 @@ public class MessageAction implements Action {
     public String getMessage() {
         return message;
     }
+
+    @Override
+    public String toString() {
+        return type + " " + title + " " + message;
+    }
 }

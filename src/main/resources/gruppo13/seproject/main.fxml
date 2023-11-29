@@ -73,6 +73,8 @@
                     <items>
                       <MenuItem fx:id="editBtn" mnemonicParsing="false" onAction="#editRuleAction" text="Edit" />
                         <MenuItem fx:id="removeBtn" mnemonicParsing="false" onAction="#removeRulesAction" text="Delete" />
+                        <MenuItem fx:id="saveToFileBtn" mnemonicParsing="false" onAction="#saveRulesToFile" text="Save to File" />
+                        <MenuItem fx:id="loadFromFileBtn" mnemonicParsing="false" onAction="#loadRulesFromFile" text="Load from File" />
                     </items>
                   </ContextMenu>
                </contextMenu>

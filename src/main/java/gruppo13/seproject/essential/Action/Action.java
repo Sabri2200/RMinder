@@ -6,5 +6,7 @@ public interface Action {
 
     public ActionType getType();
 
+    public String toString();
+
 }
 

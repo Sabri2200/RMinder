@@ -1,6 +1,7 @@
 package gruppo13.seproject;
 
 import gruppo13.seproject.essential.Action.*;
+import gruppo13.seproject.essential.FileManager;
 import gruppo13.seproject.essential.Rule;
 import gruppo13.seproject.essential.RuleCommand;
 import gruppo13.seproject.essential.RuleManager;
@@ -49,9 +50,18 @@ public class MainController implements Initializable {
     public TextField hourField;
     public TextField minuteField;
     public Label fileChosen;
-    public MenuItem editBtn;
+
+    @FXML
     public ContextMenu contextMenu;
-    public MenuItem removeBtn;
+    @FXML
+    private MenuItem editBtn;
+    @FXML
+    private MenuItem removeBtn;
+
+    @FXML
+    private MenuItem saveToFileBtn;
+    @FXML
+    private MenuItem loadFromFileBtn;
 
     @FXML
     private TableView<Rule> tableView;
@@ -182,7 +192,7 @@ public class MainController implements Initializable {
                 );
     }
 
-    public String fileSelector(ActionEvent actionEvent) {
+    public String fileSelector() {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
@@ -191,7 +201,15 @@ public class MainController implements Initializable {
     }
 
     public void resetRule(ActionEvent actionEvent) {
+        Stage fileChooserDialog = new Stage();
+        FileChooser fil_chooser = new FileChooser();
+        File file = fil_chooser.showOpenDialog(fileChooserDialog);
+        FileManager fm = new FileManager(file);
 
+        for (Rule rule : fm.loadRulesFromFile()) {
+            ruleCommand.addRule(rule);
+        }
+        tableView.refresh();
     }
 
     public void saveRule(ActionEvent actionEvent) {
@@ -265,7 +283,22 @@ public class MainController implements Initializable {
     }
 
     public void saveRulesToFile() {
+        FileManager fm = new FileManager(new File(fileSelector()));
+        List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
+        fm.saveRulesToFile(selectedItems);
+
+        tableView.refresh();
+    }
+
+    public void loadRulesFromFile() {
+        FileManager fm = new FileManager(new File(fileSelector()));
+
+        for (Rule rule : fm.loadRulesFromFile()) {
+            ruleCommand.addRule(rule);
+        }
+
+        tableView.refresh();
     }
 
 }
