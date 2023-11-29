@@ -27,7 +27,9 @@ public class Rule implements Comparable<Rule> {
     public void execute() {
         for (Action a : actions) {
             if (a != null) {
-                a.execute();
+                if (!a.execute()) {
+                    System.out.println("error");
+                }
             }
         }
         setState(new SimpleBooleanProperty(false));

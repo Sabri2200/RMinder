@@ -5,17 +5,12 @@ import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import gruppo13.seproject.essential.Action.Action;
-import gruppo13.seproject.essential.Action.ActionType;
-import gruppo13.seproject.essential.Action.AudioAction;
-import gruppo13.seproject.essential.Action.MessageAction;
-import gruppo13.seproject.essential.Trigger.ClockTrigger;
+import gruppo13.seproject.essential.Action.*;
 import gruppo13.seproject.essential.Trigger.Trigger;
+import gruppo13.seproject.essential.Trigger.TriggerFactory;
 import gruppo13.seproject.essential.Trigger.TriggerType;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -53,6 +48,9 @@ public class FileManager {
     }
 
     public List<Rule> loadRulesFromFile() {
+        ActionFactory af = new ActionFactory();
+        TriggerFactory tf = new TriggerFactory();
+
         List<Rule> rules = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -71,7 +69,7 @@ public class FileManager {
                 String[] trigger = parts[1].split(" ");
 
                 if (Objects.equals(trigger[0], TriggerType.ClockTrigger.name())) {
-                    t = new ClockTrigger(LocalTime.parse(trigger[1]));
+                    t = tf.createClockTrigger(LocalTime.parse(trigger[1]));
                 }
 
                 List<Action> actions = new ArrayList<>();
@@ -82,9 +80,9 @@ public class FileManager {
                         Action action = null;
 
                         if (Objects.equals(actionPart[0], ActionType.MP3PLAYER.name())) {
-                            action = new AudioAction(actionPart[1]);
+                            action = af.createAudioAction(actionPart[1]);
                         } else if (Objects.equals(actionPart[0], ActionType.DIALOGBOX.name())){
-                            action = new MessageAction(actionPart[1], actionPart[2]);
+                            action = af.createMessageAction(actionPart[1], actionPart[2]);
                         }
 
                         actions.add(action);
@@ -115,14 +113,4 @@ public class FileManager {
 
         return rules;
     }
-
-    /*public List<Rule> loadRulesFromFile() {
-        try (FileReader reader = new FileReader(file)) {
-            Type listType = new TypeToken<ArrayList<Rule>>(){}.getType();
-            return gson.fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }*/
 }

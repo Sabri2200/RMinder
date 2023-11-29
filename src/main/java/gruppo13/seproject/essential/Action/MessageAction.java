@@ -6,7 +6,6 @@ import javafx.scene.control.ButtonType;
 public class MessageAction implements Action {
     ActionType type;
     String title, message;
-    private boolean okButtonPressed;
 
     public MessageAction(String title, String message) {
         this.type = ActionType.DIALOGBOX;
@@ -15,16 +14,16 @@ public class MessageAction implements Action {
     }
 
     @Override
-    public void execute() {
+    public Boolean execute() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(this.title);
         alert.setContentText(this.message);
         alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
                 System.out.println("Pressed OK.");
-                okButtonPressed = true;
             }
         });
+        return true;
     }
 
     @Override
@@ -40,7 +39,4 @@ public class MessageAction implements Action {
         return message;
     }
 
-    public boolean isOkButtonPressed() {
-        return okButtonPressed;
-    }
 }

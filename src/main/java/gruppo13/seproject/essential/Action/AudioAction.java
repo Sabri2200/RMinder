@@ -15,7 +15,7 @@ public class AudioAction implements Action {
     }
 
     @Override
-    public void execute() {
+    public Boolean execute() {
         File file = new File(path);
         String mediaUrl = file.toURI().toString();
         Media media = new Media(mediaUrl);
@@ -25,6 +25,7 @@ public class AudioAction implements Action {
             mediaPlayer.stop();
             System.out.println("L'audio è finito, MediaPlayer fermato.");
         });
+        return true;
     }
 
     @Override
