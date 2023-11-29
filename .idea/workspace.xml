@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing some issues">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +114,7 @@
       <recent name="com.example.rminder" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AudioActionTest.testFileFormat">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -128,6 +124,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AudioActionTest.testCreation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
+      <option name="METHOD_NAME" value="testCreation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AudioActionTest.testFileFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
+      <option name="METHOD_NAME" value="testFileFormat" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AudioActionTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
+      <option name="METHOD_NAME" value="testToString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.main" />
+      <item itemvalue="JUnit.AudioActionTest.testCreation" />
+      <item itemvalue="JUnit.AudioActionTest.testFileFormat" />
+      <item itemvalue="JUnit.AudioActionTest.testToString" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AudioActionTest.testFileFormat" />
+        <item itemvalue="JUnit.AudioActionTest.testToString" />
+        <item itemvalue="JUnit.AudioActionTest.testCreation" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -347,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701251867923</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701270745299</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1701270745299</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +439,8 @@
     <MESSAGE value="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager." />
     <MESSAGE value="Fixing issues" />
     <MESSAGE value="Fixing some issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing some issues" />
+    <MESSAGE value="fixing issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

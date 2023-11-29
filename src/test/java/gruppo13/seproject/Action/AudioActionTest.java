@@ -47,4 +47,37 @@ public class AudioActionTest { @BeforeAll
         assertEquals(ActionType.MP3PLAYER, audioAction.getType());
     }
 
+    @Test
+    void testCreation() {
+        String testPath = "test.mp3";
+        AudioAction action = new AudioAction(testPath);
+        assertNotNull(action);
+        assertEquals(ActionType.MP3PLAYER, action.getType());
+        assertEquals(testPath, action.getPath());
+    }
+
+    @Test
+    void testToString() {
+        String testPath = "test.mp3";
+        AudioAction action = new AudioAction(testPath);
+        String expectedString = "MP3PLAYER test.mp3";
+        assertEquals(expectedString, action.toString());
+    }
+
+    @Test
+    void testFileFormat() {
+        String validAudioPath = "test.mp3";
+        AudioAction validAudioAction = new AudioAction(validAudioPath);
+        assertTrue(isAudioFile(validAudioAction.getPath()));
+
+        String invalidAudioPath = "test.txt";
+        AudioAction invalidAudioAction = new AudioAction(invalidAudioPath);
+        assertFalse(isAudioFile(invalidAudioAction.getPath()));
+    }
+
+    private boolean isAudioFile(String filePath) {
+        String lowerCasePath = filePath.toLowerCase();
+        return lowerCasePath.endsWith(".mp3") || lowerCasePath.endsWith(".wav") || lowerCasePath.endsWith(".aac");
+    }
+
 }
