@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing some issues">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/Trigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -76,26 +73,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -140,7 +137,7 @@
       <workItem from="1700930891946" duration="8172000" />
       <workItem from="1701001519422" duration="14071000" />
       <workItem from="1701076619540" duration="498000" />
-      <workItem from="1701079474700" duration="14666000" />
+      <workItem from="1701079474700" duration="16526000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -326,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701106368124</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager.">
+      <option name="closed" value="true" />
+      <created>1701190493179</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1701190493179</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +374,8 @@
     <MESSAGE value="testing action performing" />
     <MESSAGE value="AudioAction" />
     <MESSAGE value="Fixing some issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing some issues" />
+    <MESSAGE value="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager." />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

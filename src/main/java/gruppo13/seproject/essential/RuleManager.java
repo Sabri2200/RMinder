@@ -16,9 +16,8 @@ public class RuleManager implements RuleCommand {
     private ObservableList<Rule> rules;
     private Service<Void> backgroundService;
 
-    public RuleManager(Service<Void> backgroundService) {
+    public RuleManager() {
         this.rules = FXCollections.observableArrayList();
-        this.backgroundService = backgroundService;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class RuleManager implements RuleCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute(Service<Void> backgroundService) {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
             if (!backgroundService.isRunning()) {
                 backgroundService.restart();

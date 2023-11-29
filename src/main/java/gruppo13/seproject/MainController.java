@@ -77,29 +77,7 @@ public class MainController implements Initializable {
         triggerFactory = new TriggerFactory();
         actionFactory = new ActionFactory();
 
-        ruleCommand = new RuleManager(
-                new Service<>() {
-                    @Override
-                    protected Task<Void> createTask() {
-                        return new Task<>() {
-                            @Override
-                            protected Void call() throws Exception {
-                                System.out.println("Action performed every 2 seconds");
-                                for (Rule rule : ruleCommand.getList()) {
-                                    if (rule.getState()) {
-                                        if (rule.getTrigger().verify()) {
-                                            Platform.runLater(() -> rule.execute());
-                                            Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
-                                            tableView.refresh();
-                                        }
-                                    }
-                                }
-                                return null;
-                            }
-                        };
-                    }
-                }
-        );
+        ruleCommand = new RuleManager();
 
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
@@ -179,14 +157,37 @@ public class MainController implements Initializable {
 
         //saveRuleBtn.disableProperty().bind(ruleNameField.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(fileChosen.textProperty().isEmpty()));
 
-        ruleCommand.execute();
+        ruleCommand.execute(
+                new Service<>() {
+                    @Override
+                    protected Task<Void> createTask() {
+                        return new Task<>() {
+                            @Override
+                            protected Void call() throws Exception {
+                                System.out.println("Action performed every 2 seconds");
+                                for (Rule rule : ruleCommand.getList()) {
+                                    if (rule.getState()) {
+                                        if (rule.getTrigger().verify()) {
+                                            Platform.runLater(() -> rule.execute());
+                                            Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
+                                            tableView.refresh();
+                                        }
+                                    }
+                                }
+                                return null;
+                            }
+                        };
+                    }
+                }
+                );
     }
 
-    public void fileSelector(ActionEvent actionEvent) {
+    public String fileSelector(ActionEvent actionEvent) {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
         fileChosen.setText(file.getAbsolutePath());
+        return file.getAbsolutePath();
     }
 
     public void resetRule(ActionEvent actionEvent) {
@@ -195,13 +196,13 @@ public class MainController implements Initializable {
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
-        if (!ruleCommand.getList().contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false)))) {
+        if (!ruleCommand.getList().contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
             Trigger t = null;
 
             if (selectedTriggerType == TriggerType.ClockTrigger) {
                 t = triggerFactory.createClockTrigger(LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText())));
             } else {
-                throw new IllegalArgumentException("This trigger type is not supported");
+                Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This trigger type is not supported").execute());
             }
 
             Action a = null;
@@ -211,7 +212,7 @@ public class MainController implements Initializable {
             } else if (selectedActionType == ActionType.MP3PLAYER) {
                 a = actionFactory.createAudioAction(fileChosen.getText());
             } else {
-                throw new IllegalArgumentException("This action type is not supported");
+                Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This action type is not supported").execute());
             }
 
             Action[] as = new Action[5];
@@ -262,4 +263,9 @@ public class MainController implements Initializable {
 
         tableView.refresh();
     }
+
+    public void saveRulesToFile() {
+
+    }
+
 }
