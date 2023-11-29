@@ -127,6 +127,12 @@ public class MainController implements Initializable {
         });
 
 
+
+
+
+
+
+
         List<TriggerType> triggerList = List.of(TriggerType.values());
         ObservableList<TriggerType> triggerObservableList = FXCollections.observableArrayList(triggerList);
         triggerSelector.setItems(triggerObservableList);
@@ -271,16 +277,22 @@ public class MainController implements Initializable {
         }
     }
 
-    public void removeRulesAction() {
-        List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
-        tableView.getItems().removeAll(selectedItems);
-
-        for (Rule rule : selectedItems) {
+    public void removeRulesAction(){
+        List<Rule> sectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
+        tableView.getItems().removeAll(sectedItems);
+        for(Rule rule : sectedItems){
             ruleCommand.removeRule(rule);
         }
-
         tableView.refresh();
     }
+
+
+
+
+
+
+
+
 
     public void saveRulesToFile() {
         FileManager fm = new FileManager(new File(fileSelector()));
