@@ -11,7 +11,7 @@ public class Rule implements Comparable<Rule> {
     private String name;
     private List<Action> actions;
     private Trigger trigger;
-    private SimpleBooleanProperty state = new SimpleBooleanProperty();
+    private SimpleBooleanProperty state;
 
     public void setName(String name) {
         this.name = name;

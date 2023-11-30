@@ -32,11 +32,9 @@ public class FileManager {
     public static Boolean verifyFile(File file) {
         if (file != null) {
             if (file.exists()) {
-                if (file.getAbsoluteFile().toString().split(".")[1] == ".txt") {
                     if (file.canRead()) {
                         return file.canWrite();
                     }
-                }
             }
         }
         return false;

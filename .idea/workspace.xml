@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/MessageActionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" afterDir="false" />
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Creating tests for MessageAction and FileManager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/oldMain.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources",
+    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources/gruppo13/seproject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,6 +103,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/rminder/view" />
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -119,7 +119,7 @@
       <recent name="com.example.rminder" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FileManagerTest.testLoadRulesFromFileMalformed">
+  <component name="RunManager" selected="Application.main">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -461,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701271778033</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Creating tests for MessageAction and FileManager">
+      <option name="closed" value="true" />
+      <created>1701343089511</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1701343089511</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +515,8 @@
     <MESSAGE value="Fixing issues" />
     <MESSAGE value="Fixing some issues" />
     <MESSAGE value="fixing issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
+    <MESSAGE value="Creating tests for MessageAction and FileManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating tests for MessageAction and FileManager" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
