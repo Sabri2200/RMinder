@@ -1,5 +1,6 @@
 package gruppo13.seproject.essential.controller;
 
+import gruppo13.seproject.essential.RuleManager;
 import gruppo13.seproject.essential.model.Action.Action;
 import gruppo13.seproject.essential.FileManager;
 import gruppo13.seproject.essential.Rule;
@@ -94,7 +95,7 @@ public class MainController implements Initializable {
     private TriggerFactory triggerFactory;
     private ActionFactory actionFactory;
     private ObservableList<Action> actionsList;
-    private ObservableList<Rule> rulesList;
+    private RuleManager ruleManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -102,9 +103,9 @@ public class MainController implements Initializable {
         triggerFactory = new TriggerFactory();
         actionFactory = new ActionFactory();
 
-        rulesList = FXCollections.observableArrayList();
+        ruleManager = new RuleManager();
 
-        Service<Void> backgroundService = new Service<>() {
+        /*Service<Void> backgroundService = new Service<>() {
             @Override
             protected Task<Void> createTask() {
                 return new Task<>() {
@@ -125,7 +126,7 @@ public class MainController implements Initializable {
                     }
                 };
             }
-        };
+        };*/
 
         // initializing tableView
 
@@ -157,7 +158,9 @@ public class MainController implements Initializable {
             return new ReadOnlyObjectWrapper<>(rule.getState() ? "active" : "not active");
         });
 
-        tableView.setItems(rulesList);
+        ObservableList<Rule> rules = FXCollections.observableArrayList(ruleManager.getList());
+
+        tableView.setItems(rules);
 
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -241,14 +244,19 @@ public class MainController implements Initializable {
         saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+        /*Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
             if (!backgroundService.isRunning()) {
                 backgroundService.restart();
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        timeline.play();*/
 
+    }
+
+    public void updateRulesTable() {
+        tableView.getItems().setAll(ruleManager.getList());
+        tableView.refresh();
     }
 
     public String fileSelector() {
@@ -279,7 +287,7 @@ public class MainController implements Initializable {
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
-        if (!rulesList.contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
+        if (!ruleManager.contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
             Trigger t = null;
 
             if (triggerSelector.getSelectionModel().getSelectedItem() == TriggerType.ClockTrigger) {
@@ -305,8 +313,8 @@ public class MainController implements Initializable {
 
             if (t != null) {
                 Rule rule = new Rule(ruleName, actionsList, t, new SimpleBooleanProperty(ruleStateBtn.getText().equals("Active")));
-                rulesList.add(rule);
-                tableView.refresh();
+                ruleManager.addRule(rule);
+                updateRulesTable();
             } else {
                 Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "Select a valid Trigger").execute());
             }
@@ -347,9 +355,9 @@ public class MainController implements Initializable {
         List<Rule> selctedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
         tableView.getItems().removeAll(selctedItems);
         for(Rule rule : selctedItems){
-            rulesList.remove(rule);
+            ruleManager.removeRule(rule);
         }
-        tableView.refresh();
+        updateRulesTable();
     }
 
     public void saveRulesToFile() {
@@ -361,8 +369,6 @@ public class MainController implements Initializable {
             List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
             fm.saveRulesToFile(selectedItems);
-
-            tableView.refresh();
         }
     }
 
@@ -373,10 +379,10 @@ public class MainController implements Initializable {
             Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
         } else {
             for (Rule rule : fm.loadRulesFromFile()) {
-                rulesList.add(rule);
+                ruleManager.addRule(rule);
             }
 
-            tableView.refresh();
+            updateRulesTable();
         }
     }
 
@@ -387,8 +393,7 @@ public class MainController implements Initializable {
             Boolean sbp = rule.getState();
             rule.setState(new SimpleBooleanProperty(!sbp));
         }
-
-        tableView.refresh();
+        updateRulesTable();
     }
 
     public void addActionToRule(ActionEvent actionEvent) {
