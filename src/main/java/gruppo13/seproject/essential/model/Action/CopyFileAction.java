@@ -1,22 +1,40 @@
 package gruppo13.seproject.essential.model.Action;
 
-public class CopyFileAction extends FileAction{
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
+public class CopyFileAction extends FileAction {
     private String destinationDirectory;
+    private ActionType type;
 
     public CopyFileAction(String filePath, String destinationDirectory) {
         super(filePath);
         this.destinationDirectory = destinationDirectory;
+        this.type = ActionType.COPYFILE;
     }
 
-    // TODO: 30/11/2023
     @Override
     public Boolean execute() {
-        return null;
+        try {
+            Path sourcePath = Paths.get(getFilePath());
+
+            Path destinationPath = Paths.get(destinationDirectory, sourcePath.getFileName().toString());
+
+            Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+            return true;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    // TODO: 30/11/2023
+
     @Override
     public ActionType getType() {
-        return null;
+        return this.type;
     }
 }
