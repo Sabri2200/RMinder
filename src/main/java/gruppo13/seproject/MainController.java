@@ -175,6 +175,7 @@ public class MainController implements Initializable {
                             protected Void call() throws Exception {
                                 System.out.println("Action performed every 2 seconds");
                                 for (Rule rule : ruleCommand.getList()) {
+                                    System.out.println(rule.toString());
                                     if (rule.getState()) {
                                         if (rule.getTrigger().verify()) {
                                             Platform.runLater(rule::execute);
@@ -203,12 +204,16 @@ public class MainController implements Initializable {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
-        FileManager fm = new FileManager(file);
+        FileManager fm = FileManager.createFileManager(file);
 
-        for (Rule rule : fm.loadRulesFromFile()) {
-            ruleCommand.addRule(rule);
+        if (fm == null) {
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
+        } else {
+            for (Rule rule : fm.loadRulesFromFile()) {
+                ruleCommand.addRule(rule);
+            }
+            tableView.refresh();
         }
-        tableView.refresh();
     }
 
     public void saveRule(ActionEvent actionEvent) {
@@ -232,9 +237,9 @@ public class MainController implements Initializable {
                 Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This action type is not supported").execute());
             }
 
-            Action[] as = new Action[5];
-            as[0] = a;
-
+            List<Action> as = new ArrayList<>();
+            as.add(a);
+            System.out.println(a.toString());
             Rule rule = new Rule(ruleName, as, t, new SimpleBooleanProperty(true));
 
             ruleCommand.addRule(rule);
@@ -258,14 +263,14 @@ public class MainController implements Initializable {
                 minuteField.setText(((ClockTrigger) selectedItem.getTrigger()).getTime().toString().split(":")[1]);
             }
 
-            actionSelector.setValue(selectedItem.getActions()[0].getType());
-            if (selectedItem.getActions()[0].getType() == ActionType.DIALOGBOX) {
+            actionSelector.setValue(selectedItem.getActions().get(0).getType());
+            if (selectedItem.getActions().get(0).getType() == ActionType.DIALOGBOX) {
                 messageActionVBox.setVisible(true);
-                titleAlertField.setText(((MessageAction) selectedItem.getActions()[0]).getTitle());
-                messageAlertField.setText(((MessageAction) selectedItem.getActions()[0]).getMessage());
-            } else if (selectedItem.getActions()[0].getType() == ActionType.MP3PLAYER) {
+                titleAlertField.setText(((MessageAction) selectedItem.getActions().get(0)).getTitle());
+                messageAlertField.setText(((MessageAction) selectedItem.getActions().get(0)).getMessage());
+            } else if (selectedItem.getActions().get(0).getType() == ActionType.MP3PLAYER) {
                 fileSelectorVBox.setVisible(true);
-                fileChosen.setText(((AudioAction)selectedItem.getActions()[0]).getPath());
+                fileChosen.setText(((AudioAction)selectedItem.getActions().get(0)).getPath());
             }
         }
     }
@@ -280,22 +285,31 @@ public class MainController implements Initializable {
     }
 
     public void saveRulesToFile() {
-        FileManager fm = new FileManager(new File(fileSelector()));
-        List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
+        FileManager fm = FileManager.createFileManager(new File(fileSelector()));
 
-        fm.saveRulesToFile(selectedItems);
+        if (fm == null) {
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
+        } else {
+            List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
-        tableView.refresh();
+            fm.saveRulesToFile(selectedItems);
+
+            tableView.refresh();
+        }
     }
 
     public void loadRulesFromFile() {
-        FileManager fm = new FileManager(new File(fileSelector()));
+        FileManager fm = FileManager.createFileManager(new File(fileSelector()));
 
-        for (Rule rule : fm.loadRulesFromFile()) {
-            ruleCommand.addRule(rule);
+        if (fm == null) {
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
+        } else {
+            for (Rule rule : fm.loadRulesFromFile()) {
+                ruleCommand.addRule(rule);
+            }
+
+            tableView.refresh();
         }
-
-        tableView.refresh();
     }
 
 }

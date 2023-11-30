@@ -1,30 +1,38 @@
+package gruppo13.seproject.Action;
+
 import gruppo13.seproject.essential.Action.ActionType;
 import gruppo13.seproject.essential.Action.AudioAction;
 import javafx.application.Platform;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AudioActionTest { @BeforeAll
+public class AudioActionTest {
+    @BeforeAll
     public static void initJFX() {
         Platform.startup(() -> {
             // Inizializza JavaFX Toolkit (può essere vuoto)
         });
     }
     @Test
-    public void testEsecuzioneAudioAction() {
+    public void testExecutionAudioAction() {
         //Inserisco un percorso valido di un file audio, memorizzato in locale
-        String percorsoFileAudio = "/Users/carmineattianese/Downloads/gg.mp3";
+        String path = "/Users/michelecoscarelli/Downloads/gg.mp3";
 
         // Creo un'istanza di AudioAction
-        AudioAction audioAction = new AudioAction(percorsoFileAudio);
+        AudioAction audioAction = new AudioAction(path);
 
         // Eseguo l'azione
         audioAction.execute();
 
 
         // Verifico se l'azione audio è stata eseguita con successo
-        assertTrue(audioAction.getPath().equals(percorsoFileAudio));
+        assertTrue(audioAction.getPath().equals(path));
     }
 
 

@@ -4,12 +4,14 @@ import gruppo13.seproject.essential.Action.Action;
 import gruppo13.seproject.essential.Trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Rule implements Comparable<Rule> {
     private String name;
-    private Action[] actions;
+    private List<Action> actions;
     private Trigger trigger;
     private SimpleBooleanProperty state = new SimpleBooleanProperty();
 
@@ -17,7 +19,7 @@ public class Rule implements Comparable<Rule> {
         this.name = name;
     }
 
-    public Rule(String name, Action[] actions, Trigger trigger, SimpleBooleanProperty state) {
+    public Rule(String name, List<Action> actions, Trigger trigger, SimpleBooleanProperty state) {
         this.name = name;
         this.actions = actions;
         this.trigger = trigger;
@@ -26,6 +28,7 @@ public class Rule implements Comparable<Rule> {
 
     public void execute() {
         for (Action a : actions) {
+            System.out.println(a.toString());
             if (a != null) {
                 if (!a.execute()) {
                     System.out.println("error");
@@ -35,7 +38,7 @@ public class Rule implements Comparable<Rule> {
         setState(new SimpleBooleanProperty(false));
     }
 
-    public Action[] getActions() {
+    public List<Action> getActions() {
         return actions;
     }
 
@@ -75,7 +78,7 @@ public class Rule implements Comparable<Rule> {
 
     @Override
     public String toString() {
-        return name + " " + Arrays.toString(actions) +
+        return name + " " + actions +
                 ", trigger=" + trigger +
                 ", state=" + state +
                 '}';

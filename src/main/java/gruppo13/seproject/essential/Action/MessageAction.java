@@ -39,4 +39,8 @@ public class MessageAction implements Action {
         return message;
     }
 
+    public String toString() {
+        return type.name() + " " + this.title + " " + this.message;
+    }
+
 }

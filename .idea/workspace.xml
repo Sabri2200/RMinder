@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
+      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/MessageActionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Action/MessageAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +66,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -114,7 +119,7 @@
       <recent name="com.example.rminder" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AudioActionTest.testFileFormat">
+  <component name="RunManager" selected="JUnit.FileManagerTest.testLoadRulesFromFileMalformed">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -124,31 +129,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AudioActionTest.testCreation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileManagerTest.testLoadRulesFromFileBasic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
-      <option name="METHOD_NAME" value="testCreation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
+      <option name="METHOD_NAME" value="testLoadRulesFromFileBasic" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AudioActionTest.testFileFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileManagerTest.testLoadRulesFromFileEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
-      <option name="METHOD_NAME" value="testFileFormat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
+      <option name="METHOD_NAME" value="testLoadRulesFromFileEmpty" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AudioActionTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileManagerTest.testLoadRulesFromFileMalformed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AudioActionTest" />
-      <option name="METHOD_NAME" value="testToString" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
+      <option name="METHOD_NAME" value="testLoadRulesFromFileMalformed" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileManagerTest.testSaveRulesToFileExceptionHandling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
+      <option name="METHOD_NAME" value="testSaveRulesToFileExceptionHandling" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileManagerTest.testSaveRulesToFileWithNullList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
+      <option name="METHOD_NAME" value="testSaveRulesToFileWithNullList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,15 +211,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="JUnit.AudioActionTest.testCreation" />
-      <item itemvalue="JUnit.AudioActionTest.testFileFormat" />
-      <item itemvalue="JUnit.AudioActionTest.testToString" />
+      <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileBasic" />
+      <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileEmpty" />
+      <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileMalformed" />
+      <item itemvalue="JUnit.FileManagerTest.testSaveRulesToFileExceptionHandling" />
+      <item itemvalue="JUnit.FileManagerTest.testSaveRulesToFileWithNullList" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AudioActionTest.testFileFormat" />
-        <item itemvalue="JUnit.AudioActionTest.testToString" />
-        <item itemvalue="JUnit.AudioActionTest.testCreation" />
+        <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileMalformed" />
+        <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileEmpty" />
+        <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileBasic" />
+        <item itemvalue="JUnit.FileManagerTest.testSaveRulesToFileExceptionHandling" />
+        <item itemvalue="JUnit.FileManagerTest.testSaveRulesToFileWithNullList" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701270745299</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701271778033</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701271778033</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
