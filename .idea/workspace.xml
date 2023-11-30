@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Creazioni Classi che implementano FileAction, creazione cartelle model e controller, testing di Rule con RuleTest.">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Creating tests for MessageAction and FileManager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/CopyFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/CopyFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/DeleteFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/DeleteFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/FileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/FileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/ModifyTextFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/ModifyTextFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/MoveFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/Action/MoveFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/Trigger/ClockTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/oldMain.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -81,7 +78,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Downloaded.Files.Path.Enabled": "true",
+    "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -91,7 +88,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources",
+    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/resources/gruppo13/seproject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -106,16 +103,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/rminder/view" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\test\java\gruppo13\seproject" />
       <recent name="$PROJECT_DIR$/src/main/resources/gruppo13" />
       <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\resources\com\example\rminder\view" />
       <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\resources" />
       <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\java\com\example\rminder\controller" />
+      <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\java\com\example\rminder" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.rminder" />
@@ -123,13 +121,6 @@
   </component>
   <component name="RunManager" selected="Application.main">
     <configuration name="main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.MainApplication" />
-      <module name="SE-project" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main_1" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.MainApplication" />
@@ -142,7 +133,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.controller.*" />
+          <option name="PATTERN" value="gruppo13.seproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,7 +149,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.controller.*" />
+          <option name="PATTERN" value="gruppo13.seproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -174,7 +165,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.controller.*" />
+          <option name="PATTERN" value="gruppo13.seproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -190,7 +181,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.controller.*" />
+          <option name="PATTERN" value="gruppo13.seproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,7 +197,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.controller.*" />
+          <option name="PATTERN" value="gruppo13.seproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -220,7 +211,6 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="Application.main_1" />
       <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileBasic" />
       <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileEmpty" />
       <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileMalformed" />
@@ -254,7 +244,6 @@
       <workItem from="1701001519422" duration="14071000" />
       <workItem from="1701076619540" duration="498000" />
       <workItem from="1701079474700" duration="21531000" />
-      <workItem from="1701361056942" duration="2568000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -472,13 +461,13 @@
       <option name="project" value="LOCAL" />
       <updated>1701271778033</updated>
     </task>
-    <task id="LOCAL-00028" summary="Creazioni Classi che implementano FileAction, creazione cartelle model e controller, testing di Rule con RuleTest.">
+    <task id="LOCAL-00028" summary="Creating tests for MessageAction and FileManager">
       <option name="closed" value="true" />
-      <created>1701361599389</created>
+      <created>1701343089511</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1701361599389</updated>
+      <updated>1701343089511</updated>
     </task>
     <option name="localTasksCounter" value="29" />
     <servers />
@@ -526,8 +515,8 @@
     <MESSAGE value="Fixing issues" />
     <MESSAGE value="Fixing some issues" />
     <MESSAGE value="fixing issues" />
-    <MESSAGE value="Creazioni Classi che implementano FileAction, creazione cartelle model e controller, testing di Rule con RuleTest." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creazioni Classi che implementano FileAction, creazione cartelle model e controller, testing di Rule con RuleTest." />
+    <MESSAGE value="Creating tests for MessageAction and FileManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating tests for MessageAction and FileManager" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

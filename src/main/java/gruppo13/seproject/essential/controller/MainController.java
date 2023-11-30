@@ -11,6 +11,7 @@ import gruppo13.seproject.essential.model.Trigger.Trigger;
 import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
 import gruppo13.seproject.essential.model.Trigger.TriggerType;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -20,9 +21,11 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -31,9 +34,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 //modificare nome in Controller
 public class MainController implements Initializable {
@@ -55,15 +56,28 @@ public class MainController implements Initializable {
 
     @FXML
     public ContextMenu contextMenu;
+    public Button ruleStateBtn;
+    public VBox clockTriggerVBox;
+    public TableView actionsTable;
+    public TableColumn<Action, String> actionTypeClm;
+    public TableColumn<Action, String> actionTypeClm1;
+    public TableColumn<Action, String> paramsClm;
+    public TableColumn<Action, String> paramsClm1;
+    public Button addActionBtn;
+    public Label ruleNameSummary;
+    public Label triggerLbl;
+    public TableView actionsTableSummary;
+    public AnchorPane summaryAnchorPane;
     @FXML
     private MenuItem editBtn;
     @FXML
     private MenuItem removeBtn;
-
     @FXML
     private MenuItem saveToFileBtn;
     @FXML
     private MenuItem loadFromFileBtn;
+    @FXML
+    private MenuItem turnBtn;
 
     @FXML
     private TableView<Rule> tableView;
@@ -76,12 +90,10 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<Rule, String> stateClm;
 
-    private TriggerType selectedTriggerType;
-    private ActionType selectedActionType;
-
     private TriggerFactory triggerFactory;
     private ActionFactory actionFactory;
     private RuleCommand ruleCommand;
+    private ObservableList<Action> actionsList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +103,8 @@ public class MainController implements Initializable {
 
         ruleCommand = new RuleManager();
 
+        // initializing tableView
+
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(rule.getName());
@@ -98,7 +112,7 @@ public class MainController implements Initializable {
 
         triggerClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(rule.getTrigger().getType().toString());
+            return new ReadOnlyObjectWrapper<>(rule.getTrigger().toString());
         });
 
         actionClm.setCellValueFactory(cellData -> {
@@ -128,6 +142,8 @@ public class MainController implements Initializable {
             editBtn.setDisable(multipleSelection);
         });
 
+        // initializing rule Creation Paradigm
+
         List<TriggerType> triggerList = List.of(TriggerType.values());
         ObservableList<TriggerType> triggerObservableList = FXCollections.observableArrayList(triggerList);
         triggerSelector.setItems(triggerObservableList);
@@ -135,8 +151,7 @@ public class MainController implements Initializable {
         ChangeListener<TriggerType> selectTriggerChangeListener = (observable, oldValue, newValue) -> {
             if (newValue != null) {
                 if (newValue.equals(TriggerType.ClockTrigger)) {
-                    clockTriggerHBox.setVisible(true);
-                    selectedTriggerType = TriggerType.ClockTrigger;
+                    clockTriggerVBox.setVisible(true);
                 } else {
                     clockTriggerHBox.setVisible(false);
                 }
@@ -153,20 +168,53 @@ public class MainController implements Initializable {
                 if (newValue.equals(ActionType.DIALOGBOX)) {
                     messageActionVBox.setVisible(true);
                     fileSelectorVBox.setVisible(false);
-                    selectedActionType = ActionType.DIALOGBOX;
                 } else if (newValue.equals(ActionType.MP3PLAYER)) {
                     fileSelectorVBox.setVisible(true);
                     messageActionVBox.setVisible(false);
-                    selectedActionType = ActionType.MP3PLAYER;
                 } else {
                     messageActionVBox.setVisible(false);
                     fileSelectorVBox.setVisible(false);
                 }
             }
         };
+
         actionSelector.valueProperty().addListener(selectActionChangeListener);
 
+        actionsList = FXCollections.observableArrayList();
+
+        actionTypeClm.setCellValueFactory(cellData -> {
+            Action action = cellData.getValue();
+            return new ReadOnlyObjectWrapper<>(action.getType().name());
+            }
+        );
+
+        actionTypeClm1.setCellValueFactory(cellData -> {
+                    Action action = cellData.getValue();
+                    return new ReadOnlyObjectWrapper<>(action.getType().name());
+                }
+        );
+
+        paramsClm.setCellValueFactory(cellData -> {
+                    Action action = cellData.getValue();
+                    String params = action.toString().replace(action.getType().name(), "");
+
+                    return new ReadOnlyObjectWrapper<>(params);
+                }
+        );
+
+        paramsClm1.setCellValueFactory(cellData -> {
+                    Action action = cellData.getValue();
+                    String params = action.toString().replace(action.getType().name(), "");
+
+                    return new ReadOnlyObjectWrapper<>(params);
+                }
+        );
+
+        actionsTable.setItems(actionsList);
+        actionsTableSummary.setItems(actionsList);
+
         //saveRuleBtn.disableProperty().bind(ruleNameField.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(fileChosen.textProperty().isEmpty()));
+        saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
         ruleCommand.execute(
                 new Service<>() {
@@ -198,24 +246,26 @@ public class MainController implements Initializable {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
-        fileChosen.setText(file.getAbsolutePath());
-        return file.getAbsolutePath();
+        if (FileManager.verifyFile(file) != null) {
+            fileChosen.setText(file.getAbsolutePath());
+            return file.getAbsolutePath();
+        } else {
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
+            return null;
+        }
     }
 
     public void resetRule(ActionEvent actionEvent) {
-        Stage fileChooserDialog = new Stage();
-        FileChooser fil_chooser = new FileChooser();
-        File file = fil_chooser.showOpenDialog(fileChooserDialog);
-        FileManager fm = FileManager.createFileManager(file);
+        ruleNameField.setText("");
+        ruleNameSummary.setText("Rule name");
 
-        if (fm == null) {
-            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
-        } else {
-            for (Rule rule : fm.loadRulesFromFile()) {
-                ruleCommand.addRule(rule);
-            }
-            tableView.refresh();
-        }
+        actionsList.removeAll();
+        actionSelector.cancelEdit();
+        actionsTable.refresh();
+        actionsTableSummary.refresh();
+
+        triggerLbl.setText("Trigger and Params");
+        triggerSelector.cancelEdit();
     }
 
     public void saveRule(ActionEvent actionEvent) {
@@ -223,30 +273,35 @@ public class MainController implements Initializable {
         if (!ruleCommand.getList().contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
             Trigger t = null;
 
-            if (selectedTriggerType == TriggerType.ClockTrigger) {
-                t = triggerFactory.createClockTrigger(LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText())));
+            if (triggerSelector.getSelectionModel().getSelectedItem() == TriggerType.ClockTrigger) {
+                String hour = hourField.getText();
+                String minute = minuteField.getText();
+
+                try {
+                    int hourInt = Integer.parseInt(hour);
+                    int minuteInt = Integer.parseInt(minute);
+
+                    if (hourInt >= 0 && hourInt <= 24 && minuteInt >= 0 && minuteInt <= 60) {
+                        t = triggerFactory.createClockTrigger(LocalTime.of(Integer.parseInt(hour), Integer.parseInt(minute)));
+                    } else {
+                        Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "Trigger time is not valid").execute());
+                    }
+                } catch (NumberFormatException e) {
+                    Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "Trigger time is not valid").execute());
+                }
             } else {
                 Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This trigger type is not supported").execute());
+                return;
             }
 
-            Action a = null;
-
-            if (selectedActionType == ActionType.DIALOGBOX) {
-                a = actionFactory.createMessageAction(titleAlertField.getText(), messageAlertField.getText());
-            } else if (selectedActionType == ActionType.MP3PLAYER) {
-                a = actionFactory.createAudioAction(fileChosen.getText());
+            if (t != null) {
+                Rule rule = new Rule(ruleName, actionsList, t, new SimpleBooleanProperty(ruleStateBtn.getText().equals("active")));
+                ruleCommand.addRule(rule);
+                tableView.refresh();
             } else {
-                Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This action type is not supported").execute());
+                Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "Select a valid Trigger").execute());
             }
 
-            List<Action> as = new ArrayList<>();
-            as.add(a);
-            System.out.println(a.toString());
-            Rule rule = new Rule(ruleName, as, t, new SimpleBooleanProperty(true));
-
-            ruleCommand.addRule(rule);
-            //list.add(rule);
-            tableView.refresh();
         } else {
             Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This rule name is already used").execute());
         }
@@ -314,4 +369,60 @@ public class MainController implements Initializable {
         }
     }
 
+    public void turnRule() {
+        List<Rule> selctedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
+
+        for (Rule rule : selctedItems) {
+            Boolean sbp = rule.getState();
+            rule.setState(new SimpleBooleanProperty(!sbp));
+        }
+
+        tableView.refresh();
+    }
+
+    public void addActionToRule(ActionEvent actionEvent) {
+        ActionType actionType = ActionType.valueOf(actionSelector.getSelectionModel().getSelectedItem().toString());
+
+        if (actionType == ActionType.MP3PLAYER) {
+            String[] file = fileChosen.getText().split("\\.");
+            String extension = file[(int) (Arrays.stream(file).count() - 1)];
+            if (Objects.equals(extension, "mp3")) {
+                actionsList.add(actionFactory.createAudioAction(fileChosen.getText()));
+            } else {
+                Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file type is not supported").execute());
+                return;
+            }
+        } else if (actionType == ActionType.DIALOGBOX) {
+            actionsList.add(actionFactory.createMessageAction(titleAlertField.getText(), messageAlertField.getText()));
+        } else {
+            Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This action type is not supported").execute());
+            return;
+        }
+
+        actionsTable.refresh();
+        actionsTableSummary.refresh();
+    }
+
+    public void makeRuleSummary(Event mouseEvent) {
+        String ruleName = ruleNameField.getText();
+        ruleNameSummary.setText(ruleName.isEmpty() ? "Rule name" : ruleName);
+
+        Object trigger = triggerSelector.getSelectionModel().getSelectedItem();
+
+        if (trigger != null) {
+            StringBuffer triggerSelected = new StringBuffer();
+
+            triggerSelected.append(triggerSelector.getSelectionModel().getSelectedItem().toString()).append(" ");
+            triggerSelected.append(hourField.getText()).append(":");
+            triggerSelected.append(minuteField.getText());
+
+            triggerLbl.setText(triggerSelected.toString());
+        }
+    }
+
+    public void ruleStateChange(ActionEvent actionEvent) {
+        String s = ruleStateBtn.getText();
+        boolean state = !Objects.equals(s, "Active");
+        ruleStateBtn.setText(!state ? "Not Active" : "Active");
+    }
 }

@@ -34,7 +34,7 @@ public class ClockTrigger implements Trigger {
 
     @Override
     public String toString() {
-        return type.name() + " " + this.time;
+        return type.name() + " " + this.time.toString();
     }
 
     public LocalTime getTime() {
