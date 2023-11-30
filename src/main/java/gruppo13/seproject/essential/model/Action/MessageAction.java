@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.Action;
+package gruppo13.seproject.essential.model.Action;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

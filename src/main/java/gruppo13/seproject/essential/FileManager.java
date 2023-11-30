@@ -1,18 +1,19 @@
 package gruppo13.seproject.essential;
 
-import java.io.*;
-import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.List;
 import com.google.gson.Gson;
-import gruppo13.seproject.essential.Action.*;
-import gruppo13.seproject.essential.Trigger.Trigger;
-import gruppo13.seproject.essential.Trigger.TriggerFactory;
-import gruppo13.seproject.essential.Trigger.TriggerType;
+import gruppo13.seproject.essential.model.Action.Action;
+import gruppo13.seproject.essential.model.Action.ActionFactory;
+import gruppo13.seproject.essential.model.Action.ActionType;
+import gruppo13.seproject.essential.model.Trigger.Trigger;
+import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
+import gruppo13.seproject.essential.model.Trigger.TriggerType;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import java.io.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class FileManager {

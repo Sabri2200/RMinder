@@ -1,12 +1,13 @@
 package gruppo13.seproject.Action;
 
-import gruppo13.seproject.essential.Action.*;
+import gruppo13.seproject.essential.model.Action.ActionType;
+import gruppo13.seproject.essential.model.Action.MessageAction;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 public class MessageActionTest extends Application {

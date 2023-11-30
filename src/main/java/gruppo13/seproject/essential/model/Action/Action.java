@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.Action;
+package gruppo13.seproject.essential.model.Action;
 
 public interface Action {
 

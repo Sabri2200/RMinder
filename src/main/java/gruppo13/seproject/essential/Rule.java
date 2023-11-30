@@ -1,11 +1,9 @@
 package gruppo13.seproject.essential;
 
-import gruppo13.seproject.essential.Action.Action;
-import gruppo13.seproject.essential.Trigger.Trigger;
+import gruppo13.seproject.essential.model.Action.Action;
+import gruppo13.seproject.essential.model.Trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 

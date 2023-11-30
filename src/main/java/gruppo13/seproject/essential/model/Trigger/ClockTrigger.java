@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.Trigger;
+package gruppo13.seproject.essential.model.Trigger;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

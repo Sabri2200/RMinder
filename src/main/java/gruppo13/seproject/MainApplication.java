@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+// TODO: 30/11/2023
+//modificare il nome in RMinder
+
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

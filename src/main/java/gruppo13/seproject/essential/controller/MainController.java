@@ -1,14 +1,15 @@
-package gruppo13.seproject;
+package gruppo13.seproject.essential.controller;
 
-import gruppo13.seproject.essential.Action.*;
+import gruppo13.seproject.essential.model.Action.Action;
 import gruppo13.seproject.essential.FileManager;
 import gruppo13.seproject.essential.Rule;
 import gruppo13.seproject.essential.RuleCommand;
 import gruppo13.seproject.essential.RuleManager;
-import gruppo13.seproject.essential.Trigger.ClockTrigger;
-import gruppo13.seproject.essential.Trigger.Trigger;
-import gruppo13.seproject.essential.Trigger.TriggerFactory;
-import gruppo13.seproject.essential.Trigger.TriggerType;
+import gruppo13.seproject.essential.model.Action.*;
+import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
+import gruppo13.seproject.essential.model.Trigger.Trigger;
+import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
+import gruppo13.seproject.essential.model.Trigger.TriggerType;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+//modificare nome in Controller
 public class MainController implements Initializable {
 
     public TextField ruleNameField;

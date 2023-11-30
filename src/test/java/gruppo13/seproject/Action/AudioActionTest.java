@@ -1,7 +1,7 @@
 package gruppo13.seproject.Action;
 
-import gruppo13.seproject.essential.Action.ActionType;
-import gruppo13.seproject.essential.Action.AudioAction;
+import gruppo13.seproject.essential.model.Action.ActionType;
+import gruppo13.seproject.essential.model.Action.AudioAction;
 import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

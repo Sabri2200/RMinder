@@ -1,12 +1,11 @@
-package com.example.rminder.model;
+package gruppo13.seproject;
 
-import org.junit.Test;
+import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
 public class ClockTriggerTest {
-
-
 
     //verify Trigger Should Return True WhenCurrent Time Is After Trigger Time
     @Test
@@ -16,7 +15,7 @@ public class ClockTriggerTest {
         ClockTrigger clockTrigger = new ClockTrigger(triggerTime);
 
         // Act
-        boolean result = clockTrigger.verifyTrigger();
+        boolean result = clockTrigger.verify();
 
         // Assert
         System.out.println(result);

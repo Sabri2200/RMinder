@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.Action;
+package gruppo13.seproject.essential.model.Action;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

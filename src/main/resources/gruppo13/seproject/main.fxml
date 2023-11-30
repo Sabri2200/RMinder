@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppo13.seproject.MainController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppo13.seproject.essential.controller.MainController">
     <SplitPane dividerPositions="0.34808013355592654" prefHeight="506.0" prefWidth="763.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="559.0">
             <VBox alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="506.0" prefWidth="261.0" spacing="20.0">
