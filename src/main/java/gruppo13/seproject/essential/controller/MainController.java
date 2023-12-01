@@ -1,15 +1,16 @@
 package gruppo13.seproject.essential.controller;
 
+import gruppo13.seproject.essential.RuleManager;
 import gruppo13.seproject.essential.model.Action.Action;
 import gruppo13.seproject.essential.FileManager;
 import gruppo13.seproject.essential.Rule;
-import gruppo13.seproject.essential.RuleCommand;
-import gruppo13.seproject.essential.RuleManager;
 import gruppo13.seproject.essential.model.Action.*;
 import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
 import gruppo13.seproject.essential.model.Trigger.Trigger;
 import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
 import gruppo13.seproject.essential.model.Trigger.TriggerType;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -30,6 +31,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -92,8 +94,8 @@ public class MainController implements Initializable {
 
     private TriggerFactory triggerFactory;
     private ActionFactory actionFactory;
-    private RuleCommand ruleCommand;
     private ObservableList<Action> actionsList;
+    private RuleManager ruleManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -101,7 +103,30 @@ public class MainController implements Initializable {
         triggerFactory = new TriggerFactory();
         actionFactory = new ActionFactory();
 
-        ruleCommand = new RuleManager();
+        ruleManager = new RuleManager();
+
+        /*Service<Void> backgroundService = new Service<>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        System.out.println("Action performed every 2 seconds");
+                        for (Rule rule : rulesList) {
+                            System.out.println(rule.toString());
+                            if (rule.getState()) {
+                                if (rule.getTrigger().verify()) {
+                                    Platform.runLater(rule::execute);
+                                    Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
+                                    tableView.refresh();
+                                }
+                            }
+                        }
+                        return null;
+                    }
+                };
+            }
+        };*/
 
         // initializing tableView
 
@@ -133,7 +158,9 @@ public class MainController implements Initializable {
             return new ReadOnlyObjectWrapper<>(rule.getState() ? "active" : "not active");
         });
 
-        tableView.setItems(ruleCommand.getList());
+        ObservableList<Rule> rules = FXCollections.observableArrayList(ruleManager.getList());
+
+        tableView.setItems(rules);
 
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -216,30 +243,20 @@ public class MainController implements Initializable {
         //saveRuleBtn.disableProperty().bind(ruleNameField.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(fileChosen.textProperty().isEmpty()));
         saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
-        ruleCommand.execute(
-                new Service<>() {
-                    @Override
-                    protected Task<Void> createTask() {
-                        return new Task<>() {
-                            @Override
-                            protected Void call() throws Exception {
-                                System.out.println("Action performed every 2 seconds");
-                                for (Rule rule : ruleCommand.getList()) {
-                                    System.out.println(rule.toString());
-                                    if (rule.getState()) {
-                                        if (rule.getTrigger().verify()) {
-                                            Platform.runLater(rule::execute);
-                                            Platform.runLater(() -> rule.setState(new SimpleBooleanProperty(false)));
-                                            tableView.refresh();
-                                        }
-                                    }
-                                }
-                                return null;
-                            }
-                        };
-                    }
-                }
-                );
+
+        /*Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+            if (!backgroundService.isRunning()) {
+                backgroundService.restart();
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();*/
+
+    }
+
+    public void updateRulesTable() {
+        tableView.getItems().setAll(ruleManager.getList());
+        tableView.refresh();
     }
 
     public String fileSelector() {
@@ -270,7 +287,7 @@ public class MainController implements Initializable {
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
-        if (!ruleCommand.getList().contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
+        if (!ruleManager.contains(new Rule(ruleName, null, null, new SimpleBooleanProperty(false))) || tableView.getSelectionModel().getSelectedItem() != null) {
             Trigger t = null;
 
             if (triggerSelector.getSelectionModel().getSelectedItem() == TriggerType.ClockTrigger) {
@@ -295,9 +312,9 @@ public class MainController implements Initializable {
             }
 
             if (t != null) {
-                Rule rule = new Rule(ruleName, actionsList, t, new SimpleBooleanProperty(ruleStateBtn.getText().equals("active")));
-                ruleCommand.addRule(rule);
-                tableView.refresh();
+                Rule rule = new Rule(ruleName, actionsList, t, new SimpleBooleanProperty(ruleStateBtn.getText().equals("Active")));
+                ruleManager.addRule(rule);
+                updateRulesTable();
             } else {
                 Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "Select a valid Trigger").execute());
             }
@@ -315,7 +332,7 @@ public class MainController implements Initializable {
             triggerSelector.setValue(selectedItem.getTrigger().getType());
 
             if (selectedItem.getTrigger().getType() == TriggerType.ClockTrigger) {
-                clockTriggerHBox.setVisible(true);
+                clockTriggerVBox.setVisible(true);
                 hourField.setText(((ClockTrigger) selectedItem.getTrigger()).getTime().toString().split(":")[0]);
                 minuteField.setText(((ClockTrigger) selectedItem.getTrigger()).getTime().toString().split(":")[1]);
             }
@@ -325,9 +342,11 @@ public class MainController implements Initializable {
                 messageActionVBox.setVisible(true);
                 titleAlertField.setText(((MessageAction) selectedItem.getActions().get(0)).getTitle());
                 messageAlertField.setText(((MessageAction) selectedItem.getActions().get(0)).getMessage());
+                fileSelectorVBox.setVisible(false);
             } else if (selectedItem.getActions().get(0).getType() == ActionType.MP3PLAYER) {
                 fileSelectorVBox.setVisible(true);
                 fileChosen.setText(((AudioAction)selectedItem.getActions().get(0)).getPath());
+                messageActionVBox.setVisible(false);
             }
         }
     }
@@ -336,9 +355,9 @@ public class MainController implements Initializable {
         List<Rule> selctedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
         tableView.getItems().removeAll(selctedItems);
         for(Rule rule : selctedItems){
-            ruleCommand.removeRule(rule);
+            ruleManager.removeRule(rule);
         }
-        tableView.refresh();
+        updateRulesTable();
     }
 
     public void saveRulesToFile() {
@@ -350,8 +369,6 @@ public class MainController implements Initializable {
             List<Rule> selectedItems = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
             fm.saveRulesToFile(selectedItems);
-
-            tableView.refresh();
         }
     }
 
@@ -362,10 +379,10 @@ public class MainController implements Initializable {
             Platform.runLater(() -> actionFactory.createMessageAction("Internal Error", "This file is not supported").execute());
         } else {
             for (Rule rule : fm.loadRulesFromFile()) {
-                ruleCommand.addRule(rule);
+                ruleManager.addRule(rule);
             }
 
-            tableView.refresh();
+            updateRulesTable();
         }
     }
 
@@ -376,8 +393,7 @@ public class MainController implements Initializable {
             Boolean sbp = rule.getState();
             rule.setState(new SimpleBooleanProperty(!sbp));
         }
-
-        tableView.refresh();
+        updateRulesTable();
     }
 
     public void addActionToRule(ActionEvent actionEvent) {

@@ -1,51 +1,39 @@
 package gruppo13.seproject.essential;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.util.Duration;
+import gruppo13.seproject.essential.model.Action.Action;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RuleManager implements RuleCommand {
-    private ObservableList<Rule> rules;
-    private Service<Void> backgroundService;
+public class RuleManager {
+    private List<Rule> rules;
 
     public RuleManager() {
-        this.rules = FXCollections.observableArrayList();
-    }
-
-    @Override
-    public ObservableList<Rule> getList() {
-        return this.rules;
+        rules = new ArrayList<>();
     }
 
     public void addRule(Rule rule) {
-        if (!this.rules.contains(rule)) {
-            this.rules.add(rule);
-        }
+        rules.add(rule);
     }
 
-    @Override
     public void removeRule(Rule rule) {
-        if (this.rules.contains(rule)) {
-            rules.remove(rule);
-        }
+        rules.remove(rule);
     }
 
-    @Override
-    public void execute(Service<Void> backgroundService) {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
-            if (!backgroundService.isRunning()) {
-                backgroundService.restart();
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+    public boolean contains(Rule rule) {
+        return rules.contains(rule);
     }
+
+    public boolean isEmpty() {
+        return this.rules.isEmpty();
+    }
+
+    public List<Rule> getList() {
+        return this.rules;
+    }
+
+    public void saveRule(String ruleName, List<Action> actions) {
+
+    }
+
 }
