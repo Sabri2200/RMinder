@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,7 +78,7 @@ public class RuleTest {
     public void testCompareTo() {
         // Verifica che il metodo compareTo funzioni correttamente
         Rule otherRule = new Rule("AnotherRule", new ArrayList<>(), new ClockTrigger(LocalTime.MIDNIGHT), new SimpleBooleanProperty(true));
-        assertTrue(rule.compareTo(otherRule) < 0);  // "TestRule" dovrebbe venire prima di "AnotherRule" nell'ordinamento
+        assertTrue(rule.compareTo(otherRule) < 0);
     }
 
     @Test
@@ -96,9 +97,9 @@ public class RuleTest {
 
     @Test
     public void testToString() {
-        // Verifica che il metodo toString produca una rappresentazione desiderata
-        String expectedString = "TestRule [], trigger=" /* Aggiungi qui la rappresentazione desiderata del trigger */
-                + ", state=true}";
+        Rule rule = new Rule("TestRule", Arrays.asList(new MessageAction("title",",message")), new ClockTrigger(LocalTime.MIDNIGHT), new SimpleBooleanProperty(true));
+
+        String expectedString = "TestRule [], trigger=" + rule.getTrigger().toString() + ", state=true}";
         assertEquals(expectedString, rule.toString());
     }
 }
