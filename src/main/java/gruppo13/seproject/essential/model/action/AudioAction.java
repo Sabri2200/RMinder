@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -8,11 +8,9 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class AudioAction implements Action {
-    private ActionType type;
     private String path;
 
     public AudioAction(String path) {
-        this.type = ActionType.MP3PLAYER;
         this.path = path;
     }
 
@@ -32,12 +30,12 @@ public class AudioAction implements Action {
 
     @Override
     public ActionType getType() {
-        return this.type;
+        return ActionType.MP3PLAYER;
     }
 
     @Override
     public String toString() {
-        return type.name() + " " + path;
+        return ActionType.MP3PLAYER.name() + " " + path;
     }
 
     public String getPath() {

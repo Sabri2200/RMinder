@@ -1,17 +1,20 @@
-package gruppo13.seproject.essential;
+package gruppo13.seproject.essential.model;
 
-import gruppo13.seproject.essential.model.Action.Action;
+import gruppo13.seproject.essential.model.action.Action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class RuleManager {
+public class RuleManager{
     private List<Rule> rules;
 
     public RuleManager() {
         rules = new ArrayList<>();
     }
 
+    // meglio chiamarlo subscribeRule
     public void addRule(Rule rule) {
         rules.add(rule);
     }

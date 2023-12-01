@@ -1,14 +1,12 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 public class MessageAction implements Action {
-    ActionType type;
     String title, message;
 
     public MessageAction(String title, String message) {
-        this.type = ActionType.DIALOGBOX;
         this.title = title;
         this.message = message;
     }
@@ -28,7 +26,7 @@ public class MessageAction implements Action {
 
     @Override
     public ActionType getType() {
-        return this.type;
+        return ActionType.DIALOGBOX;
     }
 
     public String getTitle() {
@@ -40,7 +38,7 @@ public class MessageAction implements Action {
     }
 
     public String toString() {
-        return type.name() + " " + this.title + " " + this.message;
+        return ActionType.DIALOGBOX.name() + " " + this.title + " " + this.message;
     }
 
 }

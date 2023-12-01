@@ -1,6 +1,6 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
+import gruppo13.seproject.essential.model.trigger.ClockTrigger;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;

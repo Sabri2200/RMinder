@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,12 +7,10 @@ import java.nio.file.StandardCopyOption;
 
 public class CopyFileAction extends FileAction {
     private String destinationDirectory;
-    private ActionType type;
 
     public CopyFileAction(String filePath, String destinationDirectory) {
         super(filePath);
         this.destinationDirectory = destinationDirectory;
-        this.type = ActionType.COPYFILE;
     }
 
     @Override
@@ -35,6 +33,9 @@ public class CopyFileAction extends FileAction {
 
     @Override
     public ActionType getType() {
-        return this.type;
+        return ActionType.COPYFILE;
+    }
+    public String toString() {
+        return ActionType.DIALOGBOX.name() + ActionType.COPYFILE.name() + " " + getFilePath() + "Copy in to: " + destinationDirectory;
     }
 }

@@ -1,16 +1,14 @@
 package gruppo13.seproject.essential.controller;
 
-import gruppo13.seproject.essential.RuleManager;
-import gruppo13.seproject.essential.model.Action.Action;
-import gruppo13.seproject.essential.FileManager;
-import gruppo13.seproject.essential.Rule;
-import gruppo13.seproject.essential.model.Action.*;
-import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
-import gruppo13.seproject.essential.model.Trigger.Trigger;
-import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
-import gruppo13.seproject.essential.model.Trigger.TriggerType;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import gruppo13.seproject.essential.model.RuleManager;
+import gruppo13.seproject.essential.model.action.Action;
+import gruppo13.seproject.essential.model.FileManager;
+import gruppo13.seproject.essential.model.Rule;
+import gruppo13.seproject.essential.model.action.*;
+import gruppo13.seproject.essential.model.trigger.ClockTrigger;
+import gruppo13.seproject.essential.model.trigger.Trigger;
+import gruppo13.seproject.essential.model.trigger.TriggerFactory;
+import gruppo13.seproject.essential.model.trigger.TriggerType;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -19,8 +17,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -31,7 +27,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -39,7 +34,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 //modificare nome in Controller
-public class MainController implements Initializable {
+public class MainController implements Initializable{
 
     public TextField ruleNameField;
     public ComboBox triggerSelector;
@@ -102,7 +97,6 @@ public class MainController implements Initializable {
 
         triggerFactory = new TriggerFactory();
         actionFactory = new ActionFactory();
-
         ruleManager = new RuleManager();
 
         /*Service<Void> backgroundService = new Service<>() {
@@ -129,7 +123,6 @@ public class MainController implements Initializable {
         };*/
 
         // initializing tableView
-
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(rule.getName());
@@ -169,8 +162,8 @@ public class MainController implements Initializable {
             editBtn.setDisable(multipleSelection);
         });
 
-        // initializing rule Creation Paradigm
 
+        // initializing rule Creation Paradigm
         List<TriggerType> triggerList = List.of(TriggerType.values());
         ObservableList<TriggerType> triggerObservableList = FXCollections.observableArrayList(triggerList);
         triggerSelector.setItems(triggerObservableList);
@@ -441,4 +434,6 @@ public class MainController implements Initializable {
         boolean state = !Objects.equals(s, "Active");
         ruleStateBtn.setText(!state ? "Not Active" : "Active");
     }
+
+
 }

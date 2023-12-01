@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential;
+package gruppo13.seproject.essential.model;
 
 public interface ActionCommand {
     public void execute();

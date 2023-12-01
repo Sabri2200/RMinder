@@ -1,14 +1,12 @@
 package gruppo13.seproject.Action;
 
-import gruppo13.seproject.essential.model.Action.ActionType;
-import gruppo13.seproject.essential.model.Action.AudioAction;
+import gruppo13.seproject.essential.model.action.ActionType;
+import gruppo13.seproject.essential.model.action.AudioAction;
 import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 

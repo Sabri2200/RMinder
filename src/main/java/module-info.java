@@ -18,8 +18,9 @@ module gruppo13.seproject {
     requires javafx.fxml;
     requires javafx.media;
     requires com.google.gson;
+    requires jdk.jfr;
 
-    exports gruppo13.seproject.essential.model.Action;
+    exports gruppo13.seproject.essential.model.action;
 
     opens gruppo13.seproject to javafx.fxml;
     exports gruppo13.seproject;

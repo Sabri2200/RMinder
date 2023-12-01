@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -8,12 +8,10 @@ import java.nio.file.StandardCopyOption;
 
 public class MoveFileAction extends FileAction{
     private String destinationDirectory;
-    private ActionType type;
 
     public MoveFileAction(String filePath, String destinationDirectory) {
         super(filePath);
         this.destinationDirectory = destinationDirectory;
-        this.type = ActionType.MOVEFILE;
     }
 
     @Override
@@ -34,10 +32,13 @@ public class MoveFileAction extends FileAction{
 
     @Override
     public ActionType getType() {
-        return this.type;
+        return ActionType.MOVEFILE;
     }
 
     public String getDestinationDirectory() {
         return destinationDirectory;
+    }
+    public String toString() {
+        return ActionType.MOVEFILE.name() + "to " + destinationDirectory;
     }
 }

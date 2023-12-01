@@ -1,12 +1,12 @@
-package gruppo13.seproject.essential;
+package gruppo13.seproject.essential.model;
 
 import com.google.gson.Gson;
-import gruppo13.seproject.essential.model.Action.Action;
-import gruppo13.seproject.essential.model.Action.ActionFactory;
-import gruppo13.seproject.essential.model.Action.ActionType;
-import gruppo13.seproject.essential.model.Trigger.Trigger;
-import gruppo13.seproject.essential.model.Trigger.TriggerFactory;
-import gruppo13.seproject.essential.model.Trigger.TriggerType;
+import gruppo13.seproject.essential.model.action.Action;
+import gruppo13.seproject.essential.model.action.ActionFactory;
+import gruppo13.seproject.essential.model.action.ActionType;
+import gruppo13.seproject.essential.model.trigger.Trigger;
+import gruppo13.seproject.essential.model.trigger.TriggerFactory;
+import gruppo13.seproject.essential.model.trigger.TriggerType;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 

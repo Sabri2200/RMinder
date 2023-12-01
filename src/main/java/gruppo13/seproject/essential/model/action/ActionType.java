@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 public enum ActionType {
     DIALOGBOX,

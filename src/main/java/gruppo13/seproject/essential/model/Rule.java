@@ -1,11 +1,13 @@
-package gruppo13.seproject.essential;
+package gruppo13.seproject.essential.model;
 
-import gruppo13.seproject.essential.model.Action.Action;
-import gruppo13.seproject.essential.model.Trigger.Trigger;
+import gruppo13.seproject.essential.model.action.Action;
+import gruppo13.seproject.essential.model.trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
 public class Rule implements Comparable<Rule> {
     private String name;
@@ -52,6 +54,7 @@ public class Rule implements Comparable<Rule> {
         return name;
     }
 
+    // Quando lo stato della regola cambia, notifico gli Observer
     public void setState(SimpleBooleanProperty state) {
         this.state = state;
     }
@@ -81,4 +84,5 @@ public class Rule implements Comparable<Rule> {
                 ", state=" + state +
                 '}';
     }
+
 }

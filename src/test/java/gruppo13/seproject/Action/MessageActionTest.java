@@ -1,7 +1,7 @@
 package gruppo13.seproject.Action;
 
-import gruppo13.seproject.essential.model.Action.ActionType;
-import gruppo13.seproject.essential.model.Action.MessageAction;
+import gruppo13.seproject.essential.model.action.ActionType;
+import gruppo13.seproject.essential.model.action.MessageAction;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,10 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.essential.Rule;
-import gruppo13.seproject.essential.model.Action.Action;
-import gruppo13.seproject.essential.model.Action.MessageAction;
-import gruppo13.seproject.essential.model.Trigger.ClockTrigger;
-import gruppo13.seproject.essential.model.Trigger.Trigger;
+import gruppo13.seproject.essential.model.Rule;
+import gruppo13.seproject.essential.model.action.Action;
+import gruppo13.seproject.essential.model.action.MessageAction;
+import gruppo13.seproject.essential.model.trigger.ClockTrigger;
+import gruppo13.seproject.essential.model.trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.model.Action;
+package gruppo13.seproject.essential.model.action;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,12 +7,10 @@ import java.nio.file.StandardOpenOption;
 
 public class ModifyTextFileAction extends FileAction {
     private String stringToAdd;
-    private ActionType type;
 
     public ModifyTextFileAction(String filePath, String stringToAdd) {
         super(filePath);
         this.stringToAdd = stringToAdd;
-        this.type = ActionType.MOVEFILE;
     }
 
     @Override
@@ -31,6 +29,10 @@ public class ModifyTextFileAction extends FileAction {
 
     @Override
     public ActionType getType() {
-        return this.type;
+        return ActionType.MODIFYTEXT;
+    }
+
+    public String toString() {
+        return "In  "+ ActionType.MODIFYTEXT.name() + " is added " + stringToAdd;
     }
 }

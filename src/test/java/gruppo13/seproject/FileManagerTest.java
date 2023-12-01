@@ -1,8 +1,7 @@
 package gruppo13.seproject;
 
-import com.example.rminder.model.Trigger;
-import gruppo13.seproject.essential.FileManager;
-import gruppo13.seproject.essential.Rule;
+import gruppo13.seproject.essential.model.FileManager;
+import gruppo13.seproject.essential.model.Rule;
 import javafx.beans.property.SimpleBooleanProperty;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
