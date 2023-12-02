@@ -152,7 +152,6 @@ public class MainController implements Initializable {
     public void saveRule(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void editRuleAction(ActionEvent actionEvent) {
         /*
         Rule selectedRule = tableView.getSelectionModel().getSelectedItem();
