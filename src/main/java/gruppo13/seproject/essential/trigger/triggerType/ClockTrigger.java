@@ -13,9 +13,6 @@ public class ClockTrigger implements Trigger {
         this.time = time;
     }
 
-    public TriggerType getType(){
-        return TriggerType.CLOCKTRIGGER;
-    }
     @Override
     public boolean verify() {
         LocalTime now = LocalTime.now();
