@@ -4,7 +4,7 @@ import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionObserver;
 import gruppo13.seproject.essential.action.ActionSubject;
-import gruppo13.seproject.essential.action.Exception.ActionException;
+import gruppo13.seproject.essential.action.ActionException.ActionException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.action.Exception;
+package gruppo13.seproject.essential.action.ActionException;
 
 public abstract class ActionException extends Exception {
     public ActionException(String message) {
