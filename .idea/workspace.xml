@@ -5,30 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/ListObserver/ListObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/ListObserver/ListSubject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-    </list>
-    <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli">
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/CopyFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/CopyFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/DeleteFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DeleteFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/FileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/FileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ModifyTextFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/ModifyTextFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/MoveFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/MoveFileAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
+    <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,59 +64,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="17" changelist="e958c7f6-0684-4241-aa81-b32558517d3c" />
-        <range start1="3" end1="3" start2="18" end2="89" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="6" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="5" end1="6" start2="9" end2="10" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="7" end1="7" start2="11" end2="12" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="10" end1="10" start2="15" end2="16" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="16" end1="16" start2="22" end2="23" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="18" end1="18" start2="25" end2="26" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="19" end1="19" start2="27" end2="37" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="20" end1="20" start2="38" end2="54" changelist="e958c7f6-0684-4241-aa81-b32558517d3c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="4" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="5" end1="5" start2="7" end2="9" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="6" end1="6" start2="10" end2="11" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="7" end1="7" start2="12" end2="14" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="8" end1="8" start2="15" end2="17" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="10" end1="10" start2="19" end2="24" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="19" end1="19" start2="33" end2="34" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="23" end1="23" start2="38" end2="39" changelist="e958c7f6-0684-4241-aa81-b32558517d3c" />
-        <range start1="25" end1="29" start2="41" end2="43" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="30" end1="31" start2="44" end2="45" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="111" end1="111" start2="125" end2="127" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="115" end1="117" start2="131" end2="131" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="118" end1="118" start2="132" end2="135" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="122" end1="123" start2="139" end2="140" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="125" end1="125" start2="142" end2="151" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="132" end1="132" start2="158" end2="160" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="133" end1="133" start2="161" end2="162" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="136" end1="136" start2="165" end2="182" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="139" end1="139" start2="185" end2="202" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="141" end1="141" start2="204" end2="237" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="142" end1="142" start2="238" end2="252" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="145" end1="145" start2="255" end2="266" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="146" end1="149" start2="267" end2="267" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="151" end1="151" start2="269" end2="292" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="154" end1="154" start2="295" end2="300" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="163" end1="163" start2="309" end2="316" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="165" end1="165" start2="318" end2="428" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="166" end1="166" start2="429" end2="438" changelist="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" />
-        <range start1="185" end1="185" start2="457" end2="463" changelist="e958c7f6-0684-4241-aa81-b32558517d3c" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -145,32 +86,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/sabri/Downloads/complex-calculator-group-16-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sabri/Downloads/complex-calculator-group-16-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
@@ -280,19 +221,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="SE-project" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="SE-project" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.main" />
       <item itemvalue="JUnit.FileManagerTest.testLoadRulesFromFileBasic" />
@@ -328,6 +256,7 @@
       <workItem from="1701001519422" duration="14071000" />
       <workItem from="1701076619540" duration="498000" />
       <workItem from="1701079474700" duration="21531000" />
+      <workItem from="1701533003059" duration="2571000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -609,7 +538,39 @@
       <option name="project" value="LOCAL" />
       <updated>1701514062098</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701533073824</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1701533073824</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701533203874</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701533203874</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Changes by michelecoscarelli">
+      <option name="closed" value="true" />
+      <created>1701533281137</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1701533281137</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701533293106</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1701533293106</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,9 +617,9 @@
     <MESSAGE value="Fixing some issues" />
     <MESSAGE value="Creating tests for MessageAction and FileManager" />
     <MESSAGE value="Editing views" />
-    <MESSAGE value="fixing issues" />
     <MESSAGE value="Changes by michelecoscarelli" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by michelecoscarelli" />
+    <MESSAGE value="fixing issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

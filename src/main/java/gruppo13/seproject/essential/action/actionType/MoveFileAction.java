@@ -1,6 +1,7 @@
-package gruppo13.seproject.essential.action;
+package gruppo13.seproject.essential.action.actionType;
 
 import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.action.ActionType;
 
 import java.io.File;
 import java.nio.file.Files;

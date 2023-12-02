@@ -141,8 +141,9 @@ public class MainController implements Initializable, ListObserver {
 
         ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));
 
-        System.out.println(RuleJson.rulesToJson(ruleManager.getRules()));
+        /*System.out.println(RuleJson.rulesToJson(ruleManager.getRules()));
         ruleManager.getRules().addAll(RuleJson.jsonToRules(RuleJson.rulesToJson(ruleManager.getRules())));
+        */
 
         // initializing tableView
         initilizeTableview();
@@ -439,9 +440,10 @@ public class MainController implements Initializable, ListObserver {
 
     private void startRuleService() {
         Timer timer = new Timer();
-        RuleService task = new RuleService(ruleManager);
+        RulePerformer rulePerformer = new RulePerformer(ruleManager);
+        rulePerformer.registerObserver(new GUIExecutor());
 
-        task.registerObserver(new GUIExecutor());
+        RuleService task = new RuleService(rulePerformer);
 
         timer.scheduleAtFixedRate(task, 0, 2000);
     }

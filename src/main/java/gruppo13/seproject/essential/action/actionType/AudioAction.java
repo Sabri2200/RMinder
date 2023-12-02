@@ -2,6 +2,7 @@ package gruppo13.seproject.essential.action.actionType;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.action.ActionException.AudioActionException;
 
@@ -18,7 +19,7 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 import java.io.File;
 import java.io.IOException;
 
-public class AudioAction implements Action {
+public class AudioAction extends Action {
     private File filePath;
     private State state;
 
