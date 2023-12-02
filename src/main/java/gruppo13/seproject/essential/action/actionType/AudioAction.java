@@ -19,17 +19,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioAction implements Action {
-    private File file;
+    private File filePath;
     private State state;
 
     public AudioAction(File file) {
-        this.file = file;
+        this.filePath = file;
         state = State.ACTIVE;
     }
 
     @Override
     public void execute() throws AudioActionException {
-        try (final AudioInputStream in = getAudioInputStream(file)) {
+        try (final AudioInputStream in = getAudioInputStream(filePath)) {
 
             final AudioFormat outFormat = getOutFormat(in.getFormat());
             final Info info = new Info(SourceDataLine.class, outFormat);
@@ -78,5 +78,9 @@ public class AudioAction implements Action {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public String getFilePath() {
+        return String.valueOf(filePath);
     }
 }

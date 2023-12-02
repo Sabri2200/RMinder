@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppo13.seproject.MainController">
+<AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" onDragDetected="#editRuleAction" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppo13.seproject.MainController">
     <SplitPane dividerPositions="0.34808013355592654" prefHeight="551.0" prefWidth="802.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="682.0">
             <children>
@@ -118,8 +118,8 @@
                                                                         </VBox>
                                                                         <VBox fx:id="messageActionVBox" alignment="CENTER" prefHeight="200.0" prefWidth="261.0" spacing="20.0" visible="false">
                                                                             <children>
-                                                                                <TextField fx:id="titleAlertField" promptText="title"/>
-                                                                                <TextField fx:id="messageAlertField" promptText="message"/>
+                                                                                <TextField fx:id="titleAlertField" promptText="title" />
+                                                                                <TextField fx:id="messageAlertField" promptText="message" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -189,7 +189,7 @@
         </AnchorPane>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="550.0">
             <VBox alignment="BOTTOM_CENTER" layoutX="-2.0" prefHeight="549.0" prefWidth="519.0">
-                <TableView fx:id="tableView" prefHeight="550.0" prefWidth="519.0">
+                <TableView fx:id="tableView" onSort="#editRuleAction" prefHeight="550.0" prefWidth="519.0">
                     <columns>
                         <TableColumn fx:id="nameClm" prefWidth="112.0" text="Name" />
                         <TableColumn fx:id="triggerClm" prefWidth="125.0" text="Trigger" />

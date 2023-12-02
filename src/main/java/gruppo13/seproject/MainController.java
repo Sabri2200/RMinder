@@ -3,9 +3,12 @@ package gruppo13.seproject;
 import gruppo13.seproject.GUIExcecutor.GUIExecutor;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.action.actionType.AudioAction;
+import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
 import gruppo13.seproject.essential.rule.*;
 import gruppo13.seproject.essential.trigger.Trigger;
+import gruppo13.seproject.essential.trigger.TriggerType;
 import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -148,7 +151,40 @@ public class MainController implements Initializable {
     public void saveRule(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void editRuleAction(ActionEvent actionEvent) {
+        /*
+        Rule selectedRule = tableView.getSelectionModel().getSelectedItem();
+
+        if (selectedRule != null) {
+            ruleNameField.setText(selectedRule.getName());
+            triggerSelector.setValue(selectedRule.getTrigger().getType());
+
+            if (selectedRule.getTrigger().getType() == TriggerType.CLOCKTRIGGER) {
+                clockTriggerVBox.setVisible(true);
+                LocalTime triggerTime = ((ClockTrigger) selectedRule.getTrigger()).getTime();
+                hourField.setText(String.valueOf(triggerTime.getHour()));
+                minuteField.setText(String.valueOf(triggerTime.getMinute()));
+            }
+
+            if (!selectedRule.getActions().isEmpty()) {
+                Action firstAction = selectedRule.getActions().get(0);
+                actionSelector.setValue(firstAction.getType());
+
+                if (firstAction.getType() == ActionType.DIALOGBOX) {
+                    messageActionVBox.setVisible(true);
+                    titleAlertField.setText(((DialogBoxAction) firstAction).getTitle());
+                    messageAlertField.setText(((DialogBoxAction) firstAction).getMessage());
+                    fileSelectorVBox.setVisible(false);
+                } else if (firstAction.getType() == ActionType.MP3PLAYER) {
+                    fileSelectorVBox.setVisible(true);
+                    fileChosen.setText(((AudioAction) firstAction).getFilePath());
+                    messageActionVBox.setVisible(false);
+                }
+            }
+        }
+
+         */
     }
 
     public void removeRulesAction(ActionEvent actionEvent) {

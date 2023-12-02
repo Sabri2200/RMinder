@@ -1,6 +1,7 @@
 package gruppo13.seproject.essential.trigger.triggerType;
 
 import gruppo13.seproject.essential.trigger.Trigger;
+import gruppo13.seproject.essential.trigger.TriggerType;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -12,6 +13,9 @@ public class ClockTrigger implements Trigger {
         this.time = time;
     }
 
+    public TriggerType getType(){
+        return TriggerType.CLOCKTRIGGER;
+    }
     @Override
     public boolean verify() {
         LocalTime now = LocalTime.now();
@@ -26,5 +30,9 @@ public class ClockTrigger implements Trigger {
         } else {
             return true;
         }
+    }
+
+    public LocalTime getTime() {
+        return time;
     }
 }

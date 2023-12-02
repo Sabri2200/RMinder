@@ -26,7 +26,6 @@ public class ModifyTextFileAction extends FileAction {
         }
     }
 
-
     @Override
     public ActionType getType() {
         return ActionType.MODIFYTEXT;

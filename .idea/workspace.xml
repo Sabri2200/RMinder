@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Stage fixed. Adding FileAction class.">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Close window method in Main.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ModifyTextFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ModifyTextFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
     </list>
     <list id="121d780a-d972-4999-a45b-2619c2af9158" name="Changes by michelecoscarelli" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -524,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701518595707</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Close window method in Main.">
+      <option name="closed" value="true" />
+      <created>1701519347106</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1701519347106</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +585,8 @@
     <MESSAGE value="Editing views" />
     <MESSAGE value="fixing issues" />
     <MESSAGE value="Stage fixed. Adding FileAction class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Stage fixed. Adding FileAction class." />
+    <MESSAGE value="Close window method in Main." />
+    <option name="LAST_COMMIT_MESSAGE" value="Close window method in Main." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
