@@ -47,4 +47,9 @@ public class DialogBoxAction implements Action {
         this.state = state;
     }
 
+    @Override
+    public String toString() {
+        return getType() + " " + getTitle() + " " + getContent() + " " + getMessage();
+    }
+
 }

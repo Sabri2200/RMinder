@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -219,4 +220,10 @@ public class MainController implements Initializable {
         Platform.exit();
     }
 
+    @Override
+    public void update() {
+        tableView.getItems().setAll(ruleManager.getRules());
+        tableView.refresh();
+        System.out.println("up");
+    }
 }

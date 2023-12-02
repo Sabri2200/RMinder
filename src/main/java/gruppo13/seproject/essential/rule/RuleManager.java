@@ -18,4 +18,20 @@ public class RuleManager {
         rules.add(rule);
     }
 
+    @Override
+    public void registerObserver(ListObserver o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(ListObserver o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (ListObserver listObserver : observers) {
+            listObserver.update();
+        }
+    }
 }
