@@ -4,33 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Modify Class RuleTest">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/AudioExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/AudioExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/DialogBoxExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/AudioExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/ActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Exception/ActionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/AudioActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Exception/AudioActionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/Rule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/audioFiles/gg.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/State.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Action.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/ActionException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/AudioActionException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/Rule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleJson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RulePerformer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/Trigger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/TriggerType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/coscarelli/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/RuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/RuleTest.java" afterDir="false" />
     </list>
+    <list id="121d780a-d972-4999-a45b-2619c2af9158" name="Changes by michelecoscarelli" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,31 +97,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sabri/Downloads/complex-calculator-group-16-main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/sabri/Downloads/complex-calculator-group-16-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4878049",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
@@ -127,13 +131,14 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java" />
-      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13" />
-      <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\resources\com\example\rminder\view" />
-      <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\resources" />
-      <recent name="C:\Users\sabri\IdeaProjects\RMinder\src\main\java\com\example\rminder\controller" />
+      <recent name="$PROJECT_DIR$/src/main/java/gruppo13/seproject" />
+      <recent name="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential" />
+      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
+      <recent name="$PROJECT_DIR$/src/main/java/coscarelli/seproject/audioFiles" />
+      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="gruppo13.seproject" />
       <recent name="com.example.rminder" />
     </key>
   </component>
@@ -151,7 +156,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="PATTERN" value="gruppo13.seproject.action.actionType.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -167,7 +172,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="PATTERN" value="gruppo13.seproject.action.actionType.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -183,7 +188,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="PATTERN" value="gruppo13.seproject.action.actionType.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -199,7 +204,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="PATTERN" value="gruppo13.seproject.action.actionType.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -215,7 +220,7 @@
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.*" />
+          <option name="PATTERN" value="gruppo13.seproject.action.actionType.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -223,6 +228,19 @@
       <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
       <option name="METHOD_NAME" value="testSaveRulesToFileWithNullList" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SE-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SE-project" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -503,7 +521,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701366017312</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701512180181</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701512180181</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701512275062</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701512275062</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701512416542</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1701512416542</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +562,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -548,10 +590,10 @@
     <MESSAGE value="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager." />
     <MESSAGE value="Fixing issues" />
     <MESSAGE value="Fixing some issues" />
-    <MESSAGE value="fixing issues" />
     <MESSAGE value="Creating tests for MessageAction and FileManager" />
     <MESSAGE value="Editing views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Editing views" />
+    <MESSAGE value="fixing issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
