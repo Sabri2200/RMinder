@@ -15,7 +15,14 @@ public class MainApplication extends Application {
         stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);
+
+        stage.setOnCloseRequest(event -> handleWindowClose(stage));
+
         stage.show();
+
+    }
+    private void handleWindowClose(Stage stage) {
+        System.exit(0);
     }
 
     public static void main(String[] args) {
