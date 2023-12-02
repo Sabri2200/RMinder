@@ -5,55 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Modify Class RuleTest">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/ActionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RuleJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/RulePerformer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/RuleJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/GUIExcecutor/AudioExecutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/MainApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/State.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/ActionObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/ActionSubject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/ActionType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/Exception/ActionException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/Exception/AudioActionException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/rule/Rule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/rule/RuleJson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/rule/RuleManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/rule/RulePerformer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/rule/RuleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/trigger/Trigger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/trigger/TriggerType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/coscarelli/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SE-Project/src/main/resources/coscarelli/seproject/main-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/ActionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/CopyFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/CopyFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/DeleteFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/DeleteFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/MessageAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/ModifyTextFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/ModifyTextFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/MoveFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/action/MoveFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/trigger/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/trigger/ClockTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/model/trigger/Trigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/AudioExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/AudioExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/DialogBoxExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/ActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Exception/ActionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/Exception/AudioActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Exception/AudioActionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/Trigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/Trigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/coscarelli/seproject/essential/trigger/triggerType/ClockTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/triggerType/ClockTrigger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/coscarelli/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +141,7 @@
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="coscarelli.seproject.MainApplication" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.MainApplication" />
       <module name="SE-project" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -247,19 +223,6 @@
       <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.FileManagerTest" />
       <option name="METHOD_NAME" value="testSaveRulesToFileWithNullList" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="SE-project" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="SE-project" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

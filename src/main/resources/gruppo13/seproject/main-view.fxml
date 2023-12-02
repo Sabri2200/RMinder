@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppo13.seproject.MainController">
+    <SplitPane dividerPositions="0.34808013355592654" prefHeight="551.0" prefWidth="802.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="682.0">
+            <children>
+                <VBox prefHeight="550.0" prefWidth="275.0">
+                    <children>
+                        <TabPane prefHeight="549.0" prefWidth="270.0" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab text="Rule Edit">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="550.0">
+                                            <children>
+                                                <Label layoutX="116.0" layoutY="43.0" />
+                                                <VBox alignment="CENTER" layoutX="-5.0" prefHeight="477.0" prefWidth="268.0" spacing="50.0">
+                                                    <children>
+                                                        <TextField fx:id="ruleNameField" prefHeight="27.0" prefWidth="155.0" promptText="Rule name">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="30.0" right="30.0" />
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                            <children>
+                                                                <Label prefHeight="17.0" prefWidth="45.0" text="State">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Button fx:id="ruleStateBtn" mnemonicParsing="false" onAction="#ruleStateChange" text="Active">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Trigger">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <ComboBox fx:id="triggerSelector" layoutX="56.0" layoutY="73.0" prefWidth="150.0" promptText="Select a trigger" />
+                                                <StackPane layoutX="-4.0" layoutY="127.0" prefHeight="307.0" prefWidth="281.0">
+                                                    <children>
+                                                        <VBox fx:id="clockTriggerVBox" alignment="CENTER" prefHeight="307.0" prefWidth="263.0" visible="false">
+                                                            <children>
+                                                                <Label prefHeight="17.0" prefWidth="107.0" text="Select a time">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                                                    <children>
+                                                                        <TextField fx:id="hourField" prefHeight="26.0" prefWidth="42.0" promptText="hour" />
+                                                                        <Label text=":" />
+                                                                        <TextField fx:id="minuteField" prefHeight="26.0" prefWidth="37.0" promptText="minute" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Actions">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox alignment="CENTER" prefHeight="522.0" prefWidth="282.0" spacing="20.0">
+                                                    <children>
+                                                        <TableView fx:id="actionsTable" prefHeight="216.0" prefWidth="262.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="actionTypeClm" prefWidth="128.0" text="ActionType" />
+                                                                <TableColumn fx:id="paramsClm" prefWidth="132.0" text="Params" />
+                                                            </columns>
+                                                            <columnResizePolicy>
+                                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                            </columnResizePolicy>
+                                                        </TableView>
+                                                        <VBox alignment="CENTER" prefHeight="191.0" prefWidth="282.0" spacing="20.0">
+                                                            <children>
+                                                                <ComboBox fx:id="actionSelector" prefHeight="26.0" prefWidth="164.0" promptText="Select an Action Type" />
+                                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                                    <children>
+                                                                        <VBox fx:id="fileSelectorVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+                                                                            <children>
+                                                                                <Button fx:id="fileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select an audio file" />
+                                                                                <Label fx:id="fileChosen" text="file" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <VBox fx:id="messageActionVBox" alignment="CENTER" prefHeight="200.0" prefWidth="261.0" spacing="20.0" visible="false">
+                                                                            <children>
+                                                                                <TextField fx:id="titleAlertField" promptText="title"/>
+                                                                                <TextField fx:id="messageAlertField" promptText="message"/>
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                    <VBox.margin>
+                                                                        <Insets left="20.0" right="20.0" />
+                                                                    </VBox.margin>
+                                                                </StackPane>
+                                                            </children>
+                                                        </VBox>
+                                                        <Button fx:id="addActionBtn" mnemonicParsing="false" onAction="#addActionToRule" text="Add action" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab onSelectionChanged="#makeRuleSummary" text="Summary">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox alignment="CENTER" layoutX="2.0" prefHeight="520.0" prefWidth="274.0" spacing="30.0">
+                                                    <children>
+                                                        <Label fx:id="ruleNameSummary" text="Rule name">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="triggerLbl" text="Trigger and Params">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <TableView fx:id="actionsTableSummary" prefHeight="216.0" prefWidth="249.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="actionTypeClm1" prefWidth="128.0" text="ActionType" />
+                                                                <TableColumn fx:id="paramsClm1" prefWidth="132.0" text="Params" />
+                                                            </columns>
+                                                            <columnResizePolicy>
+                                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                            </columnResizePolicy>
+                                                        </TableView>
+                                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                                                            <children>
+                                                                <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#resetRule" text="Reset">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Button>
+                                                                <Button fx:id="saveRuleBtn" mnemonicParsing="false" onAction="#saveRule" text="Save">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="550.0">
+            <VBox alignment="BOTTOM_CENTER" layoutX="-2.0" prefHeight="549.0" prefWidth="519.0">
+                <TableView fx:id="tableView" prefHeight="550.0" prefWidth="519.0">
+                    <columns>
+                        <TableColumn fx:id="nameClm" prefWidth="112.0" text="Name" />
+                        <TableColumn fx:id="triggerClm" prefWidth="125.0" text="Trigger" />
+                        <TableColumn fx:id="actionClm" prefWidth="115.0" text="Action" />
+                        <TableColumn fx:id="stateClm" prefWidth="140.0" text="State" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                    <contextMenu>
+                        <ContextMenu fx:id="contextMenu">
+                            <items>
+                                <MenuItem fx:id="editBtn" mnemonicParsing="false" onAction="#editRuleAction" text="Edit" />
+                                <MenuItem fx:id="removeBtn" mnemonicParsing="false" onAction="#removeRulesAction" text="Delete" />
+                                <MenuItem fx:id="saveToFileBtn" mnemonicParsing="false" onAction="#saveRulesToFile" text="Save to File" />
+                                <MenuItem fx:id="loadFromFileBtn" mnemonicParsing="false" onAction="#loadRulesFromFile" text="Load from File" />
+                                <MenuItem fx:id="turnBtn" mnemonicParsing="false" onAction="#turnRule" text="Active/Deactive" />
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </TableView>
+            </VBox>
+        </AnchorPane>
+    </SplitPane>
+</AnchorPane>

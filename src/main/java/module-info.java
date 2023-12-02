@@ -4,6 +4,6 @@ module coscarelli.seproject {
     requires java.desktop;
 
 
-    opens coscarelli.seproject to javafx.fxml;
-    exports coscarelli.seproject;
+    opens gruppo13.seproject to javafx.fxml;
+    exports gruppo13.seproject;
 }
