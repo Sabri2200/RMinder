@@ -3,7 +3,7 @@ package gruppo13.seproject.essential.action.actionType;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.Exception.AudioActionException;
+import gruppo13.seproject.essential.action.ActionException.AudioActionException;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -49,7 +49,6 @@ public class AudioAction implements Action {
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             throw new AudioActionException(e.getMessage());
         }
-
     }
     
     private AudioFormat getOutFormat(AudioFormat inFormat) {
