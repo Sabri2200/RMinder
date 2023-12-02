@@ -31,6 +31,7 @@ public class RuleService extends TimerTask implements ActionSubject {
                 if(rule.getState().equals(State.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
                         executorService.submit(() -> {
+                            ruleManager.setState(rule, State.NOTACTIVE);
                             for (Action a : rule.getActions()) {
                                 try {
                                     if (a.getState().equals(State.ACTIVE)) {
@@ -42,7 +43,6 @@ public class RuleService extends TimerTask implements ActionSubject {
                                     notifyErrorObservers(a, e);
                                 }
                             }
-                            rule.setState(State.NOTACTIVE);
                         });
                     }
                 }

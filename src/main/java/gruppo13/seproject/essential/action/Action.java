@@ -9,4 +9,5 @@ public interface Action {
     public ActionType getType();
     public State getState();
     public void setState(State state);
+    public String toString();
 }

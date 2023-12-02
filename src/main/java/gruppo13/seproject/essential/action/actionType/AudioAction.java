@@ -83,4 +83,13 @@ public class AudioAction implements Action {
     public String getFilePath() {
         return String.valueOf(filePath);
     }
+
+    @Override
+    public String toString() {
+        return this.getType().toString() + " " + filePath.getAbsolutePath();
+    }
+
+    public File getFile() {
+        return filePath;
+    }
 }

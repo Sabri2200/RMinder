@@ -32,7 +32,17 @@ public class ClockTrigger implements Trigger {
         }
     }
 
+    @Override
+    public TriggerType getType() {
+        return TriggerType.CLOCKTRIGGER;
+    }
+
     public LocalTime getTime() {
         return time;
+    }
+
+    @Override
+    public String toString() {
+        return TriggerType.CLOCKTRIGGER.toString() + " " + time.getHour() + ":" + time.getMinute();
     }
 }

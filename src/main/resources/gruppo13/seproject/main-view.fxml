@@ -48,7 +48,7 @@
                                                                         <Font size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Button fx:id="ruleStateBtn" mnemonicParsing="false" onAction="#ruleStateChange" text="Active">
+                                                                <Button fx:id="ruleStateBtn" mnemonicParsing="false" onAction="#ruleStateChange" text="ACTIVE">
                                                                     <font>
                                                                         <Font size="14.0" />
                                                                     </font>
