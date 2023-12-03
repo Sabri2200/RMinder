@@ -23,7 +23,7 @@ App Title: <b>RMinder<b>
 
 <li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjlfvfPAU61lgjTGR?e=XpiT52">Product backlog </a></li>
 <li><a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/s_cuomo22_studenti_unisa_it/EV_htFI8gChEgaZa2Tkgi60BUwkwIWtYXy1ht9JROXvi0Q?e=QoROab"> System Architecture </a></li>
-
+<li><a href="https://trello.com/b/bHj0aId1/gruppo-13"> Trello </a></li>
 
 </ul>
 
