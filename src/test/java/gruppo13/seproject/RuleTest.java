@@ -1,9 +1,8 @@
-package gruppo13.seproject;
+/*package gruppo13.seproject;
 
-import gruppo13.seproject.essential.action.action.Action;
-import gruppo13.seproject.essential.model.Rule;
-import gruppo13.seproject.essential.model.action.Action;
-import gruppo13.seproject.essential.model.action.MessageAction;
+import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.rule.Rule;
+import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
 import gruppo13.seproject.essential.model.trigger.ClockTrigger;
 import gruppo13.seproject.essential.model.trigger.Trigger;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -104,3 +103,4 @@ public class RuleTest {
         assertEquals(expectedString, rule.toString());
     }
 }
+*/

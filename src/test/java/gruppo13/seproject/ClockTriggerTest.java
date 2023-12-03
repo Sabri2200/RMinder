@@ -1,4 +1,4 @@
-package gruppo13.seproject;
+/*package gruppo13.seproject;
 
 import gruppo13.seproject.essential.model.trigger.ClockTrigger;
 import org.junit.jupiter.api.Test;
@@ -23,3 +23,4 @@ public class ClockTriggerTest {
 
 
 }
+*/

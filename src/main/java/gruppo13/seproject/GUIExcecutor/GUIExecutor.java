@@ -8,7 +8,9 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 
 public class GUIExecutor implements ActionObserver {
-    public GUIExecutor() {}
+    public GUIExecutor() {
+        System.out.println("fdfdnk");
+    }
 
     @Override
     public void execute(Action a) {

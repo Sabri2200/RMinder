@@ -1,32 +1,67 @@
-package gruppo13.seproject;
+package gruppo13.seproject.FileManager;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.actionType.AudioAction;
-import gruppo13.seproject.FileManager.FileManager;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
-import javafx.beans.property.SimpleBooleanProperty;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
-import java.time.LocalTime;
-import java.util.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class FileManagerTest {
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class FileManagerTest {
 
     private File tempFile;
 
     @BeforeEach
     void setUp() throws IOException {
-        // Crea un file temporaneo per i test
         tempFile = File.createTempFile("test", ".json");
     }
 
     @AfterEach
     void tearDown() {
         tempFile.delete();
+    }
+
+    @Test
+    void verifyFile() {
+        assertTrue(tempFile != null && tempFile.exists());
+    }
+
+    @Test
+    void verifyAudioFile() {
+        assertTrue(tempFile.canRead());
+    }
+
+    @Test
+    void verifyReadableFile() {
+        assertTrue(tempFile.canRead());
+    }
+
+    @Test
+    void verifyWrittableFile() {
+        assertTrue(tempFile.canWrite());
+    }
+
+    @Test
+    void saveRulesToFile() throws IOException {
+        testSaveRulesToFile();
+    }
+
+    @Test
+    void loadRulesFromFile() throws IOException {
+        testLoadRulesFromFileBasic();
     }
 
     @Test
@@ -139,7 +174,4 @@ public class FileManagerTest {
         // Pulizia: elimina il file di test
         malformedFile.delete();
     }
-
-
-
 }

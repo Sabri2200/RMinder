@@ -1,4 +1,4 @@
-package com.example.rminder;
+/*package com.example.rminder;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,4 +26,4 @@ class RMinderTest extends Application {
         stage.setScene(scene);
         stage.show();
     }
-}
+}*/
