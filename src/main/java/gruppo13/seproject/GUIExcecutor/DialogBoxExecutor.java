@@ -1,6 +1,6 @@
 package gruppo13.seproject.GUIExcecutor;
 
-import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 

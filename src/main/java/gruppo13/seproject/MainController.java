@@ -6,14 +6,14 @@ import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.actionType.AudioAction;
-import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.AudioAction;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import gruppo13.seproject.essential.rule.*;
 import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerFactory;
 import gruppo13.seproject.essential.trigger.TriggerType;
-import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
+import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -30,6 +30,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalTime;
@@ -124,8 +125,6 @@ public class MainController implements Initializable, ListObserver {
         startRuleService();
     }
 
-
-
     public void ruleStateChange(ActionEvent actionEvent) {
         State oldState = State.valueOf(ruleStateBtn.getText());
 
@@ -157,6 +156,7 @@ public class MainController implements Initializable, ListObserver {
         }
     }
 
+
     public void addActionToRule(ActionEvent actionEvent) {
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
         List<String> params = new ArrayList<>();
@@ -176,6 +176,7 @@ public class MainController implements Initializable, ListObserver {
         actionsTable.refresh();
         actionsTableSummary.refresh();
     }
+
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
@@ -198,6 +199,7 @@ public class MainController implements Initializable, ListObserver {
 
     }
 
+
     private List<String> triggerParams(TriggerType type) {
         List<String> params = new ArrayList<>();
 
@@ -209,6 +211,7 @@ public class MainController implements Initializable, ListObserver {
                 return null;
         }
     }
+
 
     public void makeRuleSummary(Event event) {
         String ruleName = ruleNameField.getText();
@@ -227,6 +230,7 @@ public class MainController implements Initializable, ListObserver {
         }
     }
 
+    @FXML
     public void resetRule(ActionEvent actionEvent) {
         ruleNameField.setText("");
         ruleNameSummary.setText("");
@@ -241,6 +245,7 @@ public class MainController implements Initializable, ListObserver {
         actionsTableSummary.refresh();
     }
 
+
     public void editRuleAction(ActionEvent actionEvent) {
         Rule rule = tableView.getSelectionModel().getSelectedItem();
 
@@ -251,6 +256,7 @@ public class MainController implements Initializable, ListObserver {
 
         triggerSelector.setValue(triggerType);
 
+
         switch (triggerType) {
             case CLOCKTRIGGER:
                 LocalTime time = ((ClockTrigger) trigger).getTime();
@@ -259,12 +265,16 @@ public class MainController implements Initializable, ListObserver {
             default:
                 System.out.println("error");
         }
+        //for(Rule r : ruleManager.getRules()) System.out.println(r.getName());
 
         actionsList.removeAll();
         actionsList.addAll(rule.getActions());
 
         actionsTable.refresh();
         actionsTableSummary.refresh();
+
+        tableView.getItems().setAll(ruleManager.getRules());
+        tableView.refresh();
     }
 
     public void removeRulesAction(ActionEvent actionEvent) {

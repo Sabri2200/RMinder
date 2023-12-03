@@ -2,8 +2,7 @@ package gruppo13.seproject.GUIExcecutor;
 
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionObserver;
-import gruppo13.seproject.essential.action.actionType.AudioAction;
-import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 

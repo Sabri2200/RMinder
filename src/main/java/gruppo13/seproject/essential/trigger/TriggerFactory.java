@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.trigger;
 
-import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
+import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 
 import java.time.LocalTime;
 import java.util.List;

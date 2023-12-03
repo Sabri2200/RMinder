@@ -9,12 +9,12 @@ module gruppo13.seproject {
     exports gruppo13.seproject;
     exports gruppo13.seproject.essential.action;
     opens gruppo13.seproject.essential.action to javafx.fxml;
-    exports gruppo13.seproject.essential.action.actionType;
-    opens gruppo13.seproject.essential.action.actionType to javafx.fxml;
+    exports gruppo13.seproject.essential.action.type;
+    opens gruppo13.seproject.essential.action.type to javafx.fxml;
     exports gruppo13.seproject.essential;
     opens gruppo13.seproject.essential to javafx.fxml;
-    exports gruppo13.seproject.essential.action.ActionException;
-    opens gruppo13.seproject.essential.action.ActionException to javafx.fxml;
+    exports gruppo13.seproject.essential.action.exception;
+    opens gruppo13.seproject.essential.action.exception to javafx.fxml;
     exports gruppo13.seproject.essential.rule.ListObserver;
     opens gruppo13.seproject.essential.rule.ListObserver to javafx.fxml;
 }

@@ -2,10 +2,10 @@ package gruppo13.seproject.FileManager;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.actionType.AudioAction;
+import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.trigger.Trigger;
-import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
+import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

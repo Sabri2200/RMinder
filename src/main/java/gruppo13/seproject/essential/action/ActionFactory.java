@@ -1,10 +1,9 @@
 package gruppo13.seproject.essential.action;
 
-import gruppo13.seproject.essential.action.actionType.AudioAction;
-import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.AudioAction;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

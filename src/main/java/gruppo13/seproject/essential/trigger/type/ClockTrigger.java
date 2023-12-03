@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.trigger.triggerType;
+package gruppo13.seproject.essential.trigger.type;
 
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerType;

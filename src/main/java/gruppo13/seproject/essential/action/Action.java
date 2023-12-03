@@ -1,10 +1,9 @@
 package gruppo13.seproject.essential.action;
 
 import gruppo13.seproject.essential.State;
-import gruppo13.seproject.essential.action.ActionException.ActionException;
-import javafx.beans.Observable;
+import gruppo13.seproject.essential.action.exception.ActionException;
 
-public abstract class Action extends ActionPerformer {
+public interface Action extends ActionPerformer {
     public abstract ActionType getType();
     public abstract State getState();
     public abstract void setState(State state);

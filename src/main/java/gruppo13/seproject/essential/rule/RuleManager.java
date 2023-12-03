@@ -1,7 +1,5 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.action.ActionException.ActionException;
-import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
 import gruppo13.seproject.essential.rule.ListObserver.ListSubject;
 import gruppo13.seproject.essential.State;

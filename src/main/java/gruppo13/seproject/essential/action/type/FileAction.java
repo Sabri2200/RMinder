@@ -1,9 +1,8 @@
-package gruppo13.seproject.essential.action.actionType;
+package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.ActionPerformer;
 
-public abstract class FileAction extends Action {
+public abstract class FileAction implements Action {
     private String filePath;
 
     public FileAction(String filePath) {

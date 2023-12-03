@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.action.actionType;
+package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.ActionType;
@@ -6,26 +6,30 @@ import gruppo13.seproject.essential.action.ActionType;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
-public class DeleteFileAction extends FileAction{
+public class ModifyTextFileAction extends FileAction {
+    private String stringToAdd;
 
-    public DeleteFileAction(String filePath) {
+    public ModifyTextFileAction(String filePath, String stringToAdd) {
         super(filePath);
+        this.stringToAdd = stringToAdd;
     }
 
     @Override
     public void execute() {
         try {
             Path filePath = Paths.get(getFilePath());
-            Files.delete(filePath);
+            Files.write(filePath, stringToAdd.getBytes(), StandardOpenOption.APPEND);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public ActionType getType() {
-        return ActionType.DELETEFILE;
+        return ActionType.MODIFYTEXT;
     }
 
     @Override
@@ -39,7 +43,7 @@ public class DeleteFileAction extends FileAction{
     }
 
     public String toString() {
-        return ActionType.DELETEFILE.name() + " " + getFilePath();
+        return "In  "+ ActionType.MODIFYTEXT.name() + " is added " + stringToAdd;
     }
 }
 

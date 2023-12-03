@@ -1,10 +1,9 @@
-package gruppo13.seproject.essential.action.actionType;
+package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.ActionException.AudioActionException;
+import gruppo13.seproject.essential.action.exception.AudioActionException;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -19,7 +18,7 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 import java.io.File;
 import java.io.IOException;
 
-public class AudioAction extends Action {
+public class AudioAction implements Action {
     private File filePath;
     private State state;
 

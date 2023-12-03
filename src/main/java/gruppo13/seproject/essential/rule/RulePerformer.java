@@ -2,12 +2,12 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.*;
-import gruppo13.seproject.essential.action.ActionException.ActionException;
+import gruppo13.seproject.essential.action.exception.ActionException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RulePerformer extends ActionPerformer implements ActionSubject {
+public class RulePerformer implements ActionPerformer, ActionSubject {
     private RuleManager ruleManager;
     private List<ActionObserver> observers = new ArrayList<>();
 
