@@ -159,7 +159,11 @@ public class MainController implements Initializable, ListObserver {
     public void ruleStateChange(ActionEvent actionEvent) {
         State oldState = State.valueOf(ruleStateBtn.getText());
 
-        State newState = oldState == State.ACTIVE ? State.NOTACTIVE : State.ACTIVE;
+        State newState = switch (oldState) {
+            case ACTIVE -> State.ALWAYSACTIVE;
+            case ALWAYSACTIVE -> State.NOTACTIVE;
+            case NOTACTIVE -> State.ACTIVE;
+        };
 
         ruleStateBtn.setText(newState.name());
     }
