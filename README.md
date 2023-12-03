@@ -50,11 +50,10 @@ App Title: <b>RMinder<b>
 <ul>
   
 <li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjmEmmHKhdrjnrF6-?e=qDp1QS"> Sprint backlog </a> </li>
-<!-- <li> <a href=""> Sprint retrospective report </a> </li>
-<li> <a href=""> Sprint review </a> </li>
-<li> <a href=""> burndown chart </a> </li>
+<li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EdwKNi3-HLNPuCv8CNExSDEB2lHHguqsS4a74Tojvqs-ZQ?e=pdHT84"> Sprint retrospective report </a> </li>
+<li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EVRM4UlyldpKoZ11OGuPkbcB0sBczvAYnGwrYZ5VTEf3MA?e=SzB8aX"> Sprint review </a> </li>
+<li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/ETM0Q4fzjydNhB1CNNdTZb8BteaRoEjh4254XDUMO7VClA?e=4wmk1A"> burndown chart </a> </li>
 <li> <a href=""> summary document </a> </li>
--->
 
 
 </ul>
