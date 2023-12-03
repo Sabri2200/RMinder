@@ -7,7 +7,7 @@ import gruppo13.seproject.essential.action.ActionException.ActionException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RulePerformer implements ActionSubject, ActionPerformer {
+public class RulePerformer extends ActionPerformer implements ActionSubject {
     private RuleManager ruleManager;
     private List<ActionObserver> observers = new ArrayList<>();
 

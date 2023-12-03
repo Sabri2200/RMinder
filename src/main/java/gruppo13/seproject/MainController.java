@@ -1,7 +1,6 @@
 package gruppo13.seproject;
 
 import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.GUIExcecutor.DialogBoxExecutor;
 import gruppo13.seproject.GUIExcecutor.GUIExecutor;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
@@ -11,12 +10,10 @@ import gruppo13.seproject.essential.action.actionType.AudioAction;
 import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
 import gruppo13.seproject.essential.rule.*;
 import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
-import gruppo13.seproject.essential.rule.ListObserver.ListSubject;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerFactory;
 import gruppo13.seproject.essential.trigger.TriggerType;
 import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -28,23 +25,17 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class MainController implements Initializable, ListObserver {
-
-    private Stage stage;
 
     @FXML
     private TextField ruleNameField;
@@ -62,10 +53,6 @@ public class MainController implements Initializable, ListObserver {
     @FXML
     private VBox fileSelectorVBox;
     @FXML
-    private Button fileSelectorBtn;
-    @FXML
-    private Button resetBtn;
-    @FXML
     private Button saveRuleBtn;
     @FXML
     private TextField hourField;
@@ -73,9 +60,6 @@ public class MainController implements Initializable, ListObserver {
     private TextField minuteField;
     @FXML
     private Label fileChosen;
-
-    @FXML
-    private ContextMenu contextMenu;
     @FXML
     private Button ruleStateBtn;
     @FXML
@@ -91,25 +75,13 @@ public class MainController implements Initializable, ListObserver {
     @FXML
     private TableColumn<Action, String> paramsClm1;
     @FXML
-    private Button addActionBtn;
-    @FXML
     private Label ruleNameSummary;
     @FXML
     private Label triggerLbl;
     @FXML
     private TableView actionsTableSummary;
-    private AnchorPane summaryAnchorPane;
     @FXML
     private MenuItem editBtn;
-    @FXML
-    private MenuItem removeBtn;
-    @FXML
-    private MenuItem saveToFileBtn;
-    @FXML
-    private MenuItem loadFromFileBtn;
-    @FXML
-    private MenuItem turnBtn;
-
     @FXML
     private TableView<Rule> tableView;
     @FXML
@@ -124,8 +96,6 @@ public class MainController implements Initializable, ListObserver {
     private ObservableList<Action> actionsList;
     private RuleManager ruleManager;
     private GUIExecutor guiExecutor;
-
-    //private ActionManager actionManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -468,18 +438,17 @@ public class MainController implements Initializable, ListObserver {
         timer.scheduleAtFixedRate(task, 0, 2000);
     }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
-        this.stage.setOnCloseRequest(this::closeApplication);
-    }
-
-    private void closeApplication(WindowEvent windowEvent) {
-        Platform.exit();
-    }
-
     @Override
     public void update() {
         tableView.getItems().setAll(ruleManager.getRules());
         tableView.refresh();
+    }
+
+    public void removeAction(ActionEvent actionEvent) {
+        Set<Action> actions = new HashSet<>(actionsTable.getSelectionModel().getSelectedItems());
+        actions.addAll(actionsTableSummary.getSelectionModel().getSelectedItems());
+
+        actionsList.removeAll(actions);
+        actionsTable.refresh();
     }
 }

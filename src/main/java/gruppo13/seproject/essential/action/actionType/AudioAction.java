@@ -19,7 +19,7 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 import java.io.File;
 import java.io.IOException;
 
-public class AudioAction implements Action {
+public class AudioAction extends Action {
     private File filePath;
     private State state;
 

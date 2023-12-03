@@ -14,7 +14,6 @@ public class GUIExecutor implements ActionObserver {
 
     @Override
     public void execute(Action a) {
-        System.out.println("fdfdnk");
         try {
             switch (a.getType()) {
                 case DIALOGBOX:
