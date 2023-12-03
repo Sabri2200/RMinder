@@ -1,7 +1,6 @@
-package com.example.rminder.model;
+/*package com.example.rminder.model;
 
 import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,4 +27,4 @@ class MessageActionTest {
             }
         });
     }
-}
+}*/

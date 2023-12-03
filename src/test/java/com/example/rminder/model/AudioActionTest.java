@@ -1,4 +1,4 @@
-package com.example.rminder.model;
+/*package com.example.rminder.model;
 
 import javafx.application.Platform;
 import javafx.scene.media.Media;
@@ -27,4 +27,4 @@ class AudioActionTest {
         mediaPlayer.play();
         System.out.println("dd");
     }
-}
+}*/

@@ -1,16 +1,13 @@
 package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.State;
-import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.action.*;
 import gruppo13.seproject.essential.action.ActionException.ActionException;
-import gruppo13.seproject.essential.action.ActionObserver;
-import gruppo13.seproject.essential.action.ActionPerformer;
-import gruppo13.seproject.essential.action.ActionSubject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RulePerformer extends ActionPerformer implements ActionSubject {
+public class RulePerformer implements ActionSubject, ActionPerformer {
     private RuleManager ruleManager;
     private List<ActionObserver> observers = new ArrayList<>();
 
@@ -19,7 +16,7 @@ public class RulePerformer extends ActionPerformer implements ActionSubject {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws ActionException {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
@@ -55,8 +52,6 @@ public class RulePerformer extends ActionPerformer implements ActionSubject {
 
     @Override
     public void notifyObservers(Action a) {
-        System.out.println("gggggggggggg");
-        System.out.println(observers.isEmpty());
         for (ActionObserver o : observers) {
             o.execute(a);
         }

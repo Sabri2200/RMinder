@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class MoveFileAction extends FileAction{
+public class MoveFileAction extends FileAction {
     private String destinationDirectory;
 
     public MoveFileAction(String filePath, String destinationDirectory) {

@@ -41,16 +41,19 @@ public class RuleJson {
     }
 
     public static List<Rule> jsonToRules(String json) {
-        JSONArray rulesArray = new JSONArray(json);
-        List<Rule> rules = new ArrayList<>();
+        if (!json.isEmpty()) {
+            JSONArray rulesArray = new JSONArray(json);
+            List<Rule> rules = new ArrayList<>();
 
-        for (int i = 0; i < rulesArray.length(); i++) {
-            JSONObject jsonRule = rulesArray.getJSONObject(i);
-            Rule rule = jsonToRule(jsonRule);
-            rules.add(rule);
+            for (int i = 0; i < rulesArray.length(); i++) {
+                JSONObject jsonRule = rulesArray.getJSONObject(i);
+                Rule rule = jsonToRule(jsonRule);
+                rules.add(rule);
+            }
+
+            return rules;
         }
-
-        return rules;
+        return null;
     }
 
     private static Rule jsonToRule(JSONObject jsonRule) {

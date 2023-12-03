@@ -5,7 +5,7 @@ import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.ActionType;
 
-public class DialogBoxAction extends Action {
+public class DialogBoxAction implements Action {
     private String title, content, message;
     private State state;
 

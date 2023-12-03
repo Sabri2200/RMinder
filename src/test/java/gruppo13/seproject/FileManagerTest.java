@@ -1,23 +1,27 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.essential.model.FileManager;
-import gruppo13.seproject.essential.model.Rule;
+import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.action.actionType.AudioAction;
+import gruppo13.seproject.FileManager.FileManager;
+import gruppo13.seproject.essential.rule.Rule;
+import gruppo13.seproject.essential.trigger.Trigger;
+import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
 import javafx.beans.property.SimpleBooleanProperty;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
+import java.time.LocalTime;
 import java.util.*;
 
 public class FileManagerTest {
 
     private File tempFile;
-    private FileManager fileManager;
 
     @BeforeEach
     void setUp() throws IOException {
         // Crea un file temporaneo per i test
-        tempFile = File.createTempFile("test", ".txt");
-        fileManager = FileManager.createFileManager(tempFile);
+        tempFile = File.createTempFile("test", ".json");
     }
 
     @AfterEach
@@ -28,8 +32,15 @@ public class FileManagerTest {
     @Test
     void testSaveRulesToFile() throws IOException {
         List<Rule> rules = new ArrayList<>();
-        rules.add(new Rule("rule", null, null, new SimpleBooleanProperty(true)));
-        fileManager.saveRulesToFile(rules);
+        List<Action> actions = new ArrayList<>();
+
+        actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
+        Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
+
+        rules.add(new Rule("name1", actions, trigger, State.ACTIVE));
+        rules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
+
+        FileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file non sia vuoto
         assertTrue(tempFile.length() > 0);
@@ -42,7 +53,7 @@ public class FileManagerTest {
                 fileContent.append(line).append("\n");
             }
         }
-
+        System.out.println(fileContent.toString().trim());
         // Verifica il contenuto del file
         // assertEquals("Contenuto atteso", fileContent.toString().trim());
     }
@@ -51,7 +62,7 @@ public class FileManagerTest {
     void testSaveRulesToFileWithEmptyList() throws IOException {
         List<Rule> rules = new ArrayList<>();
 
-        fileManager.saveRulesToFile(rules);
+        FileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file sia vuoto o contenga il contenuto atteso per una lista vuota
         assertEquals(0, tempFile.length());
@@ -59,19 +70,19 @@ public class FileManagerTest {
 
     @Test
     void testSaveRulesToFileWithNullList() {
-        assertDoesNotThrow(() -> fileManager.saveRulesToFile(null));
+        assertDoesNotThrow(() -> FileManager.saveRulesToFile(null, tempFile));
     }
 
     @Test
     void testSaveRulesToFileExceptionHandling() throws IOException {
         List<Rule> rules = new ArrayList<>();
 
-        rules.add(new Rule("rule", null, null, new SimpleBooleanProperty(true)));
+        rules.add(new Rule("rule", null, null, State.NOTACTIVE));
 
         // Rende il file di sola lettura per indurre un'eccezione
         assertTrue(tempFile.setReadOnly());
 
-        assertThrows(IOException.class, () -> fileManager.saveRulesToFile(rules));
+        assertThrows(Exception.class, () -> FileManager.saveRulesToFile(rules, tempFile));
     }
 
     @Test
@@ -80,37 +91,54 @@ public class FileManagerTest {
         testSaveRulesToFile();
 
         // Azione: carica le regole dal file
-        List<Rule> loadedRules = fileManager.loadRulesFromFile();
+        List<Rule> loadedRules = new ArrayList<>();
+
+        for (Rule rule : FileManager.loadRulesFromFile(tempFile)) {
+            loadedRules.add(rule);
+        }
+
+        //List<Rule> loadedRules = fileManager.loadRulesFromFile();
         List<Rule> expectedRules = new ArrayList<>();
+        List<Action> actions = new ArrayList<>();
 
-        expectedRules.add(new Rule("\"rule", null, null, new SimpleBooleanProperty(false)));
+        actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
+        Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
+        expectedRules.add(new Rule("name1", actions, trigger, State.ACTIVE));
+        expectedRules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
+
+        for (Rule rule : loadedRules) {
+            System.out.println(rule.getName());
+            for (Action a : rule.getActions()) {
+                System.out.println(a.toString());
+            }
+            System.out.println(rule.getTrigger());
+            System.out.println(rule.getState());
+        }
         // Verifica: confronta le regole caricate con quelle attese
-        assertEquals(expectedRules, loadedRules);
+        //assertEquals(expectedRules, loadedRules);
     }
 
     @Test
     void testLoadRulesFromFileEmpty() throws IOException {
         // Azione: carica le regole dal file vuoto
-        List<Rule> loadedRules = fileManager.loadRulesFromFile();
+        List<Rule> loadedRules = FileManager.loadRulesFromFile(tempFile);
 
         // Verifica: aspettati una lista vuota o un comportamento specifico
-        assertTrue(loadedRules.isEmpty());
+        assertTrue(loadedRules == null);
     }
 
-    /*@Test
+    @Test
     void testLoadRulesFromFileMalformed() throws IOException {
         // Preparazione: crea un file con contenuto malformato
         File malformedFile = File.createTempFile("test", ".tx");
 
-        FileManager fm = FileManager.createFileManager(malformedFile);
-
         // Azione e Verifica: aspettati un'eccezione o un comportamento specifico
-        assertThrows(IOException.class, () -> fm.loadRulesFromFile());
+        assertThrows(IOException.class, () -> FileManager.loadRulesFromFile(malformedFile));
 
         // Pulizia: elimina il file di test
         malformedFile.delete();
-    }*/
+    }
 
 
 

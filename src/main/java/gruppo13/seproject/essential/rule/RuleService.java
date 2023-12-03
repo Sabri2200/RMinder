@@ -26,7 +26,11 @@ public class RuleService extends TimerTask {
         System.out.println("2");
 
         executorService.submit(() -> {
-            rulePerformer.execute();
+            try {
+                rulePerformer.execute();
+            } catch (ActionException e) {
+                throw new RuntimeException(e);
+            }
         });
 
     }

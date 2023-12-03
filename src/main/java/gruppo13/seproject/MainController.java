@@ -158,6 +158,7 @@ public class MainController implements Initializable, ListObserver {
 
     public void ruleStateChange(ActionEvent actionEvent) {
         State oldState = State.valueOf(ruleStateBtn.getText());
+
         State newState = oldState == State.ACTIVE ? State.NOTACTIVE : State.ACTIVE;
 
         ruleStateBtn.setText(newState.name());
@@ -169,7 +170,6 @@ public class MainController implements Initializable, ListObserver {
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
 
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
-        System.out.println(type.name());
 
         switch (type) {
             case MP3PLAYER:
@@ -302,9 +302,25 @@ public class MainController implements Initializable, ListObserver {
     }
 
     public void saveRulesToFile(ActionEvent actionEvent) {
+        Stage fileChooserDialog = new Stage();
+        FileChooser fil_chooser = new FileChooser();
+        File file = fil_chooser.showOpenDialog(fileChooserDialog);
+
+        List<Rule> rules = tableView.getSelectionModel().getSelectedItems();
+
+        FileManager.saveRulesToFile(rules, file);
     }
 
     public void loadRulesFromFile(ActionEvent actionEvent) {
+        Stage fileChooserDialog = new Stage();
+        FileChooser fil_chooser = new FileChooser();
+        File file = fil_chooser.showOpenDialog(fileChooserDialog);
+
+        for (Rule rule : FileManager.loadRulesFromFile(file)) {
+            ruleManager.addRule(rule);
+        }
+
+        update();
     }
 
     public void turnRule(ActionEvent actionEvent) {
@@ -461,6 +477,5 @@ public class MainController implements Initializable, ListObserver {
     public void update() {
         tableView.getItems().setAll(ruleManager.getRules());
         tableView.refresh();
-        System.out.println("up");
     }
 }

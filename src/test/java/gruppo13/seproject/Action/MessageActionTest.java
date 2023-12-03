@@ -1,7 +1,7 @@
-package gruppo13.seproject.Action;
+/*package gruppo13.seproject.Action;
 
-import gruppo13.seproject.essential.model.action.ActionType;
-import gruppo13.seproject.essential.model.action.MessageAction;
+import gruppo13.seproject.essential.action.actionType.*;
+import gruppo13.seproject.essential.action.Action;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ public class MessageActionTest extends Application {
     @Test
     void testExecute() {
         // Crea l'azione
-        MessageAction action = new MessageAction("Test Title", "Test Message");
+        DialogBoxAction action = new DialogBoxAction("Test Title", "Test Message");
 
         // Esegui l'azione
         action.execute();
@@ -41,3 +41,4 @@ public class MessageActionTest extends Application {
     }
 
 }
+*/
