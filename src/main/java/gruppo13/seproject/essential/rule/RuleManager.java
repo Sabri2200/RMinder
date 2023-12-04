@@ -26,7 +26,9 @@ public class RuleManager implements ListSubject {
         notifyObservers();
     }
 
-    public void removeRule(Rule rule) {}
+    public void removeRule(Rule rule) {
+        rules.remove(rule);
+    }
 
     public void editRule(Rule oldRule, Rule newRule) {}
 

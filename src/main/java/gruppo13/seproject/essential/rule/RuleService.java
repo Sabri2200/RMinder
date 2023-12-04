@@ -17,7 +17,6 @@ public class RuleService extends TimerTask {
 
     @Override
     public void run() {
-        System.out.println("2");
 
         executorService.submit(() -> {
             try {

@@ -34,7 +34,7 @@ public class CopyFileAction extends FileAction {
 
     @Override
     public ActionType getType() {
-        return ActionType.COPYFILE;
+        return null; //ActionType.COPYFILE;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class CopyFileAction extends FileAction {
     }
 
     public String toString() {
-        return ActionType.DIALOGBOX.name() + ActionType.COPYFILE.name() + " " + getFilePath() + "Copy in to: " + destinationDirectory;
+        return ActionType.DIALOGBOX.name() + "";//ActionType.COPYFILE.name() + " " + getFilePath() + "Copy in to: " + destinationDirectory;
     }
 }

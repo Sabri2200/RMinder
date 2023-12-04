@@ -9,7 +9,7 @@ public class DialogBoxExecutor {
     public static void run(DialogBoxAction a) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(a.getTitle());
-        alert.setContentText(a.getContent());
+        alert.setHeaderText(a.getContent());
         alert.setContentText(a.getMessage());
         alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {

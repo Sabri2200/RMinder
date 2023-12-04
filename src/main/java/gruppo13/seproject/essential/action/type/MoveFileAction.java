@@ -34,7 +34,7 @@ public class MoveFileAction extends FileAction {
 
     @Override
     public ActionType getType() {
-        return ActionType.MOVEFILE;
+        return null; //ActionType.MOVEFILE;
     }
 
     @Override
@@ -51,6 +51,6 @@ public class MoveFileAction extends FileAction {
         return destinationDirectory;
     }
     public String toString() {
-        return ActionType.MOVEFILE.name() + "to " + destinationDirectory;
+        return ""; //ActionType.MOVEFILE.name() + "to " + destinationDirectory;
     }
 }
