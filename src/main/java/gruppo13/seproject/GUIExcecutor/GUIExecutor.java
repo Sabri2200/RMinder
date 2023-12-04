@@ -2,24 +2,25 @@ package gruppo13.seproject.GUIExcecutor;
 
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionObserver;
+import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+
+import java.util.Objects;
 
 public class GUIExecutor implements ActionObserver {
     public GUIExecutor() {}
 
     @Override
-    public void execute(Action a) {
-        try {
-            switch (a.getType()) {
-                case DIALOGBOX:
-                    Platform.runLater(() -> DialogBoxExecutor.run((DialogBoxAction) a));
-                    break;
-            }
-        } catch (Exception e) {
-            notifyError(a, e);
-        }
+    public synchronized void execute(Action a) {
+                try {
+                    if (Objects.requireNonNull(a.getType()) == ActionType.DIALOGBOX) {
+                        DialogBoxExecutor.run((DialogBoxAction) a);
+                    }
+                } catch(Exception e) {
+                    notifyError(a, e);
+                }
     }
 
     @Override

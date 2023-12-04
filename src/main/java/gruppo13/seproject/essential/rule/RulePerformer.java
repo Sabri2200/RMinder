@@ -18,6 +18,7 @@ public class RulePerformer implements ActionPerformer, ActionSubject {
     @Override
     public void execute() throws ActionException {
         List<Rule> rules = ruleManager.getRules();
+        System.out.println("rule");
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
                 if(rule.getState().equals(State.ACTIVE)) {
@@ -51,7 +52,7 @@ public class RulePerformer implements ActionPerformer, ActionSubject {
     }
 
     @Override
-    public void notifyObservers(Action a) {
+    public synchronized void notifyObservers(Action a) {
         for (ActionObserver o : observers) {
             o.execute(a);
         }

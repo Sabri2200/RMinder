@@ -28,7 +28,9 @@ public class DialogBoxAction implements Action {
     }
 
     @Override
-    public void execute() {}
+    public void execute() {
+        System.out.println("executed dialogbox");
+    }
 
     @Override
     public ActionType getType() {

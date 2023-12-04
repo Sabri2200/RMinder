@@ -6,14 +6,13 @@ import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.actionType.AudioAction;
-import gruppo13.seproject.essential.action.actionType.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import gruppo13.seproject.essential.rule.*;
 import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerFactory;
 import gruppo13.seproject.essential.trigger.TriggerType;
-import gruppo13.seproject.essential.trigger.triggerType.ClockTrigger;
+import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -104,13 +103,13 @@ public class MainController implements Initializable, ListObserver {
         ruleManager.registerObserver(this);
         guiExecutor = new GUIExecutor();
 
-        List<Action> actions = new ArrayList<>();
+        /*List<Action> actions = new ArrayList<>();
 
         //actions.add(new DialogBoxAction("title", "content", "message"));
         actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
-        ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));
+        ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));*/
 
         /*System.out.println(RuleJson.rulesToJson(ruleManager.getRules()));
         ruleManager.getRules().addAll(RuleJson.jsonToRules(RuleJson.rulesToJson(ruleManager.getRules())));
@@ -131,8 +130,8 @@ public class MainController implements Initializable, ListObserver {
         State oldState = State.valueOf(ruleStateBtn.getText());
 
         State newState = switch (oldState) {
-            case ACTIVE -> State.ALWAYSACTIVE;
-            case ALWAYSACTIVE -> State.NOTACTIVE;
+            case ACTIVE -> State.NOTACTIVE;
+            //case ALWAYSACTIVE -> State.NOTACTIVE;
             case NOTACTIVE -> State.ACTIVE;
         };
 
@@ -166,6 +165,7 @@ public class MainController implements Initializable, ListObserver {
             case DIALOGBOX:
                 params.add(titleAlertField.getText());
                 params.add(messageAlertField.getText());
+                params.add("");
             case MP3PLAYER:
                 params.add(fileChosen.getText());
         }
@@ -184,7 +184,7 @@ public class MainController implements Initializable, ListObserver {
         List<String> triggerParams = triggerParams(triggerType);
 
         if (actionsList.isEmpty() || triggerType.name().isEmpty() || triggerParams == null) {
-            System.out.println("ddvfjuvregbhw");
+            System.out.println("");
         } else {
             State state = State.valueOf(ruleStateBtn.getText());
 
@@ -194,6 +194,7 @@ public class MainController implements Initializable, ListObserver {
 
             Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
 
+            actionsList.removeAll();
             ruleManager.addRule(rule);
         }
 
@@ -242,7 +243,7 @@ public class MainController implements Initializable, ListObserver {
         actionsTableSummary.refresh();
     }
 
-    public void editRuleAction(ActionEvent actionEvent) {
+    public synchronized void editRuleAction(ActionEvent actionEvent) {
         Rule rule = tableView.getSelectionModel().getSelectedItem();
 
         ruleNameField.setText(rule.getName());
@@ -252,13 +253,10 @@ public class MainController implements Initializable, ListObserver {
 
         triggerSelector.setValue(triggerType);
 
-        switch (triggerType) {
-            case CLOCKTRIGGER:
-                LocalTime time = ((ClockTrigger) trigger).getTime();
-                hourField.setText(String.valueOf(time.getHour()));
-                minuteField.setText(String.valueOf(time.getMinute()));
-            default:
-                System.out.println("error");
+        if (Objects.requireNonNull(triggerType) == TriggerType.CLOCKTRIGGER) {
+            LocalTime time = ((ClockTrigger) trigger).getTime();
+            hourField.setText(String.valueOf(time.getHour()));
+            minuteField.setText(String.valueOf(time.getMinute()));
         }
 
         actionsList.removeAll();
@@ -274,6 +272,7 @@ public class MainController implements Initializable, ListObserver {
         for (Rule rule : rules) {
             ruleManager.removeRule(rule);
         }
+        update();
     }
 
     public void saveRulesToFile(ActionEvent actionEvent) {

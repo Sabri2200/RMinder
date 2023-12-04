@@ -51,6 +51,7 @@ public class RuleManager implements ListSubject {
     @Override
     public void notifyObservers() {
         for (ListObserver listObserver : observers) {
+            System.out.println("notify");
             listObserver.update();
         }
     }

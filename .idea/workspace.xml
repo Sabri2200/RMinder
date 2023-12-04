@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/actionType/AudioActionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/DialogBoxExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/GUIExcecutor/GUIExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/AudioAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/DialogBoxAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/FileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/actionType/FileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
     </list>
     <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +51,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="352884f8-3c63-4cfb-a53b-fbc49f692c14" />
+        <option name="accountId" value="ab506eb6-ad94-49f8-a8ed-b23434395485" />
         <option name="url" value="https://github.com/Sabri2200/RMinder" />
       </UrlAndAccount>
     </option>
@@ -84,34 +78,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/sabri/Downloads/complex-calculator-group-16-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sabri/Downloads/complex-calculator-group-16-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
@@ -138,7 +132,7 @@
       <recent name="gruppo13.seproject.essential.action.actionType" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FileManagerTest">
+  <component name="RunManager" selected="Application.main">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
