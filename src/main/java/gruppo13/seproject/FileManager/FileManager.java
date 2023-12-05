@@ -1,31 +1,46 @@
 package gruppo13.seproject.FileManager;
 
+import gruppo13.seproject.essential.ErrorLog;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.rule.RuleJson;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class FileManager {
+    private ErrorLog errorLog;
+    private FileManager() {
+        errorLog = ErrorLog.getInstance();
+    }
 
-    private static Boolean verifyFile(File file) {
+    private static final class FileManagerInstanceHolder {
+        private static final FileManager fileManagerInstance = new FileManager();
+    }
+
+    public static FileManager getInstance() {
+        return FileManager.FileManagerInstanceHolder.fileManagerInstance;
+    }
+
+
+    private Boolean verifyFile(File file) {
         return file != null && file.exists();
     }
 
-    public static Boolean verifyAudioFile(File file) {
+    public Boolean verifyAudioFile(File file) {
         return file.canRead() && verifyFile(file);
     }
 
-    public static Boolean verifyReadableFile(File file) {
+    public Boolean verifyReadableFile(File file) {
         return verifyFile(file) && file.canRead();
     }
 
-    public static Boolean verifyWrittableFile(File file) {
+    public Boolean verifyWrittableFile(File file) {
         return verifyFile(file) && file.canWrite();
     }
 
-    public static Boolean saveRulesToFile(List<Rule> rules, File file) {
+    public Boolean saveRulesToFile(List<Rule> rules, File file) {
         if (rules != null && !rules.isEmpty()) {
             if (verifyWrittableFile(file)) {
                 try {
@@ -35,7 +50,7 @@ public class FileManager {
                     writer.close();
                     return true;
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    errorLog.addException(e);
                     return false;
                 }
             }
@@ -43,7 +58,7 @@ public class FileManager {
         return false;
     }
 
-    public static List<Rule> loadRulesFromFile(File file) {
+    public List<Rule> loadRulesFromFile(File file) {
         if (verifyReadableFile(file)) {
             StringBuilder jsonBuilder = new StringBuilder();
             try {
@@ -55,7 +70,7 @@ public class FileManager {
                 reader.close();
                 return RuleJson.jsonToRules(jsonBuilder.toString());
             } catch (IOException e) {
-                e.printStackTrace();
+                errorLog.addException(e);
             }
         }
         return null;
@@ -66,4 +81,5 @@ public class FileManager {
                     .filter(f -> f.contains("."))
                     .map(f -> f.substring(file.getName().lastIndexOf(".") + 1));
     }
+
 }

@@ -39,8 +39,6 @@ public class RuleManager implements ListSubject {
         notifyObservers();
     }
 
-    public void editRule(Rule oldRule, Rule newRule) {}
-
     public void setState(Rule rule, State state) {
         rule.setState(state);
 

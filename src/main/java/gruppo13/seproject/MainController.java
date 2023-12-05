@@ -1,8 +1,9 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.Service.BackgroundService.BackgroundService;
+import gruppo13.seproject.Service.BackgroundService;
 import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.Service.GUIRuleList.GUIRuleList;
+import gruppo13.seproject.Service.GUIExcecutor.GUIExecutor;
+import gruppo13.seproject.Service.GUIRuleList;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
@@ -24,6 +25,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -36,6 +38,7 @@ import java.util.*;
 
 public class MainController implements Initializable {
 
+    public MenuItem removeActionBtn;
     @FXML
     private TextField ruleNameField;
     @FXML
@@ -47,6 +50,7 @@ public class MainController implements Initializable {
     private VBox messageActionVBox;
     @FXML
     private TextField titleAlertField;
+    public TextField headerAlertField;
     @FXML
     private TextField messageAlertField;
     @FXML
@@ -96,9 +100,9 @@ public class MainController implements Initializable {
 
     private RuleManager ruleManager;
     private GUIRuleList guiRuleList;
-    private BackgroundService backgroundService;
-
+    private GUIExecutor guiExecutor;
     private Rule editingRule = null;
+    private FileManager fileManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -109,7 +113,11 @@ public class MainController implements Initializable {
         guiRuleList = new GUIRuleList();
         ruleManager.registerObserver(guiRuleList);
 
-        backgroundService = new BackgroundService();
+        guiExecutor = GUIExecutor.getInstance();
+
+        fileManager = FileManager.getInstance();
+
+        BackgroundService backgroundService = new BackgroundService();
         backgroundService.startService();
 
         // prova
@@ -147,12 +155,12 @@ public class MainController implements Initializable {
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
 
         if (Objects.requireNonNull(type) == ActionType.MP3PLAYER) {
-            if (FileManager.verifyAudioFile(file)) {
+            if (fileManager.verifyAudioFile(file)) {
                 fileChosen.setText(file.getAbsolutePath());
             } else {
-                // createDialogBox("Internal Error", "This file is not supported", "Try again");
+                guiExecutor.showAlert("Error in Selecting file", "File unsupported or not found", "Please, try again");
             }
-        }//createDialogBox("Internal Error", "This file is not supported", "Try again");
+        }
     }
 
     public void addActionToRule(ActionEvent actionEvent) {
@@ -162,8 +170,8 @@ public class MainController implements Initializable {
         switch (type) {
             case DIALOGBOX:
                 params.add(titleAlertField.getText());
+                params.add(headerAlertField.getText());
                 params.add(messageAlertField.getText());
-                params.add("");
             case MP3PLAYER:
                 params.add(fileChosen.getText());
         }
@@ -178,25 +186,35 @@ public class MainController implements Initializable {
 
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
-        TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
-        List<String> triggerParams = triggerParams(triggerType);
 
-        if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
-            State state = State.valueOf(ruleStateBtn.getText());
+        try {
 
-            Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
+            TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
+            List<String> triggerParams = triggerParams(triggerType);
 
-            Trigger trigger = TriggerFactory.createTrigger(t);
+            if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
+                State state = State.valueOf(ruleStateBtn.getText());
 
-            Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
+                Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
 
-            if (editingRule != null) {
-                ruleManager.removeRule(editingRule);
-                editingRule = null;
+                Trigger trigger = TriggerFactory.createTrigger(t);
+                if (trigger == null) {
+                    return;
+                }
+
+                Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
+
+                if (editingRule != null) {
+                    ruleManager.removeRule(editingRule);
+                    editingRule = null;
+                }
+
+                ruleManager.addRule(rule);
+                actionsList.removeAll();
             }
 
-            ruleManager.addRule(rule);
-            actionsList.removeAll();
+        }  catch (NumberFormatException e) {
+            guiExecutor.showAlert("Error in getting time", "Time format is not supported", "Please, try again");
         }
 
         resetRule(null);
@@ -209,13 +227,11 @@ public class MainController implements Initializable {
     private List<String> triggerParams(TriggerType type) {
         List<String> params = new ArrayList<>();
 
-        switch (type) {
-            case CLOCKTRIGGER:
+            if (Objects.requireNonNull(type) == TriggerType.CLOCKTRIGGER) {
                 params.add(hourField.getText() + ":" + minuteField.getText());
-                return params;
-            default:
-                return null;
-        }
+            }
+
+        return params;
     }
 
     public void makeRuleSummary(Event event) {
@@ -249,7 +265,7 @@ public class MainController implements Initializable {
         actionsTableSummary.refresh();
     }
 
-    public void editRuleAction(ActionEvent actionEvent) {
+    public void editRuleAction(MouseEvent actionEvent) {
         editingRule = tableView.getSelectionModel().getSelectedItem();
 
         ruleNameField.setText(editingRule.getName());
@@ -264,8 +280,6 @@ public class MainController implements Initializable {
             hourField.setText(String.valueOf(time.getHour()));
             minuteField.setText(String.valueOf(time.getMinute()));
         }
-
-        //actionsList.removeAll();
 
         actionsList.addAll(editingRule.getActions());
 
@@ -283,7 +297,7 @@ public class MainController implements Initializable {
                 }
             }
         } else {
-            // Handle the case where no rules are selected or the selection is invalid
+            guiExecutor.showAlert("Error in removing rules", "No rule was selected", "Please, try again");
         }
     }
 
@@ -294,7 +308,7 @@ public class MainController implements Initializable {
 
         List<Rule> rules = tableView.getSelectionModel().getSelectedItems();
 
-        FileManager.saveRulesToFile(rules, file);
+        fileManager.saveRulesToFile(rules, file);
     }
 
     public void loadRulesFromFile(ActionEvent actionEvent) {
@@ -302,7 +316,7 @@ public class MainController implements Initializable {
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
 
-        for (Rule rule : FileManager.loadRulesFromFile(file)) {
+        for (Rule rule : fileManager.loadRulesFromFile(file)) {
             ruleManager.addRule(rule);
         }
 
@@ -321,7 +335,7 @@ public class MainController implements Initializable {
                 }
             }
         } else {
-            System.out.println("Nessuna regola selezionata");
+            guiExecutor.showAlert("Error in removing rules", "No rule was selected", "Please, try again");
         }
     }
 
@@ -342,7 +356,7 @@ public class MainController implements Initializable {
 
             for (Action action : rule.getActions()) {
                 if (action != null) {
-                    actions.append(action.toString()).append(" - ");
+                    actions.append(action).append(" - ");
                 }
             }
 
@@ -438,22 +452,6 @@ public class MainController implements Initializable {
         saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
     }
-
-    /* private void startRuleService() {
-        Timer timer = new Timer();
-        RulePerformer rulePerformer = new RulePerformer(ruleManager);
-        rulePerformer.registerObserver(new GUIExecutor());
-
-        RuleService task = new RuleService(rulePerformer);
-
-        timer.scheduleAtFixedRate(task, 0, 2000);
-    } */
-
-    /*@Override
-    public void update() {
-        tableView.getItems().setAll(ruleManager.getRules());
-        tableView.refresh();
-    }*/
 
     public void removeAction(ActionEvent actionEvent) {
         Set<Action> actions = new HashSet<>(actionsTable.getSelectionModel().getSelectedItems());

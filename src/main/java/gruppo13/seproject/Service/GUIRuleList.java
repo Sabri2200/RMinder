@@ -1,4 +1,4 @@
-package gruppo13.seproject.Service.GUIRuleList;
+package gruppo13.seproject.Service;
 
 import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
 import gruppo13.seproject.essential.rule.Rule;
@@ -22,7 +22,6 @@ public class GUIRuleList implements ListObserver {
     public void setList() {
         rules.clear();
         rules.setAll(ruleManager.getRules());
-        System.out.println(getList());
     }
 
     @Override

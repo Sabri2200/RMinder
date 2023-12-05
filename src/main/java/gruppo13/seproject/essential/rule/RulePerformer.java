@@ -39,7 +39,7 @@ public class RulePerformer implements ActionPerformer, ActionSubject {
                                 }
                             }
                         ruleManager.setState(rule, State.NOTACTIVE);
-                        };
+                    }
                 }
             }
         }

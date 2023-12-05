@@ -11,20 +11,19 @@ public class RuleSaver extends TimerTask {
     private RuleManager ruleManager;
     private ExecutorService executorService;
     private File file;
+    private FileManager fileManager;
 
     public RuleSaver(File file) {
         this.file = file;
         ruleManager = RuleManager.getInstance();
+        fileManager = FileManager.getInstance();
         this.executorService = Executors.newCachedThreadPool();
     }
 
     @Override
     public void run() {
-        System.out.println("saving");
         executorService.submit(() -> {
-            System.out.println(file.getAbsolutePath());
-            FileManager.saveRulesToFile(ruleManager.getRules(), file);
+            fileManager.saveRulesToFile(ruleManager.getRules(), file);
         });
-        System.out.println("saved");
     }
 }

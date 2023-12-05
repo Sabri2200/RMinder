@@ -17,4 +17,14 @@ public class DialogBoxExecutor {
             alert.showAndWait();
         })).start();
     }
+
+    public static void showAlert(String title, String header, String content) {
+        new Thread(() -> Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(header);
+            alert.setContentText(content);
+            alert.showAndWait();
+        })).start();
+    }
 }

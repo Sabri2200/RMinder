@@ -126,6 +126,7 @@
                                                                         <VBox fx:id="messageActionVBox" alignment="CENTER" prefHeight="200.0" prefWidth="261.0" spacing="20.0" visible="false">
                                                                             <children>
                                                                                 <TextField fx:id="titleAlertField" promptText="title" />
+                                                                                <TextField fx:id="headerAlertField" promptText="header" />
                                                                                 <TextField fx:id="messageAlertField" promptText="message" />
                                                                             </children>
                                                                         </VBox>
