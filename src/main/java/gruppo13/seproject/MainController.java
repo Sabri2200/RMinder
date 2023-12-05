@@ -1,14 +1,14 @@
 package gruppo13.seproject;
 
+import gruppo13.seproject.Service.BackgroundService.BackgroundService;
 import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.GUIExcecutor.GUIExecutor;
+import gruppo13.seproject.Service.GUIRuleList.GUIRuleList;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.type.DialogBoxAction;
+import gruppo13.seproject.essential.action.type.*;
 import gruppo13.seproject.essential.rule.*;
-import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerFactory;
 import gruppo13.seproject.essential.trigger.TriggerType;
@@ -29,21 +29,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.*;
 
-public class MainController implements Initializable, ListObserver {
+public class MainController implements Initializable {
 
     @FXML
     private TextField ruleNameField;
     @FXML
-    private ComboBox triggerSelector;
+    private ComboBox<TriggerType> triggerSelector;
     private HBox clockTriggerHBox;
     @FXML
-    private ComboBox actionSelector;
+    private ComboBox<ActionType> actionSelector;
     @FXML
     private VBox messageActionVBox;
     @FXML
@@ -65,7 +64,7 @@ public class MainController implements Initializable, ListObserver {
     @FXML
     private VBox clockTriggerVBox;
     @FXML
-    private TableView actionsTable;
+    private TableView<Action> actionsTable;
     @FXML
     private TableColumn<Action, String> actionTypeClm;
     @FXML
@@ -79,7 +78,7 @@ public class MainController implements Initializable, ListObserver {
     @FXML
     private Label triggerLbl;
     @FXML
-    private TableView actionsTableSummary;
+    private TableView<Action> actionsTableSummary;
     @FXML
     private MenuItem editBtn;
     @FXML
@@ -94,37 +93,39 @@ public class MainController implements Initializable, ListObserver {
     private TableColumn<Rule, String> stateClm;
 
     private ObservableList<Action> actionsList;
+
     private RuleManager ruleManager;
-    private GUIExecutor guiExecutor;
+    private GUIRuleList guiRuleList;
+    private BackgroundService backgroundService;
+
+    private Rule editingRule = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ruleManager = new RuleManager();
-        ruleManager.registerObserver(this);
-        guiExecutor = new GUIExecutor();
 
-        /*List<Action> actions = new ArrayList<>();
+        // initializing services
+        ruleManager = RuleManager.getInstance();
 
-        //actions.add(new DialogBoxAction("title", "content", "message"));
-        actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
+        guiRuleList = new GUIRuleList();
+        ruleManager.registerObserver(guiRuleList);
+
+        backgroundService = new BackgroundService();
+        backgroundService.startService();
+
+        // prova
+        List<Action> actions = new ArrayList<>();
+
+        actions.add(new DialogBoxAction("dd", "dd", "dde"));
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
-        ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));*/
-
-        /*System.out.println(RuleJson.rulesToJson(ruleManager.getRules()));
-        ruleManager.getRules().addAll(RuleJson.jsonToRules(RuleJson.rulesToJson(ruleManager.getRules())));
-        */
+        ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));
 
         // initializing tableView
-        initilizeTableview();
+        initializeTableview();
 
         // initializing rule Creation Paradigm
         initializeRuleCreationParadigm();
-
-        startRuleService();
     }
-
-
 
     public void ruleStateChange(ActionEvent actionEvent) {
         State oldState = State.valueOf(ruleStateBtn.getText());
@@ -145,16 +146,13 @@ public class MainController implements Initializable, ListObserver {
 
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
 
-        switch (type) {
-            case MP3PLAYER:
-                if (FileManager.verifyAudioFile(file)) {
-                    fileChosen.setText(file.getAbsolutePath());
-                } else {
-                    createDialogBox("Internal Error", "This file is not supported", "Try again");
-                }
-            default:
-                //createDialogBox("Internal Error", "This file is not supported", "Try again");
-        }
+        if (Objects.requireNonNull(type) == ActionType.MP3PLAYER) {
+            if (FileManager.verifyAudioFile(file)) {
+                fileChosen.setText(file.getAbsolutePath());
+            } else {
+                // createDialogBox("Internal Error", "This file is not supported", "Try again");
+            }
+        }//createDialogBox("Internal Error", "This file is not supported", "Try again");
     }
 
     public void addActionToRule(ActionEvent actionEvent) {
@@ -183,9 +181,7 @@ public class MainController implements Initializable, ListObserver {
         TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
         List<String> triggerParams = triggerParams(triggerType);
 
-        if (actionsList.isEmpty() || triggerType.name().isEmpty() || triggerParams == null) {
-            System.out.println("");
-        } else {
+        if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
             State state = State.valueOf(ruleStateBtn.getText());
 
             Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
@@ -194,9 +190,19 @@ public class MainController implements Initializable, ListObserver {
 
             Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
 
-            actionsList.removeAll();
+            if (editingRule != null) {
+                ruleManager.removeRule(editingRule);
+                editingRule = null;
+            }
+
             ruleManager.addRule(rule);
+            actionsList.removeAll();
         }
+
+        resetRule(null);
+
+        actionsTable.refresh();
+        actionsTableSummary.refresh();
 
     }
 
@@ -243,12 +249,12 @@ public class MainController implements Initializable, ListObserver {
         actionsTableSummary.refresh();
     }
 
-    public synchronized void editRuleAction(ActionEvent actionEvent) {
-        Rule rule = tableView.getSelectionModel().getSelectedItem();
+    public void editRuleAction(ActionEvent actionEvent) {
+        editingRule = tableView.getSelectionModel().getSelectedItem();
 
-        ruleNameField.setText(rule.getName());
+        ruleNameField.setText(editingRule.getName());
 
-        Trigger trigger = rule.getTrigger();
+        Trigger trigger = editingRule.getTrigger();
         TriggerType triggerType = trigger.getType();
 
         triggerSelector.setValue(triggerType);
@@ -259,20 +265,26 @@ public class MainController implements Initializable, ListObserver {
             minuteField.setText(String.valueOf(time.getMinute()));
         }
 
-        actionsList.removeAll();
-        actionsList.addAll(rule.getActions());
+        //actionsList.removeAll();
+
+        actionsList.addAll(editingRule.getActions());
 
         actionsTable.refresh();
         actionsTableSummary.refresh();
     }
 
     public void removeRulesAction(ActionEvent actionEvent) {
-        List<Rule> rules = tableView.getSelectionModel().getSelectedItems();
+        List<Rule> rules = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
-        for (Rule rule : rules) {
-            ruleManager.removeRule(rule);
+        if (!rules.isEmpty()) {
+            for (Rule rule : rules) {
+                if (ruleManager.getRules().contains(rule)) {
+                    ruleManager.removeRule(rule);
+                }
+            }
+        } else {
+            // Handle the case where no rules are selected or the selection is invalid
         }
-        update();
     }
 
     public void saveRulesToFile(ActionEvent actionEvent) {
@@ -294,20 +306,26 @@ public class MainController implements Initializable, ListObserver {
             ruleManager.addRule(rule);
         }
 
-        update();
+        //update();
     }
 
     public void turnRule(ActionEvent actionEvent) {
-        List<Rule> rules = tableView.getSelectionModel().getSelectedItems();
+        List<Rule> selectedRules = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
-        for (Rule rule : rules) {
-            State oldState = rule.getState();
-            State newState = oldState.equals(State.ACTIVE) ? State.NOTACTIVE : State.ACTIVE;
-            ruleManager.setState(rule, newState);
+        if (!selectedRules.isEmpty()) {
+            for (Rule rule : selectedRules) {
+                State oldState = rule.getState();
+                State newState = oldState.equals(State.ACTIVE) ? State.NOTACTIVE : State.ACTIVE;
+                if (ruleManager.getRules().contains(rule)) {
+                    ruleManager.setState(rule, newState);
+                }
+            }
+        } else {
+            System.out.println("Nessuna regola selezionata");
         }
     }
 
-    private void initilizeTableview() {
+    private void initializeTableview() {
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(rule.getName());
@@ -336,14 +354,12 @@ public class MainController implements Initializable, ListObserver {
             return new ReadOnlyObjectWrapper<>(rule.getState().name());
         });
 
-        ObservableList<Rule> rules = FXCollections.observableArrayList(ruleManager.getRules());
-
-        tableView.setItems(rules);
+        tableView.setItems(guiRuleList.getList());
 
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         tableView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Rule> change) -> {
-            boolean multipleSelection = tableView.getSelectionModel().getSelectedItems().size() > 1;
+            boolean multipleSelection = !tableView.getSelectionModel().getSelectedItems().isEmpty();
             editBtn.setDisable(multipleSelection);
         });
     }
@@ -423,12 +439,7 @@ public class MainController implements Initializable, ListObserver {
 
     }
 
-    private void createDialogBox(String title, String content, String message) {
-        Action action = new DialogBoxAction(title, content, message);
-        guiExecutor.execute(action);
-    }
-
-    private void startRuleService() {
+    /* private void startRuleService() {
         Timer timer = new Timer();
         RulePerformer rulePerformer = new RulePerformer(ruleManager);
         rulePerformer.registerObserver(new GUIExecutor());
@@ -436,13 +447,13 @@ public class MainController implements Initializable, ListObserver {
         RuleService task = new RuleService(rulePerformer);
 
         timer.scheduleAtFixedRate(task, 0, 2000);
-    }
+    } */
 
-    @Override
+    /*@Override
     public void update() {
         tableView.getItems().setAll(ruleManager.getRules());
         tableView.refresh();
-    }
+    }*/
 
     public void removeAction(ActionEvent actionEvent) {
         Set<Action> actions = new HashSet<>(actionsTable.getSelectionModel().getSelectedItems());

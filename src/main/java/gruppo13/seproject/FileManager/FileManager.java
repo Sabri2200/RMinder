@@ -65,5 +65,5 @@ public class FileManager {
             return Optional.of(file.getName())
                     .filter(f -> f.contains("."))
                     .map(f -> f.substring(file.getName().lastIndexOf(".") + 1));
-        }
+    }
 }

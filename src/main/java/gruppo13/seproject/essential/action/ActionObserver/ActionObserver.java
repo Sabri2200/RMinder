@@ -1,4 +1,6 @@
-package gruppo13.seproject.essential.action;
+package gruppo13.seproject.essential.action.ActionObserver;
+
+import gruppo13.seproject.essential.action.Action;
 
 import java.util.Observer;
 

@@ -1,9 +1,10 @@
-package gruppo13.seproject.GUIExcecutor;
+package gruppo13.seproject.Service.GUIExcecutor;
 
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 
 public class DialogBoxExecutor {
     public static void run(DialogBoxAction a) {
@@ -12,6 +13,7 @@ public class DialogBoxExecutor {
             alert.setTitle(a.getTitle());
             alert.setHeaderText(a.getContent());
             alert.setContentText(a.getMessage());
+            alert.initModality(Modality.NONE);
             alert.showAndWait();
         })).start();
     }

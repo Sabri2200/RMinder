@@ -11,6 +11,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        System.out.println(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setResizable(false);
         stage.setTitle("RMinder!");
@@ -21,6 +22,7 @@ public class MainApplication extends Application {
         stage.show();
 
     }
+
     private void handleWindowClose(Stage stage) {
         System.exit(0);
     }

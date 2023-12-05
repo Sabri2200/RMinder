@@ -1,4 +1,4 @@
-package gruppo13.seproject.GUIExcecutor;
+package gruppo13.seproject.Service.GUIExcecutor;
 
 import gruppo13.seproject.essential.action.exception.ActionException;
 import gruppo13.seproject.essential.action.type.AudioAction;

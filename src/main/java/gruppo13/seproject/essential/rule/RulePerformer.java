@@ -2,28 +2,30 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.*;
+import gruppo13.seproject.essential.action.ActionObserver.ActionObserver;
+import gruppo13.seproject.essential.action.ActionObserver.ActionSubject;
 import gruppo13.seproject.essential.action.exception.ActionException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.RejectedExecutionException;
 
 public class RulePerformer implements ActionPerformer, ActionSubject {
     private RuleManager ruleManager;
     private List<ActionObserver> observers = new ArrayList<>();
 
-    public RulePerformer(RuleManager ruleManager) {
-        this.ruleManager = ruleManager;
+    public RulePerformer() {
+        this.ruleManager = RuleManager.getInstance();
     }
 
     @Override
-    public void execute() throws ActionException {
+    public void execute() {
         List<Rule> rules = ruleManager.getRules();
-        System.out.println("rule");
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
                 if(rule.getState().equals(State.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
-                            ruleManager.setState(rule, State.NOTACTIVE);
                             for (Action a : rule.getActions()) {
                                 try {
                                     if (a.getState().equals(State.ACTIVE)) {
@@ -31,10 +33,12 @@ public class RulePerformer implements ActionPerformer, ActionSubject {
                                         a.execute();
                                         notifyObservers(a);
                                     }
-                                } catch (ActionException e) {
+                                } catch (ActionException | RejectedExecutionException | NullPointerException | IllegalArgumentException |
+                                         CancellationException e) {
                                     notifyErrorObservers(a, e);
                                 }
                             }
+                        ruleManager.setState(rule, State.NOTACTIVE);
                         };
                 }
             }
