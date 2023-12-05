@@ -3,13 +3,11 @@ package gruppo13.seproject.Service;
 import gruppo13.seproject.FileManager.FileManager;
 import gruppo13.seproject.MainApplication;
 import gruppo13.seproject.Service.GUIExcecutor.GUIExecutor;
-import gruppo13.seproject.essential.rule.RuleManager;
-import gruppo13.seproject.essential.rule.RulePerformer;
-import gruppo13.seproject.essential.rule.RuleSaver;
-import gruppo13.seproject.essential.rule.RuleService;
+import gruppo13.seproject.essential.rule.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
 
@@ -52,7 +50,11 @@ public class BackgroundService {
             }
         }
 
-        ruleManager.getRules().addAll(Objects.requireNonNull(fileManager.loadRulesFromFile(file)));
+        List<Rule> rules = fileManager.loadRulesFromFile(file);
+
+        if (rules != null && !rules.isEmpty()) {
+            ruleManager.getRules().addAll(rules);
+        }
 
         RuleSaver ruleSaver = new RuleSaver(file);
         timer.scheduleAtFixedRate(ruleSaver, 0, 30000);

@@ -41,11 +41,11 @@ public class FileManager {
     }
 
     public Boolean saveRulesToFile(List<Rule> rules, File file) {
-        if (rules != null && !rules.isEmpty()) {
+        if (rules != null) {
             if (verifyWrittableFile(file)) {
                 try {
                     String json = RuleJson.rulesToJson(rules);
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                    FileWriter writer = new FileWriter(file);
                     writer.write(json);
                     writer.close();
                     return true;
