@@ -1,9 +1,7 @@
 package gruppo13.seproject.Service.GUIHandler;
 
 import gruppo13.seproject.Service.AlertExecutor;
-import gruppo13.seproject.essential.request_handler.Handler;
-import gruppo13.seproject.essential.request_handler.Request;
-import gruppo13.seproject.essential.request_handler.RequestType;
+import gruppo13.seproject.essential.request_handler.*;
 
 public class ErrorLogManager implements Handler {
 
@@ -31,6 +29,9 @@ public class ErrorLogManager implements Handler {
             execute(request);
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
+        } else {
+            // No handler can handle the request
+            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error: No handler can handle the request")));
         }
     }
 

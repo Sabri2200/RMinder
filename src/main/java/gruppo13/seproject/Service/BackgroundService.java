@@ -5,7 +5,9 @@ import gruppo13.seproject.Service.GUIHandler.ErrorLogManager;
 import gruppo13.seproject.Service.GUIHandler.GUIExecutor;
 import gruppo13.seproject.Service.GUIHandler.GUIRuleList;
 import gruppo13.seproject.essential.request_handler.Handler;
+import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
+import gruppo13.seproject.essential.request_handler.RequestType;
 import gruppo13.seproject.essential.rule.*;
 
 import java.io.File;
@@ -54,6 +56,8 @@ public class BackgroundService {
         RequestPublisher requestPublisher = RequestPublisher.getInstance();
         requestPublisher.setHandlers(handlers);
 
+        //requestPublisher.publishRequest(new Request(RequestType.NEWTYPE, new Exception("ooo")));
+
         /*errorLogManager.setNext(guiExecutor);
         guiExecutor.setNext(guiRuleList);
         guiRuleList.setNext(errorLogManager);*/
@@ -80,7 +84,11 @@ public class BackgroundService {
         List<Rule> rules = fileManager.loadRulesFromFile(file);
 
         if (rules != null && !rules.isEmpty()) {
-            ruleManager.getRules().addAll(rules);
+
+            for (Rule rule : rules) {
+                ruleManager.addRule(rule);
+            }
+
         }
 
         RuleSaver ruleSaver = new RuleSaver(file);
