@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.file_manager;
+package gruppo13.seproject.FileManager;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
@@ -6,26 +6,64 @@ import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
-import gruppo13.seproject.file_manager.FileManager;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
-import java.time.LocalTime;
-import java.util.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class FileManagerTest {
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class FileManagerTest {
 
     private File tempFile;
+    private FileManager fileManager;
 
     @BeforeEach
     void setUp() throws IOException {
-        // Crea un file temporaneo per i test
         tempFile = File.createTempFile("test", ".json");
+        fileManager = FileManager.getInstance();
     }
 
     @AfterEach
     void tearDown() {
         tempFile.delete();
+    }
+
+    @Test
+    void verifyFile() {
+        assertTrue(tempFile != null && tempFile.exists());
+    }
+
+    @Test
+    void verifyAudioFile() {
+        assertTrue(tempFile.canRead());
+    }
+
+    @Test
+    void verifyReadableFile() {
+        assertTrue(tempFile.canRead());
+    }
+
+    @Test
+    void verifyWrittableFile() {
+        assertTrue(tempFile.canWrite());
+    }
+
+    @Test
+    void saveRulesToFile() throws IOException {
+        testSaveRulesToFile();
+    }
+
+    @Test
+    void loadRulesFromFile() throws IOException {
+        testLoadRulesFromFileBasic();
     }
 
     @Test
@@ -39,7 +77,7 @@ public class FileManagerTest {
         rules.add(new Rule("name1", actions, trigger, State.ACTIVE));
         rules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
 
-        FileManager.getInstance().saveRulesToFile(rules, tempFile);
+        fileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file non sia vuoto
         assertTrue(tempFile.length() > 0);
@@ -61,7 +99,7 @@ public class FileManagerTest {
     void testSaveRulesToFileWithEmptyList() throws IOException {
         List<Rule> rules = new ArrayList<>();
 
-        FileManager.getInstance().saveRulesToFile(rules, tempFile);
+        fileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file sia vuoto o contenga il contenuto atteso per una lista vuota
         assertEquals(0, tempFile.length());
@@ -69,7 +107,7 @@ public class FileManagerTest {
 
     @Test
     void testSaveRulesToFileWithNullList() {
-        assertDoesNotThrow(() -> FileManager.getInstance().saveRulesToFile(null, tempFile));
+        assertDoesNotThrow(() -> fileManager.saveRulesToFile(null, tempFile));
     }
 
     @Test
@@ -81,7 +119,7 @@ public class FileManagerTest {
         // Rende il file di sola lettura per indurre un'eccezione
         assertTrue(tempFile.setReadOnly());
 
-        assertThrows(Exception.class, () -> FileManager.getInstance().saveRulesToFile(rules, tempFile));
+        assertThrows(Exception.class, () -> fileManager.saveRulesToFile(rules, tempFile));
     }
 
     @Test
@@ -92,7 +130,7 @@ public class FileManagerTest {
         // Azione: carica le regole dal file
         List<Rule> loadedRules = new ArrayList<>();
 
-        for (Rule rule : FileManager.getInstance().loadRulesFromFile(tempFile)) {
+        for (Rule rule : fileManager.loadRulesFromFile(tempFile)) {
             loadedRules.add(rule);
         }
 
@@ -121,7 +159,7 @@ public class FileManagerTest {
     @Test
     void testLoadRulesFromFileEmpty() throws IOException {
         // Azione: carica le regole dal file vuoto
-        List<Rule> loadedRules = FileManager.getInstance().loadRulesFromFile(tempFile);
+        List<Rule> loadedRules = fileManager.loadRulesFromFile(tempFile);
 
         // Verifica: aspettati una lista vuota o un comportamento specifico
         assertTrue(loadedRules == null);
@@ -133,12 +171,9 @@ public class FileManagerTest {
         File malformedFile = File.createTempFile("test", ".tx");
 
         // Azione e Verifica: aspettati un'eccezione o un comportamento specifico
-        assertThrows(IOException.class, () -> FileManager.getInstance().loadRulesFromFile(malformedFile));
+        assertThrows(IOException.class, () -> fileManager.loadRulesFromFile(malformedFile));
 
         // Pulizia: elimina il file di test
         malformedFile.delete();
     }
-
-
-
 }

@@ -1,39 +1,47 @@
 package gruppo13.seproject.essential.action;
 
-import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ActionFactoryTest {
+class ActionFactoryTest {
+    private Map.Entry<ActionType, List<String>> action;
+
+    @BeforeEach
+    void setUp() {
+        List<String> params = new ArrayList<>();
+        params.add("title");
+        params.add("header");
+        params.add("message");
+
+        action = Map.entry(ActionType.DIALOGBOX, params);
+    }
 
     @Test
     void createAction() {
-        // Create a sample map entry for DialogBox action
-        Map.Entry<ActionType, List<String>> dialogBoxEntry = Map.entry(
-                ActionType.DIALOGBOX,
-                List.of("Title", "Content", "Message")
-        );
+        Action action1 = new DialogBoxAction("title", "header", "message");
 
-        // Create a sample map entry for Audio action
-        Map.Entry<ActionType, List<String>> audioActionEntry = Map.entry(
-                ActionType.MP3PLAYER,
-                List.of("path/to/audio/file.mp3")
-        );
-
-        // Test creating DialogBoxAction
-        Action dialogBoxAction = ActionFactory.createAction(dialogBoxEntry);
-        assertTrue(dialogBoxAction instanceof DialogBoxAction);
-        assertEquals("DIALOGBOX Title Content Message", dialogBoxAction.toString());
-
-        // Test creating AudioAction
-        Action audioAction = ActionFactory.createAction(audioActionEntry);
-        assertTrue(audioAction instanceof AudioAction);
-        assertEquals("MP3PLAYER path/to/audio/file.mp3", audioAction.toString());
+        assertEquals(ActionFactory.createAction(action).toString(), action1.toString());
     }
+
+    @Test
+    void createNullAction() {
+        assertNull(ActionFactory.createAction(null));
+    }
+
+    @Test
+    void createWrongParametersAction() {
+        List<String> params = new ArrayList<>();
+        params.add("title");
+
+        action = Map.entry(ActionType.DIALOGBOX, params);
+        assertNull(ActionFactory.createAction(action));
+    }
+
 }

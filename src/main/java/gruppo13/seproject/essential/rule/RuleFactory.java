@@ -8,6 +8,11 @@ import java.util.List;
 
 public class RuleFactory {
     public static Rule createRule(String name, List<Action> actions, Trigger trigger, State state) {
-        return new Rule(name, actions, trigger, state);
+        if (name != null || actions != null || trigger != null || state != null) {
+            if (!actions.isEmpty()) {
+                return new Rule(name, actions, trigger, state);
+            }
+        }
+        return null;
     }
 }

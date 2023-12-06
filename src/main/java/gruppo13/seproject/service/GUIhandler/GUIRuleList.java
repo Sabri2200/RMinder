@@ -1,8 +1,6 @@
 package gruppo13.seproject.service.GUIhandler;
 
-import gruppo13.seproject.essential.request_handler.Handler;
-import gruppo13.seproject.essential.request_handler.Request;
-import gruppo13.seproject.essential.request_handler.RequestType;
+import gruppo13.seproject.essential.request_handler.*;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.rule.RuleManager;
 import javafx.collections.FXCollections;
@@ -46,11 +44,13 @@ public class GUIRuleList implements Handler {
             setList();
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
+        } else {
+            // No handler can handle the request
+            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error: No handler can handle the request")));
         }
     }
 
     private boolean canHandleRequest(Request request) {
-        System.out.println("RequestType.LISTUPDATE");
         return request.getType().equals(RequestType.LISTUPDATE);
     }
 

@@ -42,7 +42,7 @@ public class FileManager {
     }
 
     public Boolean saveRulesToFile(List<Rule> rules, File file) {
-        if (rules != null) {
+        if (rules != null && !rules.isEmpty()) {
             if (verifyWrittableFile(file)) {
                 try {
                     String json = RuleJson.rulesToJson(rules);

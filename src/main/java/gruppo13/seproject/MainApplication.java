@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 public class MainApplication extends Application {
     @Override
@@ -15,6 +14,7 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setResizable(false);
+        stage.setTitle("RMinder");
         stage.setScene(scene);
 
         stage.setOnCloseRequest(event -> handleWindowClose(stage));

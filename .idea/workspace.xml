@@ -4,46 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing">
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleTest.java" afterDir="false" />
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/file_manager/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/AlertExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/AlertExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/BackgroundService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/BackgroundService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/ErrorLogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/ErrorLogManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/GUIExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/GUIRuleList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/GUIRuleList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/exception/ActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/exception/ActionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestSwitcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/rminder/RMinderTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/rminder/controller/RMinderControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/rminder/model/AudioActionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/rminder/model/MessageActionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/AudioActionTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/Action/MessageActionTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/ClockTriggerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/file_manager/FileManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManagerTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/MainTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/RuleJson.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/RuleTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/AudioActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/AudioActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/AudioActionTest.java" beforeDir="false" />
     </list>
-    <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
+    <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli">
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestPublisher.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,8 +36,8 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="package.json" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -109,35 +90,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -156,20 +137,18 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="gruppo13.seproject.essential.rule" />
-      <recent name="gruppo13.seproject.essential.action.type" />
-      <recent name="gruppo13.seproject.FileManager" />
       <recent name="gruppo13.seproject" />
       <recent name="com.example.rminder" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="gruppo13.seproject.service.GUIhandler" />
       <recent name="gruppo13.seproject.essential.rule" />
+      <recent name="gruppo13.seproject.essential.action" />
+      <recent name="gruppo13.seproject.essential.trigger" />
       <recent name="gruppo13.seproject.FileManager" />
       <recent name="gruppo13.seproject.essential.action.actionType" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ErrorLogManagerTest.testExecuteWithExceptionRequest">
+  <component name="RunManager" selected="JUnit.RuleFactoryTest.createEmptyActionsRule">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -179,79 +158,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ErrorLogManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ActionFactoryTest.createNonExistentTypeFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.service.GUIhandler.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.service.GUIhandler" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.service.GUIhandler.ErrorLogManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ErrorLogManagerTest.testExecuteWithExceptionRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.service.GUIhandler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.service.GUIhandler" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.service.GUIhandler.ErrorLogManagerTest" />
-      <option name="METHOD_NAME" value="testExecuteWithExceptionRequest" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.ActionFactoryTest" />
+      <option name="METHOD_NAME" value="createNonExistentTypeFormat" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ActionFactoryTest.createWrongParametersAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.file_manager.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.FileManager" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.fileManager.FileManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileManagerTest.saveRulesToFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.file_manager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.FileManager" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.fileManager.FileManagerTest" />
-      <option name="METHOD_NAME" value="saveRulesToFile" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.ActionFactoryTest" />
+      <option name="METHOD_NAME" value="createWrongParametersAction" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileManagerTest.verifyWrittableFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RuleFactoryTest.createEmptyActionsRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.file_manager.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.FileManager" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.fileManager.FileManagerTest" />
-      <option name="METHOD_NAME" value="verifyWrittableFile" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
+      <option name="METHOD_NAME" value="createEmptyActionsRule" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RuleFactoryTest.createNullRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
+      <option name="METHOD_NAME" value="createNullRule" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RuleFactoryTest.createRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
+      <option name="METHOD_NAME" value="createRule" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -259,19 +240,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="JUnit.ErrorLogManagerTest" />
-      <item itemvalue="JUnit.ErrorLogManagerTest.testExecuteWithExceptionRequest" />
-      <item itemvalue="JUnit.FileManagerTest" />
-      <item itemvalue="JUnit.FileManagerTest.saveRulesToFile" />
-      <item itemvalue="JUnit.FileManagerTest.verifyWrittableFile" />
+      <item itemvalue="JUnit.ActionFactoryTest.createNonExistentTypeFormat" />
+      <item itemvalue="JUnit.ActionFactoryTest.createWrongParametersAction" />
+      <item itemvalue="JUnit.RuleFactoryTest.createEmptyActionsRule" />
+      <item itemvalue="JUnit.RuleFactoryTest.createNullRule" />
+      <item itemvalue="JUnit.RuleFactoryTest.createRule" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ErrorLogManagerTest.testExecuteWithExceptionRequest" />
-        <item itemvalue="JUnit.ErrorLogManagerTest" />
-        <item itemvalue="JUnit.FileManagerTest" />
-        <item itemvalue="JUnit.FileManagerTest.saveRulesToFile" />
-        <item itemvalue="JUnit.FileManagerTest.verifyWrittableFile" />
+        <item itemvalue="JUnit.RuleFactoryTest.createEmptyActionsRule" />
+        <item itemvalue="JUnit.RuleFactoryTest.createNullRule" />
+        <item itemvalue="JUnit.RuleFactoryTest.createRule" />
+        <item itemvalue="JUnit.ActionFactoryTest.createWrongParametersAction" />
+        <item itemvalue="JUnit.ActionFactoryTest.createNonExistentTypeFormat" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +277,7 @@
       <workItem from="1701682880312" duration="59000" />
       <workItem from="1701682965643" duration="32446000" />
       <workItem from="1701800884094" duration="6616000" />
-      <workItem from="1701881539386" duration="1935000" />
+      <workItem from="1701853193758" duration="10822000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -666,7 +647,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701792769399</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="adding chain of responsability pattern">
+      <option name="closed" value="true" />
+      <created>1701854352209</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1701854352209</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fixing issues on FileManager and Request handler">
+      <option name="closed" value="true" />
+      <created>1701858592821</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1701858592821</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701859095797</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1701859095797</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,10 +719,12 @@
     <MESSAGE value="Creating tests for MessageAction and FileManager" />
     <MESSAGE value="Editing views" />
     <MESSAGE value="Changes by michelecoscarelli" />
-    <MESSAGE value="fixing issues" />
     <MESSAGE value="adding an exceptions stack manager" />
     <MESSAGE value="adding rule saver every 30 secs" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding rule saver every 30 secs" />
+    <MESSAGE value="adding chain of responsability pattern" />
+    <MESSAGE value="fixing issues on FileManager and Request handler" />
+    <MESSAGE value="fixing issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

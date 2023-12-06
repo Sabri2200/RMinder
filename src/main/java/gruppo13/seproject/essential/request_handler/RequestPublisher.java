@@ -6,7 +6,7 @@ public class RequestPublisher {
     private RequestSwitcher requestSwitcher;
 
     public RequestPublisher() {
-        this.requestSwitcher = new RequestSwitcher();
+        this.requestSwitcher = RequestSwitcher.getInstance();
     }
 
     private static final class RequestCollectionInstanceHolder {
@@ -22,14 +22,15 @@ public class RequestPublisher {
     }
 
     public void setHandlers(List<Handler> handlers) {
-        requestSwitcher.setNext(handlers.get(0));
+        if (!handlers.isEmpty()) {
+            requestSwitcher.setNext(handlers.get(0));
 
-        for (int i = 0; i<handlers.size()-1;i++) {
-            handlers.get(i).setNext(handlers.get(i + 1));
+            for (int i = 0; i < handlers.size() - 1; i++) {
+                handlers.get(i).setNext(handlers.get(i + 1));
+            }
+
+            handlers.get(handlers.size() - 1).setNext(null);
         }
-
-        handlers.get(handlers.size()-1).setNext(requestSwitcher);
-        // gestire quando nessun handler può gestire la richiesta.
     }
 
 }

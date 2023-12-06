@@ -26,7 +26,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -40,6 +39,7 @@ import java.util.*;
 public class MainController implements Initializable {
 
     public MenuItem removeActionBtn;
+    public Button addActionBtn;
     @FXML
     private TextField ruleNameField;
     @FXML
@@ -252,7 +252,7 @@ public class MainController implements Initializable {
         actionsTableSummary.refresh();
     }
 
-    public void editRuleAction(MouseEvent actionEvent) {
+    public void editRuleAction(ActionEvent actionEvent) {
         editingRule = tableView.getSelectionModel().getSelectedItem();
 
         ruleNameField.setText(editingRule.getName());
@@ -360,9 +360,11 @@ public class MainController implements Initializable {
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         tableView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Rule> change) -> {
-            boolean multipleSelection = !tableView.getSelectionModel().getSelectedItems().isEmpty();
-            editBtn.setDisable(multipleSelection);
+            int selectedCount = tableView.getSelectionModel().getSelectedItems().size();
+            boolean disableButton = selectedCount != 1;
+            editBtn.setDisable(disableButton);
         });
+
     }
 
     private void initializeRuleCreationParadigm() {

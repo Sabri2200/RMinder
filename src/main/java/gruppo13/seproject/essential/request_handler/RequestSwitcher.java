@@ -21,6 +21,12 @@ public class RequestSwitcher implements Handler {
 
     @Override
     public void handleRequest(Request request) {
-        nextHandler.handleRequest(request);
+        if (nextHandler != null) {
+            nextHandler.handleRequest(request);
+        } else {
+            // No handler can handle the request
+            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error: No handler can handle the request")));
+        }
     }
+
 }
