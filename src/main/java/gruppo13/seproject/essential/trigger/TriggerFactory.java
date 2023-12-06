@@ -20,7 +20,7 @@ public class TriggerFactory {
         }
     }
 
-    private static ClockTrigger createClockTrigger(List<String> params) {
+    protected static ClockTrigger createClockTrigger(List<String> params) {
         String[] t = params.get(0).split(":");
 
         try {

@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.FileManager.FileManager;
+import gruppo13.seproject.file_manager.FileManager;
 
 import java.io.File;
 import java.util.TimerTask;
@@ -8,8 +8,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class RuleSaver extends TimerTask {
-    private RuleManager ruleManager;
-    private ExecutorService executorService;
+    protected RuleManager ruleManager;
+    protected ExecutorService executorService;
     private File file;
     private FileManager fileManager;
 

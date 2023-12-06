@@ -5,3 +5,4 @@ public abstract class ActionException extends Exception {
         super(message);
     }
 }
+

@@ -12,6 +12,8 @@ public class ActionFactory {
         return switch (action.getKey()) {
             case DIALOGBOX -> createDialogBoxAction(action.getValue());
             case MP3PLAYER -> createAudioAction(action.getValue());
+            //for testing
+            case INVALID_TYPE -> null;
         };
     }
 

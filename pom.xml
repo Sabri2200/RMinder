@@ -21,6 +21,12 @@
       <version>0.3.7-2</version>
     </dependency>
     <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit5</artifactId>
+      <version>4.0.16-alpha</version> <!-- Use the latest version that supports JUnit 5 -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.googlecode.soundlibs</groupId>
       <artifactId>mp3spi</artifactId>
       <version>1.9.5-1</version>

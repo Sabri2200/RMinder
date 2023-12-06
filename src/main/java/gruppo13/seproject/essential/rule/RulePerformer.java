@@ -15,9 +15,14 @@ public class RulePerformer implements ActionPerformer {
     private RuleManager ruleManager;
     private RequestPublisher requestPublisher;
 
-    private RulePerformer() {
+    public RulePerformer() {
         this.ruleManager = RuleManager.getInstance();
         this.requestPublisher = RequestPublisher.getInstance();
+    }
+    // Concrete constructor for testing purposes
+    public RulePerformer(RuleManager ruleManager, RequestPublisher requestPublisher) {
+        this.ruleManager = ruleManager;
+        this.requestPublisher = requestPublisher;
     }
 
     private static final class RulePerformerInstanceHolder {

@@ -55,7 +55,7 @@ public class RuleJson {
         return null;
     }
 
-    private static Rule jsonToRule(JSONObject jsonRule) {
+    public static Rule jsonToRule(JSONObject jsonRule) {
         String name = jsonRule.getString("name");
 
         List<String> triggerParams = new ArrayList<>(List.of(jsonRule.getString("trigger").split(" ")));

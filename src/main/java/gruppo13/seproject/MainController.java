@@ -1,8 +1,8 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.Service.BackgroundService;
-import gruppo13.seproject.Service.GUIHandler.GUIRuleList;
+import gruppo13.seproject.file_manager.FileManager;
+import gruppo13.seproject.service.BackgroundService;
+import gruppo13.seproject.service.GUIhandler.GUIRuleList;
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.State;

@@ -1,5 +1,6 @@
 package gruppo13.seproject.essential.request_handler;
 
+// TODO: 06/12/2023 : TEST when is done
 public class RequestSwitcher implements Handler {
     private Handler nextHandler;
 

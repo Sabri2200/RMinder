@@ -5,8 +5,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class RuleService extends TimerTask {
-    private ExecutorService executorService;
-    private RulePerformer rulePerformer;
+    protected ExecutorService executorService;
+    protected RulePerformer rulePerformer;
 
     public RuleService() {
         this.rulePerformer = RulePerformer.getInstance();

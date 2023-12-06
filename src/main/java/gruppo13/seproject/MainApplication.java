@@ -7,14 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("/Users/michelecoscarelli/Desktop/IdeaProjects/SE-project/src/main/resources/gruppo13/seproject/main-view.fxml").toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setResizable(false);
-        stage.setTitle("RMinder!");
         stage.setScene(scene);
 
         stage.setOnCloseRequest(event -> handleWindowClose(stage));

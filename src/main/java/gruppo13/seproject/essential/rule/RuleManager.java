@@ -49,4 +49,7 @@ public class RuleManager {
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
+    public void setRequestPublisher(RequestPublisher requestPublisher) {
+        this.requestPublisher = requestPublisher;
+    }
 }
