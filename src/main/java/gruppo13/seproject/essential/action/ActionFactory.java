@@ -23,6 +23,8 @@ public class ActionFactory {
             return typeMatcher ? switch (action.getKey()) {
                 case DIALOGBOX -> createDialogBoxAction(action.getValue());
                 case MP3PLAYER -> createAudioAction(action.getValue());
+                // for testing
+                case INVALID_TYPE -> null;
             } : null;
         }
         RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));

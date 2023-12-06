@@ -1,4 +1,4 @@
-package gruppo13.seproject.FileManager;
+package gruppo13.seproject.essential.FileManager;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;

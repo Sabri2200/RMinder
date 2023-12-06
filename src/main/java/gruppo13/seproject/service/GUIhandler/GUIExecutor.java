@@ -1,6 +1,6 @@
-package gruppo13.seproject.Service.GUIHandler;
+package gruppo13.seproject.service.GUIhandler;
 
-import gruppo13.seproject.Service.AlertExecutor;
+import gruppo13.seproject.service.AlertExecutor;
 import gruppo13.seproject.essential.request_handler.*;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionType;
