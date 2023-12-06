@@ -1,14 +1,17 @@
 package gruppo13.seproject.Service;
 
 import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.MainApplication;
-import gruppo13.seproject.Service.GUIExcecutor.GUIExecutor;
+import gruppo13.seproject.Service.GUIHandler.ErrorLogManager;
+import gruppo13.seproject.Service.GUIHandler.GUIExecutor;
+import gruppo13.seproject.Service.GUIHandler.GUIRuleList;
+import gruppo13.seproject.essential.request_handler.Handler;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.rule.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Timer;
 
 public class BackgroundService {
@@ -26,20 +29,44 @@ public class BackgroundService {
         Timer timer = new Timer();
 
         // Exception Handler
-        ErrorLogManager errorLogManager = new ErrorLogManager();
+        ErrorLogManager errorLogManager = ErrorLogManager.getInstance();
 
-        timer.scheduleAtFixedRate(errorLogManager, 0, 5000);
+        // Action Handler
+        GUIExecutor guiExecutor = GUIExecutor.getInstance();
+
+        // List Updater
+        GUIRuleList guiRuleList = GUIRuleList.getInstance();
+
+        //ruleManager.registerObserver(guiRuleList);
 
         // Rules Checker
-        RulePerformer rulePerformer = new RulePerformer();
-        rulePerformer.registerObserver(GUIExecutor.getInstance());
+        RulePerformer rulePerformer = RulePerformer.getInstance();
 
-        RuleService ruleService = new RuleService(rulePerformer);
+        //rulePerformer.registerObserver(guiExecutor);
+        //rulePerformer.registerObserver(errorLogManager);
+
+        List<Handler> handlers = new ArrayList<>();
+
+        handlers.add(errorLogManager);
+        handlers.add(guiExecutor);
+        handlers.add(guiRuleList);
+
+        RequestPublisher requestPublisher = RequestPublisher.getInstance();
+        requestPublisher.setHandlers(handlers);
+
+        /*errorLogManager.setNext(guiExecutor);
+        guiExecutor.setNext(guiRuleList);
+        guiRuleList.setNext(errorLogManager);*/
+
+
+        // Rules Checker every 2 sseconds
+        RuleService ruleService = new RuleService();
 
         timer.scheduleAtFixedRate(ruleService, 0, 2000);
 
         // Rule Saver
         FileManager fileManager = FileManager.getInstance();
+        //fileManager.registerObserver(errorLogManager);
 
         File file = new File("rules.json");
         if (!file.exists()) {

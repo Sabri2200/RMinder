@@ -5,13 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
-        System.out.println(MainApplication.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("/Users/michelecoscarelli/Desktop/IdeaProjects/SE-project/src/main/resources/gruppo13/seproject/main-view.fxml").toURL());
         Scene scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setResizable(false);
         stage.setTitle("RMinder!");

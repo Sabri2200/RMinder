@@ -1,14 +1,14 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.Service.BackgroundService;
 import gruppo13.seproject.FileManager.FileManager;
-import gruppo13.seproject.Service.GUIExcecutor.GUIExecutor;
-import gruppo13.seproject.Service.GUIRuleList;
+import gruppo13.seproject.Service.BackgroundService;
+import gruppo13.seproject.Service.GUIHandler.GUIRuleList;
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.type.*;
 import gruppo13.seproject.essential.rule.*;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.TriggerFactory;
@@ -17,8 +17,9 @@ import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
-import javafx.collections.ListChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -99,10 +100,10 @@ public class MainController implements Initializable {
     private ObservableList<Action> actionsList;
 
     private RuleManager ruleManager;
-    private GUIRuleList guiRuleList;
-    private GUIExecutor guiExecutor;
     private Rule editingRule = null;
     private FileManager fileManager;
+    private GUIRuleList guiRuleList;
+    private RequestPublisher requestPublisher;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,23 +111,14 @@ public class MainController implements Initializable {
         // initializing services
         ruleManager = RuleManager.getInstance();
 
-        guiRuleList = new GUIRuleList();
-        ruleManager.registerObserver(guiRuleList);
-
-        guiExecutor = GUIExecutor.getInstance();
-
         fileManager = FileManager.getInstance();
+
+        guiRuleList = GUIRuleList.getInstance();
+
+        requestPublisher = RequestPublisher.getInstance();
 
         BackgroundService backgroundService = new BackgroundService();
         backgroundService.startService();
-
-        // prova
-        List<Action> actions = new ArrayList<>();
-
-        actions.add(new DialogBoxAction("dd", "dd", "dde"));
-        Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
-
-        ruleManager.addRule(new Rule("name", actions, trigger, State.ACTIVE));
 
         // initializing tableView
         initializeTableview();
@@ -154,11 +146,11 @@ public class MainController implements Initializable {
 
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
 
-        if (Objects.requireNonNull(type) == ActionType.MP3PLAYER) {
+        if (type.equals(ActionType.MP3PLAYER)) {
             if (fileManager.verifyAudioFile(file)) {
                 fileChosen.setText(file.getAbsolutePath());
             } else {
-                guiExecutor.showAlert("Error in Selecting file", "File unsupported or not found", "Please, try again");
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
             }
         }
     }
@@ -187,7 +179,6 @@ public class MainController implements Initializable {
     public void saveRule(ActionEvent actionEvent) {
         String ruleName = ruleNameField.getText();
 
-        try {
 
             TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
             List<String> triggerParams = triggerParams(triggerType);
@@ -212,10 +203,6 @@ public class MainController implements Initializable {
                 ruleManager.addRule(rule);
                 actionsList.removeAll();
             }
-
-        }  catch (NumberFormatException e) {
-            guiExecutor.showAlert("Error in getting time", "Time format is not supported", "Please, try again");
-        }
 
         resetRule(null);
 
@@ -297,7 +284,7 @@ public class MainController implements Initializable {
                 }
             }
         } else {
-            guiExecutor.showAlert("Error in removing rules", "No rule was selected", "Please, try again");
+            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in removing rules. No rule was selected. Please, try again")));
         }
     }
 
@@ -335,7 +322,7 @@ public class MainController implements Initializable {
                 }
             }
         } else {
-            guiExecutor.showAlert("Error in removing rules", "No rule was selected", "Please, try again");
+            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in removing rules. No rule was selected. Please, try again")));
         }
     }
 
@@ -412,6 +399,24 @@ public class MainController implements Initializable {
                 }
             }
         };
+
+        hourField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) { // Usa un'espressione regolare per controllare se il nuovo valore è numerico
+                    hourField.setText(newValue.replaceAll("[^\\d]", "")); // Sostituisci tutto ciò che non è un numero con una stringa vuota
+                }
+            }
+        });
+
+        minuteField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) { // Usa un'espressione regolare per controllare se il nuovo valore è numerico
+                    minuteField.setText(newValue.replaceAll("[^\\d]", "")); // Sostituisci tutto ciò che non è un numero con una stringa vuota
+                }
+            }
+        });
 
         actionSelector.valueProperty().addListener(selectActionChangeListener);
 

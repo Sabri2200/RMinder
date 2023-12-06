@@ -1,12 +1,11 @@
-package gruppo13.seproject.Service.GUIExcecutor;
+package gruppo13.seproject.Service;
 
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 
-public class DialogBoxExecutor {
+public class AlertExecutor {
     public static void run(DialogBoxAction a) {
         new Thread(() -> Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -26,5 +25,20 @@ public class DialogBoxExecutor {
             alert.setContentText(content);
             alert.showAndWait();
         })).start();
+    }
+
+    public static void showErrorAlert(Exception e) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText("An error occurred");
+            alert.setContentText(e.getMessage());
+            alert.initModality(Modality.NONE);
+            alert.showAndWait();
+        });
+
+        if (e.getClass().equals(InterruptedException.class)) {
+            Platform.exit();
+        }
     }
 }

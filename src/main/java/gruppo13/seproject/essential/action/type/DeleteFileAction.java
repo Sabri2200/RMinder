@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class DeleteFileAction extends FileAction{
+public class DeleteFileAction extends FileAction {
 
     public DeleteFileAction(String filePath) {
         super(filePath);

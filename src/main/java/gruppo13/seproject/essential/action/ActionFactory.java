@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.action;
 
-import gruppo13.seproject.essential.ErrorLog;
 import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 

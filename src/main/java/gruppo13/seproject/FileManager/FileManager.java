@@ -1,18 +1,19 @@
 package gruppo13.seproject.FileManager;
 
-import gruppo13.seproject.essential.ErrorLog;
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.rule.RuleJson;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class FileManager {
-    private ErrorLog errorLog;
+    private RequestPublisher requestPublisher;
+
     private FileManager() {
-        errorLog = ErrorLog.getInstance();
+        this.requestPublisher = RequestPublisher.getInstance();
     }
 
     private static final class FileManagerInstanceHolder {
@@ -20,7 +21,7 @@ public class FileManager {
     }
 
     public static FileManager getInstance() {
-        return FileManager.FileManagerInstanceHolder.fileManagerInstance;
+        return FileManagerInstanceHolder.fileManagerInstance;
     }
 
 
@@ -29,7 +30,7 @@ public class FileManager {
     }
 
     public Boolean verifyAudioFile(File file) {
-        return file.canRead() && verifyFile(file);
+        return verifyFile(file) && getExtension(file).equals("mp3") && file.canRead();
     }
 
     public Boolean verifyReadableFile(File file) {
@@ -50,7 +51,7 @@ public class FileManager {
                     writer.close();
                     return true;
                 } catch (IOException e) {
-                    errorLog.addException(e);
+                    requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
                     return false;
                 }
             }
@@ -70,7 +71,7 @@ public class FileManager {
                 reader.close();
                 return RuleJson.jsonToRules(jsonBuilder.toString());
             } catch (IOException e) {
-                errorLog.addException(e);
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
             }
         }
         return null;

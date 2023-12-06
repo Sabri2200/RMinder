@@ -1,20 +1,20 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.rule.ListObserver.ListObserver;
-import gruppo13.seproject.essential.rule.ListObserver.ListSubject;
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.action.Action;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleManager implements ListSubject {
+public class RuleManager {
     private List<Rule> rules;
-    private List<ListObserver> observers;
+    private RequestPublisher requestPublisher;
 
     private RuleManager() {
         rules = new ArrayList<>();
-        observers = new ArrayList<>();
+        this.requestPublisher = RequestPublisher.getInstance();
     }
 
     private static final class RuleManagerInstanceHolder {
@@ -31,12 +31,12 @@ public class RuleManager implements ListSubject {
 
     public void addRule(Rule rule) {
         rules.add(rule);
-        notifyObservers();
+        requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
     public void removeRule(Rule rule) {
         rules.remove(rule);
-        notifyObservers();
+        requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
     public void setState(Rule rule, State state) {
@@ -46,24 +46,7 @@ public class RuleManager implements ListSubject {
             a.setState(state);
         }
 
-        notifyObservers();
-    }
-
-    @Override
-    public void registerObserver(ListObserver o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(ListObserver o) {
-        observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (ListObserver listObserver : observers) {
-            listObserver.update();
-        }
+        requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
 }
