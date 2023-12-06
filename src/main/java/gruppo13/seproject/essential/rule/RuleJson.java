@@ -1,10 +1,5 @@
 package gruppo13.seproject.essential.rule;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
@@ -14,6 +9,10 @@ import gruppo13.seproject.essential.trigger.TriggerFactory;
 import gruppo13.seproject.essential.trigger.TriggerType;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class RuleJson {
 
@@ -60,10 +59,6 @@ public class RuleJson {
         String name = jsonRule.getString("name");
 
         List<String> triggerParams = new ArrayList<>(List.of(jsonRule.getString("trigger").split(" ")));
-
-        for (String s : triggerParams) {
-            System.out.println(s);
-        }
 
         TriggerType triggerType = TriggerType.valueOf(triggerParams.get(0));
         triggerParams.remove(0);

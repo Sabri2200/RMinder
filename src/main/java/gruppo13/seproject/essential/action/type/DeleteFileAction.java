@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class DeleteFileAction extends FileAction{
+public class DeleteFileAction extends FileAction {
 
     public DeleteFileAction(String filePath) {
         super(filePath);
@@ -25,7 +25,7 @@ public class DeleteFileAction extends FileAction{
     }
     @Override
     public ActionType getType() {
-        return ActionType.DELETEFILE;
+        return null; //ActionType.DELETEFILE;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class DeleteFileAction extends FileAction{
     }
 
     public String toString() {
-        return ActionType.DELETEFILE.name() + " " + getFilePath();
+        return ""; //ActionType.DELETEFILE.name() + " " + getFilePath();
     }
 }
 

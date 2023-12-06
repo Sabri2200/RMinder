@@ -1,29 +1,36 @@
 package gruppo13.seproject.essential.trigger;
 
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class TriggerFactory {
+    private static final RequestPublisher requestPublisher = RequestPublisher.getInstance();
+
     public static Trigger createTrigger(Map.Entry<TriggerType, List<String>> trigger) {
-        switch (trigger.getKey()) {
-            case CLOCKTRIGGER:
-                return createClockTrigger(trigger.getValue());
-            default:
-                return null;
+        if (Objects.requireNonNull(trigger.getKey()) == TriggerType.CLOCKTRIGGER) {
+            return createClockTrigger(trigger.getValue());
+        } else {
+            return null;
         }
     }
 
     private static ClockTrigger createClockTrigger(List<String> params) {
-        /*int hour = Integer.parseInt(params.get(0));
-        int minute = Integer.parseInt(params.get(1));*/
         String[] t = params.get(0).split(":");
-        int hour = Integer.parseInt(t[0]);
-        int minute = Integer.parseInt(t[1]);
-        LocalTime time = LocalTime.of(hour, minute);
 
-        return new ClockTrigger(time);
+        try {
+            int hour = Integer.parseInt(t[0]);
+            int minute = Integer.parseInt(t[1]);
+            LocalTime time = LocalTime.of(hour, minute);
+            return new ClockTrigger(time);
+        } catch (Exception e) {
+            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
+        }
+        return null;
     }
 }

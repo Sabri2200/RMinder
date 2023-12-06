@@ -9,14 +9,10 @@ import java.util.Map;
 
 public class ActionFactory {
     public static Action createAction(Map.Entry<ActionType, List<String>> action) {
-                switch (action.getKey()) {
-                    case DIALOGBOX:
-                        return createDialogBoxAction(action.getValue());
-                    case MP3PLAYER:
-                        return createAudioAction(action.getValue());
-                    default:
-                        return null;
-                }
+        return switch (action.getKey()) {
+            case DIALOGBOX -> createDialogBoxAction(action.getValue());
+            case MP3PLAYER -> createAudioAction(action.getValue());
+        };
     }
 
     private static DialogBoxAction createDialogBoxAction(List<String> params) {

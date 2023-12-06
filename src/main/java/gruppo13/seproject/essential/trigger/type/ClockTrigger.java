@@ -22,11 +22,7 @@ public class ClockTrigger implements Trigger {
 
         if (now.equals(time)) {
             return true;
-        } else if (now.isBefore(time)) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return !now.isBefore(time);
     }
 
     @Override

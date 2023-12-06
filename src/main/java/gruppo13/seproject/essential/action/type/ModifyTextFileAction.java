@@ -29,7 +29,7 @@ public class ModifyTextFileAction extends FileAction {
 
     @Override
     public ActionType getType() {
-        return ActionType.MODIFYTEXT;
+        return null; //ActionType.MODIFYTEXT;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ModifyTextFileAction extends FileAction {
     }
 
     public String toString() {
-        return "In  "+ ActionType.MODIFYTEXT.name() + " is added " + stringToAdd;
+        return "In  "; //ActionType.MODIFYTEXT.name() + " is added " + stringToAdd;
     }
 }
 

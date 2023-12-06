@@ -1,65 +1,57 @@
 package gruppo13.seproject.essential.rule;
 
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.State;
-import gruppo13.seproject.essential.action.*;
+import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.exception.ActionException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.RejectedExecutionException;
 
-public class RulePerformer implements ActionPerformer, ActionSubject {
+public class RulePerformer implements ActionPerformer {
     private RuleManager ruleManager;
-    private List<ActionObserver> observers = new ArrayList<>();
+    private RequestPublisher requestPublisher;
 
-    public RulePerformer(RuleManager ruleManager) {
-        this.ruleManager = ruleManager;
+    private RulePerformer() {
+        this.ruleManager = RuleManager.getInstance();
+        this.requestPublisher = RequestPublisher.getInstance();
+    }
+
+    private static final class RulePerformerInstanceHolder {
+        private static final RulePerformer rulePerformerInstance = new RulePerformer();
+    }
+
+    public static RulePerformer getInstance() {
+        return RulePerformerInstanceHolder.rulePerformerInstance;
     }
 
     @Override
-    public void execute() throws ActionException {
+    public void execute() {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
                 if(rule.getState().equals(State.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
-                            ruleManager.setState(rule, State.NOTACTIVE);
                             for (Action a : rule.getActions()) {
                                 try {
                                     if (a.getState().equals(State.ACTIVE)) {
                                         a.setState(State.NOTACTIVE);
                                         a.execute();
-                                        notifyObservers(a);
+                                        requestPublisher.publishRequest(RequestFactory.createExecutionRequest(a));
                                     }
-                                } catch (ActionException e) {
-                                    notifyErrorObservers(a, e);
+                                } catch (ActionException | RejectedExecutionException | NullPointerException | IllegalArgumentException |
+                                         CancellationException e) {
+                                    requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
                                 }
                             }
-                        };
+                        ruleManager.setState(rule, State.NOTACTIVE);
+                    }
                 }
             }
         }
     }
 
-    @Override
-    public void registerObserver(ActionObserver o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(ActionObserver o) {
-        observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers(Action a) {
-        for (ActionObserver o : observers) {
-            o.execute(a);
-        }
-    }
-
-    private void notifyErrorObservers(Action a, Exception e) {
-        for (ActionObserver observer : observers) {
-            observer.notifyError(a, e);
-        }
-    }
 }

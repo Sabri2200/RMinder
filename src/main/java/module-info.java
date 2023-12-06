@@ -15,6 +15,4 @@ module gruppo13.seproject {
     opens gruppo13.seproject.essential to javafx.fxml;
     exports gruppo13.seproject.essential.action.exception;
     opens gruppo13.seproject.essential.action.exception to javafx.fxml;
-    exports gruppo13.seproject.essential.rule.ListObserver;
-    opens gruppo13.seproject.essential.rule.ListObserver to javafx.fxml;
 }

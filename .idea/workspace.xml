@@ -4,7 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing" />
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="adding rule saver every 30 secs">
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/ErrorLogManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/GUIExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIHandler/GUIRuleList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/ChainOfResponsabilityPattern/Handler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/ChainOfResponsabilityPattern/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/ChainOfResponsabilityPattern/RequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/BackgroundService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/BackgroundService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/ErrorLogManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIExcecutor/DialogBoxExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/AlertExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIExcecutor/GUIExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/GUIRuleList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/ErrorLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionObserver/ActionObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionObserver/ActionSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/DeleteFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/DeleteFileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/ListObserver/ListObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/ListObserver/ListSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/trigger/TriggerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    </list>
     <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +48,9 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="package.json" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,7 +76,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="352884f8-3c63-4cfb-a53b-fbc49f692c14" />
+        <option name="accountId" value="ab506eb6-ad94-49f8-a8ed-b23434395485" />
         <option name="url" value="https://github.com/Sabri2200/RMinder" />
       </UrlAndAccount>
     </option>
@@ -85,12 +118,13 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/sabri/Downloads/complex-calculator-group-16-main",
+    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Problems",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.4878049",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -100,17 +134,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/rminder/view" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/java/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential" />
-      <recent name="$PROJECT_DIR$/src/main/resources/gruppo13/seproject" />
       <recent name="$PROJECT_DIR$/src/main/java/coscarelli/seproject/audioFiles" />
-      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -249,6 +283,9 @@
       <workItem from="1701076619540" duration="498000" />
       <workItem from="1701079474700" duration="21531000" />
       <workItem from="1701533003059" duration="11351000" />
+      <workItem from="1701682880312" duration="59000" />
+      <workItem from="1701682965643" duration="32446000" />
+      <workItem from="1701800884094" duration="6616000" />
     </task>
     <task id="LOCAL-00001" summary="Testing">
       <option name="closed" value="true" />
@@ -586,15 +623,39 @@
       <option name="project" value="LOCAL" />
       <updated>1701599729785</updated>
     </task>
-    <task id="LOCAL-00043" summary="Fixing">
+    <task id="LOCAL-00043" summary="fixing issues">
       <option name="closed" value="true" />
-      <created>1701631359270</created>
+      <created>1701679414268</created>
       <option name="number" value="00043" />
       <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1701631359270</updated>
+      <updated>1701679414268</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="fixing issues">
+      <option name="closed" value="true" />
+      <created>1701775826918</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1701775826918</updated>
+    </task>
+    <task id="LOCAL-00045" summary="adding an exceptions stack manager">
+      <option name="closed" value="true" />
+      <created>1701791902211</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1701791902211</updated>
+    </task>
+    <task id="LOCAL-00046" summary="adding rule saver every 30 secs">
+      <option name="closed" value="true" />
+      <created>1701792769399</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1701792769399</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,8 +704,9 @@
     <MESSAGE value="Editing views" />
     <MESSAGE value="Changes by michelecoscarelli" />
     <MESSAGE value="fixing issues" />
-    <MESSAGE value="Fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing" />
+    <MESSAGE value="adding an exceptions stack manager" />
+    <MESSAGE value="adding rule saver every 30 secs" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding rule saver every 30 secs" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
