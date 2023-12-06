@@ -23,10 +23,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileManagerTest {
 
     private File tempFile;
+    private FileManager fileManager;
 
     @BeforeEach
     void setUp() throws IOException {
         tempFile = File.createTempFile("test", ".json");
+        fileManager = FileManager.getInstance();
     }
 
     @AfterEach
@@ -75,7 +77,7 @@ class FileManagerTest {
         rules.add(new Rule("name1", actions, trigger, State.ACTIVE));
         rules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
 
-        FileManager.saveRulesToFile(rules, tempFile);
+        fileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file non sia vuoto
         assertTrue(tempFile.length() > 0);
@@ -97,7 +99,7 @@ class FileManagerTest {
     void testSaveRulesToFileWithEmptyList() throws IOException {
         List<Rule> rules = new ArrayList<>();
 
-        FileManager.saveRulesToFile(rules, tempFile);
+        fileManager.saveRulesToFile(rules, tempFile);
 
         // Verifica che il file sia vuoto o contenga il contenuto atteso per una lista vuota
         assertEquals(0, tempFile.length());
@@ -105,7 +107,7 @@ class FileManagerTest {
 
     @Test
     void testSaveRulesToFileWithNullList() {
-        assertDoesNotThrow(() -> FileManager.saveRulesToFile(null, tempFile));
+        assertDoesNotThrow(() -> fileManager.saveRulesToFile(null, tempFile));
     }
 
     @Test
@@ -117,7 +119,7 @@ class FileManagerTest {
         // Rende il file di sola lettura per indurre un'eccezione
         assertTrue(tempFile.setReadOnly());
 
-        assertThrows(Exception.class, () -> FileManager.saveRulesToFile(rules, tempFile));
+        assertThrows(Exception.class, () -> fileManager.saveRulesToFile(rules, tempFile));
     }
 
     @Test
@@ -128,7 +130,7 @@ class FileManagerTest {
         // Azione: carica le regole dal file
         List<Rule> loadedRules = new ArrayList<>();
 
-        for (Rule rule : FileManager.loadRulesFromFile(tempFile)) {
+        for (Rule rule : fileManager.loadRulesFromFile(tempFile)) {
             loadedRules.add(rule);
         }
 
@@ -157,7 +159,7 @@ class FileManagerTest {
     @Test
     void testLoadRulesFromFileEmpty() throws IOException {
         // Azione: carica le regole dal file vuoto
-        List<Rule> loadedRules = FileManager.loadRulesFromFile(tempFile);
+        List<Rule> loadedRules = fileManager.loadRulesFromFile(tempFile);
 
         // Verifica: aspettati una lista vuota o un comportamento specifico
         assertTrue(loadedRules == null);
@@ -169,7 +171,7 @@ class FileManagerTest {
         File malformedFile = File.createTempFile("test", ".tx");
 
         // Azione e Verifica: aspettati un'eccezione o un comportamento specifico
-        assertThrows(IOException.class, () -> FileManager.loadRulesFromFile(malformedFile));
+        assertThrows(IOException.class, () -> fileManager.loadRulesFromFile(malformedFile));
 
         // Pulizia: elimina il file di test
         malformedFile.delete();

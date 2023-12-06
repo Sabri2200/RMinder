@@ -11,10 +11,22 @@ import java.util.Map;
 
 public class ActionFactory {
     public static Action createAction(Map.Entry<ActionType, List<String>> action) {
-        return switch (action.getKey()) {
-            case DIALOGBOX -> createDialogBoxAction(action.getValue());
-            case MP3PLAYER -> createAudioAction(action.getValue());
-        };
+        if (action != null) {
+            boolean typeMatcher = false;
+            for (ActionType type : ActionType.values()) {
+                if (action.getKey().equals(type)) {
+                    typeMatcher = true;
+                    break;
+                }
+            }
+
+            return typeMatcher ? switch (action.getKey()) {
+                case DIALOGBOX -> createDialogBoxAction(action.getValue());
+                case MP3PLAYER -> createAudioAction(action.getValue());
+            } : null;
+        }
+        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
+        return null;
     }
 
     private static DialogBoxAction createDialogBoxAction(List<String> params) {
@@ -27,7 +39,7 @@ public class ActionFactory {
         } catch (Exception e) {
             RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
         }
-
+        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
         return null;
     }
 
@@ -39,7 +51,7 @@ public class ActionFactory {
         } catch (Exception e) {
             RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
         }
-
+        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
         return null;
     }
 }
