@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.service.GUIhandler;
+package gruppo13.seproject.service.GUIhandler;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;

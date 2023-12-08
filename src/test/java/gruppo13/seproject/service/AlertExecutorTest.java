@@ -1,7 +1,6 @@
-package gruppo13.seproject.essential.service;
+package gruppo13.seproject.service;
 
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
-import gruppo13.seproject.service.AlertExecutor;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 

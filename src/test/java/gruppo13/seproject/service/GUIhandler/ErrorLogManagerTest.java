@@ -1,4 +1,4 @@
-package gruppo13.seproject.essential.service.GUIhandler;
+package gruppo13.seproject.service.GUIhandler;
 
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestType;

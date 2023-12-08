@@ -2,6 +2,10 @@ package gruppo13.seproject.essential.request_handler;
 
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
+import gruppo13.seproject.essential.request_handler.Request;
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.essential.request_handler.RequestType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +21,7 @@ class RequestFactoryTest {
         Request request = RequestFactory.createExceptionRequest(exception);
 
         // Check if the request is created correctly
-        assertEquals(RequestType.EXCEPTION, request.getType());
+        Assertions.assertEquals(RequestType.EXCEPTION, request.getType());
         assertEquals(exception, request.getData());
     }
 

@@ -1,9 +1,8 @@
-package gruppo13.seproject.essential.service;
+package gruppo13.seproject.service;
 
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.rule.RuleManager;
 import gruppo13.seproject.file_manager.FileManager;
-import gruppo13.seproject.service.BackgroundService;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
