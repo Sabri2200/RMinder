@@ -6,9 +6,6 @@ import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,6 +15,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileManagerTest {
@@ -25,13 +24,13 @@ class FileManagerTest {
     private File tempFile;
     private FileManager fileManager;
 
-    @BeforeEach
+    @Before
     void setUp() throws IOException {
         tempFile = File.createTempFile("test", ".json");
         fileManager = FileManager.getInstance();
     }
 
-    @AfterEach
+    @After
     void tearDown() {
         tempFile.delete();
     }
@@ -75,7 +74,7 @@ class FileManagerTest {
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
         rules.add(new Rule("name1", actions, trigger, State.ACTIVE));
-        rules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
+        rules.add(new Rule("name2", actions, trigger, State.INACTIVE));
 
         fileManager.saveRulesToFile(rules, tempFile);
 
@@ -111,10 +110,10 @@ class FileManagerTest {
     }
 
     @Test
-    void testSaveRulesToFileExceptionHandling() throws IOException {
+    void testSaveRulesToFileExceptionHandling() {
         List<Rule> rules = new ArrayList<>();
 
-        rules.add(new Rule("rule", null, null, State.NOTACTIVE));
+        rules.add(new Rule("rule", null, null, State.INACTIVE));
 
         // Rende il file di sola lettura per indurre un'eccezione
         assertTrue(tempFile.setReadOnly());
@@ -122,7 +121,7 @@ class FileManagerTest {
         assertThrows(Exception.class, () -> fileManager.saveRulesToFile(rules, tempFile));
     }
 
-    @Test
+    @Test(expected = IOException.class)
     void testLoadRulesFromFileBasic() throws IOException {
         // Preparazione: crea un file con contenuto noto
         testSaveRulesToFile();
@@ -142,7 +141,7 @@ class FileManagerTest {
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
         expectedRules.add(new Rule("name1", actions, trigger, State.ACTIVE));
-        expectedRules.add(new Rule("name2", actions, trigger, State.NOTACTIVE));
+        expectedRules.add(new Rule("name2", actions, trigger, State.INACTIVE));
 
         for (Rule rule : loadedRules) {
             System.out.println(rule.getName());

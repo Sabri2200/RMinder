@@ -4,14 +4,13 @@ import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.exception.ActionException;
 
 import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.RejectedExecutionException;
 
-public class RulePerformer implements ActionPerformer {
+public class RulePerformer {
     private RuleManager ruleManager;
     private RequestPublisher requestPublisher;
 
@@ -33,7 +32,6 @@ public class RulePerformer implements ActionPerformer {
         return RulePerformerInstanceHolder.rulePerformerInstance;
     }
 
-    @Override
     public void execute() {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
@@ -43,7 +41,7 @@ public class RulePerformer implements ActionPerformer {
                             for (Action a : rule.getActions()) {
                                 try {
                                     if (a.getState().equals(State.ACTIVE)) {
-                                        a.setState(State.NOTACTIVE);
+                                        a.setState(State.INACTIVE);
                                         a.execute();
                                         requestPublisher.publishRequest(RequestFactory.createExecutionRequest(a));
                                     }
@@ -52,7 +50,7 @@ public class RulePerformer implements ActionPerformer {
                                     requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
                                 }
                             }
-                        ruleManager.setState(rule, State.NOTACTIVE);
+                        ruleManager.setState(rule, State.INACTIVE);
                     }
                 }
             }

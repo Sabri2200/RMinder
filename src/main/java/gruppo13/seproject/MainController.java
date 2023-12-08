@@ -28,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -40,6 +41,33 @@ public class MainController implements Initializable {
 
     public MenuItem removeActionBtn;
     public Button addActionBtn;
+    public VBox audioFileSelectorVBox;
+    public Button audioFileSelectorBtn;
+    public Label audioFileChosenLbl;
+    public VBox moveFileSelectorVBox;
+    public Button moveFileSelectorBtn;
+    public Button moveFileSelectorBtn1;
+    public Label moveFileChosenLbl;
+    public Label moveFileChosenLbl1;
+    public Button deleteFileSelectorBtn;
+    public VBox deleteFileSelectorVBox;
+    public Label deleteFileChosenLbl;
+    public Button copyFileSelectorBtn;
+    public Label copyFileChosenLbl;
+    public VBox copyFileSelectorVBox;
+    public Button copyFileSelectorBtn1;
+    public Label copyFileChosenLbl1;
+    public VBox modifyTextFileSelectorVBox;
+    public Button modifyFileSelectorBtn;
+    public TextField modifyFileSelectorTxtFld;
+    public Label modifyFileChosenLbl;
+    public MenuItem removeActionSummaryBtn;
+    public Button resetBtn;
+    public ContextMenu contextMenu;
+    public MenuItem removeBtn;
+    public MenuItem saveToFileBtn;
+    public MenuItem loadFromFileBtn;
+    public MenuItem turnBtn;
     @FXML
     private TextField ruleNameField;
     @FXML
@@ -109,16 +137,24 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // initializing services
+
         ruleManager = RuleManager.getInstance();
+        // has a list of Rule, can add, remove and change a state of a rule.
 
         fileManager = FileManager.getInstance();
+        // implements file methods, such as writing on a file or reading from a file.
+        // Moreover, it can load or save rules.
 
         guiRuleList = GUIRuleList.getInstance();
+        // is responsible for updating the tableview of rules by using an instance of RuleManager.
 
         requestPublisher = RequestPublisher.getInstance();
+        // An Exception, a notice of an Execution or a notice of the ruleList update is published through this object.
+        // The RequestPublisher sends the message (a Request) to its handlers.
 
         BackgroundService backgroundService = new BackgroundService();
         backgroundService.startService();
+        // starts the background tasks: RuleSaver, RuleService and sets to RequestPublisher its handlers.
 
         // initializing tableView
         initializeTableview();
@@ -127,36 +163,106 @@ public class MainController implements Initializable {
         initializeRuleCreationParadigm();
     }
 
+    // During a rule creation, this method can change the text of ruleStateBtn, from Active to INACTIVE or viceversa.
     public void ruleStateChange(ActionEvent actionEvent) {
+        // Taking the actual state.
         State oldState = State.valueOf(ruleStateBtn.getText());
 
+        // Changing the state due the actual state.
         State newState = switch (oldState) {
-            case ACTIVE -> State.NOTACTIVE;
+            case ACTIVE -> State.INACTIVE;
             //case ALWAYSACTIVE -> State.NOTACTIVE;
-            case NOTACTIVE -> State.ACTIVE;
+            case INACTIVE -> State.ACTIVE;
         };
 
+        // Changing the state
         ruleStateBtn.setText(newState.name());
     }
 
+    public void pathSelector(ActionEvent actionEvent) {
+        Stage pathChooserDialog = new Stage();
+
+        DirectoryChooser pathChooser = new DirectoryChooser();
+        pathChooser.setTitle("Select a directory");
+
+        File selectedDirectory = pathChooser.showDialog(pathChooserDialog);
+
+        ActionType type = actionSelector.getSelectionModel().getSelectedItem();
+
+        if (selectedDirectory != null) {
+            if (type.equals(ActionType.COPYFILE)) {
+                copyFileChosenLbl1.setText(selectedDirectory.getAbsolutePath());
+            } else if (type.equals(ActionType.MOVEFILE)) {
+                moveFileChosenLbl1.setText(selectedDirectory.getAbsolutePath());
+            }
+        } else {
+            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting Directory. Directory unsupported or not found. Please, try again")));
+        }
+    }
+
+    // The method show a dialog window from which the user can select a file.
+    // In the audio file selection, it verifies through FileManager the file can be used for audio execution.
     public void fileSelector(ActionEvent actionEvent) {
+        // Creating a dialog window.
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
 
-        ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
+        // Taking the type
+        ActionType type = actionSelector.getSelectionModel().getSelectedItem();
 
+        // Switching due the action type and verifying the file.
         if (type.equals(ActionType.MP3PLAYER)) {
+            // verifies the file
             if (fileManager.verifyAudioFile(file)) {
-                fileChosen.setText(file.getAbsolutePath());
+                audioFileChosenLbl.setText(file.getAbsolutePath());
             } else {
+                // The file cannot be supported for the action type selected and an exception request is sent to RequestPublisher.
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
+            }
+        } else if (type.equals(ActionType.DELETEFILE)) {
+            // verifies the file
+            if (fileManager.verifyFile(file)) {
+                deleteFileChosenLbl.setText(file.getAbsolutePath());
+            } else {
+                // The file cannot be supported for the action type selected and an exception request is sent to RequestPublisher.
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
+            }
+        } else if (type.equals(ActionType.MOVEFILE)) {
+            // verifies the file
+            if (fileManager.verifyFile(file)) {
+                moveFileChosenLbl.setText(file.getAbsolutePath());
+            } else {
+                // The file cannot be supported for the action type selected and an exception request is sent to RequestPublisher.
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
+            }
+        } else if (type.equals(ActionType.COPYFILE)) {
+            // verifies the file
+            if (fileManager.verifyFile(file)) {
+                copyFileChosenLbl.setText(file.getAbsolutePath());
+            } else {
+                // The file cannot be supported for the action type selected and an exception request is sent to RequestPublisher.
+                requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
+            }
+        } else if (type.equals(ActionType.MODIFYTEXTFILE)) {
+            // verifies the file
+            if (fileManager.verifyFile(file)) {
+                modifyFileChosenLbl.setText(file.getAbsolutePath());
+            } else {
+                // The file cannot be supported for the action type selected and an exception request is sent to RequestPublisher.
                 requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in Selecting file. File unsupported or not found. Please, try again")));
             }
         }
     }
 
+    // During a rule creation, Action Table View has a list of actions. This method can add actions to the list.
     public void addActionToRule(ActionEvent actionEvent) {
+        // Getting the action type.
         ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
+
+        // Initializing a list of parameters, such as:
+        //  AudioAction: file;
+        // DialogBoxAction: title, header, message.
         List<String> params = new ArrayList<>();
 
         switch (type) {
@@ -165,45 +271,89 @@ public class MainController implements Initializable {
                 params.add(headerAlertField.getText());
                 params.add(messageAlertField.getText());
             case MP3PLAYER:
-                params.add(fileChosen.getText());
+                params.add(audioFileChosenLbl.getText());
+            case COPYFILE:
+                params.add(copyFileChosenLbl.getText());
+                params.add(copyFileChosenLbl1.getText());
+            case MOVEFILE:
+                params.add(moveFileChosenLbl.getText());
+                params.add(moveFileChosenLbl1.getText());
+            case DELETEFILE:
+                params.add(deleteFileChosenLbl.getText());
+            case MODIFYTEXTFILE:
+                params.add(modifyFileChosenLbl.getText());
+                params.add(modifyFileSelectorTxtFld.getText());
         }
 
-        Map.Entry<ActionType, List<String>> action = Map.entry(type, params);
+        // ActionFactory can create an Action, knowing its ActionType and params.
+        Map.Entry<ActionType, List<String>> actionParams = Map.entry(type, params);
 
-        actionsList.add(ActionFactory.createAction(action));
+        // Creating Action
+        Action action = ActionFactory.createAction(actionParams);
 
+        if (action == null) {
+            // This action has invalid parameters and ActionFactory asks the RequestPublisher to publish an exception request.
+            return;
+        }
+
+        // Adding an action to the Action TableView.
+        actionsList.add(action);
+
+        // Updating Action TableView.
         actionsTable.refresh();
         actionsTableSummary.refresh();
     }
 
+    // The saveRule method takes all the required parameters from GUIObjects and adds the rule to the ruleManager.
     public void saveRule(ActionEvent actionEvent) {
+        // Rule name is taken from a TextField.
         String ruleName = ruleNameField.getText();
 
+        // Trigger type is taken from a ComboBox
+        TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
 
-            TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
-            List<String> triggerParams = triggerParams(triggerType);
+        // Trigger parameters are taken from specific GUIObjects due the triggerType.
+        List<String> triggerParams = triggerParams(triggerType);
 
-            if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
-                State state = State.valueOf(ruleStateBtn.getText());
+        // Checking that everything is valid
+        if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
+            // This will be the state of the rule
+            State state = State.valueOf(ruleStateBtn.getText());
 
-                Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
+            // Trigger Factory creates trigger by knowing its type and a list of parameters.
+            Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
 
-                Trigger trigger = TriggerFactory.createTrigger(t);
-                if (trigger == null) {
-                    return;
-                }
+            // Creating a trigger
+            Trigger trigger = TriggerFactory.createTrigger(t);
 
-                Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
-
-                if (editingRule != null) {
-                    ruleManager.removeRule(editingRule);
-                    editingRule = null;
-                }
-
-                ruleManager.addRule(rule);
-                actionsList.removeAll();
+            if (trigger == null) {
+                // If TriggerFactory returns null, the trigger cannot be created due invalid parameters:
+                // RequestPublisher is triggered.
+                return;
             }
 
+            // RuleFactory creates a rule through its name, list of actions, trigger and a state.
+            Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
+
+            if (rule == null) {
+                // If RuleFactory returns null, the trigger cannot be created due invalid parameters:
+                // RequestPublisher is triggered.
+                return;
+            }
+
+            // Editing a rule process works through this control:
+            // If the user is editing a rule, editingRule is that rule.
+            if (editingRule != null) {
+                // Removing the selected rule.
+                ruleManager.removeRule(editingRule);
+                editingRule = null;
+            }
+
+            // Adding a rule to the RuleManager list of rules.
+            ruleManager.addRule(rule);
+        }
+
+        // Cleaning all GUIObjects, such as labels or textfields.
         resetRule(null);
 
         actionsTable.refresh();
@@ -211,33 +361,39 @@ public class MainController implements Initializable {
 
     }
 
+    // This method returns a list of params due the TriggerType
     private List<String> triggerParams(TriggerType type) {
         List<String> params = new ArrayList<>();
 
-            if (Objects.requireNonNull(type) == TriggerType.CLOCKTRIGGER) {
-                params.add(hourField.getText() + ":" + minuteField.getText());
-            }
+        // If TriggerType is a CLOCKTRIGGER, the questioned GUIObjects will be hourField and miunuteField.
+        if (Objects.requireNonNull(type) == TriggerType.CLOCKTRIGGER) {
+            params.add(hourField.getText() + ":" + minuteField.getText());
+        }
 
         return params;
     }
 
+    // The last tab of TabView is made by this method.
     public void makeRuleSummary(Event event) {
         String ruleName = ruleNameField.getText();
         ruleNameSummary.setText(ruleName.isEmpty() ? "Rule name" : ruleName);
 
-        Object trigger = triggerSelector.getSelectionModel().getSelectedItem();
+        TriggerType trigger = triggerSelector.getSelectionModel().getSelectedItem();
 
         if (trigger != null) {
-            StringBuffer triggerSelected = new StringBuffer();
+            if (trigger == TriggerType.CLOCKTRIGGER) {
+                StringBuffer triggerSelected = new StringBuffer();
 
-            triggerSelected.append(triggerSelector.getSelectionModel().getSelectedItem().toString()).append(" ");
-            triggerSelected.append(hourField.getText()).append(":");
-            triggerSelected.append(minuteField.getText());
+                triggerSelected.append(triggerSelector.getSelectionModel().getSelectedItem().toString()).append(" ");
+                triggerSelected.append(hourField.getText()).append(":");
+                triggerSelected.append(minuteField.getText());
 
-            triggerLbl.setText(triggerSelected.toString());
+                triggerLbl.setText(triggerSelected.toString());
+            }
         }
     }
 
+    // Resetting the TabView.
     public void resetRule(ActionEvent actionEvent) {
         ruleNameField.setText("");
         ruleNameSummary.setText("");
@@ -252,12 +408,19 @@ public class MainController implements Initializable {
         actionsTableSummary.refresh();
     }
 
+    // This method can be called by editing a rule.
     public void editRuleAction(ActionEvent actionEvent) {
         editingRule = tableView.getSelectionModel().getSelectedItem();
 
         ruleNameField.setText(editingRule.getName());
 
         Trigger trigger = editingRule.getTrigger();
+
+        if (trigger == null) {
+            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in editing this rule. ")));
+            return;
+        }
+
         TriggerType triggerType = trigger.getType();
 
         triggerSelector.setValue(triggerType);
@@ -274,6 +437,7 @@ public class MainController implements Initializable {
         actionsTableSummary.refresh();
     }
 
+    // This method can remove the selected rules from the RuleManager
     public void removeRulesAction(ActionEvent actionEvent) {
         List<Rule> rules = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
@@ -306,8 +470,6 @@ public class MainController implements Initializable {
         for (Rule rule : fileManager.loadRulesFromFile(file)) {
             ruleManager.addRule(rule);
         }
-
-        //update();
     }
 
     public void turnRule(ActionEvent actionEvent) {
@@ -316,7 +478,7 @@ public class MainController implements Initializable {
         if (!selectedRules.isEmpty()) {
             for (Rule rule : selectedRules) {
                 State oldState = rule.getState();
-                State newState = oldState.equals(State.ACTIVE) ? State.NOTACTIVE : State.ACTIVE;
+                State newState = oldState.equals(State.ACTIVE) ? State.INACTIVE : State.ACTIVE;
                 if (ruleManager.getRules().contains(rule)) {
                     ruleManager.setState(rule, newState);
                 }
@@ -391,31 +553,75 @@ public class MainController implements Initializable {
             if (newValue != null) {
                 if (newValue.equals(ActionType.DIALOGBOX)) {
                     messageActionVBox.setVisible(true);
-                    fileSelectorVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
+                    copyFileSelectorVBox.setVisible(false);
+                    moveFileSelectorVBox.setVisible(false);
+                    deleteFileSelectorVBox.setVisible(false);
+                    modifyTextFileSelectorVBox.setVisible(false);
                 } else if (newValue.equals(ActionType.MP3PLAYER)) {
-                    fileSelectorVBox.setVisible(true);
+                    audioFileSelectorVBox.setVisible(true);
                     messageActionVBox.setVisible(false);
+                    copyFileSelectorVBox.setVisible(false);
+                    moveFileSelectorVBox.setVisible(false);
+                    deleteFileSelectorVBox.setVisible(false);
+                    modifyTextFileSelectorVBox.setVisible(false);
+                } else if (newValue.equals(ActionType.COPYFILE)) {
+                    copyFileSelectorVBox.setVisible(true);
+                    messageActionVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
+                    moveFileSelectorVBox.setVisible(false);
+                    deleteFileSelectorVBox.setVisible(false);
+                    modifyTextFileSelectorVBox.setVisible(false);
+                } else if (newValue.equals(ActionType.MOVEFILE)) {
+                    moveFileSelectorVBox.setVisible(true);
+                    copyFileSelectorVBox.setVisible(false);
+                    messageActionVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
+                    deleteFileSelectorVBox.setVisible(false);
+                    modifyTextFileSelectorVBox.setVisible(false);
+                } else if (newValue.equals(ActionType.DELETEFILE)) {
+                    deleteFileSelectorVBox.setVisible(true);
+                    moveFileSelectorVBox.setVisible(false);
+                    copyFileSelectorVBox.setVisible(false);
+                    messageActionVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
+                    modifyTextFileSelectorVBox.setVisible(false);
+                } else if (newValue.equals(ActionType.MODIFYTEXTFILE)) {
+                    modifyTextFileSelectorVBox.setVisible(true);
+                    deleteFileSelectorVBox.setVisible(false);
+                    moveFileSelectorVBox.setVisible(false);
+                    copyFileSelectorVBox.setVisible(false);
+                    messageActionVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
                 } else {
+                    modifyTextFileSelectorVBox.setVisible(false);
+                    deleteFileSelectorVBox.setVisible(false);
+                    moveFileSelectorVBox.setVisible(false);
+                    copyFileSelectorVBox.setVisible(false);
                     messageActionVBox.setVisible(false);
-                    fileSelectorVBox.setVisible(false);
+                    audioFileSelectorVBox.setVisible(false);
                 }
             }
         };
 
-        hourField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) { // Usa un'espressione regolare per controllare se il nuovo valore è numerico
-                    hourField.setText(newValue.replaceAll("[^\\d]", "")); // Sostituisci tutto ciò che non è un numero con una stringa vuota
+        hourField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                hourField.setText(oldValue); // Reimposta al valore precedente se non è numerico
+            } else if (!newValue.isEmpty()) {
+                int hour = Integer.parseInt(newValue);
+                if (hour < 0 || hour > 24) {
+                    hourField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-24
                 }
             }
         });
 
-        minuteField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) { // Usa un'espressione regolare per controllare se il nuovo valore è numerico
-                    minuteField.setText(newValue.replaceAll("[^\\d]", "")); // Sostituisci tutto ciò che non è un numero con una stringa vuota
+        minuteField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
+            } else if (!newValue.isEmpty()) {
+                int minute = Integer.parseInt(newValue);
+                if (minute < 0 || minute > 59) {
+                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
                 }
             }
         });
@@ -455,7 +661,6 @@ public class MainController implements Initializable {
         actionsTable.setItems(actionsList);
         actionsTableSummary.setItems(actionsList);
 
-        //saveRuleBtn.disableProperty().bind(ruleNameField.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(fileChosen.textProperty().isEmpty()));
         saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
     }

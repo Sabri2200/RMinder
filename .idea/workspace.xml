@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="fixing issues">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="performing some tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/ErrorLogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/ErrorLogManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/GUIExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/service/GUIhandler/GUIExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/FileManager/FileManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/FileManager/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/BackgroundService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/Service/BackgroundService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionPerformer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/ActionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/CopyFileAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/DeleteFileAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/FileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/FileAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/ModifyTextFileAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/MoveFileAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/FileManager/FileManagerTest.java" afterDir="false" />
     </list>
     <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,35 +91,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -123,15 +138,16 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="gruppo13.seproject.essential.action.type" />
       <recent name="gruppo13.seproject" />
       <recent name="com.example.rminder" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="gruppo13.seproject.essential.action.type" />
       <recent name="gruppo13.seproject.essential.rule" />
       <recent name="gruppo13.seproject.essential.action" />
       <recent name="gruppo13.seproject.essential.trigger" />
       <recent name="gruppo13.seproject.FileManager" />
-      <recent name="gruppo13.seproject.essential.action.actionType" />
     </key>
   </component>
   <component name="RunManager" selected="Application.main">
@@ -144,81 +160,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ActionFactoryTest.createNonExistentTypeFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CopyFileActionTest.testFileCopySuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.action.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.type.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.ActionFactoryTest" />
-      <option name="METHOD_NAME" value="createNonExistentTypeFormat" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.CopyFileActionTest" />
+      <option name="METHOD_NAME" value="testFileCopySuccess" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ActionFactoryTest.createWrongParametersAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CopyFileActionTest.testStateAfterExecution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.action.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.type.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.ActionFactoryTest" />
-      <option name="METHOD_NAME" value="createWrongParametersAction" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.CopyFileActionTest" />
+      <option name="METHOD_NAME" value="testStateAfterExecution" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RuleFactoryTest.createEmptyActionsRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeleteFileActionTest.testFileDeletionFailure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.type.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
-      <option name="METHOD_NAME" value="createEmptyActionsRule" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.DeleteFileActionTest" />
+      <option name="METHOD_NAME" value="testFileDeletionFailure" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RuleFactoryTest.createNullRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeleteFileActionTest.testFileDeletionSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.type.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
-      <option name="METHOD_NAME" value="createNullRule" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.DeleteFileActionTest" />
+      <option name="METHOD_NAME" value="testFileDeletionSuccess" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RuleFactoryTest.createRule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeleteFileActionTest.testStateAfterExecution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gruppo13.seproject.essential.rule.*" />
+          <option name="PATTERN" value="gruppo13.seproject.essential.action.type.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.rule" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.rule.RuleFactoryTest" />
-      <option name="METHOD_NAME" value="createRule" />
+      <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.DeleteFileActionTest" />
+      <option name="METHOD_NAME" value="testStateAfterExecution" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -226,19 +242,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="JUnit.ActionFactoryTest.createNonExistentTypeFormat" />
-      <item itemvalue="JUnit.ActionFactoryTest.createWrongParametersAction" />
-      <item itemvalue="JUnit.RuleFactoryTest.createEmptyActionsRule" />
-      <item itemvalue="JUnit.RuleFactoryTest.createNullRule" />
-      <item itemvalue="JUnit.RuleFactoryTest.createRule" />
+      <item itemvalue="JUnit.CopyFileActionTest.testFileCopySuccess" />
+      <item itemvalue="JUnit.CopyFileActionTest.testStateAfterExecution" />
+      <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionFailure" />
+      <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionSuccess" />
+      <item itemvalue="JUnit.DeleteFileActionTest.testStateAfterExecution" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RuleFactoryTest.createEmptyActionsRule" />
-        <item itemvalue="JUnit.RuleFactoryTest.createNullRule" />
-        <item itemvalue="JUnit.RuleFactoryTest.createRule" />
-        <item itemvalue="JUnit.ActionFactoryTest.createWrongParametersAction" />
-        <item itemvalue="JUnit.ActionFactoryTest.createNonExistentTypeFormat" />
+        <item itemvalue="JUnit.CopyFileActionTest.testStateAfterExecution" />
+        <item itemvalue="JUnit.CopyFileActionTest.testFileCopySuccess" />
+        <item itemvalue="JUnit.DeleteFileActionTest.testStateAfterExecution" />
+        <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionFailure" />
+        <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionSuccess" />
       </list>
     </recent_temporary>
   </component>
@@ -264,22 +280,8 @@
       <workItem from="1701682965643" duration="32446000" />
       <workItem from="1701800884094" duration="6616000" />
       <workItem from="1701853193758" duration="10822000" />
-    </task>
-    <task id="LOCAL-00001" summary="Testing">
-      <option name="closed" value="true" />
-      <created>1700646585503</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1700646585503</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Creation of Classes: Rule, RuleManager, Trigger, Action">
-      <option name="closed" value="true" />
-      <created>1700662856212</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1700662856212</updated>
+      <workItem from="1701880415664" duration="151000" />
+      <workItem from="1701944197588" duration="16099000" />
     </task>
     <task id="LOCAL-00003" summary="Creation of Classes: Rule, RuleManager, Trigger, Action and creation of Architecture MVC's modules.">
       <option name="closed" value="true" />
@@ -657,7 +659,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701859095797</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="performing some tests">
+      <option name="closed" value="true" />
+      <created>1701880549169</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1701880549170</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Changes by michelecoscarelli">
+      <option name="closed" value="true" />
+      <created>1701880558985</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1701880558985</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +692,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -704,13 +722,14 @@
     <MESSAGE value="Fixing some issues" />
     <MESSAGE value="Creating tests for MessageAction and FileManager" />
     <MESSAGE value="Editing views" />
-    <MESSAGE value="Changes by michelecoscarelli" />
     <MESSAGE value="adding an exceptions stack manager" />
     <MESSAGE value="adding rule saver every 30 secs" />
     <MESSAGE value="adding chain of responsability pattern" />
     <MESSAGE value="fixing issues on FileManager and Request handler" />
     <MESSAGE value="fixing issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing issues" />
+    <MESSAGE value="performing some tests" />
+    <MESSAGE value="Changes by michelecoscarelli" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by michelecoscarelli" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
