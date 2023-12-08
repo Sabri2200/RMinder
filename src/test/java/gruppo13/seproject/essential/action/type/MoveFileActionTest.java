@@ -1,20 +1,15 @@
 package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.Service.GUIHandler.ErrorLogManager;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.exception.ActionException;
-import gruppo13.seproject.essential.request_handler.Handler;
-import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MoveFileActionTest {
 
@@ -55,7 +50,7 @@ public class MoveFileActionTest {
     @Test
     public void testStateAfterExecution() throws Exception {
         moveFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, moveFileAction.getState());
+        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, moveFileAction.getState());
     }
 
 

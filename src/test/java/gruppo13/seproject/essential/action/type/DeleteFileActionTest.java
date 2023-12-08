@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.exception.ActionException;
 import org.junit.Before;
 import org.junit.After;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class DeleteFileActionTest {
 
@@ -44,7 +43,7 @@ public class DeleteFileActionTest {
     @Test
     public void testStateAfterExecution() throws Exception {
         deleteFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, deleteFileAction.getState());
+        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, deleteFileAction.getState());
     }
 
 }

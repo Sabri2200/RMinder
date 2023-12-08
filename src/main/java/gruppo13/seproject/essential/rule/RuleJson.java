@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
@@ -20,7 +20,7 @@ public class RuleJson {
         JSONObject jsonRule = new JSONObject();
         jsonRule.put("name", rule.getName());
         jsonRule.put("trigger", rule.getTrigger().toString());
-        jsonRule.put("state", rule.getState().toString());
+        jsonRule.put("state", rule.getStatus().toString());
         jsonRule.put("nextActivation", rule.getNextActivation());
 
         JSONArray actionsArray = new JSONArray();
@@ -68,7 +68,7 @@ public class RuleJson {
 
         Trigger trigger = TriggerFactory.createTrigger(triggerListEntry);
 
-        State state = State.valueOf(jsonRule.getString("state"));
+        Status status = Status.valueOf(jsonRule.getString("state"));
 
         int nextActivation = jsonRule.getInt("nextActivation");
 
@@ -86,8 +86,8 @@ public class RuleJson {
         }
 
         return nextActivation == 0 ?
-                RuleFactory.createRule(name, actions, trigger, state) :
-                RuleFactory.createRule(name, actions, trigger, nextActivation, state);
+                RuleFactory.createRule(name, actions, trigger, status) :
+                RuleFactory.createRule(name, actions, trigger, nextActivation, status);
     }
 
 

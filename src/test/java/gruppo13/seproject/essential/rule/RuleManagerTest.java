@@ -1,5 +1,5 @@
 package gruppo13.seproject.essential.rule;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
@@ -68,13 +68,13 @@ class RuleManagerTest {
         assertEquals(1, rules.size());
         assertTrue(rules.contains(rule));
 
-        State newState = State.NOTACTIVE;
-        ruleManager.setState(rule, newState);
+        Status newStatus = Status.NOTACTIVE;
+        ruleManager.setStatus(rule, newStatus);
 
-        assertEquals(newState, rule.getState());
+        assertEquals(newStatus, rule.getStatus());
 
         for (Action action : rule.getActions()) {
-            assertEquals(newState, action.getState());
+            assertEquals(newStatus, action.getState());
         }
 
         verify(requestPublisherMock, times(2)).publishRequest(RequestFactory.createListUpdateRequest());
@@ -84,6 +84,6 @@ class RuleManagerTest {
         List<Action> actions = new ArrayList<>();
         // Create actions and add them to the list
 
-        return new Rule("TestRule", actions, Mockito.mock(Trigger.class), State.ACTIVE);
+        return new Rule("TestRule", actions, Mockito.mock(Trigger.class), Status.ACTIVE);
     }
 }

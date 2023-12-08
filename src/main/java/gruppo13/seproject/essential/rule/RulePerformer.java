@@ -2,7 +2,7 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.exception.ActionException;
 import gruppo13.seproject.essential.trigger.Trigger;
@@ -41,7 +41,7 @@ public class RulePerformer {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
-                if(rule.getState().equals(State.ACTIVE)) {
+                if(rule.getStatus().equals(Status.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
                             for (Action a : rule.getActions()) {
                                 try {
@@ -58,10 +58,10 @@ public class RulePerformer {
 
                                 Trigger activationTrigger = TriggerFactory.createTrigger(Map.entry(rule.getTrigger().getType(), activationTriggerParams));
 
-                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, rule.getState());
+                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, rule.getStatus());
                                 ruleManager.addRule(activationRule);
                             }
-                        ruleManager.setState(rule, State.INACTIVE);
+                        ruleManager.setStatus(rule, Status.INACTIVE);
                     }
                 }
             }

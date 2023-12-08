@@ -2,8 +2,7 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
-import gruppo13.seproject.essential.State;
-import gruppo13.seproject.essential.action.Action;
+import gruppo13.seproject.essential.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +38,9 @@ public class RuleManager {
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
-    public void setState(Rule rule, State state) {
-        rule.setState(state);
 
-        for (Action a : rule.getActions()) {
-            a.setState(state);
-        }
+    public void setStatus(Rule rule, Status status) {
+        rule.setStatus(status);
 
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }

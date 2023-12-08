@@ -1,13 +1,11 @@
 package gruppo13.seproject.service.GUIhandler;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
-import gruppo13.seproject.essential.action.type.FileAction;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestType;
-import gruppo13.seproject.service.GUIhandler.GUIExecutor;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,12 +36,12 @@ public class GUIExecutorTest {
     public void testExecuteNonDialogBoxAction() {
         // Create a non-DialogBox Action for testing
         Action nonDialogBoxAction = new Action() {
-            private State state = State.NOTACTIVE; // Initial state
+            private Status state = Status.NOTACTIVE; // Initial state
 
             @Override
             public void execute() {
                 // Some dummy execution
-                setState(State.ACTIVE); // Simulating a state change after execution
+                setState(Status.ACTIVE); // Simulating a state change after execution
             }
 
             @Override
@@ -52,12 +50,12 @@ public class GUIExecutorTest {
             }
 
             @Override
-            public State getState() {
+            public Status getState() {
                 return state;
             }
 
             @Override
-            public void setState(State state) {
+            public void setState(Status state) {
                 this.state = state;
             }
         };
@@ -72,7 +70,7 @@ public class GUIExecutorTest {
         guiExecutor.execute(executionRequest);
 
         // Assert that the state is changed after execution
-        assertEquals(State.ACTIVE, nonDialogBoxAction.getState());
+        assertEquals(Status.ACTIVE, nonDialogBoxAction.getState());
     }
 
 }

@@ -1,5 +1,5 @@
 package gruppo13.seproject.essential.action.type;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.ActionType;
 import org.junit.jupiter.api.Test;
 
@@ -22,11 +22,11 @@ class DialogBoxActionTest {
         DialogBoxAction dialogBoxAction = new DialogBoxAction("Title", "Content", "Message");
 
         // Check the initial state
-        assertEquals(State.ACTIVE, dialogBoxAction.getState());
+        assertEquals(Status.ACTIVE, dialogBoxAction.getState());
 
         // Set a new state and check
-        dialogBoxAction.setState(State.NOTACTIVE);
-        assertEquals(State.NOTACTIVE, dialogBoxAction.getState());
+        dialogBoxAction.setState(Status.NOTACTIVE);
+        assertEquals(Status.NOTACTIVE, dialogBoxAction.getState());
     }
 
     @Test

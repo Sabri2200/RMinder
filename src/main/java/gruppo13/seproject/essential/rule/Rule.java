@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.trigger.Trigger;
 
@@ -10,23 +10,23 @@ public class Rule {
     private String name;
     private List<Action> actions;
     private Trigger trigger;
-    private State state;
+    private Status status;
     private int nextActivation;
 
-    public Rule(String name, List<Action> actions, Trigger trigger, State state) {
+    public Rule(String name, List<Action> actions, Trigger trigger, Status status) {
         this.name = name;
         this.actions = actions;
         this.trigger = trigger;
         this.nextActivation = 0;
-        this.state = state;
+        this.status = status;
     }
 
-    public Rule(String name, List<Action> actions, Trigger trigger, int nextActivation, State state) {
+    public Rule(String name, List<Action> actions, Trigger trigger, int nextActivation, Status status) {
         this.name = name;
         this.actions = actions;
         this.trigger = trigger;
         this.nextActivation = nextActivation;
-        this.state = state;
+        this.status = status;
     }
 
     public String getName() {
@@ -41,12 +41,12 @@ public class Rule {
         return trigger;
     }
 
-    public State getState() {
-        return state;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public int getNextActivation() {

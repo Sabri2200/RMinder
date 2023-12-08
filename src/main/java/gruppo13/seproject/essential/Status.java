@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential;
 
-public enum State {
+public enum Status {
     ACTIVE,
     INACTIVE,
     //ALWAYSACTIVE

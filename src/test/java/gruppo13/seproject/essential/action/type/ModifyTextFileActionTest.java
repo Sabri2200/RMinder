@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
@@ -8,8 +8,6 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class ModifyTextFileActionTest {
 
@@ -49,7 +47,7 @@ public class ModifyTextFileActionTest {
     @Test
     public void testStateAfterExecution() throws Exception {
         modifyTextFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, modifyTextFileAction.getState());
+        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, modifyTextFileAction.getState());
     }
 
     @Test

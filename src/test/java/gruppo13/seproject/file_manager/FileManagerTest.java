@@ -1,6 +1,6 @@
 package gruppo13.seproject.file_manager;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.rule.Rule;
@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import gruppo13.seproject.file_manager.FileManager;
-import org.junit.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -74,8 +71,8 @@ class FileManagerTest {
         actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
-        rules.add(new Rule("name1", actions, trigger, State.ACTIVE));
-        rules.add(new Rule("name2", actions, trigger, State.INACTIVE));
+        rules.add(new Rule("name1", actions, trigger, Status.ACTIVE));
+        rules.add(new Rule("name2", actions, trigger, Status.INACTIVE));
 
         fileManager.saveRulesToFile(rules, tempFile);
 
@@ -114,7 +111,7 @@ class FileManagerTest {
     void testSaveRulesToFileExceptionHandling() {
         List<Rule> rules = new ArrayList<>();
 
-        rules.add(new Rule("rule", null, null, State.INACTIVE));
+        rules.add(new Rule("rule", null, null, Status.INACTIVE));
 
         // Rende il file di sola lettura per indurre un'eccezione
         assertTrue(tempFile.setReadOnly());
@@ -141,8 +138,8 @@ class FileManagerTest {
         actions.add(new AudioAction(new File("/Users/michelecoscarelli/Downloads/gg.mp3")));
         Trigger trigger = new ClockTrigger(LocalTime.of(00, 00));
 
-        expectedRules.add(new Rule("name1", actions, trigger, State.ACTIVE));
-        expectedRules.add(new Rule("name2", actions, trigger, State.INACTIVE));
+        expectedRules.add(new Rule("name1", actions, trigger, Status.ACTIVE));
+        expectedRules.add(new Rule("name2", actions, trigger, Status.INACTIVE));
 
         for (Rule rule : loadedRules) {
             System.out.println(rule.getName());
@@ -150,7 +147,7 @@ class FileManagerTest {
                 System.out.println(a.toString());
             }
             System.out.println(rule.getTrigger());
-            System.out.println(rule.getState());
+            System.out.println(rule.getStatus());
         }
         // Verifica: confronta le regole caricate con quelle attese
         //assertEquals(expectedRules, loadedRules);

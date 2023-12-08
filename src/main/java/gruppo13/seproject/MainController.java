@@ -5,7 +5,7 @@ import gruppo13.seproject.service.BackgroundService;
 import gruppo13.seproject.service.GUIhandler.GUIRuleList;
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
@@ -17,7 +17,6 @@ import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -168,17 +167,17 @@ public class MainController implements Initializable {
     // During a rule creation, this method can change the text of ruleStateBtn, from Active to INACTIVE or viceversa.
     public void ruleStateChange(ActionEvent actionEvent) {
         // Taking the actual state.
-        State oldState = State.valueOf(ruleStateBtn.getText());
+        Status oldStatus = Status.valueOf(ruleStateBtn.getText());
 
         // Changing the state due the actual state.
-        State newState = switch (oldState) {
-            case ACTIVE -> State.INACTIVE;
+        Status newStatus = switch (oldStatus) {
+            case ACTIVE -> Status.INACTIVE;
             //case ALWAYSACTIVE -> State.NOTACTIVE;
-            case INACTIVE -> State.ACTIVE;
+            case INACTIVE -> Status.ACTIVE;
         };
 
         // Changing the state
-        ruleStateBtn.setText(newState.name());
+        ruleStateBtn.setText(newStatus.name());
     }
 
     public void pathSelector(ActionEvent actionEvent) {
@@ -320,7 +319,7 @@ public class MainController implements Initializable {
         // Checking that everything is valid
         if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
             // This will be the state of the rule
-            State state = State.valueOf(ruleStateBtn.getText());
+            Status status = Status.valueOf(ruleStateBtn.getText());
 
             // Trigger Factory creates trigger by knowing its type and a list of parameters.
             Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
@@ -341,8 +340,8 @@ public class MainController implements Initializable {
             }
 
             Rule rule = !activationCheckBox.isSelected() ?
-                    RuleFactory.createRule(ruleName, actionsList, trigger, state) :
-                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, state);
+                    RuleFactory.createRule(ruleName, actionsList, trigger, status) :
+                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, status);
 
             if (rule == null) {
                 // If RuleFactory returns null, the trigger cannot be created due invalid parameters:
@@ -486,10 +485,10 @@ public class MainController implements Initializable {
 
         if (!selectedRules.isEmpty()) {
             for (Rule rule : selectedRules) {
-                State oldState = rule.getState();
-                State newState = oldState.equals(State.ACTIVE) ? State.INACTIVE : State.ACTIVE;
+                Status oldStatus = rule.getStatus();
+                Status newStatus = oldStatus.equals(Status.ACTIVE) ? Status.INACTIVE : Status.ACTIVE;
                 if (ruleManager.getRules().contains(rule)) {
-                    ruleManager.setState(rule, newState);
+                    ruleManager.setStatus(rule, newStatus);
                 }
             }
         } else {
@@ -523,7 +522,7 @@ public class MainController implements Initializable {
 
         stateClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(rule.getState().name());
+            return new ReadOnlyObjectWrapper<>(rule.getStatus().name());
         });
 
         tableView.setItems(guiRuleList.getList());

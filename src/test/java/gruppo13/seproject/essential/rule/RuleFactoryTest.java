@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +17,7 @@ class RuleFactoryTest {
     private String name;
     private List<Action> actions;
     private Trigger trigger;
-    private State state;
+    private Status status;
 
 
     @BeforeEach
@@ -26,12 +25,12 @@ class RuleFactoryTest {
         name = "ruleName";
         actions = new ArrayList<>();
         trigger = new ClockTrigger(LocalTime.now());
-        state = State.ACTIVE;
+        status = Status.ACTIVE;
     }
 
     @Test
     void createRule() {
-        assertNotNull(RuleFactory.createRule(name, actions, trigger, state));
+        assertNotNull(RuleFactory.createRule(name, actions, trigger, status));
     }
 
     @Test
@@ -41,7 +40,7 @@ class RuleFactoryTest {
 
     @Test
     void createEmptyActionsRule() {
-        assertNull(RuleFactory.createRule(name, new ArrayList<>(), trigger, state));
+        assertNull(RuleFactory.createRule(name, new ArrayList<>(), trigger, status));
     }
 
 }

@@ -7,9 +7,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.Status;
 
 public class CopyFileActionTest {
 
@@ -49,7 +48,7 @@ public class CopyFileActionTest {
     @Test(expected = ActionException.class)
     public void testStateAfterExecution() throws ActionException {
         copyFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, copyFileAction.getState());
+        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, copyFileAction.getState());
     }
 
 

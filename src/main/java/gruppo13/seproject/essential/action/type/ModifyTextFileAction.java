@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
@@ -10,10 +9,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class ModifyTextFileAction extends FileAction {
     private String stringToAdd;
