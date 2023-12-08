@@ -5,6 +5,7 @@ import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -29,6 +30,7 @@ public class TriggerFactory {
             LocalTime time = LocalTime.of(hour, minute);
             return new ClockTrigger(time);
         } catch (Exception e) {
+            System.out.println(t[0]);
             requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
         }
         return null;

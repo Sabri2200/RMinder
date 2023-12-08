@@ -15,29 +15,17 @@ import java.nio.file.StandardCopyOption;
 
 public class CopyFileAction extends FileAction {
     private String newPath;
-    private State state;
     private RequestPublisher requestPublisher;
 
     public CopyFileAction(File file, String newPath) {
         super(file);
         this.newPath = newPath;
-        this.state = State.ACTIVE;
         requestPublisher = RequestPublisher.getInstance();
     }
 
     @Override
     public ActionType getType() {
         return ActionType.COPYFILE;
-    }
-
-    @Override
-    public State getState() {
-        return this.state;
-    }
-
-    @Override
-    public void setState(State state) {
-        this.state = state;
     }
 
     @Override

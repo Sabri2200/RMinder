@@ -21,6 +21,7 @@ public class RuleJson {
         jsonRule.put("name", rule.getName());
         jsonRule.put("trigger", rule.getTrigger().toString());
         jsonRule.put("state", rule.getState().toString());
+        jsonRule.put("nextActivation", rule.getNextActivation());
 
         JSONArray actionsArray = new JSONArray();
         for (Action action : rule.getActions()) {
@@ -69,6 +70,8 @@ public class RuleJson {
 
         State state = State.valueOf(jsonRule.getString("state"));
 
+        int nextActivation = jsonRule.getInt("nextActivation");
+
         JSONArray actionsArray = jsonRule.getJSONArray("actions");
         List<Action> actions = new ArrayList<>();
         for (int i = 0; i < actionsArray.length(); i++) {
@@ -82,7 +85,9 @@ public class RuleJson {
             actions.add(action);
         }
 
-        return RuleFactory.createRule(name, actions, trigger, state);
+        return nextActivation == 0 ?
+                RuleFactory.createRule(name, actions, trigger, state) :
+                RuleFactory.createRule(name, actions, trigger, nextActivation, state);
     }
 
 

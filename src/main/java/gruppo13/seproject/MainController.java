@@ -68,6 +68,8 @@ public class MainController implements Initializable {
     public MenuItem saveToFileBtn;
     public MenuItem loadFromFileBtn;
     public MenuItem turnBtn;
+    public CheckBox activationCheckBox;
+    public TextField minuteTextField;
     @FXML
     private TextField ruleNameField;
     @FXML
@@ -333,7 +335,14 @@ public class MainController implements Initializable {
             }
 
             // RuleFactory creates a rule through its name, list of actions, trigger and a state.
-            Rule rule = RuleFactory.createRule(ruleName, actionsList, trigger, state);
+            int nextActivation = 0;
+            if (activationCheckBox.isSelected()) {
+                nextActivation = Integer.parseInt(minuteTextField.getText());
+            }
+
+            Rule rule = !activationCheckBox.isSelected() ?
+                    RuleFactory.createRule(ruleName, actionsList, trigger, state) :
+                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, state);
 
             if (rule == null) {
                 // If RuleFactory returns null, the trigger cannot be created due invalid parameters:
@@ -530,6 +539,22 @@ public class MainController implements Initializable {
     }
 
     private void initializeRuleCreationParadigm() {
+
+        // First TabView
+        minuteTextField.disableProperty().bind(activationCheckBox.selectedProperty().not());
+
+        minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
+            } else if (!newValue.isEmpty()) {
+                int minute = Integer.parseInt(newValue);
+                if (minute < 0 || minute > 59) {
+                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
+                }
+            }
+        });
+
+        //Second TabView
         List<TriggerType> triggerList = List.of(TriggerType.values());
         ObservableList<TriggerType> triggerObservableList = FXCollections.observableArrayList(triggerList);
         triggerSelector.setItems(triggerObservableList);
@@ -545,6 +570,7 @@ public class MainController implements Initializable {
         };
         triggerSelector.valueProperty().addListener(selectTriggerChangeListener);
 
+        // Third TabView
         List<ActionType> actionList = List.of(ActionType.values());
         ObservableList<ActionType> actionObservableList = FXCollections.observableArrayList(actionList);
         actionSelector.setItems(actionObservableList);

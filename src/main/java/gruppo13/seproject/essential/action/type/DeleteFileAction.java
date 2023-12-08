@@ -12,28 +12,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class DeleteFileAction extends FileAction {
-    private State state;
     private RequestPublisher requestPublisher;
 
     public DeleteFileAction(File file) {
         super(file);
-        this.state = State.ACTIVE;
         this.requestPublisher = RequestPublisher.getInstance();
     }
 
     @Override
     public ActionType getType() {
         return ActionType.DELETEFILE;
-    }
-
-    @Override
-    public State getState() {
-        return this.state;
-    }
-
-    @Override
-    public void setState(State state) {
-        this.state = state;
     }
 
     @Override

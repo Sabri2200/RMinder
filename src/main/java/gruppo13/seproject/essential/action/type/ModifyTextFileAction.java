@@ -17,13 +17,11 @@ import java.nio.file.StandardOpenOption;
 
 public class ModifyTextFileAction extends FileAction {
     private String stringToAdd;
-    private State state;
     private RequestPublisher requestPublisher;
 
     public ModifyTextFileAction(File file, String stringToAdd) {
         super(file);
         this.stringToAdd = stringToAdd;
-        this.state = State.ACTIVE;
         requestPublisher = RequestPublisher.getInstance();
     }
 
@@ -39,16 +37,6 @@ public class ModifyTextFileAction extends FileAction {
     @Override
     public ActionType getType() {
         return ActionType.MODIFYTEXTFILE;
-    }
-
-    @Override
-    public State getState() {
-        return this.state;
-    }
-
-    @Override
-    public void setState(State state) {
-        this.state = state;
     }
 
     public String getStringToAdd() {
