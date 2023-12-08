@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.request_handler;
 
-// TODO: 06/12/2023 : TEST when is done
 public class RequestSwitcher implements Handler {
     private Handler nextHandler;
 
@@ -13,6 +12,7 @@ public class RequestSwitcher implements Handler {
     public static RequestSwitcher getInstance() {
         return RequestSwitcher.RequestSwitcherInstanceHolder.REQUEST_SWITCHER_INSTANCE;
     }
+
 
     @Override
     public void setNext(Handler handler) {
@@ -29,4 +29,7 @@ public class RequestSwitcher implements Handler {
         }
     }
 
+    public Handler getNextHandler() {
+        return nextHandler;
+    }
 }

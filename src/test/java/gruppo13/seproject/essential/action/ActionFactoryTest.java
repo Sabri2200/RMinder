@@ -1,21 +1,20 @@
 package gruppo13.seproject.essential.action;
 
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class ActionFactoryTest {
+public class ActionFactoryTest {
     private Map.Entry<ActionType, List<String>> action;
-
-    @BeforeEach
+    private List<String> params = new ArrayList<>();
+    @Test
     void setUp() {
-        List<String> params = new ArrayList<>();
         params.add("title");
         params.add("header");
         params.add("message");
@@ -26,8 +25,7 @@ class ActionFactoryTest {
     @Test
     void createAction() {
         Action action1 = new DialogBoxAction("title", "header", "message");
-
-        assertEquals(ActionFactory.createAction(action).toString(), action1.toString());
+        Assert.assertEquals(ActionFactory.createAction(action).toString(), action1.toString());
     }
 
     @Test
@@ -37,6 +35,7 @@ class ActionFactoryTest {
 
     @Test
     void createWrongParametersAction() {
+        Map.Entry<ActionType, List<String>> action;
         List<String> params = new ArrayList<>();
         params.add("title");
 

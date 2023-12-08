@@ -2,26 +2,24 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.ActionPerformer;
 import gruppo13.seproject.essential.action.exception.ActionException;
 import gruppo13.seproject.essential.action.exception.ActionExceptionTest;
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.trigger.Trigger;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Collections;
 
 import static org.mockito.Mockito.*;
 
-class RulePerformerTest {
+public class RulePerformerTest {
 
     private RuleManager ruleManagerMock;
     private RequestPublisher requestPublisherMock;
     private RulePerformer rulePerformer;
 
-    @BeforeEach
+    @Test
     void setUp() {
         // Creating mocks for RuleManager and RequestPublisher
         ruleManagerMock = mock(RuleManager.class);
@@ -57,7 +55,7 @@ class RulePerformerTest {
     }
 
     @Test
-    void testExecute_ActiveRule_TriggerVerification_ActionExecution() throws ActionException {
+    public void testExecute_ActiveRule_TriggerVerification_ActionExecution() throws ActionException {
         // When there is an active rule with trigger verification, actions should be executed if the trigger is verified
         Rule activeRule = createTestRule(Status.ACTIVE, true);
         when(ruleManagerMock.getRules()).thenReturn(Collections.singletonList(activeRule));
@@ -70,18 +68,16 @@ class RulePerformerTest {
 
         // Verify that relevant methods on actions and requestPublisher are called for each action
         for (Action action : activeRule.getActions()) {
-            verify(action, times(1)).getState();
-            verify(action, times(1)).setState(Status.NOTACTIVE);
             verify(action, times(1)).execute();
             verify(requestPublisherMock, times(1)).publishRequest(RequestFactory.createExecutionRequest(action));
         }
 
         // Verify that ruleManager.setState is called once
-        verify(ruleManagerMock, times(1)).setStatus(activeRule, Status.NOTACTIVE);
+        verify(ruleManagerMock, times(1)).setStatus(activeRule, Status.INACTIVE);
     }
 
-    @Test
-    void testExecute_ActionExceptionHandling() throws ActionException {
+    @Test (expected = ActionException.class)
+    public void testExecute_ActionExceptionHandling() throws ActionException {
         // When an ActionException occurs during action execution, it should be caught and reported
         Rule activeRule = createTestRule(Status.ACTIVE, true);
         when(ruleManagerMock.getRules()).thenReturn(Collections.singletonList(activeRule));
@@ -96,12 +92,12 @@ class RulePerformerTest {
     }
 
     // Helper method to create a mock Rule with specified state and trigger verification result
+    @Test
     private Rule createTestRule(Status ruleStatus, boolean triggerVerificationResult) {
         Rule rule = mock(Rule.class);
         when(rule.getStatus()).thenReturn(ruleStatus);
 
         Action action = mock(Action.class);
-        when(action.getState()).thenReturn(Status.ACTIVE);
 
         Trigger trigger = mock(Trigger.class);
         when(trigger.verify()).thenReturn(triggerVerificationResult);

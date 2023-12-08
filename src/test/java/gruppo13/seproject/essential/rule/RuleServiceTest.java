@@ -1,24 +1,26 @@
 package gruppo13.seproject.essential.rule;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 
-class RuleServiceTest {
+public class RuleServiceTest {
 
     private RulePerformer rulePerformerMock;
     private ExecutorService executorServiceMock;
 
-    @BeforeEach
+    @Before
     void setUp() {
         rulePerformerMock = mock(RulePerformer.class);
         executorServiceMock = mock(ExecutorService.class);
     }
 
-    @AfterEach
+    @After
     void tearDown() {
         rulePerformerMock = null;
         executorServiceMock = null;

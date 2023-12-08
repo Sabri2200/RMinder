@@ -2,15 +2,17 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 import static org.mockito.Mockito.mock;
 import gruppo13.seproject.essential.trigger.Trigger;
 
 
-class RuleTest {
+public class RuleTest {
 
     @Test
     void testRuleInitialization() {
