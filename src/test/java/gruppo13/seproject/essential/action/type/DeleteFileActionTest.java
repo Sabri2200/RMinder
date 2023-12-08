@@ -1,68 +1,50 @@
-/*package gruppo13.seproject.essential.action.type;
-import gruppo13.seproject.essential.State;
-import gruppo13.seproject.essential.action.ActionType;
-import org.junit.jupiter.api.Test;
+package gruppo13.seproject.essential.action.type;
 
+import gruppo13.seproject.essential.State;
+import gruppo13.seproject.essential.action.exception.ActionException;
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class DeleteFileActionTest {
 
-class DeleteFileActionTest {
+    private File testFile;
+    private DeleteFileAction deleteFileAction;
 
-    @Test
-    void execute() {
-        // Create a temporary file for testing
-        File tempFile;
-        try {
-            tempFile = File.createTempFile("test", ".txt");
-        } catch (IOException e) {
-            throw new RuntimeException("Error creating temporary file for testing.");
-        }
+    @Before
+    public void setUp() throws Exception {
+        // Creazione di un file temporaneo per il test
+        testFile = File.createTempFile("testFile", ".txt");
+        deleteFileAction = new DeleteFileAction(testFile);
+    }
 
-        // Create DeleteFileAction instance
-        DeleteFileAction deleteFileAction = new DeleteFileAction(tempFile.getAbsolutePath());
-
-        // Execute the action
-        assertDoesNotThrow(() -> deleteFileAction.execute());
-
-        // Check if the file is deleted
-        assertFalse(Files.exists(Path.of(tempFile.getAbsolutePath())));
+    @After
+    public void tearDown() throws Exception {
+        // Pulizia: elimina i file creati durante il test, se ancora esistono
+        Files.deleteIfExists(testFile.toPath());
     }
 
     @Test
-    void executeWithNonexistentFile() {
-        // Provide a nonexistent file path for testing
-        String nonexistentFilePath = "path/to/nonexistent/file.txt";
+    public void testFileDeletionSuccess() throws Exception {
+        deleteFileAction.execute();
+        assertFalse("Il file non dovrebbe esistere", testFile.exists());
+    }
 
-        // Create DeleteFileAction instance with a nonexistent file path
-        DeleteFileAction deleteFileAction = new DeleteFileAction(nonexistentFilePath);
-
-        // Execute the action and expect no exception
-        assertDoesNotThrow(deleteFileAction::execute);
+    @Test(expected = ActionException.class)
+    public void testFileDeletionFailure() throws Exception {
+        File invalidFile = new File("path/to/inesistente.txt");
+        DeleteFileAction invalidDeleteAction = new DeleteFileAction(invalidFile);
+        invalidDeleteAction.execute();
     }
 
     @Test
-    void getType() {
-        // Create DeleteFileAction instance
-        DeleteFileAction deleteFileAction = new DeleteFileAction("path/to/delete/file.txt");
-
-        // Check if the action type is correct
-        assertEquals(ActionType.DELETEFILE, deleteFileAction.getType());
+    public void testStateAfterExecution() throws Exception {
+        deleteFileAction.execute();
+        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, deleteFileAction.getState());
     }
 
-    @Test
-    void toStringTest() {
-        // Provide a file path for testing
-        String filePath = "path/to/delete/file.txt";
-
-        // Create DeleteFileAction instance
-        DeleteFileAction deleteFileAction = new DeleteFileAction(filePath);
-
-        // Check if the toString representation is correct
-        assertEquals("DELETEFILE " + filePath, deleteFileAction.toString());
-    }
 }
-*/
