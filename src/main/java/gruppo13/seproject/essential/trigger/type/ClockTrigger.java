@@ -36,6 +36,6 @@ public class ClockTrigger implements Trigger {
 
     @Override
     public String toString() {
-        return TriggerType.CLOCKTRIGGER.toString() + " " + time.getHour() + ":" + time.getMinute();
+        return TriggerType.CLOCKTRIGGER + " " + time.getHour() + ":" + time.getMinute();
     }
 }

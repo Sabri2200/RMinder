@@ -1,58 +1,56 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.action.ActionType;
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
+import gruppo13.seproject.essential.action.exception.ActionException;
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.*;
+import gruppo13.seproject.essential.State;
 
 public class CopyFileActionTest {
 
-    @Test
-    void execute() {
-        // Prepare test files
-        String sourceFilePath = "C:/Users/sabri/Downloads/Prova.txt";
-        String destinationDirectory = "C:/Users/sabri/Downloads";
-        String destinationFilePath = destinationDirectory + "/file.txt";
+    private File sourceFile;
+    private String destinationPath;
+    private CopyFileAction copyFileAction;
 
-        try {
-            Files.createDirectories(Paths.get(destinationDirectory));
-            Files.createFile(Paths.get(sourceFilePath));
-        } catch (IOException e) {
-            fail("Failed to create test files.");
-        }
+    @Before
+    public void setUp() throws Exception {
+        // Creazione di un file temporaneo per il test
+        sourceFile = File.createTempFile("testFile", ".txt");
+        destinationPath = sourceFile.getParent() + File.separator + "copiedTestFile.txt";
 
-        // Create CopyFileAction instance
-        CopyFileAction copyFileAction = new CopyFileAction(sourceFilePath, destinationDirectory);
+        copyFileAction = new CopyFileAction(sourceFile, destinationPath);
+    }
 
-        // Execute the action
-        assertDoesNotThrow(() -> copyFileAction.execute());
-
-        // Check if the file was copied successfully
-        assertTrue(Files.exists(Paths.get(destinationFilePath)));
-
-        // Clean up
-        try {
-            Files.deleteIfExists(Paths.get(sourceFilePath));
-            Files.deleteIfExists(Paths.get(destinationFilePath));
-            Files.deleteIfExists(Paths.get(destinationDirectory));
-        } catch (IOException e) {
-            fail("Failed to clean up test files.");
-        }
+    @After
+    public void tearDown() throws Exception {
+        // Pulizia: elimina i file creati durante il test
+        Files.deleteIfExists(Paths.get(destinationPath));
+        Files.deleteIfExists(sourceFile.toPath());
     }
 
     @Test
-    void getType() {
-        CopyFileAction copyFileAction = new CopyFileAction("path/to/source/file.txt", "path/to/destination");
-        assertEquals(ActionType.DIALOGBOX, copyFileAction.getType());
+    public void testFileCopySuccess() throws Exception {
+        copyFileAction.execute();
+        assertTrue("Il file di destinazione dovrebbe esistere", Files.exists(Paths.get(destinationPath)));
     }
 
-    @Test
-    void toStringTest() {
-        CopyFileAction copyFileAction = new CopyFileAction("path/to/source/file.txt", "path/to/destination");
-        assertEquals("DIALOGBOX", copyFileAction.toString());
+    @Test(expected = ActionException.class)
+    public void testFileCopyFailure() throws Exception {
+        File invalidFile = new File("path/to/inesistente.txt");
+        CopyFileAction invalidCopyAction = new CopyFileAction(invalidFile, destinationPath);
+        invalidCopyAction.execute();
     }
+
+    @Test(expected = ActionException.class)
+    public void testStateAfterExecution() throws ActionException {
+        copyFileAction.execute();
+        assertEquals("Lo stato dovrebbe essere ACTIVE", State.ACTIVE, copyFileAction.getState());
+    }
+
+
 }

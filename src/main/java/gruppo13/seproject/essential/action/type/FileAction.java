@@ -2,18 +2,16 @@ package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.Action;
 
+import java.io.File;
+
 public abstract class FileAction implements Action {
-    private String filePath;
+    private File file;
 
-    public FileAction(String filePath) {
-        this.filePath = filePath;
+    public FileAction(File file) {
+        this.file = file;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getFilePath() {
-        return filePath;
+    public File getFile() {
+        return file;
     }
 }

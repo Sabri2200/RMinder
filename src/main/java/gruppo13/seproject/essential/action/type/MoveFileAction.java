@@ -2,6 +2,10 @@ package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.State;
 import gruppo13.seproject.essential.action.ActionType;
+import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.request_handler.Request;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
+import gruppo13.seproject.essential.request_handler.RequestType;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -10,47 +14,39 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 public class MoveFileAction extends FileAction {
-    private String destinationDirectory;
+    private String newPath;
+    private RequestPublisher requestPublisher;
 
-    public MoveFileAction(String filePath, String destinationDirectory) {
-        super(filePath);
-        this.destinationDirectory = destinationDirectory;
+    public MoveFileAction(File file, String newPath) {
+        super(file);
+        this.newPath = newPath;
+        requestPublisher = RequestPublisher.getInstance();
     }
-
-    @Override
-    public void execute() {
-        try {
-            Path sourcePath = Paths.get(getFilePath());
-            Path destinationPath = new File(destinationDirectory).toPath();
-
-            Files.move(sourcePath, destinationPath.resolve(sourcePath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
-
 
     @Override
     public ActionType getType() {
-        return null; //ActionType.MOVEFILE;
+        return ActionType.MOVEFILE;
     }
 
     @Override
-    public State getState() {
-        return null;
+    public void execute() throws ActionException {
+        Path sourcePath = Paths.get(super.getFile().getAbsolutePath()); // Percorso del file sorgente
+        Path destinationPath = Paths.get(this.newPath); // Percorso di destinazione
+
+        try {
+            // Sposta il file dalla sorgente alla destinazione
+            Files.move(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e) {
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
+        }
+    }
+
+    public String getNewPath() {
+        return newPath;
     }
 
     @Override
-    public void setState(State state) {
-
-    }
-
-    public String getDestinationDirectory() {
-        return destinationDirectory;
-    }
     public String toString() {
-        return ""; //ActionType.MOVEFILE.name() + "to " + destinationDirectory;
+        return getType() + " " + super.getFile().getAbsoluteFile() + " " + getNewPath();
     }
 }

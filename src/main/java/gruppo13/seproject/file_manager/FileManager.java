@@ -25,12 +25,12 @@ public class FileManager {
     }
 
 
-    private Boolean verifyFile(File file) {
-        return file != null && file.exists();
+    public Boolean verifyFile(File file) {
+        return file != null && file.exists() && file.isFile();
     }
 
     public Boolean verifyAudioFile(File file) {
-        return verifyFile(file) && getExtension(file).equals("mp3") && file.canRead();
+        return file.canRead() && verifyFile(file); // && getExtension(file).equals("mp3") && file.canRead();
     }
 
     public Boolean verifyReadableFile(File file) {

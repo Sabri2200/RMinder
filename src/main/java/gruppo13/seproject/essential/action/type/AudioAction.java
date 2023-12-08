@@ -17,12 +17,10 @@ import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 public class AudioAction implements Action {
     private File filePath;
-    private State state;
     private RequestPublisher requestPublisher;
 
     public AudioAction(File file) {
         this.filePath = file;
-        state = State.ACTIVE;
         this.requestPublisher = RequestPublisher.getInstance();
     }
 
@@ -69,14 +67,6 @@ public class AudioAction implements Action {
     @Override
     public ActionType getType() {
         return ActionType.MP3PLAYER;
-    }
-
-    public State getState() {
-        return this.state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
     }
 
     public String getFilePath() {
