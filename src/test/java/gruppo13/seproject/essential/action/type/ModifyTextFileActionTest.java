@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.Status;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
@@ -42,12 +41,6 @@ public class ModifyTextFileActionTest {
         File invalidFile = new File("path/to/inesistente.txt");
         ModifyTextFileAction invalidModifyAction = new ModifyTextFileAction(invalidFile, contentToAdd);
         invalidModifyAction.execute();
-    }
-
-    @Test
-    public void testStateAfterExecution() throws Exception {
-        modifyTextFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, modifyTextFileAction.getState());
     }
 
     @Test

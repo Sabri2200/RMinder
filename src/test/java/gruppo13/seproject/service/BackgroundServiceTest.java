@@ -3,19 +3,20 @@ package gruppo13.seproject.service;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.rule.RuleManager;
 import gruppo13.seproject.file_manager.FileManager;
-import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+import org.junit.Test;
 
 
-class BackgroundServiceTest {
+
+public class BackgroundServiceTest {
 
     private RuleManager ruleManager;
     private RequestPublisher requestPublisher;
     private FileManager fileManager;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         // Create mock objects for dependencies
         ruleManager = mock(RuleManager.class);
         requestPublisher = mock(RequestPublisher.class);

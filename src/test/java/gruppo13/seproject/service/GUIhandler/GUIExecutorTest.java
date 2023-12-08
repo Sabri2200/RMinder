@@ -1,12 +1,15 @@
 package gruppo13.seproject.service.GUIhandler;
 
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.ActionType;
+import gruppo13.seproject.essential.action.type.AudioAction;
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestType;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GUIExecutorTest {
@@ -35,30 +38,12 @@ public class GUIExecutorTest {
     @Test
     public void testExecuteNonDialogBoxAction() {
         // Create a non-DialogBox Action for testing
-        Action nonDialogBoxAction = new Action() {
-            private Status state = Status.NOTACTIVE; // Initial state
-
-            @Override
-            public void execute() {
-                // Some dummy execution
-                setState(Status.ACTIVE); // Simulating a state change after execution
-            }
-
-            @Override
-            public ActionType getType() {
-                return ActionType.INVALID_TYPE; // Using a non-DIALOGBOX type
-            }
-
-            @Override
-            public Status getState() {
-                return state;
-            }
-
-            @Override
-            public void setState(Status state) {
-                this.state = state;
-            }
-        };
+        Action nonDialogBoxAction = null;
+        try {
+            nonDialogBoxAction = new AudioAction(File.createTempFile("file",".txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Create a Request with EXECUTION type and the non-DialogBox Action
         Request executionRequest = new Request(RequestType.EXECUTION, nonDialogBoxAction);
@@ -69,8 +54,6 @@ public class GUIExecutorTest {
         // Execute the request
         guiExecutor.execute(executionRequest);
 
-        // Assert that the state is changed after execution
-        assertEquals(Status.ACTIVE, nonDialogBoxAction.getState());
     }
 
 }

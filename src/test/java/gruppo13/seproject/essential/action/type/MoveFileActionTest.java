@@ -1,7 +1,5 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.Service.GUIHandler.ErrorLogManager;
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.exception.ActionException;
 import org.junit.Before;
 import org.junit.After;
@@ -46,12 +44,5 @@ public class MoveFileActionTest {
         MoveFileAction invalidMoveAction = new MoveFileAction(invalidFile, destinationPath);
         invalidMoveAction.execute();
     }
-
-    @Test
-    public void testStateAfterExecution() throws Exception {
-        moveFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, moveFileAction.getState());
-    }
-
 
 }

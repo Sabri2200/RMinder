@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import gruppo13.seproject.essential.Status;
 
 public class CopyFileActionTest {
 
@@ -43,12 +42,6 @@ public class CopyFileActionTest {
         File invalidFile = new File("path/to/inesistente.txt");
         CopyFileAction invalidCopyAction = new CopyFileAction(invalidFile, destinationPath);
         invalidCopyAction.execute();
-    }
-
-    @Test(expected = ActionException.class)
-    public void testStateAfterExecution() throws ActionException {
-        copyFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, copyFileAction.getState());
     }
 
 

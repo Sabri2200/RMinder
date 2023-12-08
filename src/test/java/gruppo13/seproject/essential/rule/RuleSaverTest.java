@@ -1,29 +1,28 @@
 package gruppo13.seproject.essential.rule;
 
-import static org.junit.jupiter.api.Assertions.*;
-import gruppo13.seproject.essential.rule.RuleSaver;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-class RuleSaverTest {
+
+public class RuleSaverTest {
 
     private RuleManager ruleManagerMock;
     private ExecutorService executorServiceMock;
     private File fileMock;
 
-    @BeforeEach
+    @Before
     void setUp() {
         ruleManagerMock = mock(RuleManager.class);
         executorServiceMock = mock(ExecutorService.class);
         fileMock = mock(File.class);
     }
 
-    @AfterEach
+    @After
     void tearDown() {
         ruleManagerMock = null;
         executorServiceMock = null;

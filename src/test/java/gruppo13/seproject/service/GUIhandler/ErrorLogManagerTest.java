@@ -2,7 +2,6 @@ package gruppo13.seproject.service.GUIhandler;
 
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestType;
-import gruppo13.seproject.service.GUIhandler.ErrorLogManager;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

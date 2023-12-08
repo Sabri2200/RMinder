@@ -1,12 +1,9 @@
 package gruppo13.seproject.essential.request_handler;
-import gruppo13.seproject.essential.request_handler.Request;
-import gruppo13.seproject.essential.request_handler.RequestState;
-import gruppo13.seproject.essential.request_handler.RequestType;
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-class RequestTest {
+public class RequestTest {
 
     @Test
     void createRequest() {

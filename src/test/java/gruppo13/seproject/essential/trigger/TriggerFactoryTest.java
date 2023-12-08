@@ -1,13 +1,12 @@
 package gruppo13.seproject.essential.trigger;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+// TODO: 08/12/2023 FARE Test 
+public class TriggerFactoryTest {
 
-class TriggerFactoryTest {
-
-    @BeforeEach
+    @Before
     void setUp() {
     }
 

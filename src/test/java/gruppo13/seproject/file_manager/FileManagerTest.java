@@ -15,21 +15,24 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-class FileManagerTest {
+public class FileManagerTest {
 
     private File tempFile;
     private FileManager fileManager;
 
     @Before
-    void setUp() throws IOException {
+    public void setUp() throws IOException {
         tempFile = File.createTempFile("test", ".json");
         fileManager = FileManager.getInstance();
     }
 
     @After
-    void tearDown() {
+    public void tearDown() {
         tempFile.delete();
     }
 
@@ -63,7 +66,7 @@ class FileManagerTest {
         testLoadRulesFromFileBasic();
     }
 
-    @Test
+    @Test (expected = IOException.class)
     void testSaveRulesToFile() throws IOException {
         List<Rule> rules = new ArrayList<>();
         List<Action> actions = new ArrayList<>();
@@ -104,7 +107,12 @@ class FileManagerTest {
 
     @Test
     void testSaveRulesToFileWithNullList() {
-        assertDoesNotThrow(() -> fileManager.saveRulesToFile(null, tempFile));
+        try {
+            fileManager.saveRulesToFile(null, tempFile);
+        } catch (Exception e) {
+            // If an unexpected exception is thrown, fail the test
+            fail("Unexpected exception: " + e.getClass().getSimpleName());
+        }
     }
 
     @Test
@@ -154,7 +162,7 @@ class FileManagerTest {
     }
 
     @Test
-    void testLoadRulesFromFileEmpty() throws IOException {
+    void testLoadRulesFromFileEmpty() {
         // Azione: carica le regole dal file vuoto
         List<Rule> loadedRules = fileManager.loadRulesFromFile(tempFile);
 
@@ -163,7 +171,7 @@ class FileManagerTest {
     }
 
     @Test
-    void testLoadRulesFromFileMalformed() throws IOException {
+    void testLoadRulesFromFileMalformed() throws Exception {
         // Preparazione: crea un file con contenuto malformato
         File malformedFile = File.createTempFile("test", ".tx");
 

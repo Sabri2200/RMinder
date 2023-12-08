@@ -4,7 +4,6 @@ import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestType;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.rule.RuleManager;
-import gruppo13.seproject.service.GUIhandler.GUIRuleList;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,50 +1,58 @@
 package gruppo13.seproject.essential.request_handler;
 
-import gruppo13.seproject.essential.action.Action;
-import gruppo13.seproject.essential.action.type.DialogBoxAction;
-import gruppo13.seproject.essential.request_handler.Request;
-import gruppo13.seproject.essential.request_handler.RequestFactory;
-import gruppo13.seproject.essential.request_handler.RequestType;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
 
-class RequestFactoryTest {
+import static org.mockito.Mockito.*;
 
-    @Test
-    void createExceptionRequest() {
-        // Create an exception
-        Exception exception = new RuntimeException("Test exception");
+public class RequestPublisherTest {
 
-        // Create an exception request using the factory method
-        Request request = RequestFactory.createExceptionRequest(exception);
+    @Mock
+    private RequestSwitcher mockRequestSwitcher;
 
-        // Check if the request is created correctly
-        Assertions.assertEquals(RequestType.EXCEPTION, request.getType());
-        assertEquals(exception, request.getData());
+    @Before
+    public void setUp() {
+        // Inizializza i mock
+        MockitoAnnotations.initMocks(this);
+        // Imposta il mock nella RequestSwitcher
+        RequestPublisher.getInstance().setRequestSwitcher(mockRequestSwitcher);
     }
 
     @Test
-    void createExecutionRequest() {
-        // Create a sample action
-        Action action = new DialogBoxAction("title", "content", "message");
+    public void testPublishRequest() {
+        RequestPublisher requestPublisher = RequestPublisher.getInstance();
+        Request mockRequest = mock(Request.class);
 
-        // Create an execution request using the factory method
-        Request request = RequestFactory.createExecutionRequest(action);
+        // Esegui il metodo che stai testando
+        requestPublisher.publishRequest(mockRequest);
 
-        // Check if the request is created correctly
-        assertEquals(RequestType.EXECUTION, request.getType());
-        assertEquals(action, request.getData());
+        // Verifica che il metodo handleRequest della RequestSwitcher sia chiamato con il mockRequest
+        verify(mockRequestSwitcher, times(1)).handleRequest(mockRequest);
     }
 
     @Test
-    void createListUpdateRequest() {
-        // Create a list update request using the factory method
-        Request request = RequestFactory.createListUpdateRequest();
+    public void testSetHandlers() {
+        RequestPublisher requestPublisher = RequestPublisher.getInstance();
+        Handler mockHandler1 = mock(Handler.class);
+        Handler mockHandler2 = mock(Handler.class);
 
-        // Check if the request is created correctly
-        assertEquals(RequestType.LISTUPDATE, request.getType());
-        assertEquals(null, request.getData()); // Since the data is expected to be null
+        List<Handler> handlers = new ArrayList<>();
+        handlers.add(mockHandler1);
+        handlers.add(mockHandler2);
+
+        // Esegui il metodo che stai testando
+        requestPublisher.setHandlers(handlers);
+
+        // Verifica che il metodo setNext sia chiamato correttamente per ogni handler
+        verify(mockHandler1, times(1)).setNext(mockHandler2);
+        verify(mockHandler2, times(1)).setNext(null);
     }
+    // Metodo di factory per creare un'istanza di RequestPublisher con una specifica RequestSwitcher
+
+
 }

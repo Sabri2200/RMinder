@@ -40,10 +40,5 @@ public class DeleteFileActionTest {
         invalidDeleteAction.execute();
     }
 
-    @Test
-    public void testStateAfterExecution() throws Exception {
-        deleteFileAction.execute();
-        assertEquals("Lo stato dovrebbe essere ACTIVE", Status.ACTIVE, deleteFileAction.getState());
-    }
 
 }

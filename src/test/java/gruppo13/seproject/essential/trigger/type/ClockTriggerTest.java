@@ -1,11 +1,11 @@
 package gruppo13.seproject.essential.trigger.type;
 import gruppo13.seproject.essential.trigger.Trigger;
-import gruppo13.seproject.essential.trigger.type.ClockTrigger;
-import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
-import static org.junit.jupiter.api.Assertions.*;
 
-class ClockTriggerTest {
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class ClockTriggerTest {
 
     @Test
     void verifyShouldReturnTrueWhenCurrentTimeIsEqualToTriggerTime() {

@@ -41,7 +41,6 @@ public class RuleManager {
 
     public void setStatus(Rule rule, Status status) {
         rule.setStatus(status);
-
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
