@@ -14,7 +14,7 @@ public class ActionFactoryTest {
     private Map.Entry<ActionType, List<String>> action;
     private List<String> params = new ArrayList<>();
     @Test
-    void setUp() {
+    public void setUp() {
         params.add("title");
         params.add("header");
         params.add("message");
@@ -23,18 +23,18 @@ public class ActionFactoryTest {
     }
 
     @Test
-    void createAction() {
+    public void createAction() {
         Action action1 = new DialogBoxAction("title", "header", "message");
         Assert.assertEquals(ActionFactory.createAction(action).toString(), action1.toString());
     }
 
     @Test
-    void createNullAction() {
+    public void createNullAction() {
         assertNull(ActionFactory.createAction(null));
     }
 
     @Test
-    void createWrongParametersAction() {
+    public void createWrongParametersAction() {
         Map.Entry<ActionType, List<String>> action;
         List<String> params = new ArrayList<>();
         params.add("title");

@@ -52,7 +52,7 @@ public class RequestSwitcherTest {
         RequestSwitcher mockRequestSwitcher = mock(RequestSwitcher.class);
         requestSwitcher.setNext(mockRequestSwitcher); // Inietta il mock come prossimo handler
 
-        RequestPublisher requestPublisher = RequestPublisher.createInstance(mockRequestSwitcher);
+        RequestPublisher requestPublisher = RequestPublisher.getInstance();
         Request mockRequest = mock(Request.class);
 
         // Esegui il metodo che stai testando

@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Adding summary to classes">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/Rule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RulePerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/rule/RuleStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/request_handler/RequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/request_handler/RequestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RulePerformerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RulePerformerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/AudioAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/AudioAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/request_handler/RequestPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/ActionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/ActionFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/ModifyTextFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/ModifyTextFileActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/request_handler/RequestSwitcherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/request_handler/RequestSwitcherTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" afterDir="false" />
     </list>
     <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +31,8 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="package.json" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -147,7 +145,7 @@
       <recent name="gruppo13.seproject.FileManager" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager" selected="JUnit.AudioActionTest.testToString">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -157,7 +155,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CopyFileActionTest.testFileCopySuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AudioActionTest.testFailureExecute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
@@ -166,14 +164,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.CopyFileActionTest" />
-      <option name="METHOD_NAME" value="testFileCopySuccess" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.AudioActionTest" />
+      <option name="METHOD_NAME" value="testFailureExecute" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CopyFileActionTest.testStateAfterExecution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AudioActionTest.testGetType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
@@ -182,14 +180,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.CopyFileActionTest" />
-      <option name="METHOD_NAME" value="testStateAfterExecution" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.AudioActionTest" />
+      <option name="METHOD_NAME" value="testGetType" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeleteFileActionTest.testFileDeletionFailure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AudioActionTest.testSuccessExecute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
@@ -198,14 +196,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.DeleteFileActionTest" />
-      <option name="METHOD_NAME" value="testFileDeletionFailure" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.AudioActionTest" />
+      <option name="METHOD_NAME" value="testSuccessExecute" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeleteFileActionTest.testStateAfterExecution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AudioActionTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE-project" />
       <extension name="coverage">
         <pattern>
@@ -214,8 +212,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="gruppo13.seproject.essential.action.type" />
-      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.DeleteFileActionTest" />
-      <option name="METHOD_NAME" value="testStateAfterExecution" />
+      <option name="MAIN_CLASS_NAME" value="gruppo13.seproject.essential.action.type.AudioActionTest" />
+      <option name="METHOD_NAME" value="testToString" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -239,19 +237,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="JUnit.CopyFileActionTest.testFileCopySuccess" />
-      <item itemvalue="JUnit.CopyFileActionTest.testStateAfterExecution" />
-      <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionFailure" />
-      <item itemvalue="JUnit.DeleteFileActionTest.testStateAfterExecution" />
+      <item itemvalue="JUnit.AudioActionTest.testFailureExecute" />
+      <item itemvalue="JUnit.AudioActionTest.testGetType" />
+      <item itemvalue="JUnit.AudioActionTest.testSuccessExecute" />
+      <item itemvalue="JUnit.AudioActionTest.testToString" />
       <item itemvalue="JUnit.MoveFileActionTest.testFileMoveSuccess" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AudioActionTest.testToString" />
+        <item itemvalue="JUnit.AudioActionTest.testGetType" />
+        <item itemvalue="JUnit.AudioActionTest.testSuccessExecute" />
+        <item itemvalue="JUnit.AudioActionTest.testFailureExecute" />
         <item itemvalue="JUnit.MoveFileActionTest.testFileMoveSuccess" />
-        <item itemvalue="JUnit.CopyFileActionTest.testStateAfterExecution" />
-        <item itemvalue="JUnit.CopyFileActionTest.testFileCopySuccess" />
-        <item itemvalue="JUnit.DeleteFileActionTest.testStateAfterExecution" />
-        <item itemvalue="JUnit.DeleteFileActionTest.testFileDeletionFailure" />
       </list>
     </recent_temporary>
   </component>
@@ -279,14 +277,6 @@
       <workItem from="1701853193758" duration="10822000" />
       <workItem from="1701880415664" duration="151000" />
       <workItem from="1701944197588" duration="33961000" />
-    </task>
-    <task id="LOCAL-00007" summary="Creation of Test Classes.">
-      <option name="closed" value="true" />
-      <created>1700824980056</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1700824980056</updated>
     </task>
     <task id="LOCAL-00008" summary="Commit files fxml for the interface.">
       <option name="closed" value="true" />
@@ -672,7 +662,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702122979647</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Fixing">
+      <option name="closed" value="true" />
+      <created>1702136467526</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1702136467526</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -702,7 +700,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creation of Classes: Rule, RuleManager, Trigger, Action and creation of Architecture MVC's modules." />
     <MESSAGE value="Update of methods and creation of an interface" />
     <MESSAGE value="Creation of Test Classes." />
     <MESSAGE value="Commit files fxml for the interface." />
@@ -727,7 +724,8 @@
     <MESSAGE value="implementing FileActions and tests" />
     <MESSAGE value="implementing nextActivation in rules" />
     <MESSAGE value="Adding summary to classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding summary to classes" />
+    <MESSAGE value="Fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

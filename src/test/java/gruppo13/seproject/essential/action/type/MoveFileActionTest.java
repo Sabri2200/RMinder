@@ -1,10 +1,12 @@
 package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,15 +16,15 @@ public class MoveFileActionTest {
     private File sourceFile;
     private String destinationPath;
     private MoveFileAction moveFileAction;
+    private RequestPublisher requestPublisher;
 
     @Before
     public void setUp() throws Exception {
         // Creazione di un file temporaneo per il test
         sourceFile = File.createTempFile("testFile", ".txt");
         destinationPath = sourceFile.getParent() + File.separator + "movedTestFile.txt";
-
+        requestPublisher = RequestPublisher.getInstance();
         moveFileAction = new MoveFileAction(sourceFile, destinationPath);
-
     }
 
     @After

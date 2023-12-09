@@ -1,9 +1,12 @@
 package gruppo13.seproject.essential.action.type;
 
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verifyZeroInteractions;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,13 +16,14 @@ public class ModifyTextFileActionTest {
     private File testFile;
     private String contentToAdd;
     private ModifyTextFileAction modifyTextFileAction;
+    private RequestPublisher requestPublisher;
 
     @Before
     public void setUp() throws Exception {
         // Creazione di un file temporaneo per il test
         testFile = File.createTempFile("testFile", ".txt");
         contentToAdd = "Test Content";
-
+        requestPublisher = RequestPublisher.getInstance();
         modifyTextFileAction = new ModifyTextFileAction(testFile, contentToAdd);
     }
 
@@ -37,7 +41,7 @@ public class ModifyTextFileActionTest {
     }
 
     @Test(expected = IOException.class)
-    public void testFileModificationFailure() throws Exception {
+    public void testFileModificationFailure() throws Exception{
         File invalidFile = new File("path/to/inesistente.txt");
         ModifyTextFileAction invalidModifyAction = new ModifyTextFileAction(invalidFile, contentToAdd);
         invalidModifyAction.execute();

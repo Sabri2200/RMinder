@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.trigger.Trigger;
 import gruppo13.seproject.essential.trigger.type.ClockTrigger;
@@ -16,14 +15,14 @@ public class RuleFactoryTest {
     private String name;
     private List<Action> actions;
     private Trigger trigger;
-    private Status status;
+    private RuleStatus status;
 
     @Test
     void setUp() {
         name = "ruleName";
         actions = new ArrayList<>();
         trigger = new ClockTrigger(LocalTime.now());
-        status = Status.ACTIVE;
+        status = RuleStatus.ACTIVE;
     }
 
     @Test

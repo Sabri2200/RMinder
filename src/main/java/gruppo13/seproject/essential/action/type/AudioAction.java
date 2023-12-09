@@ -47,8 +47,8 @@ The `AudioAction` class is an implementation of the `Action` interface in a Java
 */
 
 public class AudioAction implements Action {
-    private File file;
-    private RequestPublisher requestPublisher;
+    private final File file;
+    private final RequestPublisher requestPublisher;
 
     public AudioAction(File file) {
         this.file = file;
@@ -58,13 +58,10 @@ public class AudioAction implements Action {
     @Override
     public void execute() throws AudioActionException {
         try (final AudioInputStream in = getAudioInputStream(file)) {
-
             final AudioFormat outFormat = getOutFormat(in.getFormat());
             final Info info = new Info(SourceDataLine.class, outFormat);
 
-            try (final SourceDataLine line =
-                         (SourceDataLine) AudioSystem.getLine(info)) {
-
+            try (final SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info)) {
                 if (line != null) {
                     line.open(outFormat);
                     line.start();
@@ -73,10 +70,14 @@ public class AudioAction implements Action {
                     line.stop();
                 }
             }
-
-        } catch (Exception e) {
-            requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
+        } catch (IOException e) {
+            // Catch specific IOExceptions, convert them to AudioActionException, and rethrow
+            throw new AudioActionException("Error during audio playback");
+        } catch (UnsupportedAudioFileException | LineUnavailableException e) {
+            // Catch other specific exceptions and rethrow as AudioActionException
+            throw new AudioActionException("Error during audio playback");
         }
+
     }
     
     private AudioFormat getOutFormat(AudioFormat inFormat) {

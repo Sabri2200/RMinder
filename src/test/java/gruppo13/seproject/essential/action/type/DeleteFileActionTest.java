@@ -1,11 +1,13 @@
 package gruppo13.seproject.essential.action.type;
 
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verifyZeroInteractions;
+
 import java.io.File;
 import java.nio.file.Files;
 
@@ -13,12 +15,14 @@ public class DeleteFileActionTest {
 
     private File testFile;
     private DeleteFileAction deleteFileAction;
+    private RequestPublisher requestPublisher;
 
     @Before
     public void setUp() throws Exception {
         // Creazione di un file temporaneo per il test
         testFile = File.createTempFile("testFile", ".txt");
         deleteFileAction = new DeleteFileAction(testFile);
+        requestPublisher = RequestPublisher.getInstance();
     }
 
     @After
@@ -31,6 +35,7 @@ public class DeleteFileActionTest {
     public void testFileDeletionSuccess() throws Exception {
         deleteFileAction.execute();
         assertFalse("Il file non dovrebbe esistere", testFile.exists());
+
     }
 
     @Test(expected = ActionException.class)

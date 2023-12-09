@@ -29,11 +29,6 @@ public class RequestPublisher {
         this.requestSwitcher = RequestSwitcher.getInstance();
     }
 
-    //FOR Testing
-    public RequestPublisher(RequestSwitcher requestSwitcher) {
-        this.requestSwitcher = requestSwitcher;
-    }
-
 
     private static final class RequestCollectionInstanceHolder {
         private static final RequestPublisher REQUEST_PUBLISHER_INSTANCE = new RequestPublisher();
@@ -63,8 +58,4 @@ public class RequestPublisher {
         this.requestSwitcher = requestSwitcher;
     }
 
-    //For Testing
-    public static RequestPublisher createInstance(RequestSwitcher requestSwitcher) {
-        return new RequestPublisher(requestSwitcher);
-    }
 }
