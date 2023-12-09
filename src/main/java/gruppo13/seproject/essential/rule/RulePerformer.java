@@ -66,27 +66,26 @@ public class RulePerformer {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
-                if(rule.getState().equals(RuleState.ACTIVE)) {
+                if(rule.getRuleState().equals(RuleState.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
+                        ruleManager.setRuleState(rule, RuleState.INACTIVE);
                             for (Action a : rule.getActions()) {
                                 try {
                                     a.execute();
-                                    requestPublisher.publishRequest(RequestFactory.createExecutionRequest(a));
                                 } catch (ActionException | RejectedExecutionException | NullPointerException | IllegalArgumentException |
                                          CancellationException e) {
                                     requestPublisher.publishRequest(RequestFactory.createExceptionRequest(e));
                                 }
+                                requestPublisher.publishRequest(RequestFactory.createExecutionRequest(a));
                             }
                             if (rule.getNextActivation() != 0) {
                                 List<String> activationTriggerParams = getStrings(rule);
-                                System.out.println(activationTriggerParams);
 
                                 Trigger activationTrigger = TriggerFactory.createTrigger(Map.entry(rule.getTrigger().getType(), activationTriggerParams));
 
-                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, rule.getState());
+                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, RuleState.ACTIVE);
                                 ruleManager.addRule(activationRule);
                             }
-                        ruleManager.setState(rule, RuleState.INACTIVE);
                     }
                 }
             }

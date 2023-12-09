@@ -59,8 +59,8 @@ public class RuleManager {
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 
-    public void setState(Rule rule, RuleState ruleState) {
-        rule.setState(ruleState);
+    public void setRuleState(Rule rule, RuleState ruleState) {
+        rule.setRuleState(ruleState);
 
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }

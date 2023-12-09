@@ -62,11 +62,11 @@ public class Rule {
         return trigger;
     }
 
-    public RuleState getState() {
+    public RuleState getRuleState() {
         return ruleState;
     }
 
-    public void setState(RuleState ruleState) {
+    public void setRuleState(RuleState ruleState) {
         this.ruleState = ruleState;
     }
 

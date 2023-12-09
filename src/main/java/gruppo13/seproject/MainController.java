@@ -189,7 +189,6 @@ public class MainController implements Initializable {
         // Changing the state due the actual state.
         RuleState newRuleState = switch (oldRuleState) {
             case ACTIVE -> RuleState.INACTIVE;
-            //case ALWAYSACTIVE -> RuleState.NOTACTIVE;
             case INACTIVE -> RuleState.ACTIVE;
         };
 
@@ -509,10 +508,10 @@ public class MainController implements Initializable {
 
         if (!selectedRules.isEmpty()) {
             for (Rule rule : selectedRules) {
-                RuleState oldRuleState = rule.getState();
+                RuleState oldRuleState = rule.getRuleState();
                 RuleState newRuleState = oldRuleState.equals(RuleState.ACTIVE) ? RuleState.INACTIVE : RuleState.ACTIVE;
                 if (ruleManager.getRules().contains(rule)) {
-                    ruleManager.setState(rule, newRuleState);
+                    ruleManager.setRuleState(rule, newRuleState);
                 }
             }
         } else {
@@ -547,7 +546,7 @@ public class MainController implements Initializable {
 
         stateClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(rule.getState().name());
+            return new ReadOnlyObjectWrapper<>(rule.getRuleState().name());
         });
 
         tableView.setItems(guiRuleList.getList());

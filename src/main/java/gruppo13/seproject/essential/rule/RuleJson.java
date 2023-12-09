@@ -43,7 +43,7 @@ public class RuleJson {
         JSONObject jsonRule = new JSONObject();
         jsonRule.put("name", rule.getName());
         jsonRule.put("trigger", rule.getTrigger().toString());
-        jsonRule.put("state", rule.getState().toString());
+        jsonRule.put("ruleState", rule.getRuleState().toString());
         jsonRule.put("nextActivation", rule.getNextActivation());
 
         JSONArray actionsArray = new JSONArray();
