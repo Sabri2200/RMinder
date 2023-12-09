@@ -1,0 +1,1 @@
+[{"name":"name","nextActivation":1,"trigger":"CLOCKTRIGGER 0:0","state":"INACTIVE","actions":["MOVEFILE /Users/michelecoscarelli/Desktop/gg.txt /Users/michelecoscarelli/Desktop"]},{"name":"name*","nextActivation":0,"trigger":"CLOCKTRIGGER 15:44","state":"ACTIVE","actions":["MOVEFILE /Users/michelecoscarelli/Desktop/gg.txt /Users/michelecoscarelli/Desktop"]}]
