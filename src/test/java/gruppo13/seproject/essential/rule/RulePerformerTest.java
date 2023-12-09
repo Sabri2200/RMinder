@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.exception.ActionException;
 import gruppo13.seproject.essential.action.exception.ActionExceptionTest;
@@ -25,7 +24,7 @@ public class RulePerformerTest {
         ruleManagerMock = mock(RuleManager.class);
         requestPublisherMock = mock(RequestPublisher.class);
         // Creating an instance of RulePerformer with mocks
-        rulePerformer = new RulePerformer(ruleManagerMock, requestPublisherMock);
+        rulePerformer = new RulePerformer();
     }
 
     @Test
@@ -43,7 +42,7 @@ public class RulePerformerTest {
     @Test
     void testExecute_ActiveRule_NoTriggerVerification() {
         // When there is an active rule with no trigger verification, the execute method should have no effect
-        Rule activeRule = createTestRule(Status.ACTIVE, false);
+        Rule activeRule = createTestRule(RuleStatus.ACTIVE, false);
         when(ruleManagerMock.getRules()).thenReturn(Collections.singletonList(activeRule));
 
         rulePerformer.execute();
@@ -57,7 +56,7 @@ public class RulePerformerTest {
     @Test
     public void testExecute_ActiveRule_TriggerVerification_ActionExecution() throws ActionException {
         // When there is an active rule with trigger verification, actions should be executed if the trigger is verified
-        Rule activeRule = createTestRule(Status.ACTIVE, true);
+        Rule activeRule = createTestRule(RuleStatus.ACTIVE, true);
         when(ruleManagerMock.getRules()).thenReturn(Collections.singletonList(activeRule));
 
         rulePerformer.execute();
@@ -73,13 +72,13 @@ public class RulePerformerTest {
         }
 
         // Verify that ruleManager.setState is called once
-        verify(ruleManagerMock, times(1)).setStatus(activeRule, Status.INACTIVE);
+        verify(ruleManagerMock, times(1)).setStatus(activeRule, RuleStatus.INACTIVE);
     }
 
     @Test (expected = ActionException.class)
     public void testExecute_ActionExceptionHandling() throws ActionException {
         // When an ActionException occurs during action execution, it should be caught and reported
-        Rule activeRule = createTestRule(Status.ACTIVE, true);
+        Rule activeRule = createTestRule(RuleStatus.ACTIVE, true);
         when(ruleManagerMock.getRules()).thenReturn(Collections.singletonList(activeRule));
 
         // Simulate an ActionException during action execution
@@ -93,9 +92,9 @@ public class RulePerformerTest {
 
     // Helper method to create a mock Rule with specified state and trigger verification result
     @Test
-    private Rule createTestRule(Status ruleStatus, boolean triggerVerificationResult) {
+    private Rule createTestRule(RuleStatus ruleStatus, boolean triggerVerificationResult) {
         Rule rule = mock(Rule.class);
-        when(rule.getStatus()).thenReturn(ruleStatus);
+        when(rule.getRuleStatus()).thenReturn(ruleStatus);
 
         Action action = mock(Action.class);
 

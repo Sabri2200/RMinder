@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.request_handler;
 
-public enum RequestState {
+public enum RequestStatus {
     SOLVED,
     NOTSOLVED
 }

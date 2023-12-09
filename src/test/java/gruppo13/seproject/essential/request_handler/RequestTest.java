@@ -13,11 +13,11 @@ public class RequestTest {
         // Check if the request is initialized correctly
         assertEquals(RequestType.LISTUPDATE, request.getType());
         assertEquals("Some data", request.getData());
-        assertEquals(RequestState.NOTSOLVED, request.getState());
+        assertEquals(RequestStatus.NOTSOLVED, request.getStatus());
 
         // Solve the request and check if the state is updated
         request.solveRequest();
-        assertEquals(RequestState.SOLVED, request.getState());
+        assertEquals(RequestStatus.SOLVED, request.getStatus());
     }
 }
 

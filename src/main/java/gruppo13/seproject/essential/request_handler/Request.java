@@ -21,12 +21,12 @@ The `Request` class is a fundamental component in a Java application, designed t
 public class Request {
     private RequestType type;
     private Object data;
-    private RequestState state;
+    private RequestStatus status;
 
     public Request(RequestType type, Object data) {
         this.type = type;
         this.data = data;
-        this.state = RequestState.NOTSOLVED;
+        this.status = RequestStatus.NOTSOLVED;
     }
 
     public RequestType getType() {
@@ -41,16 +41,16 @@ public class Request {
         return data;
     }
 
-    public RequestState getState() {
-        return state;
+    public RequestStatus getStatus() {
+        return status;
     }
 
-    public void setState(RequestState state) {
-        this.state = state;
+    public void setStatus(RequestStatus status) {
+        this.status = status;
     }
 
     public void solveRequest() {
-        setState(RequestState.SOLVED);
+        setStatus(RequestStatus.SOLVED);
     }
 
 }

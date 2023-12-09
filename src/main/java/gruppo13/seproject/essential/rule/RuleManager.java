@@ -2,7 +2,6 @@ package gruppo13.seproject.essential.rule;
 
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
-import gruppo13.seproject.essential.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ The `RuleManager` class is a central component in a Java application for managin
    - `removeRule(Rule rule)`: Removes a `Rule` from the list and publishes a list update request, similar to the `addRule` method.
 
 4. Setting Rule State:
-   - `setState(Rule rule, RuleState ruleState)`: Changes the state of a specified `Rule` and publishes a list update request. This method allows for the activation or deactivation of rules dynamically.
+   - `setState(Rule rule, RuleStatus ruleStatus)`: Changes the state of a specified `Rule` and publishes a list update request. This method allows for the activation or deactivation of rules dynamically.
 
 5. Request Publisher Integration:
    - The `RuleManager` has a `RequestPublisher` instance, obtained via `RequestPublisher.getInstance()`, which is used to publish requests. This is likely for notifying other components of the application about changes in the rules list.
@@ -61,8 +60,8 @@ public class RuleManager {
     }
 
 
-    public void setStatus(Rule rule, Status status) {
-        rule.setStatus(status);
+    public void setStatus(Rule rule, RuleStatus status) {
+        rule.setRuleStatus(status);
         requestPublisher.publishRequest(RequestFactory.createListUpdateRequest());
     }
 

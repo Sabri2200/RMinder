@@ -1,6 +1,6 @@
 package gruppo13.seproject;
 
-import gruppo13.seproject.essential.rule.RuleState;
+import gruppo13.seproject.essential.rule.RuleStatus;
 import gruppo13.seproject.file_manager.FileManager;
 import gruppo13.seproject.service.BackgroundService;
 import gruppo13.seproject.service.GUIhandler.GUIRuleList;
@@ -184,16 +184,16 @@ public class MainController implements Initializable {
     // During a rule creation, this method can change the text of ruleStateBtn, from Active to INACTIVE or viceversa.
     public void ruleStateChange() {
         // Taking the actual state.
-        RuleState oldRuleState = RuleState.valueOf(ruleStateBtn.getText());
+        RuleStatus oldRuleStatus = RuleStatus.valueOf(ruleStateBtn.getText());
 
         // Changing the state due the actual state.
-        RuleState newRuleState = switch (oldRuleState) {
-            case ACTIVE -> RuleState.INACTIVE;
-            case INACTIVE -> RuleState.ACTIVE;
+        RuleStatus newRuleStatus = switch (oldRuleStatus) {
+            case ACTIVE -> RuleStatus.INACTIVE;
+            case INACTIVE -> RuleStatus.ACTIVE;
         };
 
         // Changing the state
-        ruleStateBtn.setText(newRuleState.name());
+        ruleStateBtn.setText(newRuleStatus.name());
     }
 
     public void pathSelector() {
@@ -340,7 +340,7 @@ public class MainController implements Initializable {
         // Checking that everything is valid
         if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && !triggerParams.isEmpty()) {
             // This will be the ruleState of the rule
-            RuleState ruleState = RuleState.valueOf(ruleStateBtn.getText());
+            RuleStatus ruleStatus = RuleStatus.valueOf(ruleStateBtn.getText());
 
             // Trigger Factory creates trigger by knowing its type and a list of parameters.
             Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
@@ -361,8 +361,8 @@ public class MainController implements Initializable {
             }
 
             Rule rule = !activationCheckBox.isSelected() ?
-                    RuleFactory.createRule(ruleName, actionsList, trigger, ruleState) :
-                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, ruleState);
+                    RuleFactory.createRule(ruleName, actionsList, trigger, ruleStatus) :
+                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, ruleStatus);
 
             if (rule == null) {
                 // If RuleFactory returns null, the trigger cannot be created due invalid parameters:
@@ -508,10 +508,10 @@ public class MainController implements Initializable {
 
         if (!selectedRules.isEmpty()) {
             for (Rule rule : selectedRules) {
-                RuleState oldRuleState = rule.getRuleState();
-                RuleState newRuleState = oldRuleState.equals(RuleState.ACTIVE) ? RuleState.INACTIVE : RuleState.ACTIVE;
+                RuleStatus oldRuleStatus = rule.getRuleStatus();
+                RuleStatus newRuleStatus = oldRuleStatus.equals(RuleStatus.ACTIVE) ? RuleStatus.INACTIVE : RuleStatus.ACTIVE;
                 if (ruleManager.getRules().contains(rule)) {
-                    ruleManager.setRuleState(rule, newRuleState);
+                    ruleManager.setStatus(rule, newRuleStatus);
                 }
             }
         } else {
@@ -546,7 +546,7 @@ public class MainController implements Initializable {
 
         stateClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(rule.getRuleState().name());
+            return new ReadOnlyObjectWrapper<>(rule.getRuleStatus().name());
         });
 
         tableView.setItems(guiRuleList.getList());

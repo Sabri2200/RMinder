@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.rule;
 
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class RuleTest {
         // Create mock objects for Action, Trigger, and State
         Action mockAction = mock(Action.class);
         Trigger mockTrigger = mock(Trigger.class);
-        Status mockStatus = mock(Status.class);
+        RuleStatus mockStatus = mock(RuleStatus.class);
 
         // Create a list of actions
         List<Action> actions = new ArrayList<>();
@@ -32,7 +31,7 @@ public class RuleTest {
         assertEquals("TestRule", rule.getName());
         assertEquals(actions, rule.getActions());
         assertEquals(mockTrigger, rule.getTrigger());
-        assertEquals(mockStatus, rule.getStatus());
+        assertEquals(mockStatus, rule.getRuleStatus());
     }
 
     @Test
@@ -40,7 +39,7 @@ public class RuleTest {
         // Create mock objects for Action, Trigger, and State
         Action mockAction = mock(Action.class);
         Trigger mockTrigger = mock(Trigger.class);
-        Status mockStatus = mock(Status.class);
+        RuleStatus mockStatus = mock(RuleStatus.class);
 
         // Create a list of actions
         List<Action> actions = new ArrayList<>();
@@ -50,10 +49,10 @@ public class RuleTest {
         Rule rule = new Rule("TestRule", actions, mockTrigger, mockStatus);
 
         // Set a new state and test
-        Status newStatus = mock(Status.class);
-        rule.setStatus(newStatus);
+        RuleStatus newStatus = mock(RuleStatus.class);
+        rule.setRuleStatus(newStatus);
 
         // Verify that the state is updated
-        assertEquals(newStatus, rule.getStatus());
+        assertEquals(newStatus, rule.getRuleStatus());
     }
 }

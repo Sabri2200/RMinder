@@ -26,20 +26,20 @@ The `RuleFactory` class is a factory class in a Java application designed to cre
 */
 
 public class RuleFactory {
-    public static Rule createRule(String name, List<Action> actions, Trigger trigger, RuleState ruleState) {
-        if (name != null || actions != null || trigger != null || ruleState != null) {
+    public static Rule createRule(String name, List<Action> actions, Trigger trigger, RuleStatus ruleStatus) {
+        if (name != null || actions != null || trigger != null || ruleStatus != null) {
             if (!actions.isEmpty()) {
-                return new Rule(name, actions, trigger, ruleState);
+                return new Rule(name, actions, trigger, ruleStatus);
             }
         }
         RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in creating this rule. ")));
         return null;
     }
 
-    public static Rule createRule(String name, List<Action> actions, Trigger trigger, int nextActivation, RuleState ruleState) {
-        if (name != null || actions != null || trigger != null || nextActivation != 0 || ruleState != null) {
+    public static Rule createRule(String name, List<Action> actions, Trigger trigger, int nextActivation, RuleStatus ruleStatus) {
+        if (name != null || actions != null || trigger != null || nextActivation != 0 || ruleStatus != null) {
             if (!actions.isEmpty()) {
-                return new Rule(name, actions, trigger, nextActivation, ruleState);
+                return new Rule(name, actions, trigger, nextActivation, ruleStatus);
             }
         }
         RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error in creating this rule. ")));

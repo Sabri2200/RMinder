@@ -1,6 +1,6 @@
 package gruppo13.seproject.essential.rule;
 
-public enum RuleState {
+public enum RuleStatus {
     ACTIVE,
     INACTIVE,
 }

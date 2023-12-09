@@ -66,9 +66,9 @@ public class RulePerformer {
         List<Rule> rules = ruleManager.getRules();
         if (!rules.isEmpty()) {
             for (Rule rule : rules) {
-                if(rule.getRuleState().equals(RuleState.ACTIVE)) {
+                if(rule.getRuleStatus().equals(RuleStatus.ACTIVE)) {
                     if (rule.getTrigger().verify()) {
-                        ruleManager.setRuleState(rule, RuleState.INACTIVE);
+                        ruleManager.setStatus(rule, RuleStatus.INACTIVE);
                             for (Action a : rule.getActions()) {
                                 try {
                                     a.execute();
@@ -83,7 +83,7 @@ public class RulePerformer {
 
                                 Trigger activationTrigger = TriggerFactory.createTrigger(Map.entry(rule.getTrigger().getType(), activationTriggerParams));
 
-                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, RuleState.ACTIVE);
+                                Rule activationRule = RuleFactory.createRule(rule.getName() + "*", rule.getActions(), activationTrigger, RuleStatus.ACTIVE);
                                 ruleManager.addRule(activationRule);
                             }
                     }

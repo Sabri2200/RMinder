@@ -31,23 +31,23 @@ public class Rule {
     private String name;
     private List<Action> actions;
     private Trigger trigger;
-    private RuleState ruleState;
+    private RuleStatus ruleStatus;
     private int nextActivation;
 
-    public Rule(String name, List<Action> actions, Trigger trigger, RuleState ruleState) {
+    public Rule(String name, List<Action> actions, Trigger trigger, RuleStatus ruleStatus) {
         this.name = name;
         this.actions = actions;
         this.trigger = trigger;
         this.nextActivation = 0;
-        this.ruleState = ruleState;
+        this.ruleStatus = ruleStatus;
     }
 
-    public Rule(String name, List<Action> actions, Trigger trigger, int nextActivation, RuleState ruleState) {
+    public Rule(String name, List<Action> actions, Trigger trigger, int nextActivation, RuleStatus ruleStatus) {
         this.name = name;
         this.actions = actions;
         this.trigger = trigger;
         this.nextActivation = nextActivation;
-        this.ruleState = ruleState;
+        this.ruleStatus = ruleStatus;
     }
 
     public String getName() {
@@ -62,12 +62,12 @@ public class Rule {
         return trigger;
     }
 
-    public RuleState getRuleState() {
-        return ruleState;
+    public RuleStatus getRuleStatus() {
+        return ruleStatus;
     }
 
-    public void setRuleState(RuleState ruleState) {
-        this.ruleState = ruleState;
+    public void setRuleStatus(RuleStatus ruleStatus) {
+        this.ruleStatus = ruleStatus;
     }
 
     public int getNextActivation() {
