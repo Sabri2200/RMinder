@@ -693,6 +693,41 @@ public class MainController implements Initializable {
         actionsTable.setItems(actionsList);
         actionsTableSummary.setItems(actionsList);
 
+        addActionBtn.disableProperty().bind(Bindings.createBooleanBinding(() -> {
+                    if (actionSelector.getSelectionModel().getSelectedItem() == null) {
+                        return true;
+                    } else {
+                        ActionType type = actionSelector.getSelectionModel().getSelectedItem();
+
+                        return switch (type) {
+                            case DIALOGBOX -> titleAlertField.textProperty().get().isEmpty() ||
+                                    headerAlertField.textProperty().get().isEmpty() ||
+                                    messageAlertField.textProperty().get().isEmpty();
+                            case MP3PLAYER -> audioFileChosenLbl.textProperty().get().isEmpty();
+                            case MOVEFILE -> moveFileChosenLbl.textProperty().get().isEmpty() ||
+                                    moveFileChosenLbl1.textProperty().get().isEmpty();
+                            case MODIFYTEXTFILE -> modifyFileChosenLbl.textProperty().get().isEmpty() ||
+                                    modifyFileSelectorTxtFld.textProperty().get().isEmpty();
+                            case DELETEFILE -> deleteFileChosenLbl.textProperty().get().isEmpty();
+                            case COPYFILE -> copyFileChosenLbl.textProperty().get().isEmpty() ||
+                                    copyFileChosenLbl1.textProperty().get().isEmpty();
+                        };
+                    }
+                },
+                actionSelector.getSelectionModel().selectedItemProperty(),
+                titleAlertField.textProperty(),
+                headerAlertField.textProperty(),
+                messageAlertField.textProperty(),
+                audioFileChosenLbl.textProperty(),
+                moveFileChosenLbl.textProperty(),
+                moveFileChosenLbl1.textProperty(),
+                modifyFileChosenLbl.textProperty(),
+                modifyFileSelectorTxtFld.textProperty(),
+                deleteFileChosenLbl.textProperty(),
+                copyFileChosenLbl.textProperty(),
+                copyFileChosenLbl1.textProperty()
+        ));
+
         saveRuleBtn.disableProperty().bind(ruleNameSummary.textProperty().isEmpty().or(triggerLbl.textProperty().isEmpty().or(hourField.textProperty().isEmpty()).or(minuteField.textProperty().isEmpty()).or(Bindings.isEmpty(actionsList))));
 
     }
@@ -700,11 +735,11 @@ public class MainController implements Initializable {
     private void getMinuteListener(TextField minuteTextField) {
         minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
+                minuteField.setText(oldValue);
             } else if (!newValue.isEmpty()) {
                 int minute = Integer.parseInt(newValue);
                 if (minute < 0 || minute > 59) {
-                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
+                    minuteField.setText(oldValue);
                 }
             }
         });
