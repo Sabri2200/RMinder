@@ -50,7 +50,7 @@ public class ModifyTextFileAction extends FileAction {
 
     @Override
     public void execute() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(super.getFile().getAbsoluteFile()))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(super.getFile().getAbsoluteFile(), true))) {
             writer.write(this.stringToAdd);
         } catch (IOException e) {
             requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
