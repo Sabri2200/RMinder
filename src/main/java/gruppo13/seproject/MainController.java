@@ -1,11 +1,11 @@
 package gruppo13.seproject;
 
+import gruppo13.seproject.essential.rule.RuleState;
 import gruppo13.seproject.file_manager.FileManager;
 import gruppo13.seproject.service.BackgroundService;
 import gruppo13.seproject.service.GUIhandler.GUIRuleList;
 import gruppo13.seproject.essential.request_handler.RequestFactory;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
-import gruppo13.seproject.essential.Status;
 import gruppo13.seproject.essential.action.Action;
 import gruppo13.seproject.essential.action.ActionFactory;
 import gruppo13.seproject.essential.action.ActionType;
@@ -20,12 +20,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -36,7 +33,31 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.util.*;
 
+/*
+The Java class `MainController`, which implements the `Initializable` interface from JavaFX, is the main controller for a JavaFX application, managing the user interface and interactions.
+
+1. Imports: The class imports various packages necessary for file management, JavaFX user interface handling, and other application-specific components.
+
+2. Class Declaration and Variables: The `MainController` class contains many instance variables, mainly for handling user interface elements like buttons, labels, text fields, etc.
+
+3. `initialize` Method: This method is called to initialize the controller after its root element has been completely processed. In this method, various services and components are instantiated and initialized, such as `RuleManager`, `FileManager`, `GUIRuleList`, `RequestPublisher`, and `BackgroundService`.
+
+4. User Interface Event Handling: The class contains several methods for handling user interface events, such as file selection, adding actions to rules, changing rule states, etc.
+
+5. Rule Management: Methods like `saveRule`, `editRuleAction`, `removeRulesAction` are used for saving, editing, and deleting rules. These rules are likely part of the application's business logic.
+
+6. User Interface Management: Methods like `initializeTableview` and `initializeRuleCreationParadigm` are used to initialize and configure user interface elements, such as tables and combo boxes.
+
+7. Other Utility Methods: There are methods for handling path and file selection, like `pathSelector` and `fileSelector`, and for managing the addition and removal of actions, like `addActionToRule` and `removeAction`.
+
+Overall, this class is a complex controller for a JavaFX application, managing a variety of user interface interactions and integrating different application components like rule management, file selection, and request publishing.
+*/
+
 public class MainController implements Initializable {
+
+    // Declaration of UI components like buttons, labels, text fields, etc.
+
+    // Observable list for actions and various service instances like RuleManager, FileManager, etc.
 
     public MenuItem removeActionBtn;
     public Button addActionBtn;
@@ -73,7 +94,6 @@ public class MainController implements Initializable {
     private TextField ruleNameField;
     @FXML
     private ComboBox<TriggerType> triggerSelector;
-    private HBox clockTriggerHBox;
     @FXML
     private ComboBox<ActionType> actionSelector;
     @FXML
@@ -84,15 +104,11 @@ public class MainController implements Initializable {
     @FXML
     private TextField messageAlertField;
     @FXML
-    private VBox fileSelectorVBox;
-    @FXML
     private Button saveRuleBtn;
     @FXML
     private TextField hourField;
     @FXML
     private TextField minuteField;
-    @FXML
-    private Label fileChosen;
     @FXML
     private Button ruleStateBtn;
     @FXML
@@ -137,7 +153,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // initializing services
+        // Initialize services like RuleManager, FileManager, GUIRuleList, RequestPublisher
 
         ruleManager = RuleManager.getInstance();
         // has a list of Rule, can add, remove and change a state of a rule.
@@ -153,6 +169,7 @@ public class MainController implements Initializable {
         // An Exception, a notice of an Execution or a notice of the ruleList update is published through this object.
         // The RequestPublisher sends the message (a Request) to its handlers.
 
+        // Start background services
         BackgroundService backgroundService = new BackgroundService();
         backgroundService.startService();
         // starts the background tasks: RuleSaver, RuleService and sets to RequestPublisher its handlers.
@@ -165,22 +182,21 @@ public class MainController implements Initializable {
     }
 
     // During a rule creation, this method can change the text of ruleStateBtn, from Active to INACTIVE or viceversa.
-    public void ruleStateChange(ActionEvent actionEvent) {
+    public void ruleStateChange() {
         // Taking the actual state.
-        Status oldStatus = Status.valueOf(ruleStateBtn.getText());
+        RuleState oldRuleState = RuleState.valueOf(ruleStateBtn.getText());
 
         // Changing the state due the actual state.
-        Status newStatus = switch (oldStatus) {
-            case ACTIVE -> Status.INACTIVE;
-            //case ALWAYSACTIVE -> State.NOTACTIVE;
-            case INACTIVE -> Status.ACTIVE;
+        RuleState newRuleState = switch (oldRuleState) {
+            case ACTIVE -> RuleState.INACTIVE;
+            case INACTIVE -> RuleState.ACTIVE;
         };
 
         // Changing the state
-        ruleStateBtn.setText(newStatus.name());
+        ruleStateBtn.setText(newRuleState.name());
     }
 
-    public void pathSelector(ActionEvent actionEvent) {
+    public void pathSelector() {
         Stage pathChooserDialog = new Stage();
 
         DirectoryChooser pathChooser = new DirectoryChooser();
@@ -203,7 +219,7 @@ public class MainController implements Initializable {
 
     // The method show a dialog window from which the user can select a file.
     // In the audio file selection, it verifies through FileManager the file can be used for audio execution.
-    public void fileSelector(ActionEvent actionEvent) {
+    public void fileSelector() {
         // Creating a dialog window.
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
@@ -257,13 +273,35 @@ public class MainController implements Initializable {
     }
 
     // During a rule creation, Action Table View has a list of actions. This method can add actions to the list.
-    public void addActionToRule(ActionEvent actionEvent) {
+    public void addActionToRule() {
         // Getting the action type.
-        ActionType type = (ActionType) actionSelector.getSelectionModel().getSelectedItem();
+        ActionType type = actionSelector.getSelectionModel().getSelectedItem();
 
         // Initializing a list of parameters, such as:
         //  AudioAction: file;
         // DialogBoxAction: title, header, message.
+        List<String> params = getParams(type);
+
+        // ActionFactory can create an Action, knowing its ActionType and params.
+        Map.Entry<ActionType, List<String>> actionParams = Map.entry(type, params);
+
+        // Creating Action
+        Action action = ActionFactory.createAction(actionParams);
+
+        if (action == null) {
+            // This action has invalid parameters and ActionFactory asks the RequestPublisher to publish an exception request.
+            return;
+        }
+
+        // Adding an action to the Action TableView.
+        actionsList.add(action);
+
+        // Updating Action TableView.
+        actionsTable.refresh();
+        actionsTableSummary.refresh();
+    }
+
+    private List<String> getParams(ActionType type) {
         List<String> params = new ArrayList<>();
 
         switch (type) {
@@ -285,41 +323,24 @@ public class MainController implements Initializable {
                 params.add(modifyFileChosenLbl.getText());
                 params.add(modifyFileSelectorTxtFld.getText());
         }
-
-        // ActionFactory can create an Action, knowing its ActionType and params.
-        Map.Entry<ActionType, List<String>> actionParams = Map.entry(type, params);
-
-        // Creating Action
-        Action action = ActionFactory.createAction(actionParams);
-
-        if (action == null) {
-            // This action has invalid parameters and ActionFactory asks the RequestPublisher to publish an exception request.
-            return;
-        }
-
-        // Adding an action to the Action TableView.
-        actionsList.add(action);
-
-        // Updating Action TableView.
-        actionsTable.refresh();
-        actionsTableSummary.refresh();
+        return params;
     }
 
     // The saveRule method takes all the required parameters from GUIObjects and adds the rule to the ruleManager.
-    public void saveRule(ActionEvent actionEvent) {
+    public void saveRule() {
         // Rule name is taken from a TextField.
         String ruleName = ruleNameField.getText();
 
         // Trigger type is taken from a ComboBox
-        TriggerType triggerType = (TriggerType) triggerSelector.getSelectionModel().getSelectedItem();
+        TriggerType triggerType = triggerSelector.getSelectionModel().getSelectedItem();
 
         // Trigger parameters are taken from specific GUIObjects due the triggerType.
         List<String> triggerParams = triggerParams(triggerType);
 
         // Checking that everything is valid
-        if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && triggerParams != null) {
-            // This will be the state of the rule
-            Status status = Status.valueOf(ruleStateBtn.getText());
+        if (!actionsList.isEmpty() && !triggerType.name().isEmpty() && !triggerParams.isEmpty()) {
+            // This will be the ruleState of the rule
+            RuleState ruleState = RuleState.valueOf(ruleStateBtn.getText());
 
             // Trigger Factory creates trigger by knowing its type and a list of parameters.
             Map.Entry<TriggerType, List<String>> t = Map.entry(triggerType, triggerParams);
@@ -333,15 +354,15 @@ public class MainController implements Initializable {
                 return;
             }
 
-            // RuleFactory creates a rule through its name, list of actions, trigger and a state.
+            // RuleFactory creates a rule through its name, list of actions, trigger and a ruleState.
             int nextActivation = 0;
             if (activationCheckBox.isSelected()) {
                 nextActivation = Integer.parseInt(minuteTextField.getText());
             }
 
             Rule rule = !activationCheckBox.isSelected() ?
-                    RuleFactory.createRule(ruleName, actionsList, trigger, status) :
-                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, status);
+                    RuleFactory.createRule(ruleName, actionsList, trigger, ruleState) :
+                    RuleFactory.createRule(ruleName, actionsList, trigger, nextActivation, ruleState);
 
             if (rule == null) {
                 // If RuleFactory returns null, the trigger cannot be created due invalid parameters:
@@ -362,7 +383,7 @@ public class MainController implements Initializable {
         }
 
         // Cleaning all GUIObjects, such as labels or textfields.
-        resetRule(null);
+        resetRule();
 
         actionsTable.refresh();
         actionsTableSummary.refresh();
@@ -382,7 +403,7 @@ public class MainController implements Initializable {
     }
 
     // The last tab of TabView is made by this method.
-    public void makeRuleSummary(Event event) {
+    public void makeRuleSummary() {
         String ruleName = ruleNameField.getText();
         ruleNameSummary.setText(ruleName.isEmpty() ? "Rule name" : ruleName);
 
@@ -390,19 +411,18 @@ public class MainController implements Initializable {
 
         if (trigger != null) {
             if (trigger == TriggerType.CLOCKTRIGGER) {
-                StringBuffer triggerSelected = new StringBuffer();
 
-                triggerSelected.append(triggerSelector.getSelectionModel().getSelectedItem().toString()).append(" ");
-                triggerSelected.append(hourField.getText()).append(":");
-                triggerSelected.append(minuteField.getText());
+                String triggerSelected = triggerSelector.getSelectionModel().getSelectedItem().toString() + " " +
+                        hourField.getText() + ":" +
+                        minuteField.getText();
 
-                triggerLbl.setText(triggerSelected.toString());
+                triggerLbl.setText(triggerSelected);
             }
         }
     }
 
     // Resetting the TabView.
-    public void resetRule(ActionEvent actionEvent) {
+    public void resetRule() {
         ruleNameField.setText("");
         ruleNameSummary.setText("");
 
@@ -417,7 +437,7 @@ public class MainController implements Initializable {
     }
 
     // This method can be called by editing a rule.
-    public void editRuleAction(ActionEvent actionEvent) {
+    public void editRuleAction() {
         editingRule = tableView.getSelectionModel().getSelectedItem();
 
         ruleNameField.setText(editingRule.getName());
@@ -446,7 +466,7 @@ public class MainController implements Initializable {
     }
 
     // This method can remove the selected rules from the RuleManager
-    public void removeRulesAction(ActionEvent actionEvent) {
+    public void removeRulesAction() {
         List<Rule> rules = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
         if (!rules.isEmpty()) {
@@ -460,7 +480,8 @@ public class MainController implements Initializable {
         }
     }
 
-    public void saveRulesToFile(ActionEvent actionEvent) {
+    // Saves rules to a file
+    public void saveRulesToFile() {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
@@ -470,7 +491,8 @@ public class MainController implements Initializable {
         fileManager.saveRulesToFile(rules, file);
     }
 
-    public void loadRulesFromFile(ActionEvent actionEvent) {
+    // Loads rules from a file
+    public void loadRulesFromFile() {
         Stage fileChooserDialog = new Stage();
         FileChooser fil_chooser = new FileChooser();
         File file = fil_chooser.showOpenDialog(fileChooserDialog);
@@ -480,15 +502,16 @@ public class MainController implements Initializable {
         }
     }
 
-    public void turnRule(ActionEvent actionEvent) {
+    // Toggles the state of selected rules
+    public void turnRule() {
         List<Rule> selectedRules = new ArrayList<>(tableView.getSelectionModel().getSelectedItems());
 
         if (!selectedRules.isEmpty()) {
             for (Rule rule : selectedRules) {
-                Status oldStatus = rule.getStatus();
-                Status newStatus = oldStatus.equals(Status.ACTIVE) ? Status.INACTIVE : Status.ACTIVE;
+                RuleState oldRuleState = rule.getRuleState();
+                RuleState newRuleState = oldRuleState.equals(RuleState.ACTIVE) ? RuleState.INACTIVE : RuleState.ACTIVE;
                 if (ruleManager.getRules().contains(rule)) {
-                    ruleManager.setStatus(rule, newStatus);
+                    ruleManager.setRuleState(rule, newRuleState);
                 }
             }
         } else {
@@ -496,6 +519,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // Initializes the TableView for displaying rules
     private void initializeTableview() {
         nameClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
@@ -522,7 +546,7 @@ public class MainController implements Initializable {
 
         stateClm.setCellValueFactory(cellData -> {
             Rule rule = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(rule.getStatus().name());
+            return new ReadOnlyObjectWrapper<>(rule.getRuleState().name());
         });
 
         tableView.setItems(guiRuleList.getList());
@@ -537,21 +561,13 @@ public class MainController implements Initializable {
 
     }
 
+    // Initializes the UI components for rule creation
     private void initializeRuleCreationParadigm() {
 
         // First TabView
         minuteTextField.disableProperty().bind(activationCheckBox.selectedProperty().not());
 
-        minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
-            } else if (!newValue.isEmpty()) {
-                int minute = Integer.parseInt(newValue);
-                if (minute < 0 || minute > 59) {
-                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
-                }
-            }
-        });
+        getMinuteListener(minuteTextField);
 
         //Second TabView
         List<TriggerType> triggerList = List.of(TriggerType.values());
@@ -563,7 +579,7 @@ public class MainController implements Initializable {
                 if (newValue.equals(TriggerType.CLOCKTRIGGER)) {
                     clockTriggerVBox.setVisible(true);
                 } else {
-                    clockTriggerHBox.setVisible(false);
+                    clockTriggerVBox.setVisible(false);
                 }
             }
         };
@@ -640,16 +656,7 @@ public class MainController implements Initializable {
             }
         });
 
-        minuteField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
-            } else if (!newValue.isEmpty()) {
-                int minute = Integer.parseInt(newValue);
-                if (minute < 0 || minute > 59) {
-                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
-                }
-            }
-        });
+        getMinuteListener(minuteField);
 
         actionSelector.valueProperty().addListener(selectActionChangeListener);
 
@@ -690,7 +697,21 @@ public class MainController implements Initializable {
 
     }
 
-    public void removeAction(ActionEvent actionEvent) {
+    private void getMinuteListener(TextField minuteTextField) {
+        minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                minuteField.setText(oldValue); // Reimposta al valore precedente se non è numerico
+            } else if (!newValue.isEmpty()) {
+                int minute = Integer.parseInt(newValue);
+                if (minute < 0 || minute > 59) {
+                    minuteField.setText(oldValue); // Reimposta al valore precedente se non è nel range 0-59
+                }
+            }
+        });
+    }
+
+    // Removes selected actions from the Action TableView
+    public void removeAction() {
         Set<Action> actions = new HashSet<>(actionsTable.getSelectionModel().getSelectedItems());
         actions.addAll(actionsTableSummary.getSelectionModel().getSelectedItems());
 

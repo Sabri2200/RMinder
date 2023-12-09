@@ -14,18 +14,50 @@ import java.io.IOException;
 import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
+/*
+The `AudioAction` class is an implementation of the `Action` interface in a Java application, specifically designed to handle audio playback.
+
+1. Attributes:
+   - `file`: A `File` object representing the path to the audio file that this action will play.
+   - `requestPublisher`: An instance of `RequestPublisher` used for publishing requests, likely for error handling.
+
+2. Constructor:
+   - The constructor `AudioAction(File file)` initializes the `AudioAction` with a specific audio file. It also retrieves an instance of `RequestPublisher` using `RequestPublisher.getInstance()`.
+
+3. Audio Playback Execution:
+   - The `execute()` method, which overrides the method from the `Action` interface, is responsible for playing the audio file.
+   - It uses the Java Sound API to open and read the audio file, set up an audio stream, and play it through a `SourceDataLine`.
+   - The method includes exception handling to catch and report any issues that occur during audio playback.
+
+4. Audio Format Conversion:
+   - The `getOutFormat(AudioFormat inFormat)` method converts the input audio format to a standard playable format (PCM_SIGNED).
+
+5. Streaming Audio Data:
+   - The `stream(AudioInputStream in, SourceDataLine line)` method reads audio data from the `AudioInputStream` and writes it to the `SourceDataLine` for playback.
+
+6. Error Handling:
+   - If an exception occurs during audio playback, the `execute()` method publishes an exception request using `RequestPublisher`, indicating an error in executing the audio action.
+
+7. Action Type and String Representation:
+   - The `getType()` method returns `ActionType.MP3PLAYER`, indicating the type of this action.
+   - The `toString()` method provides a string representation of the `AudioAction`, including its type and the file path.
+
+8. File Accessor:
+   - The `getFile()` method provides access to the `File` object representing the audio file.
+*/
+
 public class AudioAction implements Action {
-    private File filePath;
+    private File file;
     private RequestPublisher requestPublisher;
 
     public AudioAction(File file) {
-        this.filePath = file;
+        this.file = file;
         this.requestPublisher = RequestPublisher.getInstance();
     }
 
     @Override
     public void execute() throws AudioActionException {
-        try (final AudioInputStream in = getAudioInputStream(filePath)) {
+        try (final AudioInputStream in = getAudioInputStream(file)) {
 
             final AudioFormat outFormat = getOutFormat(in.getFormat());
             final Info info = new Info(SourceDataLine.class, outFormat);
@@ -68,16 +100,12 @@ public class AudioAction implements Action {
         return ActionType.MP3PLAYER;
     }
 
-    public String getFilePath() {
-        return String.valueOf(filePath);
-    }
-
     @Override
     public String toString() {
-        return this.getType().toString() + " " + filePath.getAbsolutePath();
+        return this.getType().toString() + " " + file.getAbsolutePath();
     }
 
     public File getFile() {
-        return filePath;
+        return file;
     }
 }

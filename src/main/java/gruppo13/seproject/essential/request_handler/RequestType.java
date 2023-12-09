@@ -4,5 +4,4 @@ public enum RequestType {
     EXCEPTION,
     EXECUTION,
     LISTUPDATE,
-    NEWTYPE
 }

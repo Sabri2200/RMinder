@@ -10,6 +10,30 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/*
+The `DeleteFileAction` class is an implementation of the `FileAction` abstract class, specifically designed to handle the deletion of a file in a Java application.
+
+1. Inheritance:
+   - `DeleteFileAction` extends `FileAction`, indicating that it is a specialized form of file-related action.
+
+2. Attributes:
+   - `requestPublisher`: An instance of `RequestPublisher` used for publishing requests, likely for error handling and reporting.
+
+3. Constructor:
+   - The constructor `DeleteFileAction(File file)` initializes the action with a specific file to be deleted. It also retrieves an instance of `RequestPublisher` using `RequestPublisher.getInstance()`.
+
+4. Action Execution:
+   - The `execute()` method, which overrides the method from the `FileAction` class, is responsible for performing the file deletion operation.
+   - It uses Java's NIO `Files` class to delete the file specified in the `FileAction` superclass. The method `Files.deleteIfExists` is used to delete the file if it exists, preventing an exception if the file is not found.
+
+5. Error Handling:
+   - If an exception occurs during the file deletion operation, the method publishes a request with the exception details using `RequestPublisher`. This mechanism is likely used for logging or handling errors.
+
+6. Action Type and String Representation:
+   - The `getType()` method returns `ActionType.DELETEFILE`, indicating the type of this action.
+   - The `toString()` method provides a string representation of the `DeleteFileAction`, including its type and the file path.
+*/
+
 public class DeleteFileAction extends FileAction {
     private RequestPublisher requestPublisher;
 

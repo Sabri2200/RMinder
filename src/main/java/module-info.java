@@ -11,8 +11,8 @@ module gruppo13.seproject {
     opens gruppo13.seproject.essential.action to javafx.fxml;
     exports gruppo13.seproject.essential.action.type;
     opens gruppo13.seproject.essential.action.type to javafx.fxml;
-    exports gruppo13.seproject.essential;
-    opens gruppo13.seproject.essential to javafx.fxml;
     exports gruppo13.seproject.essential.action.exception;
     opens gruppo13.seproject.essential.action.exception to javafx.fxml;
+    exports gruppo13.seproject.essential.rule;
+    opens gruppo13.seproject.essential.rule to javafx.fxml;
 }
