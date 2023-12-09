@@ -58,7 +58,7 @@ public class MoveFileAction extends FileAction {
     @Override
     public void execute() throws ActionException {
         Path sourcePath = Paths.get(super.getFile().getAbsolutePath()); // Percorso del file sorgente
-        Path destinationPath = Paths.get(this.newPath); // Percorso di destinazione
+        Path destinationPath = Paths.get(this.newPath + "/" + super.getFile().getName()); // Percorso di destinazione
 
         try {
             // Sposta il file dalla sorgente alla destinazione

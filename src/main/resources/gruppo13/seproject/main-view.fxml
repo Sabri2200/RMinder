@@ -148,7 +148,7 @@
                                                                         <VBox fx:id="audioFileSelectorVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
                                                                             <children>
                                                                                 <Button fx:id="audioFileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select an audio file" />
-                                                                                <Label fx:id="audioFileChosenLbl" text="file" />
+                                                                                <Label fx:id="audioFileChosenLbl" />
                                                                             </children>
                                                                         </VBox>
                                                                         <VBox fx:id="messageActionVBox" alignment="CENTER" prefHeight="200.0" prefWidth="261.0" spacing="20.0" visible="false">
@@ -162,29 +162,29 @@
                                                          <children>
                                                             <Button fx:id="moveFileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select a file" />
                                                             <Button fx:id="moveFileSelectorBtn1" layoutX="72.0" layoutY="61.0" mnemonicParsing="false" onAction="#pathSelector" text="Select a path" />
-                                                            <Label fx:id="moveFileChosenLbl" text="file" />
-                                                            <Label fx:id="moveFileChosenLbl1" layoutX="123.0" layoutY="100.0" text="file" />
+                                                            <Label fx:id="moveFileChosenLbl" />
+                                                            <Label fx:id="moveFileChosenLbl1" layoutX="123.0" layoutY="100.0" />
                                                          </children>
                                                       </VBox>
                                                       <VBox fx:id="deleteFileSelectorVBox" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" visible="false">
                                                          <children>
                                                             <Button fx:id="deleteFileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select a file" />
-                                                            <Label fx:id="deleteFileChosenLbl" text="file" />
+                                                            <Label fx:id="deleteFileChosenLbl" />
                                                          </children>
                                                       </VBox>
                                                       <VBox fx:id="copyFileSelectorVBox" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" visible="false">
                                                          <children>
                                                             <Button fx:id="copyFileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select a file" />
                                                             <Button fx:id="copyFileSelectorBtn1" mnemonicParsing="false" onAction="#pathSelector" text="Select a path" />
-                                                            <Label fx:id="copyFileChosenLbl" text="file" />
-                                                            <Label fx:id="copyFileChosenLbl1" text="file" />
+                                                            <Label fx:id="copyFileChosenLbl" />
+                                                            <Label fx:id="copyFileChosenLbl1" />
                                                          </children>
                                                       </VBox>
                                                       <VBox fx:id="modifyTextFileSelectorVBox" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" visible="false">
                                                          <children>
                                                             <Button fx:id="modifyFileSelectorBtn" mnemonicParsing="false" onAction="#fileSelector" text="Select a file" />
                                                             <TextField fx:id="modifyFileSelectorTxtFld" />
-                                                            <Label fx:id="modifyFileChosenLbl" text="file" />
+                                                            <Label fx:id="modifyFileChosenLbl" />
                                                          </children>
                                                       </VBox>
                                                                     </children>

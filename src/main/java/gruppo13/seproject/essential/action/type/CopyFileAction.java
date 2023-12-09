@@ -58,11 +58,10 @@ public class CopyFileAction extends FileAction {
     @Override
     public void execute() throws ActionException {
         Path sourcePath = Paths.get(super.getFile().getAbsolutePath()); // Percorso del file sorgente
-        Path destinationPath = Paths.get(this.newPath); // Percorso di destinazione
+        Path destinationPath = Paths.get(this.newPath + "/" + super.getFile().getName()); // Percorso di destinazione
 
         try {
             Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("File copiato con successo.");
         } catch (Exception e) {
             requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
         }
