@@ -64,7 +64,7 @@ App Title: <b>RMinder<b>
 <ul>
   
 <li> <a href=" "> Sprint backlog </a> </li>
-<li> <a href=" https://docs.google.com/document/d/1zED5uBz2kku3lZCA9ZuwQLahjCc6NBD-p9g0KPbkee0/edit?usp=sharing "> Sprint retrospective report </a> </li>
+<li> <a href="https://docs.google.com/document/d/1zED5uBz2kku3lZCA9ZuwQLahjCc6NBD-p9g0KPbkee0/edit?usp=sharing"> Sprint retrospective report </a> </li>
 <li> <a href=" "> Sprint review </a> </li>
 <li> <a href=" "> burndown chart </a> </li>
 <li> <a href=" "> summary document </a> </li>
