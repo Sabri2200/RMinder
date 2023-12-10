@@ -40,7 +40,8 @@ The `CopyFileAction` class is a specialized implementation of a file action in a
    - The `getNewPath()` method provides access to the destination path where the file will be copied.
 */
 
-public class CopyFileAction extends FileAction {
+
+public class CopyFileAction extends FileAction{
     private String newPath;
     private RequestPublisher requestPublisher;
 
@@ -48,7 +49,8 @@ public class CopyFileAction extends FileAction {
         super(file);
         this.newPath = newPath;
         requestPublisher = RequestPublisher.getInstance();
-    }
+}
+
 
     @Override
     public ActionType getType() {
@@ -67,7 +69,7 @@ public class CopyFileAction extends FileAction {
         }
     }
 
-    public String getNewPath() {
+    public String getNewPath(){
         return newPath;
     }
 
