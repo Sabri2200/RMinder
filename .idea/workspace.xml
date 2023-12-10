@@ -7,15 +7,8 @@
     <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/temp_files/first_dir/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/temp_files/first_dir/file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DialogBoxActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DialogBoxActionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/ModifyTextFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/ModifyTextFileActionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/service/BackgroundServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/service/BackgroundServiceTest.java" afterDir="false" />
     </list>
     <list id="e1d3ecab-6a0a-44a7-a80d-be276a7ae12c" name="Changes by michelecoscarelli" comment="Changes by michelecoscarelli" />
     <option name="SHOW_DIALOG" value="false" />
@@ -274,15 +267,8 @@
       <workItem from="1701800884094" duration="6616000" />
       <workItem from="1701853193758" duration="10822000" />
       <workItem from="1701880415664" duration="151000" />
-      <workItem from="1701944197588" duration="39441000" />
-    </task>
-    <task id="LOCAL-00010" summary="Creation and implementation of create-rule-pane-dialog.fxml interface adding the controller CreateRuleDialogController. creation of methods for creating rules. Handling ComboBoxTrigger.">
-      <option name="closed" value="true" />
-      <created>1701001027912</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1701001027912</updated>
+      <workItem from="1701944197588" duration="40127000" />
+      <workItem from="1702239568481" duration="696000" />
     </task>
     <task id="LOCAL-00011" summary="gitignore file modified.">
       <option name="closed" value="true" />
@@ -668,7 +654,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702137688250</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Fixing issues">
+      <option name="closed" value="true" />
+      <created>1702232298215</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1702232298215</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
