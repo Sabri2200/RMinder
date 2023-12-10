@@ -68,7 +68,7 @@ App Title: <b>RMinder<b>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/ERMCqRt2rlhBpg8-DbHlp9YBFpyIh75ElVZeG_i86u_cng?e=KK5SDE"> Sprint retrospective report </a> </li>
 <li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjmWL6fyOMIwOXyw0"> Sprint review </a> </li>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EUZ2HBdSoLBMgmXdzWYLspIBEXgFpjSvVaTZzN0jMXh9-A?e=rH8t0I"> burndown chart </a> </li>
-<li> <a href=" "> summary document </a> </li>
+<!-- <li> <a href=" "> summary document </a> </li> --> 
   
 </ul>
 <hr>
