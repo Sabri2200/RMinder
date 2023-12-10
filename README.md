@@ -7,9 +7,10 @@ App Title: <b>RMinder<b>
 <h2> Members </h2>
 
 <ul>
+  <li> Carmine Attianese</li>
   <li> Michele Coscarelli</li>
   <li> Sabrina Cuomo</li>
-  <li> Carmine Attianese</li>
+  
 </ul>
 
 <hr>
@@ -68,12 +69,10 @@ App Title: <b>RMinder<b>
 <li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjmWL6fyOMIwOXyw0"> Sprint review </a> </li>
 <li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EUZ2HBdSoLBMgmXdzWYLspIBEXgFpjSvVaTZzN0jMXh9-A?e=rH8t0I"> burndown chart </a> </li>
 <li> <a href=" "> summary document </a> </li>
-
-
-
   
 </ul>
-
+<hr>
+<hr>
 
 </ul>
 
