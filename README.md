@@ -74,8 +74,13 @@ App Title: <b>RMinder<b>
 <hr>
 <hr>
 
-</ul>
 
+</ul>
+<h3> AFTER SPRINT: </h3>
+<hr>
+<ul>
+  <li> <a href="https://www.overleaf.com/read/wpgnwjtcyhnt#35217b"> summary </a> </li>
+</ul>
 
 
 
