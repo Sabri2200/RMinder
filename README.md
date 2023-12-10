@@ -7,9 +7,10 @@ App Title: <b>RMinder<b>
 <h2> Members </h2>
 
 <ul>
+  <li> Carmine Attianese</li>
   <li> Michele Coscarelli</li>
   <li> Sabrina Cuomo</li>
-  <li> Carmine Attianese</li>
+  
 </ul>
 
 <hr>
@@ -63,17 +64,15 @@ App Title: <b>RMinder<b>
 <h2> THIRD SPRINT: </h2>
 <ul>
   
-<li> <a href=" "> Sprint backlog </a> </li>
-<li> <a href="https://docs.google.com/document/d/1zED5uBz2kku3lZCA9ZuwQLahjCc6NBD-p9g0KPbkee0/edit?usp=sharing"> Sprint retrospective report </a> </li>
-<li> <a href=" "> Sprint review </a> </li>
-<li> <a href=" "> burndown chart </a> </li>
-<li> <a href=" "> summary document </a> </li>
-
-
-
+<li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjmP8XWMbxJH2GHKF?e=WRxzyr"> Sprint backlog </a> </li>
+<li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/ERMCqRt2rlhBpg8-DbHlp9YBFpyIh75ElVZeG_i86u_cng?e=KK5SDE"> Sprint retrospective report </a> </li>
+<li> <a href="https://1drv.ms/w/s!Ai7isgMnC7WcjmWL6fyOMIwOXyw0"> Sprint review </a> </li>
+<li> <a href="https://unisalerno-my.sharepoint.com/:w:/g/personal/c_attianese13_studenti_unisa_it/EUZ2HBdSoLBMgmXdzWYLspIBEXgFpjSvVaTZzN0jMXh9-A?e=rH8t0I"> burndown chart </a> </li>
+<!-- <li> <a href=" "> summary document </a> </li> --> 
   
 </ul>
-
+<hr>
+<hr>
 
 </ul>
 

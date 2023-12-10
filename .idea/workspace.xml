@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Adding summary to classes">
+    <list default="true" id="e958c7f6-0684-4241-aa81-b32558517d3c" name="Changes" comment="Fixing issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/CopyFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/CopyFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/ModifyTextFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/ModifyTextFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/MoveFileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppo13/seproject/essential/action/type/MoveFileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gruppo13/seproject/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/CopyFileActionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DeleteFileActionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DialogBoxActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/DialogBoxActionTest.java" afterDir="false" />
@@ -19,9 +14,6 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/action/type/MoveFileActionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleJsonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RulePerformerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RulePerformerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/essential/rule/RuleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/file_manager/FileManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/service/BackgroundServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gruppo13/seproject/service/BackgroundServiceTest.java" afterDir="false" />
     </list>
@@ -37,8 +29,8 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="package.json" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,35 +83,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4878049",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michelecoscarelli/Desktop/IdeaProjects/RMinder/src/main/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4878049&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -282,23 +274,7 @@
       <workItem from="1701800884094" duration="6616000" />
       <workItem from="1701853193758" duration="10822000" />
       <workItem from="1701880415664" duration="151000" />
-      <workItem from="1701944197588" duration="37303000" />
-    </task>
-    <task id="LOCAL-00008" summary="Commit files fxml for the interface.">
-      <option name="closed" value="true" />
-      <created>1700833389475</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1700833389475</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Creation and implementation of create-rule-pane-dialog.fxml interface adding the controller CreateRuleDialogController. creation of methods for creating rules.">
-      <option name="closed" value="true" />
-      <created>1700930837480</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1700930837481</updated>
+      <workItem from="1701944197588" duration="39441000" />
     </task>
     <task id="LOCAL-00010" summary="Creation and implementation of create-rule-pane-dialog.fxml interface adding the controller CreateRuleDialogController. creation of methods for creating rules. Handling ComboBoxTrigger.">
       <option name="closed" value="true" />
@@ -676,7 +652,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702133327230</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Fixing issues">
+      <option name="closed" value="true" />
+      <created>1702137442182</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1702137442182</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Fixing issues">
+      <option name="closed" value="true" />
+      <created>1702137688250</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1702137688250</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +698,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creation of Classes: Rule, RuleManager, Trigger, Action and creation of Architecture MVC's modules." />
     <MESSAGE value="Update of methods and creation of an interface" />
     <MESSAGE value="Creation of Test Classes." />
     <MESSAGE value="Commit files fxml for the interface." />
@@ -717,7 +708,6 @@
     <MESSAGE value="testing action performing" />
     <MESSAGE value="AudioAction" />
     <MESSAGE value="Editing project: adding a Rule Manager as an object that manipulates the list of rules and executes the TASK/SERVICE PROTOCOL (even updating the tableview) and using Factory Method for Triggers and Actions and Command Pattern for Rule Manager." />
-    <MESSAGE value="Fixing issues" />
     <MESSAGE value="Fixing some issues" />
     <MESSAGE value="Creating tests for MessageAction and FileManager" />
     <MESSAGE value="Editing views" />
@@ -731,7 +721,9 @@
     <MESSAGE value="implementing FileActions and tests" />
     <MESSAGE value="implementing nextActivation in rules" />
     <MESSAGE value="Adding summary to classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding summary to classes" />
+    <MESSAGE value="Fizing issues" />
+    <MESSAGE value="Fixing issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing issues" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
