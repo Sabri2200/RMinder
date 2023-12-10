@@ -66,10 +66,9 @@ public class ActionFactory {
 
             return new DialogBoxAction(title, content, message);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "createDialogBoxAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
     }
 
     private static AudioAction createAudioAction(List<String> params) {
@@ -78,10 +77,9 @@ public class ActionFactory {
 
             return new AudioAction(file);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "createAudioAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
     }
 
     private static MoveFileAction createMoveFileAction(List<String> params) {
@@ -91,37 +89,32 @@ public class ActionFactory {
 
             return new MoveFileAction(file, path);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "createMoveFileAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
+
     }
 
     private static CopyFileAction createCopyFileAction(List<String> params) {
         try {
             File file = new File(params.get(0));
             String path = params.get(1);
-
             return new CopyFileAction(file, path);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "CopyFileAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
     }
 
     private static DeleteFileAction createDeleteFileAction(List<String> params) {
         try {
             File file = new File(params.get(0));
-
             return new DeleteFileAction(file);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "DeleteFileAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
     }
-
     private static ModifyTextFileAction createModifyFileAction(List<String> params) {
         try {
             File file = new File(params.get(0));
@@ -129,9 +122,15 @@ public class ActionFactory {
 
             return new ModifyTextFileAction(file, str);
         } catch (Exception e) {
-            RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(e));
+            handleActionCreationException(e, "createModifyFileAction");
+            return null;
         }
-        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error during creating this action")));
-        return null;
     }
+
+    private static void handleActionCreationException(Exception e, String actionType) {
+        String errorMessage = "Error during creating " + actionType + " action";
+        RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception(errorMessage)));
+    }
+
+
 }

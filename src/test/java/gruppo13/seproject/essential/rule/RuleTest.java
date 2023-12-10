@@ -1,58 +1,81 @@
 package gruppo13.seproject.essential.rule;
-
 import gruppo13.seproject.essential.action.Action;
-import java.util.ArrayList;
+import gruppo13.seproject.essential.action.type.DialogBoxAction;
+import gruppo13.seproject.essential.rule.Rule;
+import gruppo13.seproject.essential.rule.RuleStatus;
+import gruppo13.seproject.essential.trigger.Trigger;
+import gruppo13.seproject.essential.trigger.type.ClockTrigger;
+import org.junit.Test;
+
+import java.time.LocalTime;
 import java.util.List;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
-
-import static org.mockito.Mockito.mock;
-import gruppo13.seproject.essential.trigger.Trigger;
-
 
 public class RuleTest {
 
     @Test
-    void testRuleInitialization() {
-        // Create mock objects for Action, Trigger, and State
-        Action mockAction = mock(Action.class);
-        Trigger mockTrigger = mock(Trigger.class);
-        RuleStatus mockStatus = mock(RuleStatus.class);
+    public void testRuleConstructionWithDefaultNextActivation() {
+        // Test data
+        String ruleName = "TestRule";
+        List<Action> actions = List.of(new DialogBoxAction("title","content","message"));
+        Trigger trigger = new ClockTrigger(LocalTime.MIDNIGHT);
+        RuleStatus ruleStatus = RuleStatus.ACTIVE;
 
-        // Create a list of actions
-        List<Action> actions = new ArrayList<>();
-        actions.add(mockAction);
+        // Create a rule with default nextActivation
+        Rule rule = new Rule(ruleName, actions, trigger, ruleStatus);
 
-        // Create a Rule instance
-        Rule rule = new Rule("TestRule", actions, mockTrigger, mockStatus);
-
-        // Test rule attributes
-        assertEquals("TestRule", rule.getName());
+        // Assert
+        assertNotNull(rule);
+        assertEquals(ruleName, rule.getName());
         assertEquals(actions, rule.getActions());
-        assertEquals(mockTrigger, rule.getTrigger());
-        assertEquals(mockStatus, rule.getRuleStatus());
+        assertEquals(trigger, rule.getTrigger());
+        assertEquals(ruleStatus, rule.getRuleStatus());
+        assertEquals(0, rule.getNextActivation());
     }
 
     @Test
-    void testRuleSetState() {
-        // Create mock objects for Action, Trigger, and State
-        Action mockAction = mock(Action.class);
-        Trigger mockTrigger = mock(Trigger.class);
-        RuleStatus mockStatus = mock(RuleStatus.class);
+    public void testRuleConstructionWithCustomNextActivation() {
+        // Test data
+        String ruleName = "TestRule";
+        List<Action> actions = List.of(new DialogBoxAction("title","content","message"));
+        Trigger trigger = new ClockTrigger(LocalTime.MIDNIGHT);
+        int customNextActivation = 5;
+        RuleStatus ruleStatus = RuleStatus.ACTIVE;
 
-        // Create a list of actions
-        List<Action> actions = new ArrayList<>();
-        actions.add(mockAction);
+        // Create a rule with custom nextActivation
+        Rule rule = new Rule(ruleName, actions, trigger, customNextActivation, ruleStatus);
 
-        // Create a Rule instance
-        Rule rule = new Rule("TestRule", actions, mockTrigger, mockStatus);
-
-        // Set a new state and test
-        RuleStatus newStatus = mock(RuleStatus.class);
-        rule.setRuleStatus(newStatus);
-
-        // Verify that the state is updated
-        assertEquals(newStatus, rule.getRuleStatus());
+        // Assert
+        assertNotNull(rule);
+        assertEquals(ruleName, rule.getName());
+        assertEquals(actions, rule.getActions());
+        assertEquals(trigger, rule.getTrigger());
+        assertEquals(ruleStatus, rule.getRuleStatus());
+        assertEquals(customNextActivation, rule.getNextActivation());
     }
+
+    @Test
+    public void testRuleStateChange() {
+        // Test data
+        String ruleName = "TestRule";
+        List<Action> actions = List.of(new DialogBoxAction("title","content","message"));
+        Trigger trigger = new ClockTrigger(LocalTime.MIDNIGHT);
+        RuleStatus initialRuleStatus = RuleStatus.ACTIVE;
+        RuleStatus newRuleStatus = RuleStatus.INACTIVE;
+
+        // Create a rule
+        Rule rule = new Rule(ruleName, actions, trigger, initialRuleStatus);
+
+        // Verify the initial state
+        assertEquals(initialRuleStatus, rule.getRuleStatus());
+
+        // Change the rule state
+        rule.setRuleStatus(newRuleStatus);
+
+        // Verify the new state
+        assertEquals(newRuleStatus, rule.getRuleStatus());
+    }
+
+
 }

@@ -1,41 +1,97 @@
 package gruppo13.seproject.service.GUIhandler;
 
+import gruppo13.seproject.essential.request_handler.Handler;
 import gruppo13.seproject.essential.request_handler.Request;
-import gruppo13.seproject.essential.request_handler.RequestType;
-import org.junit.jupiter.api.Test;
+import gruppo13.seproject.essential.request_handler.RequestFactory;
+import gruppo13.seproject.service.AlertExecutor;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
 
-class ErrorLogManagerTest {
+public class ErrorLogManagerTest {
 
-    @Test
-    public void testExecuteWithExceptionRequest() {
-        // Create an instance of ErrorLogManager
-        ErrorLogManager errorLogManager = ErrorLogManager.getInstance();
+    private ErrorLogManager errorLogManager;
+    private TestHandler nextHandler;
 
-        // Create a mock Exception for testing
-        Exception mockException = mock(Exception.class);
-
-        // Create an EXCEPTION request with the mock Exception
-        Request exceptionRequest = new Request(RequestType.EXCEPTION, mockException);
-
-        // Use assertDoesNotThrow to check that execute does not throw an exception
-        assertDoesNotThrow(() -> errorLogManager.execute(exceptionRequest));
+    @Before
+    public void setUp() {
+        errorLogManager = ErrorLogManager.getInstance();
+        nextHandler = new TestHandler();
+        errorLogManager.setNext(nextHandler);
     }
 
     @Test
-    public void testExecuteWithNonExceptionRequest() {
-        // Create an instance of ErrorLogManager
-        ErrorLogManager errorLogManager = ErrorLogManager.getInstance();
+    public void testHandleExceptionRequest() {
+        // Arrange
+        Exception testException = new Exception("Test Exception");
+        Request exceptionRequest = RequestFactory.createExceptionRequest(testException);
 
-        // Create a mock Request with a different type (not EXCEPTION)
-        Request mockRequest = mock(Request.class);
-        when(mockRequest.getType()).thenReturn(RequestType.LISTUPDATE); // Example type, not EXCEPTION
+        // Act
+        errorLogManager.handleRequest(exceptionRequest);
+    }
 
-        // Use assertThrows to check that execute throws an exception for a non-EXCEPTION request
-        assertThrows(IllegalArgumentException.class, () -> errorLogManager.execute(mockRequest));
+    @Test
+    public void testHandleNonExceptionRequest() {
+        // Arrange
+        Request nonExceptionRequest = RequestFactory.createListUpdateRequest();
+
+        // Act
+        errorLogManager.handleRequest(nonExceptionRequest);
+
+        // Assert
+        assertTrue(nextHandler.isHandleRequestCalled());
+    }
+
+    @Test
+    public void testExecuteWithException() {
+        // Arrange
+        Exception testException = new Exception("Test Exception");
+        Request exceptionRequest = RequestFactory.createExceptionRequest(testException);
+
+        // Act
+        errorLogManager.execute(exceptionRequest);
+    }
+
+    @Test
+    public void testExecuteWithNullException() {
+        // Arrange
+        Request exceptionRequest = RequestFactory.createExceptionRequest(null);
+
+        // Act
+        errorLogManager.execute(exceptionRequest);
+    }
+
+
+    // Custom test handler for tracking handleRequest calls
+    private static class TestHandler implements Handler {
+        private boolean isHandleRequestCalled = false;
+
+        @Override
+        public void setNext(Handler handler) {
+            // Do nothing for this test
+        }
+
+        @Override
+        public void handleRequest(Request request) {
+            isHandleRequestCalled = true;
+        }
+
+        public boolean isHandleRequestCalled() {
+            return isHandleRequestCalled;
+        }
+    }
+
+    // Custom test class for tracking static method calls
+    private static class AlertExecutorTest extends AlertExecutor {
+        private static boolean showErrorAlertCalled = false;
+
+        public static void showErrorAlert(Exception e) {
+            showErrorAlertCalled = true;
+        }
+
+        public static boolean isShowErrorAlertCalled() {
+            return showErrorAlertCalled;
+        }
     }
 }

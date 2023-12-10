@@ -24,9 +24,9 @@ public class BackgroundServiceTest {
     }
 
     @Test
-    void testStartService() {
+    public void testStartService() {
         // Create the BackgroundService instance with mock dependencies
-        BackgroundService backgroundService = new BackgroundService(ruleManager);
+        BackgroundService backgroundService = new BackgroundService();
 
         // Invoke the startService method
         backgroundService.startService();

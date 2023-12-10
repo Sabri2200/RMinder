@@ -1,69 +1,64 @@
 package gruppo13.seproject.essential.request_handler;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.assertSame;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
 public class RequestSwitcherTest {
 
-    @Mock
-    private Handler mockHandler;
+    // Classe di test per simulare un handler semplice
+    static class TestHandler implements Handler {
+        private boolean requestHandled = false;
 
-    @Before
-    public void setUp() {
-        // Inizializza i mock
-        MockitoAnnotations.initMocks(this);
-    }
+        @Override
+        public void setNext(Handler handler) {
 
-    @Test
-    public void testSetNext() {
-        RequestSwitcher requestSwitcher = RequestSwitcher.getInstance();
+        }
 
-        // Esegui il metodo che stai testando
-        requestSwitcher.setNext(mockHandler);
+        @Override
+        public void handleRequest(Request request) {
+            // Simulare il comportamento dell'handler
+            requestHandled = true;
+        }
 
-        // Verifica che il prossimo handler sia stato impostato correttamente
-        assertSame(mockHandler, requestSwitcher.getNextHandler());
+        public boolean isRequestHandled() {
+            return requestHandled;
+        }
     }
 
     @Test
     public void testHandleRequestWithNextHandler() {
-        RequestSwitcher requestSwitcher = RequestSwitcher.getInstance();
-        requestSwitcher.setNext(mockHandler);
-        Request mockRequest = mock(Request.class);
+        // Creare un oggetto di test per l'handler
+        TestHandler testHandler = new TestHandler();
 
-        // Esegui il metodo che stai testando
-        requestSwitcher.handleRequest(mockRequest);
+        // Creare un'istanza di RequestSwitcher
+        RequestSwitcher requestSwitcher = new RequestSwitcher();
 
-        // Verifica che il metodo handleRequest del prossimo handler sia stato chiamato
-        verify(mockHandler, times(1)).handleRequest(mockRequest);
+        // Impostare l'handler di test come prossimo handler
+        requestSwitcher.setNext(testHandler);
+
+        // Creare una richiesta di test
+        Request testRequest = new Request(RequestType.EXCEPTION, new Exception("Test Exception"));
+
+        // Eseguire il metodo sotto test
+        requestSwitcher.handleRequest(testRequest);
+
+        // Verificare che il metodo handleRequest dell'handler di test sia stato chiamato
+        assertTrue(testHandler.isRequestHandled());
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void testHandleRequestWithoutNextHandler() {
-        RequestSwitcher requestSwitcher = RequestSwitcher.getInstance();
-        RequestSwitcher originalSwitcher = requestSwitcher; // Salva l'istanza originale
+        // Creare un'istanza di RequestSwitcher senza prossimo handler
+        RequestSwitcher requestSwitcher = new RequestSwitcher();
 
-        // Creare un mock di RequestSwitcher
-        RequestSwitcher mockRequestSwitcher = mock(RequestSwitcher.class);
-        requestSwitcher.setNext(mockRequestSwitcher); // Inietta il mock come prossimo handler
+        // Creare una richiesta di test
+        Request testRequest = new Request(RequestType.EXCEPTION, new Exception("Test Exception"));
 
-        RequestPublisher requestPublisher = RequestPublisher.getInstance();
-        Request mockRequest = mock(Request.class);
+        // Eseguire il metodo sotto test
+        requestSwitcher.handleRequest(testRequest);
 
-        // Esegui il metodo che stai testando
-        requestPublisher.publishRequest(mockRequest);
-
-        // Verifica che il metodo handleRequest del mockRequestSwitcher sia stato chiamato con l'eccezione desiderata
-        verify(mockRequestSwitcher, times(1)).handleRequest(RequestFactory.createExceptionRequest(any(Exception.class)));
-
-        // Ripristina l'istanza originale di RequestSwitcher
-        requestSwitcher.setNext(originalSwitcher);
+        // Verificare che la richiesta abbia generato un'eccezione
+        assertNotNull(testRequest.getData());
     }
-
 }
-

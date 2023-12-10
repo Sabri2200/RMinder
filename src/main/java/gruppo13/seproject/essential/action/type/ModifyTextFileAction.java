@@ -1,6 +1,7 @@
 package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.ActionType;
+import gruppo13.seproject.essential.action.exception.FileActionException;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.request_handler.RequestType;
@@ -49,13 +50,18 @@ public class ModifyTextFileAction extends FileAction {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws FileActionException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(super.getFile().getAbsoluteFile(), true))) {
             writer.write(this.stringToAdd);
         } catch (IOException e) {
-            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
+
+            String errorMessage = "Error writing to file at " + super.getFile().getAbsolutePath();
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, errorMessage));
+
+            throw new FileActionException(errorMessage);
         }
     }
+
 
     @Override
     public ActionType getType() {

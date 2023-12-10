@@ -51,9 +51,6 @@ public class BackgroundService {
         this.ruleManager = RuleManager.getInstance();
     }
 
-    public BackgroundService(RuleManager ruleManager) {
-        this.ruleManager = ruleManager;
-    }
 
     public void startService() {
         initializeService();

@@ -5,44 +5,43 @@ import gruppo13.seproject.essential.request_handler.RequestType;
 import gruppo13.seproject.essential.rule.Rule;
 import gruppo13.seproject.essential.rule.RuleManager;
 import javafx.collections.ObservableList;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-class GUIRuleListTest {
+public class GUIRuleListTest {
 
     private GUIRuleList guiRuleList;
     private RuleManager ruleManager;
 
-    @BeforeEach
+    @Before
     public void setUp() {
-        // Create instances of GUIRuleList and RuleManager
+        // Crea le istanze di GUIRuleList e RuleManager
         guiRuleList = GUIRuleList.getInstance();
         ruleManager = RuleManager.getInstance();
     }
 
     @Test
     public void testListUpdateRequestHandling() {
-        // Initial state: Check if the list is empty
+        // Stato iniziale: verifica se la lista è vuota
         ObservableList<Rule> initialList = guiRuleList.getList();
         assertEquals(0, initialList.size());
 
-        // Add a rule to the RuleManager
+        // Aggiungi una regola a RuleManager
         Rule testRule = new Rule("Test Rule", null, null, null);
         ruleManager.addRule(testRule);
 
-        // Simulate a LISTUPDATE request
+        // Simula una richiesta LISTUPDATE
         Request listUpdateRequest = new Request(RequestType.LISTUPDATE, null);
         guiRuleList.handleRequest(listUpdateRequest);
 
-        // After handling the request, check if the list is updated
+        // Dopo aver gestito la richiesta, verifica se la lista è stata aggiornata
         ObservableList<Rule> updatedList = guiRuleList.getList();
         assertEquals(1, updatedList.size());
 
-        // Clean up: Remove the added rule
+        // Pulisci: rimuovi la regola aggiunta
         ruleManager.removeRule(testRule);
         guiRuleList.handleRequest(listUpdateRequest);
     }
 }
-

@@ -1,12 +1,12 @@
 package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.action.exception.FileActionException;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.verifyZeroInteractions;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -35,12 +35,11 @@ public class DeleteFileActionTest {
     public void testFileDeletionSuccess() throws Exception {
         deleteFileAction.execute();
         assertFalse("Il file non dovrebbe esistere", testFile.exists());
-
     }
 
-    @Test(expected = ActionException.class)
+    @Test(expected = FileActionException.class)
     public void testFileDeletionFailure() throws Exception {
-        File invalidFile = new File("path/to/inesistente.txt");
+        File invalidFile = new File("path/to/notExist.txt");
         DeleteFileAction invalidDeleteAction = new DeleteFileAction(invalidFile);
         invalidDeleteAction.execute();
     }

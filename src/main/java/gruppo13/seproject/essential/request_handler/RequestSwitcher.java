@@ -1,6 +1,5 @@
 package gruppo13.seproject.essential.request_handler;
 
-// TODO: 06/12/2023 : TEST when is done
 
 /*
 The `RequestSwitcher` class is a component in a Java application that plays a crucial role in the chain of responsibility pattern for handling requests.
@@ -48,9 +47,5 @@ public class RequestSwitcher implements Handler {
             // No handler can handle the request
             RequestPublisher.getInstance().publishRequest(RequestFactory.createExceptionRequest(new Exception("Error: No handler can handle the request")));
         }
-    }
-
-    public Handler getNextHandler() {
-        return nextHandler;
     }
 }

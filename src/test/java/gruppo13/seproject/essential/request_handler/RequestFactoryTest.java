@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class RequestFactoryTest {
 
     @Test
-    void createExceptionRequest() {
+    public void createExceptionRequest() {
         // Create an exception
         Exception exception = new RuntimeException("Test exception");
 
@@ -24,7 +24,7 @@ public class RequestFactoryTest {
     }
 
     @Test
-    void createExecutionRequest() {
+    public void createExecutionRequest() {
         // Create a sample action
         Action action = new DialogBoxAction("title", "content", "message");
 
@@ -37,12 +37,12 @@ public class RequestFactoryTest {
     }
 
     @Test
-    void createListUpdateRequest() {
+    public void createListUpdateRequest() {
         // Create a list update request using the factory method
         Request request = RequestFactory.createListUpdateRequest();
 
         // Check if the request is created correctly
         assertEquals(RequestType.LISTUPDATE, request.getType());
-        assertEquals(null, request.getData()); // Since the data is expected to be null
+        assertNull(request.getData());
     }
 }

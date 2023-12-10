@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class RequestTest {
 
     @Test
-    void createRequest() {
+    public void createRequest() {
         // Create a sample request
         Request request = new Request(RequestType.LISTUPDATE, "Some data");
 

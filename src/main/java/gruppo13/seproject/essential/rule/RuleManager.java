@@ -32,7 +32,7 @@ public class RuleManager {
     private List<Rule> rules;
     private RequestPublisher requestPublisher;
 
-    private RuleManager() {
+    public RuleManager() {
         rules = new ArrayList<>();
         this.requestPublisher = RequestPublisher.getInstance();
     }

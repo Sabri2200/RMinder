@@ -2,11 +2,13 @@ package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.ActionType;
 import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.action.exception.FileActionException;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.request_handler.RequestType;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -56,14 +58,20 @@ public class CopyFileAction extends FileAction {
     }
 
     @Override
-    public void execute() throws ActionException {
+    public void execute() throws FileActionException {
         Path sourcePath = Paths.get(super.getFile().getAbsolutePath()); // Percorso del file sorgente
         Path destinationPath = Paths.get(this.newPath + "/" + super.getFile().getName()); // Percorso di destinazione
 
         try {
             Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            String errorMessage = "Error copying file from " + sourcePath + " to " + destinationPath;
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, errorMessage));
+            throw new FileActionException(errorMessage);
         } catch (Exception e) {
-            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
+            String errorMessage = "Unexpected error copying file";
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, errorMessage));
+            throw new FileActionException(errorMessage);
         }
     }
 

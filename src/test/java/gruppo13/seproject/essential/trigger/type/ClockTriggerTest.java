@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class ClockTriggerTest {
 
     @Test
-    void verifyShouldReturnTrueWhenCurrentTimeIsEqualToTriggerTime() {
+    public void verifyShouldReturnTrueWhenCurrentTimeIsEqualToTriggerTime() {
         // Arrange
         LocalTime triggerTime = LocalTime.now();
         Trigger clockTrigger = new ClockTrigger(triggerTime);
@@ -21,7 +21,7 @@ public class ClockTriggerTest {
     }
 
     @Test
-    void verifyShouldReturnTrueWhenCurrentTimeIsAfterTriggerTime() {
+    public void verifyShouldReturnTrueWhenCurrentTimeIsAfterTriggerTime() {
         // Arrange
         LocalTime triggerTime = LocalTime.now().minusMinutes(1); // Set trigger time 1 minute ago
         Trigger clockTrigger = new ClockTrigger(triggerTime);
@@ -34,7 +34,7 @@ public class ClockTriggerTest {
     }
 
     @Test
-    void verifyShouldReturnFalseWhenCurrentTimeIsBeforeTriggerTime() {
+    public void verifyShouldReturnFalseWhenCurrentTimeIsBeforeTriggerTime() {
         // Arrange
         LocalTime triggerTime = LocalTime.now().plusMinutes(1); // Set trigger time 1 minute in the future
         Trigger clockTrigger = new ClockTrigger(triggerTime);
@@ -47,7 +47,7 @@ public class ClockTriggerTest {
     }
 
     @Test
-    void getTypeShouldReturnClockTriggerType() {
+    public void getTypeShouldReturnClockTriggerType() {
         // Arrange
         Trigger clockTrigger = new ClockTrigger(LocalTime.now());
 
@@ -59,7 +59,7 @@ public class ClockTriggerTest {
     }
 
     @Test
-    void toStringShouldReturnFormattedString() {
+    public void toStringShouldReturnFormattedString() {
         // Arrange
         LocalTime triggerTime = LocalTime.now();
         Trigger clockTrigger = new ClockTrigger(triggerTime);

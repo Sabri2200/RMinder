@@ -3,7 +3,6 @@ package gruppo13.seproject.essential.rule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.concurrent.CompletableFuture;
@@ -15,19 +14,19 @@ public class RuleServiceTest {
     private ExecutorService executorServiceMock;
 
     @Before
-    void setUp() {
+    public void setUp() {
         rulePerformerMock = mock(RulePerformer.class);
         executorServiceMock = mock(ExecutorService.class);
     }
 
     @After
-    void tearDown() {
+    public void tearDown() {
         rulePerformerMock = null;
         executorServiceMock = null;
     }
 
     @Test
-    void run_ExecutesRulePerformer() {
+    public void run_ExecutesRulePerformer() {
         // Arrange
         RuleService ruleService = new RuleService();
         ruleService.rulePerformer = rulePerformerMock;
@@ -43,7 +42,7 @@ public class RuleServiceTest {
     }
 
     @Test
-    void run_AsynchronouslyExecutesRulePerformer() {
+    public void run_AsynchronouslyExecutesRulePerformer() {
         // Arrange
         RuleService ruleService = new RuleService();
         ruleService.rulePerformer = rulePerformerMock;

@@ -16,21 +16,21 @@ public class RuleSaverTest {
     private File fileMock;
 
     @Before
-    void setUp() {
+    public void setUp() {
         ruleManagerMock = mock(RuleManager.class);
         executorServiceMock = mock(ExecutorService.class);
         fileMock = mock(File.class);
     }
 
     @After
-    void tearDown() {
+    public void tearDown() {
         ruleManagerMock = null;
         executorServiceMock = null;
         fileMock = null;
     }
 
     @Test
-    void run_SavesRulesToFile() {
+    public void run_SavesRulesToFile() {
         // Arrange
         RuleSaver ruleSaver = new RuleSaver(fileMock);
         ruleSaver.ruleManager = ruleManagerMock;

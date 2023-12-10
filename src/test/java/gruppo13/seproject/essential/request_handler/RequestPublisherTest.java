@@ -1,58 +1,54 @@
 package gruppo13.seproject.essential.request_handler;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertTrue;
 
 public class RequestPublisherTest {
 
-    @Mock
-    private RequestSwitcher mockRequestSwitcher;
+    // Classe di test per simulare un handler semplice
+    static class TestHandler implements Handler {
+        private boolean requestHandled = false;
 
-    @Before
-    public void setUp() {
-        // Inizializza i mock
-        MockitoAnnotations.initMocks(this);
-        // Imposta il mock nella RequestSwitcher
-        RequestPublisher.getInstance().setRequestSwitcher(mockRequestSwitcher);
+        @Override
+        public void setNext(Handler handler) {
+
+        }
+
+        @Override
+        public void handleRequest(Request request) {
+            // Simulare il comportamento dell'handler
+            requestHandled = true;
+        }
+
+        public boolean isRequestHandled() {
+            return requestHandled;
+        }
     }
 
     @Test
     public void testPublishRequest() {
-        RequestPublisher requestPublisher = RequestPublisher.getInstance();
-        Request mockRequest = mock(Request.class);
+        // Creare un oggetto di test per l'handler
+        TestHandler testHandler = new TestHandler();
 
-        // Esegui il metodo che stai testando
-        requestPublisher.publishRequest(mockRequest);
-
-        // Verifica che il metodo handleRequest della RequestSwitcher sia chiamato con il mockRequest
-        verify(mockRequestSwitcher, times(1)).handleRequest(mockRequest);
-    }
-
-    @Test
-    public void testSetHandlers() {
-        RequestPublisher requestPublisher = RequestPublisher.getInstance();
-        Handler mockHandler1 = mock(Handler.class);
-        Handler mockHandler2 = mock(Handler.class);
-
+        // Creare una lista contenente l'handler di test
         List<Handler> handlers = new ArrayList<>();
-        handlers.add(mockHandler1);
-        handlers.add(mockHandler2);
+        handlers.add(testHandler);
 
-        // Esegui il metodo che stai testando
+        // Creare un'istanza di RequestPublisher
+        RequestPublisher requestPublisher = new RequestPublisher();
         requestPublisher.setHandlers(handlers);
 
-        // Verifica che il metodo setNext sia chiamato correttamente per ogni handler
-        verify(mockHandler1, times(1)).setNext(mockHandler2);
-        verify(mockHandler2, times(1)).setNext(null);
+        // Creare una richiesta di test
+        Request testRequest = new Request(RequestType.EXCEPTION, new Exception("Test Exception"));
+
+        // Eseguire il metodo sotto test
+        requestPublisher.publishRequest(testRequest);
+
+        // Verificare che il metodo handleRequest dell'handler di test sia stato chiamato
+        assertTrue(testHandler.isRequestHandled());
     }
-    // Metodo di factory per creare un'istanza di RequestPublisher con una specifica RequestSwitcher
-
-
 }

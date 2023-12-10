@@ -1,12 +1,13 @@
 package gruppo13.seproject.essential.action.type;
 
 import gruppo13.seproject.essential.action.ActionType;
-import gruppo13.seproject.essential.action.exception.ActionException;
+import gruppo13.seproject.essential.action.exception.FileActionException;
 import gruppo13.seproject.essential.request_handler.Request;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import gruppo13.seproject.essential.request_handler.RequestType;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -48,13 +49,20 @@ public class DeleteFileAction extends FileAction {
     }
 
     @Override
-    public void execute() throws ActionException {
+    public void execute() throws FileActionException {
         try {
             Files.deleteIfExists(Path.of(super.getFile().getAbsolutePath()));
+        } catch (IOException e) {
+            String errorMessage = "Error deleting file at " + super.getFile().getAbsolutePath();
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, errorMessage));
+            throw new FileActionException(errorMessage);
         } catch (Exception e) {
-            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, e));
+            String errorMessage = "Unexpected error deleting file at " + super.getFile().getAbsolutePath();
+            requestPublisher.publishRequest(new Request(RequestType.EXCEPTION, errorMessage));
+            throw new FileActionException(errorMessage);
         }
     }
+
 
     @Override
     public String toString() {

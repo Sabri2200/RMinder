@@ -68,8 +68,8 @@ public class RuleJsonTest {
     @Test
     public void testJsonToRules() {
         // Create a JSON string representing a list of rules
-        String json = "[{\"name\":\"TestRule1\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"state\":\"ACTIVE\",\"nextActivation\":0,\"actions\":[\"MP3PLAYER /path/to/audio\"]}," +
-                "{\"name\":\"TestRule2\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"state\":\"INACTIVE\",\"nextActivation\":0,\"actions\":[\"MP3PLAYER /path/to/audio\"]}]";
+        String json = "[{\"name\":\"TestRule1\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"ruleState\":\"ACTIVE\",\"nextActivation\":0,\"actions\":[\"MP3PLAYER /path/to/audio\"]}," +
+                "{\"name\":\"TestRule2\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"ruleState\":\"INACTIVE\",\"nextActivation\":0,\"actions\":[\"MP3PLAYER /path/to/audio\"]}]";
 
         // Convert the JSON string to a list of rules
         List<Rule> rules = RuleJson.jsonToRules(json);
@@ -84,7 +84,7 @@ public class RuleJsonTest {
     @Test
     public void testJsonToRule() {
         // Create a JSON object representing a rule
-        JSONObject jsonRule = new JSONObject("{\"name\":\"TestRule\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"state\":\"ACTIVE\",\"nextActivation\":0,\"actions\":[\"AUDIO /path/to/audio\"]}");
+        JSONObject jsonRule = new JSONObject("{\"name\":\"TestRule\",\"trigger\":\"CLOCKTRIGGER 12:00\",\"ruleState\":\"ACTIVE\",\"nextActivation\":0,\"actions\":[\"MP3PLAYER /path/to/audio\"]}");
 
         // Convert the JSON object to a rule
         Rule rule = RuleJson.jsonToRule(jsonRule);

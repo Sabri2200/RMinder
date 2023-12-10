@@ -1,5 +1,6 @@
 package gruppo13.seproject.essential.action.type;
 
+import gruppo13.seproject.essential.action.exception.FileActionException;
 import gruppo13.seproject.essential.request_handler.RequestPublisher;
 import org.junit.Before;
 import org.junit.After;
@@ -16,14 +17,12 @@ public class ModifyTextFileActionTest {
     private File testFile;
     private String contentToAdd;
     private ModifyTextFileAction modifyTextFileAction;
-    private RequestPublisher requestPublisher;
 
     @Before
     public void setUp() throws Exception {
         // Creazione di un file temporaneo per il test
         testFile = File.createTempFile("testFile", ".txt");
         contentToAdd = "Test Content";
-        requestPublisher = RequestPublisher.getInstance();
         modifyTextFileAction = new ModifyTextFileAction(testFile, contentToAdd);
     }
 
@@ -40,7 +39,7 @@ public class ModifyTextFileActionTest {
         assertEquals("Il contenuto del file dovrebbe corrispondere", contentToAdd, fileContent);
     }
 
-    @Test(expected = IOException.class)
+    @Test(expected = FileActionException.class)
     public void testFileModificationFailure() throws Exception{
         File invalidFile = new File("path/to/inesistente.txt");
         ModifyTextFileAction invalidModifyAction = new ModifyTextFileAction(invalidFile, contentToAdd);

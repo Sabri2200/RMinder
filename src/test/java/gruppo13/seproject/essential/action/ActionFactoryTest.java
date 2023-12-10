@@ -2,6 +2,7 @@ package gruppo13.seproject.essential.action;
 
 import gruppo13.seproject.essential.action.type.DialogBoxAction;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,7 +14,7 @@ import java.util.Map;
 public class ActionFactoryTest {
     private Map.Entry<ActionType, List<String>> action;
     private List<String> params = new ArrayList<>();
-    @Test
+    @Before
     public void setUp() {
         params.add("title");
         params.add("header");
