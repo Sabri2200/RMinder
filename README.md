@@ -82,7 +82,11 @@ App Title: <b>RMinder<b>
   <li> <a href="https://www.overleaf.com/read/wpgnwjtcyhnt#35217b"> summary </a> </li>
 </ul>
 
-
+<hr>
+<h3> RMinder - Final Presentation </h3>
+<ul>
+  <li> <a href="https://unisalerno-my.sharepoint.com/:p:/g/personal/c_attianese13_studenti_unisa_it/EXsa9TdSDGREreMRjyLBJGgBfi4Wq_FIQX2yzNVKXVz-1g?e=hecgp7"> Presentation </a> </li>
+</ul>
 
 
 
